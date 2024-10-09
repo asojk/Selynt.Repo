@@ -1,0 +1,30 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.neumorphic-shadow {
+	box-shadow:
+		10px 10px 20px #b3b3b3,
+		-10px -10px 20px #ffffff;
+}
+
+/* src/styles/global.css */
+
+.card:nth-child(3n) {
+	@apply md:border-r-0;
+}
+
+.card:nth-child(3n + 1) {
+	@apply md:border-t-0;
+}
+
+.mask-with-browser-support {
+  mask: linear-gradient(black, black), linear-gradient(black, black);
+  mask-clip: content-box, border-box;
+  mask-composite: exclude;
+  -webkit-mask:
+    linear-gradient(black, black) content-box,
+    linear-gradient(black, black);
+  -webkit-mask-clip: content-box, border-box;
+  -webkit-mask-composite: xor;
+}

@@ -1,0 +1,35 @@
+{
+    "tabWidth": 2,
+    "endOfLine": "auto",
+    "printWidth": 100,
+    "singleQuote": true,
+    "semi": false,
+    "useTabs": true,
+    "quoteProps": "preserve",
+    "jsxSingleQuote": true,
+    "bracketSpacing": false,
+    "bracketSameLine": true,
+    "arrowParens": "always",
+    "requirePragma": false,
+    "insertPragma": false,
+    "proseWrap": "never",
+    "trailingComma": "none",
+    "htmlWhitespaceSensitivity": "css",
+    "vueIndentScriptAndStyle": false,
+    "embeddedLanguageFormatting": "off",
+    "singleAttributePerLine": false,
+    "tailwindConfig": "./tailwind.config.ts",
+    "tailwindAttributes": [
+        "wrapperClassName",
+        "wrapClassName",
+        "rootClassName"
+    ],
+    "tailwindFunctions": [
+        "classNames",
+        "classnames",
+        "twMerge"
+    ],
+    "plugins": [
+        "prettier-plugin-tailwindcss"
+    ]
+}

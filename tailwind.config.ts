@@ -1,0 +1,69 @@
+import type {Config} from 'tailwindcss'
+import tailwindcssAnimate from 'tailwindcss-animate' // Importing the plugin
+
+export default {
+	darkMode: 'class',
+	content: ['./index.html', './src/**/*.{js,ts,jsx,tsx}'],
+	theme: {
+		extend: {
+			fontFamily: {
+				serif: ['Merriweather', 'serif'],
+				sans: ['Inter', 'sans-serif']
+			},
+      colors: {
+				"primary": '#36454F',
+				"p": {
+					"100": "#e6eaec",
+					"200": "#d0d7dd",
+					"300": "#bbc6cd",
+					"400": "#a3b1bc",
+					"500": "#8e9fad",
+					"600": "#778c9b",
+					"700": "#607483",
+					"800": "#43525c",
+					"900": "#1e2529"
+				},
+				"g": {
+					"50": "#fcfcfc",  //dcopy, content
+					"100": "#f1f1f1", //bg
+					"200": "#dfdfdf", //bg
+					"300": "#cccccc",
+					"400": "#aaaaaa", //border
+					"500": "#898989",
+					"600": "#707070",
+					"700": "#5c5c5c",
+					"800": "#454545", //dborder
+					"900": "#1c1c1c", //dbg
+					"b": "#090909", //copy
+				},
+				"secondary": '#AEE1CF',
+				"s": {
+					"100": "#b4ddcd",
+					"200": "#5cb593",
+					"300": "#3a8266",
+					"400": "#224a3b"
+				},
+				"accent": '#33B588', 
+				"a": {
+					"100": "#b6ddcb",
+					"200": "#63b58e",
+					"300": "#3e8262",
+					"400": "#234b38"
+				},
+
+
+      },
+			boxShadow: {
+				neu1: '10px 10px 20px #b3b3b3, -10px -10px 20px #ffffff',
+				neu2: 'shadow-[rgba(0,_0,_0,_0.2)_0px_60px_40px_-7px]'
+			}
+		}
+	},
+	variants: {
+		extend: {
+			opacity: ['group-hover'],
+			transitionOpacity: ['group-hover']
+		}
+	},
+	plugins: [tailwindcssAnimate] // Using the imported plugin
+} satisfies Config
