@@ -9,6 +9,7 @@ export const Home = () => (
 				<div className='relative max-w-[85vw]'>
 					{/* Floating Orb */}
 					<div className='absolute inset-0 left-1/2 z-[888] flex h-24 w-24 animate-float items-center justify-center rounded-full bg-s opacity-70 blur-3xl filter md:-top-1/3 md:h-64 md:w-64 lg:-top-1/2 lg:h-72 lg:w-72 lg:opacity-20' />
+
 					{/* Logo */}
 					<img src={images.logo} alt='logo' className='relative z-[1000] h-48 w-full dark:hidden' />
 					<img
@@ -18,11 +19,12 @@ export const Home = () => (
 					/>
 				</div>
 			</div>
+
 			{/* Text at the Bottom */}
 			<div className='mb-8 text-center'>
 				<h1 className='text-lg font-semibold text-n-dark dark:text-n-light md:text-4xl'>
 					Boost Credibility
-					<br className='line-break-small' />
+					<br className='line-break-small' /> {/* Line break for small screens */}
 					with a{' '}
 					<a className='animate-text bg-gradient-to-r from-p via-s to-a-darker bg-clip-text text-transparent'>
 						Clear Identity
@@ -31,8 +33,18 @@ export const Home = () => (
 				<p className='mt-2 text-n-6 dark:text-n-3'>
 					Welcome to <a className='italic'>Marketing</a> without the BS
 				</p>
-				<style>{`.line-break-small {display: none}
-				@media (max-width: 640px) {.line-break-small {display: block;}}`}</style>
+
+				<style>{`
+    .line-break-small {
+      display: none;
+    }
+
+    @media (max-width: 640px) {
+      .line-break-small {
+        display: block;
+      }
+    }
+  `}</style>
 			</div>
 		</div>
 		<Blurb />

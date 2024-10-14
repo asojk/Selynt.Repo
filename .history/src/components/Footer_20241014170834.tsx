@@ -8,7 +8,7 @@ export const Footer = () => {
 			<a className='italic text-a hover:text-s' href='https://selynt.com'>
 					{' '}Selynt{' '}
 					</a> All rights reserved. </p>
-				<div className='text-right pr-4'>
+				<div className='text-right'>
 					contact@selynt.com
 				</div>
 				</div>
