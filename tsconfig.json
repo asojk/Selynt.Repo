@@ -23,11 +23,14 @@
     /* Added compiler options */
     "esModuleInterop": true,
 
+    "baseUrl": "./",
+
     "paths": {
-      "@/*": ["./src/*"]
+      "@/*": ["src/*"],
+      "scripts/*": ["scripts/*"]
     },
-    "types": ["framer-motion", "@types/react", "@types/react-dom", "@types/node", "unplugin-icons/types/react"], 
+    "types": ["framer-motion", "@types/react", "@types/react-dom", "@types/node", "unplugin-icons/types/react",], 
   },
-  "include": ["src"],
+  "include": ["src", "scripts", "tsconfig.scripts.json"],
   "references": [{ "path": "./tsconfig.node.json" }]
 }

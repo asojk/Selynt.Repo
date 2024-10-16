@@ -64,6 +64,10 @@ export default {
 					"b": "#090909", //copy
 				},
 			},
+			shadow: {
+				green: "shadow-[1px_10px_153px_22px_rgba(108,_176,_94,_0.44)]",
+				g1: '1px 10px 153px 22px, rgba(108, 176, 95, 0.44)'
+			},
 			boxShadow: {
 				neu1: '10px 10px 20px #b3b3b3, -10px -10px 20px #ffffff',
 				neu2: 'shadow-[rgba(0,_0,_0,_0.2)_0px_60px_40px_-7px]'

@@ -1,10 +1,11 @@
 
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
-import { Home } from './Home'
+import Home from './Home'
 import {useTheme} from './ThemeContext'
 import {DarkModeToggle} from './components/DarkModeToggle'
 import {Footer} from './components/Footer'
-
+import NotFound from './404'
+import { IndexDock } from './components/FloatingDock'
 
 
 
@@ -19,7 +20,9 @@ const App: React.FC = () => {
 				</div>
 				<Routes>
 					<Route path='/' element={<Home />} />
+					<Route path='*' element={<NotFound />} />
 				</Routes>
+				<IndexDock />
 				<Footer />
 			</Router>
 		</div>

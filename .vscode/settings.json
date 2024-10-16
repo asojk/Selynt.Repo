@@ -1,26 +1,43 @@
 {
-	"eslint.nodePath": "node_modules",
-	"eslint.trace.server": "verbose",
-	"eslint.workingDirectories": [{ "mode": "auto" }],
-	"eslint.validate": ["html", "javascript", "typescript", "javascriptreact", "typescriptreact"],
-	"editor.defaultFormatter": "esbenp.prettier-vscode",
-	"editor.formatOnPaste": false,
-	"editor.formatOnSave": false,
-	"editor.formatOnSaveMode": "file",
-	"editor.insertSpaces": true,
-	"editor.tabSize": 2,
-	"search.exclude": { "**/.history": true },
-	"window.title": "${activeEditorLong}${separator}${rootNameShort}",
-
-	"editor.quickSuggestions": {
-		"strings": true
-	},
-	"css.lint.unknownAtRules": "ignore",
-	"tailwindCSS.includeLanguages": {
-		"plaintext": "html"
-	},
-	"[typescriptreact]": {
-		"editor.defaultFormatter": "esbenp.prettier-vscode"
-	},
-	"files.trimTrailingWhitespaceInRegexAndStrings": false
+  "eslint.nodePath": "node_modules",
+  "eslint.trace.server": "verbose",
+  "eslint.workingDirectories": [
+    {
+      "mode": "auto"
+    }
+  ],
+  "eslint.validate": [
+    "html",
+    "javascript",
+    "typescript",
+    "javascriptreact",
+    "typescriptreact"
+  ],
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.formatOnPaste": false,
+  "editor.formatOnSave": false,
+  "editor.formatOnSaveMode": "file",
+  "editor.insertSpaces": true,
+  "editor.tabSize": 2,
+  "search.exclude": {
+    "**/.history": true
+  },
+  "window.title": "${activeEditorLong}${separator}${rootNameShort}",
+  "editor.quickSuggestions": {
+    "strings": true
+  },
+  "css.lint.unknownAtRules": "ignore",
+  "tailwindCSS.includeLanguages": {
+    "plaintext": "html"
+  },
+  "[typescriptreact]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "files.trimTrailingWhitespaceInRegexAndStrings": false,
+  "files.exclude": {
+    "**/.git": true,
+    "**/.env": false,
+    "**.history": true,
+    "**./history": true,
+}
 }
