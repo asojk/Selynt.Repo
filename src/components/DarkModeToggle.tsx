@@ -12,7 +12,7 @@ export const DarkModeToggle: React.FC<DarkModeToggleProps> = ({mode, setMode}) =
 	return (
 		<button
 			onClick={() => setMode(mode === 'dark' ? 'light' : 'dark')}
-			className={`lg:mt-4 relative flex md:w-18 lg:w-24 rounded-full bg-gradient-to-b p-2 shadow-md ${
+			className={`md:w-18 relative flex rounded-full bg-gradient-to-b p-2 shadow-md lg:mt-4 lg:w-24 ${
 				mode === 'light'
 					? 'justify-end from-blue-500 to-sky-300'
 					: 'justify-start from-indigo-600 to-indigo-400'
@@ -32,7 +32,7 @@ const Thumb = ({mode}: {mode: 'light' | 'dark'}) => {
 				duration: 0.75,
 				type: 'spring'
 			}}
-			className='relative w-4 h-4 md:h-8 md:w-8 overflow-hidden rounded-full shadow-lg'>
+			className='relative h-4 w-4 overflow-hidden rounded-full shadow-lg md:h-8 md:w-8'>
 			<div
 				className={`absolute inset-0 ${
 					mode === 'dark'
@@ -54,19 +54,19 @@ const MoonSpots = () => (
 			initial={{x: -4, opacity: 0}}
 			animate={{x: 0, opacity: 1}}
 			transition={{delay: 0.15, duration: 0.35}}
-			className='absolute bottom-1 right-2 h-1.5 w-1.5 md:h-3 md:w-3 rounded-full bg-slate-300'
+			className='absolute bottom-1 right-2 h-1.5 w-1.5 rounded-full bg-slate-300 md:h-3 md:w-3'
 		/>
 		<motion.div
 			initial={{x: -4, opacity: 0}}
 			animate={{x: 0, opacity: 1}}
 			transition={{delay: 0.2, duration: 0.35}}
-			className='absolute bottom-3 left-1 h-1 w-1 md:h-3 md:w-3 rounded-full bg-slate-300'
+			className='absolute bottom-3 left-1 h-1 w-1 rounded-full bg-slate-300 md:h-3 md:w-3'
 		/>
 		<motion.div
 			initial={{x: -4, opacity: 0}}
 			animate={{x: 0, opacity: 1}}
 			transition={{delay: 0.25, duration: 0.35}}
-			className='absolute right-1 top-1 h-0.5 w-0.5 md:h-2 md:w-2 rounded-full bg-slate-300'
+			className='absolute right-1 top-1 h-0.5 w-0.5 rounded-full bg-slate-300 md:h-2 md:w-2'
 		/>
 	</>
 )
@@ -84,7 +84,7 @@ const Stars = () => {
 					duration: 5,
 					ease: 'easeIn'
 				}}
-				className='absolute right-8 top-1 text-xs text-slate-300 hidden md:block'>
+				className='absolute right-8 top-1 hidden text-xs text-slate-300 md:block'>
 				<IconCarambolaFilled />
 			</motion.span>
 			<motion.span
@@ -98,7 +98,7 @@ const Stars = () => {
 					ease: 'easeIn'
 				}}
 				style={{rotate: '-45deg'}}
-				className='absolute right-2 top-2 text-lg text-slate-300 hidden md:block'>
+				className='absolute right-2 top-2 hidden text-lg text-slate-300 md:block'>
 				<IconCarambolaFilled />
 			</motion.span>
 			<motion.span
@@ -112,7 +112,7 @@ const Stars = () => {
 					duration: 2.5,
 					ease: 'easeIn'
 				}}
-				className='absolute right-6 top-6 text-slate-300 hidden md:block'>
+				className='absolute right-6 top-6 hidden text-slate-300 md:block'>
 				<IconCarambolaFilled />
 			</motion.span>
 		</>

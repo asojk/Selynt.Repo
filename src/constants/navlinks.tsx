@@ -1,6 +1,6 @@
-import {IconHome, IconAirBalloon} from '@tabler/icons-react'
+import {IconHome, IconLinkOff} from '@tabler/icons-react'
 
 export const navlinks = [
-	{ label: 'Home', icon: IconHome, href: '/' },
-  { label: 'Profile', icon: IconAirBalloon, href: '/profile' },
+	{label: 'Home', icon: IconHome, href: '/'},
+	{label: 'Under Construction', icon: IconLinkOff, href: ''}
 ]
