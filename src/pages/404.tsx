@@ -1,5 +1,5 @@
 import React from 'react'
-import {images} from './lib/assets'
+import {images} from '@/lib/assets'
 
 const NotFound: React.FC = () => {
 	return (

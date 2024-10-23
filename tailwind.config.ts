@@ -1,6 +1,7 @@
 import type {Config} from 'tailwindcss'
 import typography from '@tailwindcss/typography'
 import animate from 'tailwindcss-animate'
+import daisyui from 'daisyui'
 
 export default {
 	darkMode: 'class',
@@ -11,6 +12,15 @@ export default {
 				serif: ['Lato', 'serif'],
 				sans: ['Inter', 'sans-serif']
 			},
+			fontSize: {
+        'heading-1': ['2.25rem', { lineHeight: '2.5rem', fontWeight: '700' }],
+        'heading-2': ['1.875rem', { lineHeight: '2.25rem', fontWeight: '600' }],
+        'heading-3': ['1.5rem', { lineHeight: '2rem', fontWeight: '500' }],
+        'body': ['1rem', { lineHeight: '1.5rem' }],
+      },
+      spacing: {
+        'content-padding': 'var(--content-padding)',
+      },
 			colors: {
 				'p': {
 					DEFAULT: '#36454F', // Primary color
@@ -61,18 +71,16 @@ export default {
 					'700': '#5c5c5c',
 					'800': '#454545', //dborder
 					'900': '#1c1c1c', //dbg
-					'b': '#090909' //copy
-				}
-			},
-			shadow: {
-				'green': 'shadow-[1px_10px_153px_22px_rgba(108,_176,_94,_0.44)]',
-				'g1': '1px 10px 153px 22px, rgba(108, 176, 95, 0.44)'
+					'b': '#090909',
+					'code': '#292C33',
+				},
 			},
 			boxShadow: {
 				'neu1': '10px 10px 20px #b3b3b3, -10px -10px 20px #ffffff',
 				'neu2': 'shadow-[rgba(0,_0,_0,_0.2)_0px_60px_40px_-7px]',
-				'green': '1px 10px 153px 22px rgba(108, 176, 94, 0.44)', // Correct box-shadow
-				'g1': '1px 10px 153px 22px rgba(108, 176, 95, 0.44)' // Without invalid characters
+				'green': '1px 10px 100px 22px rgba(174, 225, 207, 0.8)',
+				'custom': '0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05)',
+				'custom-dark': '0 10px 15px -3px rgba(255, 255, 255, 0.1), 0 4px 6px -2px rgba(255, 255, 255, 0.05)',
 			},
 			animation: {
 				'float': 'float 5s ease-in-out infinite',
@@ -103,5 +111,5 @@ export default {
 			transitionOpacity: ['group-hover']
 		}
 	},
-	plugins: [typography, animate]
+	plugins: [typography, animate, daisyui],
 } satisfies Config

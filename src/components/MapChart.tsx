@@ -2,8 +2,8 @@ import React, {memo, useState, useEffect, useCallback, useRef, forwardRef} from 
 import {ZoomableGroup, ComposableMap, Geographies, Geography, Marker} from 'react-simple-maps'
 import {motion, AnimatePresence} from 'framer-motion'
 import {useGesture} from '@use-gesture/react'
-import {clients} from './clients'
-import {ImageKeys, images} from './lib/assets'
+import {clients} from '@/constants/clients'
+import {ImageKeys, images} from '@/lib/assets'
 
 export interface Client {
 	name: string

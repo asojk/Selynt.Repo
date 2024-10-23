@@ -1,0 +1,97 @@
+import { useRef, ReactNode } from 'react'
+import { motion, useScroll, useTransform } from 'framer-motion'
+import { useImgPadding } from '@/constants/imgpadding'
+
+interface StickyVProps {
+	children?: ReactNode
+	contentHeight?: boolean
+}
+
+export const StickyVComp = ({children, contentHeight = false}: StickyVProps) => {
+	return (
+		<div className='relative px-content-padding'>
+			<StickyVImage contentHeight={contentHeight}>
+				<div className='px-4 py-4 lg:py-8 xl:px-8'>{children}</div>
+			</StickyVImage>
+		</div>
+	)
+}
+
+interface StickyVImageProps {
+	children: ReactNode
+	contentHeight: boolean
+}
+
+const StickyVImage: React.FC<StickyVImageProps> = ({ children, contentHeight }) => {
+	const targetRef = useRef(null)
+	const { scrollYProgress } = useScroll({
+			target: targetRef,
+			offset: ['start end', 'end start']  // Changed to start earlier
+	})
+
+	// Slower, smoother transition
+	const transition = {
+			type: "spring",
+			stiffness: 100,  // Reduced stiffness for slower movement
+			damping: 30,
+			mass: 1.5,  // Added mass for more inertia
+			restDelta: 0.001
+	}
+
+	// More gradual scaling
+	const scale = useTransform(scrollYProgress, [0, 0.5, 1], [1, 0.95, 0.85])
+
+	// Slower opacity change
+	const opacity = useTransform(scrollYProgress, [0, 0.7, 1], [1, 0.75, 0.5])
+
+	// Use the custom hook for padding
+	useImgPadding(contentHeight)
+
+	// More gradual padding changes
+	const paddingX = useTransform(scrollYProgress, [0, 0.5, 1], ['0.5rem', '0.25rem', '0rem'])
+	const paddingY = useTransform(scrollYProgress, [0, 0.5, 1], ['1rem', '0.75rem', '0.5rem'])
+
+	// More gradual width change
+	const width = useTransform(scrollYProgress, [0, 0.5, 1], ['100%', '97.5%', '95%'])
+
+	return (
+			<motion.div
+					ref={targetRef}
+					style={{
+							backgroundSize: 'cover',
+							backgroundImage: 'url("")',
+							backgroundPosition: 'center',
+							height: contentHeight ? 'auto' : 'calc(100vh - var(--content-padding))',
+							scale,
+							maxWidth: '1440px',
+							width,
+							margin: '0 auto',
+							minHeight: 'auto',
+							paddingLeft: paddingX,
+							paddingRight: paddingX,
+							paddingTop: paddingY,
+							paddingBottom: paddingY,
+					}}
+					transition={transition}
+					className='stickyV z-0 mx-auto overflow-hidden rounded-3xl bg-cover bg-center'
+			>
+					<motion.div
+							className='absolute inset-1 rounded-3xl bg-n-1 dark:bg-n-9'
+							style={{ opacity }}
+							transition={transition}
+					/>
+
+					<motion.div
+							className='relative flex items-center justify-center'
+							style={{
+									minHeight: contentHeight ? 'auto' : 'calc(100vh - var(--content-padding))',
+							}}
+							transition={transition}
+					>
+							<div className='px-4 py-4 text-center xl:px-12 xl:py-12'>{children}</div>
+					</motion.div>
+			</motion.div>
+	)
+}
+
+

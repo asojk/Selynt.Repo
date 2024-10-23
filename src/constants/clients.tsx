@@ -1,4 +1,4 @@
-import {Client} from './MapChart'
+import {Client} from '@/components/MapChart'
 
 export const clients: Client[] = [
 	{

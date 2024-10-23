@@ -2,7 +2,7 @@ import {IconArrowAutofitRight} from '@tabler/icons-react'
 
 const DotExpandButton = () => {
 	return (
-		<section className='grid place-content-center py-24'>
+		<section className='grid place-content-center py-1 md:py-12 lg:py-24'>
 			<a
 				href='mailto:contact@selynt.com'
 				className='group flex h-12 items-center gap-2 rounded-full bg-neutral-200 pl-3 pr-4 font-semibold shadow-green transition-all duration-300 ease-in-out hover:bg-n-9 hover:pl-2 hover:text-s active:bg-neutral-700'>

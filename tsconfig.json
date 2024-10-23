@@ -29,13 +29,12 @@
 			"@/*": ["src/*"],
 			"scripts/*": ["scripts/*"]
 		},
-		"types": [
-			"framer-motion",
-			"@types/react",
-			"@types/react-dom",
-			"@types/node",
-			"unplugin-icons/types/react"
-		]
+    "types": [
+      "framer-motion",
+      "react",
+      "react-dom",
+      "node"
+    ]
 	},
 	"include": ["src", "scripts", "tsconfig.scripts.json"],
 	"references": [{"path": "./tsconfig.node.json"}]

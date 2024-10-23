@@ -1,23 +1,28 @@
 {
-	"root": true,
-	"env": { "browser": true, "es2020": true },
-	"extends": [
-		"eslint:recommended",
-		"plugin:@typescript-eslint/recommended",
-		"plugin:react-hooks/recommended",
-		"prettier"
-	],
-	"ignorePatterns": [
-		"dist",                // Ignore the 'dist' folder
-		".eslintrc.cjs",        // Ignore this specific config file
-		"*.md",                 // Ignore Markdown files
-		"**/*.html",
+  "root": true,
+  "parser": "@typescript-eslint/parser",
+  "plugins": [
+    "@typescript-eslint",
+    "react-refresh",
+    "prettier"
+  ],
+  "extends": [
+    "eslint:recommended",
+    "plugin:@typescript-eslint/recommended",
+    "plugin:react-hooks/recommended",
+    "plugin:prettier/recommended"
+  ],
+  "env": { "browser": true, "es2020": true },
+  "ignorePatterns": [
+    "dist",
+    ".eslintrc.cjs",
+    "*.md",
+    "**/*.html",
     "../Selynt/**"
-	],
-	"parser": "@typescript-eslint/parser",
-	"plugins": ["@typescript-eslint", "react-refresh"],
-	"rules": {
-		"react-hooks/exhaustive-deps": "off",
-		"react-refresh/only-export-components": ["warn", { "allowConstantExport": true }]
-	}
+  ],
+  "rules": {
+    "react-hooks/exhaustive-deps": "off",
+    "react-refresh/only-export-components": ["warn", { "allowConstantExport": true }],
+    "prettier/prettier": "error"
+  }
 }
