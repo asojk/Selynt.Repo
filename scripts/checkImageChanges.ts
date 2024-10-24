@@ -1,4 +1,6 @@
-import {promises as fs} from 'fs'
+/** @format */
+
+import { promises as fs } from 'fs'
 import path from 'path'
 import crypto from 'crypto'
 import 'dotenv/config'
@@ -31,7 +33,7 @@ async function checkImageChanges() {
 	}
 
 	const files = await fs.readdir(imageDir)
-	const imageFiles = files.filter((file) => /\.(jpg|jpeg|png|webp|svg|gif)$/i.test(file))
+	const imageFiles = files.filter(file => /\.(jpg|jpeg|png|webp|svg|gif)$/i.test(file))
 
 	for (const file of imageFiles) {
 		const filePath = path.join(imageDir, file)

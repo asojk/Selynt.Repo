@@ -1,18 +1,20 @@
-import {useRef, ReactNode, useEffect, useState} from 'react'
-import {motion, useScroll, useTransform} from 'framer-motion'
-import {useImgPadding} from '@/constants/imgpadding.tsx'
+/** @format */
+
+import { useRef, ReactNode, useEffect, useState } from 'react'
+import { motion, useScroll, useTransform } from 'framer-motion'
+import { useImgPadding } from '@/constants/imgpadding.tsx'
 
 interface StickyProps {
 	children?: ReactNode
 }
 
-export const StickyComp = ({children}: StickyProps) => {
+export const StickyComp = ({ children }: StickyProps) => {
 	useImgPadding()
 
 	return (
-		<div className='relative px-content-padding'>
+		<div className="relative px-content-padding">
 			<StickyImage>
-				<div className='px-4 py-4 lg:py-8 xl:px-8'>{children}</div>
+				<div className="px-4 py-4 lg:py-8 xl:px-8">{children}</div>
 			</StickyImage>
 		</div>
 	)
@@ -22,11 +24,11 @@ interface StickyImageProps {
 	children: ReactNode
 }
 
-const StickyImage: React.FC<StickyImageProps> = ({children}) => {
+const StickyImage: React.FC<StickyImageProps> = ({ children }) => {
 	const targetRef = useRef(null)
-	const {scrollYProgress} = useScroll({
+	const { scrollYProgress } = useScroll({
 		target: targetRef,
-		offset: ['end end', 'end start']
+		offset: ['end end', 'end start'],
 	})
 	const scale = useTransform(scrollYProgress, [0, 1], [1, 0.85])
 	const opacity = useTransform(scrollYProgress, [0, 1], [1, 0.5])
@@ -67,17 +69,17 @@ const StickyImage: React.FC<StickyImageProps> = ({children}) => {
 				scale,
 				maxWidth: '1440px', // Set your desired max-width here
 				width: '100%',
-				margin: '0 auto' // This centers the div when it reaches max-width
+				margin: '0 auto', // This centers the div when it reaches max-width
 			}}
-			className='sticky z-0 mx-auto overflow-hidden rounded-3xl bg-cover bg-center px-2 xl:px-12'>
+			className="sticky z-0 mx-auto overflow-hidden rounded-3xl bg-cover bg-center px-2 xl:px-12">
 			{/* Background Overlay */}
-			<motion.div className='absolute inset-1 rounded-3xl bg-n-1 dark:bg-n-9' style={{opacity}} />
+			<motion.div className="absolute inset-1 rounded-3xl bg-n-1 dark:bg-n-9" style={{ opacity }} />
 
 			{/* Content Container */}
 			<div
-				className='relative flex items-center justify-center'
-				style={{minHeight: `calc(100vh - ${imgPadding * 2}px)`}}>
-				<div className='px-4 py-4 text-center xl:px-12 xl:py-12'>{children}</div>
+				className="relative flex items-center justify-center"
+				style={{ minHeight: `calc(100vh - ${imgPadding * 2}px)` }}>
+				<div className="px-4 py-4 text-center xl:px-12 xl:py-12">{children}</div>
 			</div>
 		</motion.div>
 	)

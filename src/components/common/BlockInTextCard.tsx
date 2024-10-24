@@ -1,27 +1,21 @@
-import {ReactNode, useEffect, useState} from 'react'
-import {motion} from 'framer-motion'
+/** @format */
 
-export const BlockInTextCard = ({
-	tag,
-	text,
-	examples
-}: {
-	tag: string
-	text: ReactNode
-	examples: string[]
-}) => {
+import { ReactNode, useEffect, useState } from 'react'
+import { motion } from 'framer-motion'
+
+export const BlockInTextCard = ({ tag, text, examples }: { tag: string; text: ReactNode; examples: string[] }) => {
 	return (
-		<div className='w-full max-w-xl space-y-6'>
+		<div className="w-full max-w-xl space-y-6">
 			<div>
-				<p className='mb-1.5 text-sm font-light uppercase'>{tag}</p>
-				<hr className='border-n-9 dark:border-n-1' />
+				<p className="mb-1.5 text-sm font-light uppercase">{tag}</p>
+				<hr className="border-n-9 dark:border-n-1" />
 			</div>
-			<p className='max-w-lg text-xl leading-relaxed text-a dark:text-s '>{text}</p>
+			<p className="max-w-lg text-xl leading-relaxed text-a dark:text-s">{text}</p>
 			<div>
 				<Typewrite examples={examples} />
-				<hr className='dark:border-n-5 border-n-1' />
+				<hr className="border-n-1 dark:border-n-5" />
 			</div>
-			<button className='w-full rounded-full border border-n-900 dark:border-n-1 py-2 text-sm font-medium transition-colors hover:bg-n-900 hover:text-n-3 dark:hover:bg-n-1 dark:hover:text-n-7'>
+			<button className="w-full rounded-full border border-n-900 py-2 text-sm font-medium transition-colors hover:bg-n-900 hover:text-n-3 dark:border-n-1 dark:hover:bg-n-1 dark:hover:text-n-7">
 				Contact Support
 			</button>
 		</div>
@@ -36,64 +30,64 @@ const MAIN_FADE_DURATION = 0.25
 
 const SWAP_DELAY_IN_MS = 5500
 
-const Typewrite = ({examples}: {examples: string[]}) => {
+const Typewrite = ({ examples }: { examples: string[] }) => {
 	const [exampleIndex, setExampleIndex] = useState(0)
 
 	useEffect(() => {
 		const intervalId = setInterval(() => {
-			setExampleIndex((pv) => (pv + 1) % examples.length)
+			setExampleIndex(pv => (pv + 1) % examples.length)
 		}, SWAP_DELAY_IN_MS)
 
 		return () => clearInterval(intervalId)
 	}, [])
 
 	return (
-		<p className='mb-2.5 text-sm font-light uppercase'>
-			<span className='inline-block size-2 bg-n-900 dark:bg-n-1' />
-			<span className='ml-3'>
+		<p className="mb-2.5 text-sm font-light uppercase">
+			<span className="inline-block size-2 bg-n-900 dark:bg-n-1" />
+			<span className="ml-3">
 				EXAMPLE:{' '}
 				{examples[exampleIndex].split('').map((l, i) => (
 					<motion.span
 						initial={{
-							opacity: 1
+							opacity: 1,
 						}}
 						animate={{
-							opacity: 0
+							opacity: 0,
 						}}
 						transition={{
 							delay: FADE_DELAY,
 							duration: MAIN_FADE_DURATION,
-							ease: 'easeInOut'
+							ease: 'easeInOut',
 						}}
 						key={`${exampleIndex}-${i}`}
-						className='relative'>
+						className="relative">
 						<motion.span
 							initial={{
-								opacity: 0
+								opacity: 0,
 							}}
 							animate={{
-								opacity: 1
+								opacity: 1,
 							}}
 							transition={{
 								delay: i * LETTER_DELAY,
-								duration: 0
+								duration: 0,
 							}}>
 							{l}
 						</motion.span>
 						<motion.span
 							initial={{
-								opacity: 0
+								opacity: 0,
 							}}
 							animate={{
-								opacity: [0, 1, 0]
+								opacity: [0, 1, 0],
 							}}
 							transition={{
 								delay: i * LETTER_DELAY,
 								times: [0, 0.1, 1],
 								duration: BOX_FADE_DURATION,
-								ease: 'easeInOut'
+								ease: 'easeInOut',
 							}}
-							className='absolute bottom-[3px] left-[1px] right-0 top-[3px] bg-n-900 dark:bg-n-1'
+							className="absolute bottom-[3px] left-[1px] right-0 top-[3px] bg-n-900 dark:bg-n-1"
 						/>
 					</motion.span>
 				))}

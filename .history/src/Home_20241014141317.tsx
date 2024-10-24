@@ -1,44 +1,50 @@
-import { Link } from "react-router-dom";
-import {images} from './lib/assets'
+/** @format */
 
+import { Link } from 'react-router-dom'
+import { images } from './lib/assets'
 
 export const Home = () => (
-	<div className='bg-n-light dark:bg-n-dark antialiased'>
-		<div className='relative flex flex-col justify-end items-center min-h-[90vh]'>
+	<div className="bg-n-light antialiased dark:bg-n-dark">
+		<div className="relative flex min-h-[90vh] flex-col items-center justify-end">
+			{/* Floating Orb */}
+			<div className="absolute top-1/3 z-[1000]">
+				<div className="relative max-w-[85vw]">
+					{/* Floating Orb */}
+					<div className="absolute inset-0 left-1/2 z-[888] flex h-36 w-36 animate-float items-center justify-center rounded-full bg-s opacity-70 blur-3xl filter md:-top-1/3 md:h-64 md:w-64 lg:-top-1/2 lg:h-96 lg:w-96 lg:opacity-30" />
 
-			{ /* Floating Orb */}
-			<div className='absolute top-1/3 z-[1000]'>
-				<div className='max-w-[85vw] relative'>
-
-			{ /* Floating Orb */}
-				<div className=" absolute left-1/2 w-36 h-36 md:w-64 md:h-64 lg:w-96 lg:h-96 bg-s rounded-full md:-top-1/3 lg:-top-1/2 flex items-center justify-center inset-0 filter blur-3xl opacity-70 lg:opacity-30 animate-float z-[888]" />
-
-			{/* Logo */}
-					<img src={images.logo} alt='logo' className='h-48 w-full relative z-[1000] dark:hidden' />
-					<img src={images.dlogo} alt='logo' className='h-48 w-full object-contain relative z-[1000] hidden dark:flex' />
+					{/* Logo */}
+					<img src={images.logo} alt="logo" className="relative z-[1000] h-48 w-full dark:hidden" />
+					<img
+						src={images.dlogo}
+						alt="logo"
+						className="relative z-[1000] hidden h-48 w-full object-contain dark:flex"
+					/>
 				</div>
 			</div>
 
-			{ /* Text at the Bottom */ }
-			<div className="text-center mb-8">
-				<h1 className="text-xl md:text-4xl font-semibold text-n-dark dark:text-n-light">Boost Credibility with a{' '}
-					<a className='animate-text bg-gradient-to-r from-p via-s to-a-darker bg-clip-text text-transparent'> Clear Identity</a>
+			{/* Text at the Bottom */}
+			<div className="mb-8 text-center">
+				<h1 className="text-xl font-semibold text-n-dark dark:text-n-light md:text-4xl">
+					Boost Credibility with a{' '}
+					<a className="animate-text bg-gradient-to-r from-p via-s to-a-darker bg-clip-text text-transparent">
+						{' '}
+						Clear Identity
+					</a>
 				</h1>
-				<p className="text-n-5 dark:text-n-4 mt-2">Welcome to <a className='italic'>Marketing</a> without the BS</p>
+				<p className="mt-2 text-n-5 dark:text-n-4">
+					Welcome to <a className="italic">Marketing</a> without the BS
+				</p>
 			</div>
 		</div>
 
-		<div className="mt-12 w-2/3 mx-auto text-lg"> 
- At Selynt, we empower small businesses to thrive... (or whatever sentence we decide on)
-</div>
-<div className="mt-4">
- Coming soon...
-</div>
-<button className="bg-orange-500 hover:bg-orange-600 text-white font-bold py-2 px-4 rounded">Sign up for updates</button>
-			
-		<div className="flex flex-col space-y-12 md:space-y-16 lg:space-y-24 pt-12 items-center justify-center px-1 lg:px-12 pb-12">
-
-			
+		<div className="mx-auto mt-12 w-2/3 text-lg">
+			At Selynt, we empower small businesses to thrive... (or whatever sentence we decide on)
 		</div>
+		<div className="mt-4">Coming soon...</div>
+		<button className="rounded bg-orange-500 px-4 py-2 font-bold text-white hover:bg-orange-600">
+			Sign up for updates
+		</button>
+
+		<div className="flex flex-col items-center justify-center space-y-12 px-1 pb-12 pt-12 md:space-y-16 lg:space-y-24 lg:px-12"></div>
 	</div>
-);
+)

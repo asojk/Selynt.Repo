@@ -1,4 +1,6 @@
-import {useEffect} from 'react'
+/** @format */
+
+import { useEffect } from 'react'
 
 export const useImgPadding = (contentHeight: boolean = false): void => {
 	useEffect(() => {

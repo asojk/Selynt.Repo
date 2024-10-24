@@ -1,9 +1,13 @@
+
+
 import React, {memo, useState, useEffect, useCallback, useRef, forwardRef} from 'react'
+
+
 import {ZoomableGroup, ComposableMap, Geographies, Geography, Marker} from 'react-simple-maps'
-import {motion, AnimatePresence} from 'framer-motion'
-import {useGesture} from '@use-gesture/react'
-import {clients} from '@/constants/clients'
-import {ImageKeys, images} from '@/lib/assets'
+import { motion, AnimatePresence } from 'framer-motion'
+import { useGesture } from '@use-gesture/react'
+import { clients } from '@/constants/clients'
+import { ImageKeys, images } from '@/lib/assets'
 
 export interface Client {
 	name: string
@@ -20,6 +24,7 @@ interface Position {
 
 const geoUrl = 'https://cdn.jsdelivr.net/npm/us-atlas@3/states-10m.json'
 
+// eslint-disable-next-line react/display-name
 const ForwardedComposableMap = forwardRef<
 	SVGSVGElement,
 	React.ComponentProps<typeof ComposableMap>
@@ -163,7 +168,7 @@ const MapChart: React.FC = () => {
 						animate={{opacity: 1, y: 0}}
 						exit={{opacity: 0, y: -20}}
 						transition={{duration: 0.3}}
-						className='popup absolute bottom-4 left-auto right-auto w-64 rounded-md border-2 border-n-7 bg-n-light p-4 shadow-sm shadow-s/30 dark:border-n-4 dark:bg-n-dark md:left-4 md:right-0 md:w-1/3 md:border-4 md:p-6'>
+						className='popup absolute bottom-1/2 left-auto right-auto w-64 rounded-md border-2 border-n-7 bg-n-light p-4 shadow-sm shadow-s/30 dark:border-n-4 dark:bg-n-dark md:left-4 md:right-0 md:w-1/3 md:border-4 md:p-6'>
 						<button
 							onClick={() => setShowPopup(false)}
 							className='absolute right-2 top-2 text-n-5 hover:text-n-7 dark:text-n-3 dark:hover:text-n-1'>

@@ -35,7 +35,8 @@
       "react-dom",
       "node"
     ]
-	},
-	"include": ["src", "scripts", "tsconfig.scripts.json"],
-	"references": [{"path": "./tsconfig.node.json"}]
+  },
+  "include": ["src", "scripts", "**/*.ts", "**/*.tsx"],
+  "exclude": ["vite.config.ts"],  // Add this line
+  "references": [{"path": "./tsconfig.node.json"}]
 }

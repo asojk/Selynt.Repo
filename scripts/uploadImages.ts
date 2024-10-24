@@ -1,7 +1,9 @@
-import {promises as fs} from 'fs'
+/** @format */
+
+import { promises as fs } from 'fs'
 import path from 'path'
 import crypto from 'crypto'
-import {put} from '@vercel/blob'
+import { put } from '@vercel/blob'
 import 'dotenv/config'
 
 interface ImageMap {
@@ -26,9 +28,9 @@ async function uploadImage(filePath: string, fileName: string, existingHash?: st
 	}
 
 	const file = await fs.readFile(filePath)
-	const {url} = await put(fileName, file, {access: 'public'})
+	const { url } = await put(fileName, file, { access: 'public' })
 	console.log(`Uploaded ${fileName}`)
-	return {fileName, url, hash: currentHash}
+	return { fileName, url, hash: currentHash }
 }
 
 async function uploadAllImages() {
@@ -44,10 +46,10 @@ async function uploadAllImages() {
 	}
 
 	const files = await fs.readdir(imageDir)
-	const imageFiles = files.filter((file) => /\.(jpg|jpeg|png|webp|svg|gif)$/i.test(file))
+	const imageFiles = files.filter(file => /\.(jpg|jpeg|png|webp|svg|gif)$/i.test(file))
 
 	const results = await Promise.all(
-		imageFiles.map(async (file) => {
+		imageFiles.map(async file => {
 			const filePath = path.join(imageDir, file)
 			return uploadImage(filePath, file, existingMap[file]?.hash)
 		})
@@ -55,12 +57,12 @@ async function uploadAllImages() {
 
 	const newMap = results.reduce((acc, result) => {
 		if (result) {
-			acc[result.fileName] = {url: result.url, hash: result.hash}
+			acc[result.fileName] = { url: result.url, hash: result.hash }
 		}
 		return acc
 	}, {} as ImageMap)
 
-	const updatedMap = {...existingMap, ...newMap}
+	const updatedMap = { ...existingMap, ...newMap }
 
 	await fs.writeFile(mapPath, JSON.stringify(updatedMap, null, 2))
 

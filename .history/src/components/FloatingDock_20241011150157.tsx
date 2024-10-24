@@ -1,21 +1,23 @@
-import React from 'react';
-import { Dock } from '@/components/ui/floating-dock';
-import { navlinks } from '@/constants/navlinks';
-import { socials } from '@/constants/socials';
+/** @format */
+
+import React from 'react'
+import { Dock } from '@/components/ui/floating-dock'
+import { navlinks } from '@/constants/navlinks'
+import { socials } from '@/constants/socials'
 
 export function IndexDock() {
-  const links = [...navlinks, ...socials];
+	const links = [...navlinks, ...socials]
 
-  return (
-    <div className=''>
-      <Dock
-        className=''
-        items={links.map((link) => ({
-          title: link.label,
-          icon: React.createElement(link.icon, { className: 'text-2xl' }),
-          href: link.href,
-        }))}
-      />
-    </div>
-  );
+	return (
+		<div className="">
+			<Dock
+				className=""
+				items={links.map(link => ({
+					title: link.label,
+					icon: React.createElement(link.icon, { className: 'text-2xl' }),
+					href: link.href,
+				}))}
+			/>
+		</div>
+	)
 }
