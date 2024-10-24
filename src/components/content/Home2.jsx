@@ -3,6 +3,7 @@
 //import {useImgPadding} from '@/constants/imgpadding'
 import Timeline from '@/components/ui/Timeline'
 import { StickyVComp } from '../ui/sticky-comp-variant'
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 import { BlockInTextCard } from '../common/BlockInTextCard'
 import MintCard from '../common/MintCard'
 
