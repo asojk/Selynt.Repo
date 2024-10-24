@@ -1,88 +1,83 @@
-import { Dispatch, SetStateAction, useState } from "react";
-import { motion } from "framer-motion";
-import { IconEyeClosed, IconMenu4 } from "@tabler/icons-react";
-import { Link } from 'react-router-dom'; // Use named import
+/** @format */
+
+import { Dispatch, SetStateAction, useState } from 'react'
+import { motion } from 'framer-motion'
+import { IconEyeClosed, IconMenu4 } from '@tabler/icons-react'
+import { Link } from 'react-router-dom' // Use named import
 
 const FloatingDock = ({ items }: { items: { title: string; icon: React.ReactNode; href: string }[] }) => {
-  const [isOpen, setIsOpen] = useState(false);
+	const [isOpen, setIsOpen] = useState(false)
 
-  return (
-    <>
-      <motion.button
-        whileHover={{ rotate: "180deg" }}
-        whileTap={{ scale: 0.9 }}
-        onClick={() => setIsOpen(true)}
-        className="fixed bottom-8 right-8 z-[1000] text-3xl bg-white text-black hover:text-indigo-500 transition-colors p-4 rounded-full"
-      >
-        <IconMenu4 />
-      </motion.button>
-      <Nav isOpen={isOpen} setIsOpen={setIsOpen} items={items} />
-    </>
-  );
-};
+	return (
+		<>
+			<motion.button
+				whileHover={{ rotate: '180deg' }}
+				whileTap={{ scale: 0.9 }}
+				onClick={() => setIsOpen(true)}
+				className="fixed bottom-8 right-8 z-[1000] rounded-full bg-white p-4 text-3xl text-black transition-colors hover:text-indigo-500">
+				<IconMenu4 />
+			</motion.button>
+			<Nav isOpen={isOpen} setIsOpen={setIsOpen} items={items} />
+		</>
+	)
+}
 
 const Nav = ({
-  isOpen,
-  setIsOpen,
-  items,
+	isOpen,
+	setIsOpen,
+	items,
 }: {
-  isOpen: boolean;
-  setIsOpen: Dispatch<SetStateAction<boolean>>;
-  items: { title: string; icon: React.ReactNode; href: string }[];
+	isOpen: boolean
+	setIsOpen: Dispatch<SetStateAction<boolean>>
+	items: { title: string; icon: React.ReactNode; href: string }[]
 }) => {
-  return (
-    <motion.nav
-      className="fixed top-0 bottom-0 w-screen bg-white"
-      animate={isOpen ? "open" : "closed"}
-      variants={navVariants}
-      initial="closed"
-    >
-      <motion.button
-        className="text-3xl bg-white text-black hover:text-indigo-500 border-[1px] border-transparent hover:border-indigo-500 transition-colors p-4 rounded-full absolute top-8 right-8"
-        whileHover={{ rotate: "180deg" }}
-        onClick={() => setIsOpen(false)}
-        whileTap={{ scale: 0.9 }}
-      >
-        <IconEyeClosed />
-      </motion.button>
-      <motion.div
-        variants={linkWrapperVariants}
-        className="flex flex-col gap-4 absolute bottom-8 left-8"
-      >
-        {items.map((item, index) => (
-          <NavLink key={index} text={item.title} icon={item.icon} href={item.href} />
-        ))}
-      </motion.div>
-    </motion.nav>
-  );
-};
+	return (
+		<motion.nav
+			className="fixed bottom-0 top-0 w-screen bg-white"
+			animate={isOpen ? 'open' : 'closed'}
+			variants={navVariants}
+			initial="closed">
+			<motion.button
+				className="absolute right-8 top-8 rounded-full border-[1px] border-transparent bg-white p-4 text-3xl text-black transition-colors hover:border-indigo-500 hover:text-indigo-500"
+				whileHover={{ rotate: '180deg' }}
+				onClick={() => setIsOpen(false)}
+				whileTap={{ scale: 0.9 }}>
+				<IconEyeClosed />
+			</motion.button>
+			<motion.div variants={linkWrapperVariants} className="absolute bottom-8 left-8 flex flex-col gap-4">
+				{items.map((item, index) => (
+					<NavLink key={index} text={item.title} icon={item.icon} href={item.href} />
+				))}
+			</motion.div>
+		</motion.nav>
+	)
+}
 
-const NavLink = ({ icon, href, text }: { text: string, icon: React.ReactNode, href: string}) => {
-  return (
-    <Link to={href} className="inline-block z-10 text-slate-800 w-fit font-black text-7xl hover:text-indigo-500 transition-colors">
-      <motion.div
-        className="flex items-center gap-2"
-        variants={navLinkVariants}
-        transition={{
-          type: "spring",
-          damping: 3,
-        }}
-        whileHover={{
-          y: -15,
-          rotate: "-7.5deg",
-        }}
-      >
-        {icon}
-        {text}
-      </motion.div>
-    </Link>
-  );
-};
+const NavLink = ({ icon, href, text }: { text: string; icon: React.ReactNode; href: string }) => {
+	return (
+		<Link
+			to={href}
+			className="z-10 inline-block w-fit text-7xl font-black text-slate-800 transition-colors hover:text-indigo-500">
+			<motion.div
+				className="flex items-center gap-2"
+				variants={navLinkVariants}
+				transition={{
+					type: 'spring',
+					damping: 3,
+				}}
+				whileHover={{
+					y: -15,
+					rotate: '-7.5deg',
+				}}>
+				{icon}
+				{text}
+			</motion.div>
+		</Link>
+	)
+}
 
-
-
-
-{/*
+{
+	/*
 interface NavLinkProps {
   title: string;
   icon: React.ReactNode;
@@ -158,38 +153,39 @@ function IconContainer({ title, icon, href, index, isOpen, setIsOpen}: {
       </motion.div>
     </Link>
   );
-*/}
-export default FloatingDock;
+*/
+}
+export default FloatingDock
 
 const navVariants = {
-  open: {
-    x: "0%",
-    borderTopLeftRadius: "0vw",
-    borderBottomLeftRadius: "0vw",
-    opacity: 1,
-  },
-  closed: {
-    x: "100%",
-    borderTopLeftRadius: "50vw",
-    borderBottomLeftRadius: "50vw",
-    opacity: 0,
-  },
-};
+	open: {
+		x: '0%',
+		borderTopLeftRadius: '0vw',
+		borderBottomLeftRadius: '0vw',
+		opacity: 1,
+	},
+	closed: {
+		x: '100%',
+		borderTopLeftRadius: '50vw',
+		borderBottomLeftRadius: '50vw',
+		opacity: 0,
+	},
+}
 
 const linkWrapperVariants = {
-  open: {
-    transition: {
-      staggerChildren: 0.1,
-    },
-  },
-  closed: {
-    transition: {
-      staggerChildren: 0.1,
-    },
-  },
-};
+	open: {
+		transition: {
+			staggerChildren: 0.1,
+		},
+	},
+	closed: {
+		transition: {
+			staggerChildren: 0.1,
+		},
+	},
+}
 
 const navLinkVariants = {
-  open: { x: 0 },
-  closed: { x: 25 },
-};
+	open: { x: 0 },
+	closed: { x: 25 },
+}

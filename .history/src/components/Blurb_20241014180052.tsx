@@ -1,22 +1,25 @@
-import DotExpandButton from "./DotExpandButton";
+/** @format */
+
+import DotExpandButton from './DotExpandButton'
 
 export default function Blurb() {
-  return (
-    <div className="h-screen pt-36">
-      <div className="container mx-auto px-4 py-12">
-        <h2 className="text-4xl font-bold lg:text-5xl tracking-tight pb-4 text-a-dark text-center dark:text-s">
-          Coming soon...
-        </h2>
-          <h3 className="font-medium text-xl lg:text-2xl text-center pb-8 text-n-9 dark:text-white mx-auto justify-center max-w-lg px-4">
-            We empower small businesses to thrive in a market dominated by larger corporations.
-            </h3>
-        <p className="mt-4 block text-n-8 dark:text-n-3 text-lg lg:text-xl mx-auto mb-8 max-w-2xl px-4">
-        We specialize in crafting beautiful, streamlined websites and polished brand identities, focusing on clarity, simplicity, and affordability—because we believe that standing out shouldn’t mean overspending.
-        </p>
-        <div className="mt-6">
-          <DotExpandButton />
-        </div>
-      </div>
-    </div>
-  );
+	return (
+		<div className="h-screen pt-36">
+			<div className="container mx-auto px-4 py-12">
+				<h2 className="pb-4 text-center text-4xl font-bold tracking-tight text-a-dark dark:text-s lg:text-5xl">
+					Coming soon...
+				</h2>
+				<h3 className="mx-auto max-w-lg justify-center px-4 pb-8 text-center text-xl font-medium text-n-9 dark:text-white lg:text-2xl">
+					We empower small businesses to thrive in a market dominated by larger corporations.
+				</h3>
+				<p className="mx-auto mb-8 mt-4 block max-w-2xl px-4 text-lg text-n-8 dark:text-n-3 lg:text-xl">
+					We specialize in crafting beautiful, streamlined websites and polished brand identities, focusing on clarity,
+					simplicity, and affordability—because we believe that standing out shouldn’t mean overspending.
+				</p>
+				<div className="mt-6">
+					<DotExpandButton />
+				</div>
+			</div>
+		</div>
+	)
 }

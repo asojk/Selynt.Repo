@@ -1,24 +1,26 @@
-import BeamInput from "./others/BeamInput";
+/** @format */
 
+import BeamInput from './others/BeamInput'
 
 export const WhyUs = () => {
 	return (
-  <><section>
-    <div className="container mx-auto flex flex-col items-center px-4 py-12 text-center">
-      <h2 className="text-2xl font-bold tracking-tight text-gray-800 xl:text-3xl dark:text-white">
-        Try something really different right now.
-      </h2>
-      <p className="mt-4 block max-w-4xl text-gray-500 dark:text-gray-300">
-        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Esse iure tenetur commodi ipsam error voluptate magni.
-        Adipisci repudiandae ullam commodi iusto reprehenderit suscipit facere voluptatem, eaque maiores minima. Neque,
-        officiis.
-      </p>
-        <div className="mt-6">
-          <BeamInput />
-      </div>
-    </div>
-    </section>
-            {/*
+		<>
+			<section>
+				<div className="container mx-auto flex flex-col items-center px-4 py-12 text-center">
+					<h2 className="text-2xl font-bold tracking-tight text-gray-800 dark:text-white xl:text-3xl">
+						Try something really different right now.
+					</h2>
+					<p className="mt-4 block max-w-4xl text-gray-500 dark:text-gray-300">
+						Lorem, ipsum dolor sit amet consectetur adipisicing elit. Esse iure tenetur commodi ipsam error voluptate
+						magni. Adipisci repudiandae ullam commodi iusto reprehenderit suscipit facere voluptatem, eaque maiores
+						minima. Neque, officiis.
+					</p>
+					<div className="mt-6">
+						<BeamInput />
+					</div>
+				</div>
+			</section>
+			{/*
       <header>
       <div className="container mx-auto flex flex-col space-y-6 px-6 py-10 lg:h-[32rem] lg:flex-row lg:items-center lg:py-16">
         <div className="w-full lg:w-1/2">
@@ -105,45 +107,68 @@ export const WhyUs = () => {
       </div>
       </section>
       */}
-      
-      <section>
-      <div className="container mx-auto px-6 py-10">
-        <div className="text-center">
-          <h2 className="text-3xl font-semibold capitalize text-gray-800 lg:text-4xl dark:text-white">From the blog</h2>
-          <p className="mx-auto mt-4 max-w-lg text-gray-500">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Iure veritatis sint autem nesciunt, laudantium quia
-            tempore delect
-          </p>
-        </div>
-        <div className="mt-8 grid grid-cols-1 gap-8 lg:grid-cols-2">
-          <div>
-            <img className="relative z-10 h-96 w-full rounded object-cover" src="https://images.unsplash.com/photo-1644018335954-ab54c83e007f?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80" alt="" loading="lazy" height="" width="" />
-            <div className="relative z-20 mx-auto -mt-20 max-w-lg rounded bg-white p-6 shadow dark:bg-gray-900">
-              <a className="font-semibold text-gray-800 hover:underline md:text-xl dark:text-white" href="#" target="_self">
-                All the features you want to know
-              </a>
-              <p className="mt-3 text-sm text-gray-500 md:text-sm dark:text-gray-300">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Iure veritatis sint autem nesciunt, laudantium
-                quia tempore delect
-              </p>
-              <p className="text-primary-500 mt-3 text-sm">21 October 2019</p>
-            </div>
-          </div>
-          <div>
-            <img className="relative z-10 h-96 w-full rounded object-cover" src="https://images.unsplash.com/photo-1497032628192-86f99bcd76bc?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80" alt="" loading="lazy" height="" width="" />
-            <div className="relative z-20 mx-auto -mt-20 max-w-lg rounded bg-white p-6 shadow dark:bg-gray-900">
-              <a className="font-semibold text-gray-800 hover:underline md:text-xl dark:text-white" href="#" target="_self">
-                How to use sticky note for problem solving
-              </a>
-              <p className="mt-3 text-sm text-gray-500 md:text-sm dark:text-gray-300">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Iure veritatis sint autem nesciunt, laudantium
-                quia tempore delect
-              </p>
-              <p className="text-primary-500 mt-3 text-sm">20 October 2019</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section></>
-);
-};
+
+			<section>
+				<div className="container mx-auto px-6 py-10">
+					<div className="text-center">
+						<h2 className="text-3xl font-semibold capitalize text-gray-800 dark:text-white lg:text-4xl">
+							From the blog
+						</h2>
+						<p className="mx-auto mt-4 max-w-lg text-gray-500">
+							Lorem ipsum dolor sit amet consectetur adipisicing elit. Iure veritatis sint autem nesciunt, laudantium
+							quia tempore delect
+						</p>
+					</div>
+					<div className="mt-8 grid grid-cols-1 gap-8 lg:grid-cols-2">
+						<div>
+							<img
+								className="relative z-10 h-96 w-full rounded object-cover"
+								src="https://images.unsplash.com/photo-1644018335954-ab54c83e007f?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80"
+								alt=""
+								loading="lazy"
+								height=""
+								width=""
+							/>
+							<div className="relative z-20 mx-auto -mt-20 max-w-lg rounded bg-white p-6 shadow dark:bg-gray-900">
+								<a
+									className="font-semibold text-gray-800 hover:underline dark:text-white md:text-xl"
+									href="#"
+									target="_self">
+									All the features you want to know
+								</a>
+								<p className="mt-3 text-sm text-gray-500 dark:text-gray-300 md:text-sm">
+									Lorem ipsum dolor sit amet consectetur adipisicing elit. Iure veritatis sint autem nesciunt,
+									laudantium quia tempore delect
+								</p>
+								<p className="text-primary-500 mt-3 text-sm">21 October 2019</p>
+							</div>
+						</div>
+						<div>
+							<img
+								className="relative z-10 h-96 w-full rounded object-cover"
+								src="https://images.unsplash.com/photo-1497032628192-86f99bcd76bc?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80"
+								alt=""
+								loading="lazy"
+								height=""
+								width=""
+							/>
+							<div className="relative z-20 mx-auto -mt-20 max-w-lg rounded bg-white p-6 shadow dark:bg-gray-900">
+								<a
+									className="font-semibold text-gray-800 hover:underline dark:text-white md:text-xl"
+									href="#"
+									target="_self">
+									How to use sticky note for problem solving
+								</a>
+								<p className="mt-3 text-sm text-gray-500 dark:text-gray-300 md:text-sm">
+									Lorem ipsum dolor sit amet consectetur adipisicing elit. Iure veritatis sint autem nesciunt,
+									laudantium quia tempore delect
+								</p>
+								<p className="text-primary-500 mt-3 text-sm">20 October 2019</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+		</>
+	)
+}

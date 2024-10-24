@@ -13,10 +13,13 @@
     "javascriptreact",
     "typescriptreact"
   ],
-  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.defaultFormatter": null,
   "editor.formatOnPaste": false,
   "editor.formatOnSave": false,
   "editor.formatOnSaveMode": "file",
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": "explicit"
+  },
   "editor.insertSpaces": true,
   "editor.tabSize": 2,
   "search.exclude": {
@@ -35,9 +38,11 @@
   },
   "files.trimTrailingWhitespaceInRegexAndStrings": false,
   "files.exclude": {
-    "**/.git": true,
+    "**/.git": false,
     "**/.env": false,
-    "**.history": true,
-    "**./history": true,
-}
+    "**.history": false,
+    "**./history": false
+  },
+  "findUnusedExports.detectCircularImports": true,
+  "editor.scrollbar.verticalScrollbarSize": 7
 }
