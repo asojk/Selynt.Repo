@@ -1,5 +1,3 @@
-/** @format */
-
 import { useRef } from 'react'
 import { images } from '@/lib/assets'
 import { motion, useScroll, useTransform } from 'framer-motion'
@@ -15,7 +13,7 @@ export const Hero: React.FC = () => {
 	const opacity = useTransform(scrollYProgress, [0, 1], [1, 0])
 
 	return (
-		<motion.div ref={targetRef} className="relative flex h-screen flex-col items-center" style={{ y, opacity }}>
+		<motion.div ref={targetRef} className="relative flex flex-col items-center h-screen" style={{ y, opacity }}>
 			{/* Logo at top 1/3 */}
 			<div className="relative z-[1000] mt-[33vh]">
 				<div className="relative max-w-[85vw]">
@@ -28,14 +26,14 @@ export const Hero: React.FC = () => {
 			</div>
 
 			{/* Text at bottom */}
-			<div className="mb-16 mt-auto text-center">
+			<div className="mt-auto mb-16 text-center">
 				<h1 className="Hero">
 					Boost Credibility <br className="line-break-small" /> with a{' '}
-					<span className="animate-text bg-gradient-to-r from-p via-s to-a-darker bg-clip-text text-transparent">
+					<span className="text-transparent animate-text bg-gradient-to-r from-p via-s to-a-darker bg-clip-text">
 						Clear Identity
 					</span>
 				</h1>
-				<p className="Hero-p dark:text-n-5">Websites & Branding Without the BS</p>
+				<p className="Hero-p">Websites & Branding Without the BS</p>
 			</div>
 		</motion.div>
 	)

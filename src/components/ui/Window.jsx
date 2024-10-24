@@ -39,28 +39,30 @@ export const useImgPadding = (contentHeight: boolean = false): void => {
 
 	return (
 		<>
-			<div className="flex items-center justify-between rounded-t-md border-2 border-n-5 bg-base-300 px-4 py-2 shadow-lg">
+
+			<div className="flex items-center justify-between px-4 py-2 shadow-lg rounded-t-md border-1 border-n-5 bg-base-300">
 				<div className="flex space-x-2">
-					<div className="h-3 w-3 rounded-full bg-red-500"></div>
-					<div className="h-3 w-3 rounded-full bg-yellow-500"></div>
-					<div className="h-3 w-3 rounded-full bg-green-500"></div>
+					<div className="w-3 h-3 bg-red-500 rounded-full"></div>
+					<div className="w-3 h-3 bg-yellow-500 rounded-full"></div>
+					<div className="w-3 h-3 bg-green-500 rounded-full"></div>
 				</div>
 				<button onClick={handleCopy} className="text-xs text-gray-500 transition hover:text-gray-700">
 					{isCopied ? 'Copied!' : 'Copy Code'}
 				</button>
 			</div>
-			<div className="flex justify-start rounded-b-md border-2 border-n-5 bg-g-code shadow-lg">
+			<div className="flex justify-start shadow-lg border-1 rounded-b-md border-n-5 bg-p">
 				<div style={{ flex: 1, width: '100%', flexDirection: 'column' }}>
 					<SyntaxHighlighter
 						language="typescript"
 						style={oneDark}
 						wrapLines={true}
-						lineProps={{ style: { whiteSpace: 'pre-wrap' } }}
-						className="lg:text-md h-24 text-xs md:h-36 md:text-sm lg:h-48">
+						lineProps={{ style: { whiteSpace: 'wrap', } }}
+						className="h-24 text-xs lg:text-md md:h-36 md:text-sm lg:h-48 bg-p">
 						{codeString}
 					</SyntaxHighlighter>
 				</div>
 			</div>
+
 		</>
 	)
 }

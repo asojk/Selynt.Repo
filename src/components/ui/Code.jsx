@@ -1,8 +1,9 @@
+/* eslint-disable react/jsx-no-comment-textnodes */
 /** @format */
 
 export default function Code() {
 	return (
-		<div className="mockup-code text-left">
+		<div className="ml-auto text-left mockup-code bg-p max-w-64">
 			<pre data-prefix="$">
 				<code>pnpm i client.tsx</code>
 			</pre>

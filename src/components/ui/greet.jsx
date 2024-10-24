@@ -2,7 +2,7 @@
 
 export function Greet() {
 	return (
-		<svg id="Layer_2" viewBox="0 0 289.21 185.22" xmlns="http://www.w3.org/2000/svg">
+		<svg id="Layer_2" viewBox="0 0 289.21 185.22" xmlns="http://www.w3.org/2000/svg" className="max-w-48 flex mx-auto">
 			<defs>
 				<style type="text/css">{`
           .cls-1, .cls-2, .cls-3, .cls-4

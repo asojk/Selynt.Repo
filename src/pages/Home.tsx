@@ -4,25 +4,27 @@ import { HeroParallaxContent } from '@/components/content/HeroParallaxContent'
 import { useEffect } from 'react'
 import AOS from 'aos'
 import 'aos/dist/aos.css'
-//import { CtaParallaxContent } from '@/components/content/CtaParallaxSection'
 import { MapParallaxContent } from '@/components/content/MapParallaexSection'
 import { useImgPadding } from '@/constants/imgpadding'
-import Home2 from '@/components/content/Home2'
+import { CallTo } from '@/components/ui/CallTo'
+import TimelineE from '@/components/ui/TimeTable'
+import { Tech } from '@/components/Tech'
 
 export const Home = () => {
 	useEffect(() => {
 		AOS.init({ duration: 1000, easing: 'ease-in-out', once: true })
 	}, [])
 
-	useImgPadding() // Init CSS var
+	useImgPadding()
 
 	return (
-		<div className="overflow-x-clip bg-n-9 antialiased dark:bg-n-6 lg:subpixel-antialiased">
-			<div className="lg:px-content-padding">
+		<div className="antialiased overflow-x-clip bg-n-9 dark:bg-n-6 lg:subpixel-antialiased">
+			<div className="">
 				<HeroParallaxContent />
-        {/* <CtaParallaxContent /> */}
-				<Home2 />
+				<CallTo />
+				<TimelineE />
 				<MapParallaxContent />
+				<Tech />
 			</div>
 		</div>
 	)

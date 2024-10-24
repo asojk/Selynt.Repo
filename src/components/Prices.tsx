@@ -1,5 +1,3 @@
-/** @format */
-
 import { useState } from 'react'
 import { AnimatePresence, motion } from 'framer-motion'
 import { useTheme } from '@/constants/ThemeContext'
@@ -11,7 +9,7 @@ export default function SlidePricing() {
 	return (
 		<>
 			<div className={theme === 'dark' ? 'invert-colors' : ''}>
-				<section className="relative w-full overflow-hidden bg-white px-4 py-12 text-black dark:prose-invert dark:invert lg:px-8 lg:py-24">
+				<section className="relative w-full px-4 py-12 overflow-hidden text-black bg-white dark:prose-invert dark:invert lg:px-8 lg:py-24">
 					<Heading selected={selected} setSelected={setSelected} />
 					<PriceCards selected={selected} />
 					<TopLeftCircle />
@@ -32,25 +30,25 @@ interface HeadingProps {
 
 const Heading = ({ selected, setSelected }: HeadingProps) => {
 	return (
-		<div className="relative z-10 mb-12 lg:mb-24">
-			<h3 className="mb-6 text-center text-5xl font-semibold lg:text-7xl">Pricing plans</h3>
-			<p className="mx-auto mb-8 max-w-lg text-center">
-				Affordable, high-quality services tailored to your business needs.
-			</p>
-			<div className="flex items-center justify-center gap-3">
-				<button onClick={() => setSelected('M')} className={selected === 'M' ? SELECTED_STYLES : DESELECTED_STYLES}>
-					Selynt
-					{selected === 'M' && <BackgroundShift />}
-				</button>
-				<div className="relative">
-					<button onClick={() => setSelected('A')} className={selected === 'A' ? SELECTED_STYLES : DESELECTED_STYLES}>
-						The Other Guys
-						{selected === 'A' && <BackgroundShift />}
-					</button>
-					<CTAArrow />
-				</div>
-			</div>
-			<h3 className="prose-blockquote: text-n-900">
+    <div className="relative z-10 mb-12 lg:mb-24">
+      <h3 className="mb-6 text-5xl font-bold text-center text-p">Pricing plans</h3>
+      <p className="max-w-lg mx-auto mb-8 text-center text-n-700">
+        Affordable, high-quality services tailored to your needs.
+      </p>
+      <div className="flex items-center justify-center gap-3">
+        <button onClick={() => setSelected('M')} className={selected === 'M'? SELECTED_STYLES : DESELECTED_STYLES}>
+          Selynt
+          {selected === 'M' && <BackgroundShift />}
+        </button>
+        <div className="relative">
+          <button onClick={() => setSelected('A')} className={selected === 'A'? SELECTED_STYLES : DESELECTED_STYLES}>
+            The Other Guys
+            {selected === 'A' && <BackgroundShift />}
+          </button>
+          <CTAArrow />
+        </div>
+      </div>
+      <h3 className="prose-blockquote: text-n-900">
 				{' '}
 				basic packages which come with varying but very limiting limitations, -annual estimates include monthly rates,
 				cheap themes or add-ons which are necessary in many cases, the cost of your time/knowledge/labor on website
@@ -61,14 +59,14 @@ const Heading = ({ selected, setSelected }: HeadingProps) => {
 	)
 }
 
-const BackgroundShift = () => <motion.span layoutId="bg-shift" className="absolute inset-0 -z-10 rounded-lg bg-p" />
+const BackgroundShift = () => <motion.span layoutId="bg-shift" className="absolute inset-0 rounded-lg -z-10 bg-p" />
 
 interface PriceCardProps {
 	selected: 'M' | 'A'
 }
 
 const PriceCards = ({ selected }: PriceCardProps) => (
-	<div className="relative z-10 mx-auto flex w-full max-w-6xl flex-col gap-8 lg:flex-row lg:gap-4">
+	<div className="relative z-10 flex flex-col w-full max-w-6xl gap-8 mx-auto lg:flex-row lg:gap-4">
 		{/* Essential Kit */}
 		<div className="flex w-full flex-col justify-between rounded-xl border-[1px] border-n-3 bg-white p-6">
 			<div>
@@ -101,11 +99,11 @@ const PriceCards = ({ selected }: PriceCardProps) => (
 					</AnimatePresence>
 				</div>
 
-				<div className="mb-2 flex items-center gap-2">
+				<div className="flex items-center gap-2 mb-2">
 					<CheckMark />
 					<span className="text-base">Custom design</span>
 				</div>
-				<div className="mb-8 flex items-center gap-2">
+				<div className="flex items-center gap-2 mb-8">
 					<CheckMark />
 					<span className="text-base">Hosting & setup included</span>
 				</div>
@@ -116,7 +114,7 @@ const PriceCards = ({ selected }: PriceCardProps) => (
 			<motion.button
 				whileHover={{ scale: 1.015 }}
 				whileTap={{ scale: 0.985 }}
-				className="mt-8 w-full rounded-lg bg-black py-4 font-semibold uppercase text-white">
+            className="w-full py-4 mt-8 font-semibold text-white uppercase rounded-lg bg-a-dark">
 				Get Started
 			</motion.button>
 		</div>
@@ -154,11 +152,11 @@ const PriceCards = ({ selected }: PriceCardProps) => (
 					</AnimatePresence>
 				</div>
 
-				<div className="mb-2 flex items-center gap-2">
+				<div className="flex items-center gap-2 mb-2">
 					<CheckMark />
 					<span className="text-base">Comprehensive customization</span>
 				</div>
-				<div className="mb-2 flex items-center gap-2">
+				<div className="flex items-center gap-2 mb-2">
 					<CheckMark />
 					<span className="text-base">4 no-cost upgrades/maintenance per year</span>
 				</div>
@@ -166,7 +164,7 @@ const PriceCards = ({ selected }: PriceCardProps) => (
 			<motion.button
 				whileHover={{ scale: 1.015 }}
 				whileTap={{ scale: 0.985 }}
-				className="mt-8 w-full rounded-lg bg-black py-4 font-semibold uppercase text-white">
+            className="w-full py-4 mt-8 font-semibold text-white uppercase rounded-lg bg-a-dark">
 				Get Started
 			</motion.button>
 		</div>
@@ -221,7 +219,7 @@ const PriceCards = ({ selected }: PriceCardProps) => (
 			<motion.button
 				whileHover={{ scale: 1.015 }}
 				whileTap={{ scale: 0.985 }}
-				className="mt-8 w-full rounded-lg bg-black py-4 font-semibold uppercase text-white">
+            className="w-full py-4 mt-8 font-semibold text-white uppercase rounded-lg bg-a-dark">
 				Get Started
 			</motion.button>
 		</div>
@@ -258,10 +256,6 @@ const CTAArrow = () => (
 		</span>
 	</div>
 )
-
-interface PriceCardProps {
-	selected: 'M' | 'A'
-}
 
 const CheckMark = () => (
 	<svg width="20" height="15" viewBox="0 0 20 15" fill="none" xmlns="http://www.w3.org/2000/svg">

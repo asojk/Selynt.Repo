@@ -13,7 +13,21 @@ export default defineConfig({
   plugins: [
     ViteImageOptimizer({
       includePublic: true,
+      exclude: ['node_modules'],
       include: './src/assets/img',
+            jpg: {
+              quality: 70,
+            },
+            png: {
+              quality: 80,
+            },
+            webp: {
+              quality: 70,
+              lossless: true,
+            },
+            svg: {
+              quality: 70,
+            },
     }),
     visualizer({
       open: true,

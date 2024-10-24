@@ -71,15 +71,15 @@ const StickyImage: React.FC<StickyImageProps> = ({ children }) => {
 				width: '100%',
 				margin: '0 auto', // This centers the div when it reaches max-width
 			}}
-			className="sticky z-0 mx-auto overflow-hidden rounded-3xl bg-cover bg-center px-2 xl:px-12">
+			className="sticky z-0 px-2 mx-auto overflow-hidden bg-center bg-cover rounded-3xl xl:px-12">
 			{/* Background Overlay */}
-			<motion.div className="absolute inset-1 rounded-3xl bg-n-1 dark:bg-n-9" style={{ opacity }} />
+			<motion.div className="absolute bg-white inset-1 rounded-3xl dark:bg-n-9" style={{ opacity }} />
 
 			{/* Content Container */}
 			<div
 				className="relative flex items-center justify-center"
 				style={{ minHeight: `calc(100vh - ${imgPadding * 2}px)` }}>
-				<div className="px-4 py-4 text-center xl:px-12 xl:py-12">{children}</div>
+				<div className="px-2 py-2 text-center xl:px-12 xl:py-12">{children}</div>
 			</div>
 		</motion.div>
 	)

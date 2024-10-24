@@ -1,71 +1,74 @@
-/** @format */
-
-//import { ReactNode, useRef } from "react";
-//import { motion, useScroll, useTransform } from 'framer-motion';
-//import About2 from '@/components/content/About2'
-// import About3 from '@/components/content/About3'
-// import Ribbon from '@/components/Ribbon'
-//import {StickyComp} from '@/components/ui/sticky-component'
-import { useImgPadding } from '@/constants/imgpadding'
 import { StickyVComp } from '@/components/ui/sticky-comp-variant'
+import MintCard from '@/components/common/MintCard'
+import { Button } from '@/components/common/Button'
+import { Link } from 'react-router-dom'
 
 export const About = () => {
-	useImgPadding()
+
 	return (
 		<div className="relative px-content-padding">
 			<StickyVComp contentHeight={true}>
-				<div className="mx-auto max-w-4xl rounded-lg p-2 xl:p-8">
+				<section className="relative w-full py-4 antialiased lg:subpixel-antialiased">
+
 					<header className="mb-6 text-center">
-						<h1 className="H1">About Selynt</h1>
-						<p className="Hero=p">Boost Credibility with a Clear Identity</p>
+						<h1 className="H2">About Selynt</h1>
+						<p className="Hero-p">Boost Credibility with a Clear Identity</p>
 					</header>
 
-					<section className="mb-8">
-						<h2 className="H2">Our Mission</h2>
-						<p className="Description py-2 text-left">
-							At Selynt, we empower small businesses to thrive in a market dominated by larger corporations. We
-							specialize in crafting beautiful, streamlined websites and polished brand identities, focusing on clarity,
-							simplicity, and affordability—because we believe that standing out shouldn’t mean overspending.
-						</p>
-						<h2 className="H2">Our Vision</h2>
-						<p className="Description py-2 text-left">
-							Our mission is built on the principles of simplicity, clarity, and affordability. “Selynt” is a mixture of
-							“salience” - making your business noteworthy - and “lint” - to refine every detail of code and language
-							syntax. Cut the clutter and amplify what matters.
-						</p>
-					</section>
-				</div>
-				<div className="mx-auto max-w-4xl rounded-lg p-4 lg:p-8">
-					<section className="mb-8">
-						<h2 className="H2">Why Us?</h2>
-						<ul className="Description py-2 text-left">
-							<li>Marketing without the BS: Amplify what truly matters.</li>
-							<li>Simplicity and Clarity: Convey your message effectively.</li>
-							<li>Affordability: High-quality services that fit your budget.</li>
-							<li>Personalized Attention: Dedicated focus and expertise.</li>
-						</ul>
-					</section>
+					<h2 className="text-left H3">Our Mission</h2>
+					<p className="pb-6 prose text-left Description-p">
+						At Selynt, we empower small businesses to thrive in a market dominated by larger corporations. We specialize
+						in crafting beautiful, streamlined websites and polished brand identities, focusing on clarity, simplicity,
+						and affordability—because we believe that standing out shouldn’t mean overspending.
+					</p>
+					<h2 className="text-left H3">Our Vision</h2>
+					<p className="pb-6 prose text-left Description-p">
+						Our mission is built on the principles of simplicity, clarity, and affordability. “Selynt” is a mixture of
+						“salience” - making your business noteworthy - and “lint” - to refine every detail of code and language
+						syntax. Cut the clutter and amplify what matters.
+					</p>
 
-					<section className="mb-8 text-center">
-						<h2 className="H2">Ready to Boost Your Credibility?</h2>
-						<p className="Description py-2 text-left">Let’s create a compelling identity for your business.</p>
-						<button className="bg-p-600 hover:bg-p-700 mt-4 rounded-lg px-6 py-2 font-bold text-white">
-							Get Started
-						</button>
-					</section>
-				</div>
+					<div className="pb-20">
+						<h2 className="text-left H3">Why Us?</h2>
+						<ul className="pl-12 prose text-left list-disc prose-ul:li prose-disc Description-p">
+							<li className="prose-li">Marketing without the BS: Amplify what truly matters.</li>
+							<li className="prose-li">Simplicity and Clarity: Convey your message effectively.</li>
+							<li className="prose-li">Affordability: High-quality services that fit your budget.</li>
+							<li className="prose-li">Personalized Attention: Dedicated focus and expertise.</li>
+						</ul>
+					</div>
+
+					<h2 className="text-center H3">Ready to Boost Your Credibility?</h2>
+					<p className="pb-2 prose Description-p">Let’s create a compelling identity for your business.</p>
+					<Link to="/contact">
+						<Button text="Get Started" />
+					</Link>
+
+				</section>
 			</StickyVComp>
 
-			{/*
-			<About2 />
-			<About3 />
+			<StickyVComp contentHeight={true}>
 
-			<div className='relative h-full w-full'>
-				<div className='bottom relative z-10'>
-					<Ribbon />
-				</div>
-			</div>
-      */}
+					<div className="grid grid-cols-1 gap-8 auto-rows-fr md:grid-cols-2">
+
+						<MintCard
+							avatar="https://prkm7pjvgapey0vo.public.blob.vercel-storage.com/icon-XA1wAih8gI77GE2Pq6xWHI45PxPYxh.png"
+							info="Proofs/Map Desc"
+							info1="Unify Txt/H's"
+							info2="Contact form"
+							content1="Pricing"
+							content2="rm comments&cmnt outs"/>
+
+						<MintCard
+							avatar="https://prkm7pjvgapey0vo.public.blob.vercel-storage.com/icon-XA1wAih8gI77GE2Pq6xWHI45PxPYxh.png"
+							info="SEO & Meta Tags"
+							info1="Dep Analysis"
+							info2="Accessibility"
+							content1="(WCAG guidelines)"
+							content2="Image Optimization"/>
+
+					</div>
+			</StickyVComp>
 		</div>
 	)
 }

@@ -19,7 +19,7 @@ const Dock: React.FC<DockProps> = ({ items, className = '' }) => {
 				whileHover={{ scale: 1.05 }}
 				whileTap={{ scale: 0.95 }}
 				onClick={() => setIsOpen(!isOpen)}
-				className="fixed bottom-6 right-6 z-[1001] rounded-full bg-n-2 p-3 text-p shadow-lg transition-colors hover:bg-n-3 dark:bg-n-8 dark:text-s-light dark:hover:bg-n-7"
+				className="flex h-12 w-12 items-center justify-center rounded-full bg-n-1 text-p shadow-md transition-colors hover:bg-n-2 dark:bg-n-8 dark:text-s-light dark:hover:bg-n-8 fixed bottom-6 right-6 z-[1001] p-3 ransition-colors"
 				animate={{ rotate: isOpen ? 180 : 0 }}>
 				{isOpen ? <IconEyeClosed /> : <IconMenu4 />}
 			</motion.button>
@@ -71,7 +71,7 @@ const IconContainer: React.FC<IconContainerProps> = ({ title, icon, href, index 
 				<motion.div
 					whileHover={{ scale: 1.05 }}
 					whileTap={{ scale: 0.95 }}
-					className="relative flex h-12 w-12 items-center justify-center rounded-full bg-n-1 text-p shadow-md transition-colors hover:bg-n-2 dark:bg-n-8 dark:text-s-light dark:hover:bg-n-8">
+					className="relative flex items-center justify-center w-12 h-12 transition-colors rounded-full shadow-md bg-n-1 text-p hover:bg-n-2 dark:bg-n-8 dark:text-s-light dark:hover:bg-n-8">
 					{icon}
 				</motion.div>
 				<AnimatePresence>
@@ -80,7 +80,7 @@ const IconContainer: React.FC<IconContainerProps> = ({ title, icon, href, index 
 							initial={{ opacity: 0, x: 10 }}
 							animate={{ opacity: 1, x: 0 }}
 							exit={{ opacity: 0, x: 10 }}
-							className="absolute right-full mr-3 rounded-md bg-n-2 px-3 py-1 text-sm font-medium text-p shadow-md dark:bg-n-8 dark:text-s">
+							className="absolute px-3 py-1 mr-3 text-sm font-medium rounded-md shadow-md right-full bg-n-2 text-p dark:bg-n-8 dark:text-s">
 							{title}
 						</motion.div>
 					)}

@@ -1,5 +1,3 @@
-/** @format */
-
 import { Client } from '@/components/MapChart'
 
 export const clients: Client[] = [

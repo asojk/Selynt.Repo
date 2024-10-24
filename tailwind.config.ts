@@ -87,6 +87,7 @@ export default {
 			animation: {
 				float: 'float 5s ease-in-out infinite',
 				text: 'text 5s ease infinite',
+					'pulse-slow': 'pulse 7s infinite',
 			},
 			keyframes: {
 				float: {

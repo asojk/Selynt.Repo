@@ -1,5 +1,3 @@
-/** @format */
-
 import { useRef, ReactNode } from 'react'
 import { motion, useScroll, useTransform } from 'framer-motion'
 import { useImgPadding } from '@/constants/imgpadding'
@@ -75,9 +73,9 @@ const StickyVImage: React.FC<StickyVImageProps> = ({ children, contentHeight }) 
 				paddingBottom: paddingY,
 			}}
 			transition={transition}
-			className="stickyV z-0 mx-auto overflow-hidden rounded-3xl bg-cover bg-center">
+			className="z-0 mx-auto overflow-hidden bg-center bg-cover stickyV rounded-3xl">
 			<motion.div
-				className="absolute inset-1 rounded-3xl bg-n-1 dark:bg-n-9"
+				className="absolute bg-white inset-1 rounded-3xl dark:bg-n-9"
 				style={{ opacity }}
 				transition={transition}
 			/>
@@ -88,7 +86,7 @@ const StickyVImage: React.FC<StickyVImageProps> = ({ children, contentHeight }) 
 					minHeight: contentHeight ? 'auto' : 'calc(100vh - var(--content-padding))',
 				}}
 				transition={transition}>
-				<div className="px-4 py-4 text-center xl:px-12 xl:py-12">{children}</div>
+				<div className="px-2 py-2 text-center xl:px-12 xl:py-12">{children}</div>
 			</motion.div>
 		</motion.div>
 	)

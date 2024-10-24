@@ -1,5 +1,3 @@
-/** @format */
-
 export const images = {
 	logo: 'https://prkm7pjvgapey0vo.public.blob.vercel-storage.com/logo-bI5N6GPCdMBS8ESkOZUhlTAsP4w4Sw.svg',
 	dlogo: 'https://prkm7pjvgapey0vo.public.blob.vercel-storage.com/logo.dark-3UPX0eGrxWf2fpjPOOKN1zpHJpG9d0.svg',
