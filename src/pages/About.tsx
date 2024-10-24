@@ -1,5 +1,5 @@
 import { StickyVComp } from '@/components/ui/sticky-comp-variant'
-import MintCard from '@/components/common/MintCard'
+//import MintCard from '@/components/common/MintCard'
 import { Button } from '@/components/common/Button'
 import { Link } from 'react-router-dom'
 
@@ -46,11 +46,9 @@ export const About = () => {
 
 				</section>
 			</StickyVComp>
-
+{/*
 			<StickyVComp contentHeight={true}>
-
 					<div className="grid grid-cols-1 gap-8 auto-rows-fr md:grid-cols-2">
-
 						<MintCard
 							avatar="https://prkm7pjvgapey0vo.public.blob.vercel-storage.com/icon-XA1wAih8gI77GE2Pq6xWHI45PxPYxh.png"
 							info="Proofs/Map Desc"
@@ -69,6 +67,8 @@ export const About = () => {
 
 					</div>
 			</StickyVComp>
+			*/}
+
 		</div>
 	)
 }

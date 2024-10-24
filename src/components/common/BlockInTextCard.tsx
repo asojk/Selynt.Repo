@@ -13,10 +13,11 @@ export const BlockInTextCard = ({ tag, text, examples }: { tag: string; text: Re
 			<p className="max-w-lg text-xl leading-relaxed text-a dark:text-s">{text}</p>
 			<div>
 				<Typewrite examples={examples} />
-				<hr className="border-n-1 dark:border-n-5" />
+				<hr className="border-n-9 dark:border-n-5" />
 			</div>
-			<button className="w-full rounded-full border border-n-900 py-2 text-sm font-medium transition-colors hover:bg-n-900 hover:text-n-3 dark:border-n-1 dark:hover:bg-n-1 dark:hover:text-n-7">
-				Contact Support
+			<button className="w-full py-2 text-sm font-medium transition-colors border rounded-full border-n-900 hover:bg-n-900 hover:text-n-3 dark:border-n-1 dark:hover:bg-n-1 dark:hover:text-n-7"><a href='mailto:contact@selynt.com'>
+			Contact Us
+			</a>
 			</button>
 		</div>
 	)
@@ -39,7 +40,7 @@ const Typewrite = ({ examples }: { examples: string[] }) => {
 		}, SWAP_DELAY_IN_MS)
 
 		return () => clearInterval(intervalId)
-	}, [])
+	}, [examples.length])
 
 	return (
 		<p className="mb-2.5 text-sm font-light uppercase">
