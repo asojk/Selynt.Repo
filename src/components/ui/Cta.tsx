@@ -5,7 +5,7 @@ import { motion, useScroll, useTransform } from 'framer-motion'
 import ContentSection from '@/components/ui/content-section'
 import DotExpandButton from '@/components/common/DotExpandButton'
 
-export const Cta: React.FC = () => {
+export const CallTo: React.FC = () => {
 	const targetRef = useRef(null)
 	const { scrollYProgress } = useScroll({
 		target: targetRef,
