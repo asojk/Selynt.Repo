@@ -4,9 +4,8 @@ import { visualizer } from 'rollup-plugin-visualizer';
 import path from 'path'
 import Icons from 'unplugin-icons/vite'
 import react from '@vitejs/plugin-react'
-
-// Use this if you need __dirname in an ES module context
 import { fileURLToPath } from 'url'
+
 const __dirname = path.dirname(fileURLToPath(import.meta.url))
 
 export default defineConfig({
@@ -15,19 +14,10 @@ export default defineConfig({
       includePublic: true,
       exclude: ['node_modules'],
       include: './src/assets/img',
-            jpg: {
-              quality: 70,
-            },
-            png: {
-              quality: 80,
-            },
-            webp: {
-              quality: 70,
-              lossless: true,
-            },
-            svg: {
-              quality: 70,
-            },
+      jpg: { quality: 70 },
+      png: { quality: 80 },
+      webp: { quality: 70, lossless: true },
+      svg: { quality: 70 },
     }),
     visualizer({
       open: true,
@@ -44,4 +34,22 @@ export default defineConfig({
       '@': path.resolve(__dirname, './src'),
     },
   },
-})
+  build: {
+    minify: 'terser',
+    terserOptions: {
+      format: {
+        comments: false, // Remove comments
+      },
+    },
+    sourcemap: false,
+    rollupOptions: {
+      output: {
+        manualChunks(id) {
+          if (id.includes('node_modules')) {
+            return id.toString().split('node_modules/')[1].split('/')[0].toString();
+          }
+        },
+      },
+    },
+  },
+});
