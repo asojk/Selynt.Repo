@@ -1,23 +1,20 @@
-/** @format */
-
 import { ReactNode, useEffect, useState } from 'react'
 import { motion } from 'framer-motion'
 
 export const BlockInTextCard = ({ tag, text, examples }: { tag: string; text: ReactNode; examples: string[] }) => {
 	return (
-		<div className="w-full max-w-xl space-y-6">
+		<div className="mx-auto w-4/5 max-w-4xl space-y-6">
 			<div>
 				<p className="mb-1.5 text-sm font-light uppercase">{tag}</p>
 				<hr className="border-n-9 dark:border-n-1" />
 			</div>
-			<p className="max-w-lg text-xl leading-relaxed text-a dark:text-s">{text}</p>
+			<p className="max-w-4xl text-xl leading-relaxed text-a-dark dark:text-a">{text}</p>
 			<div>
 				<Typewrite examples={examples} />
 				<hr className="border-n-9 dark:border-n-5" />
 			</div>
-			<button className="w-full py-2 text-sm font-medium transition-colors border rounded-full border-n-900 hover:bg-n-900 hover:text-n-3 dark:border-n-1 dark:hover:bg-n-1 dark:hover:text-n-7"><a href='mailto:contact@selynt.com'>
-			Contact Us
-			</a>
+			<button className="w-full rounded-full border border-n-900 py-2 text-sm font-medium transition-colors hover:bg-n-900 hover:text-n-3 dark:border-n-1 dark:hover:bg-n-1 dark:hover:text-n-7">
+				<a href="mailto:contact@selynt.com">Contact Us</a>
 			</button>
 		</div>
 	)

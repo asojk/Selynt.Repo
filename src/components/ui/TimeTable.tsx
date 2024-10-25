@@ -20,7 +20,7 @@ const TimelineItem: React.FC<TimelineItemProps> = ({ heading, subhead, children,
     <div className={`mb-4 flex justify-${isLeft ? 'start' : 'end'} ${isLeft ? 'lg:pr-24' : 'lg:pl-24'}`}>
       <div className="flex flex-col w-full max-w-md md:max-w-lg xl:max-w-xl">
           <div className={`justify-${isLeft ? 'start' : 'end'} ${isLeft ? 'lg:pr-64' : 'lg:pl-64'}`}>
-            <h3 className='px-2 py-1 bg-white rounded-xl dark:bg-n-9 lg:bg-none H2'>{heading}</h3>
+            <h3 className='px-2 py-1 bg-white rounded-xl dark:bg-n-9 lg:bg-none H3'>{heading}</h3>
             <p className={`items-center gap-2 text-n-8 dark:text-n-5 italic text-base justify-${isLeft ? 'start' : 'end'} ${isLeft ? 'lg:pr-12' : 'lg:pl-12'}`}>{subhead}</p>
         </div>
         <div className="px-4 py-4">{children}</div>
@@ -65,13 +65,17 @@ const TimelineE = () => {
 			<StickyVComp contentHeight={true}>
 			<section className="flex flex-col items-center justify-center gap-6 px-4 py-4 md:gap-12 md:flex-row">
 						<h2 className="H2">Our Process</h2>
+													{/*
 						<div className='block'>
+
 						<p className="prose text-left Description-p">
               Meet. Create. Feedback. Iterate. Deliver.</p>
 							<p className="prose text-left Description-p">
 							Simple, right?
             </p>
+
 						</div>
+												*/}
 					</section>
 				<VerticalTimeline>
 					<TimelineItem isLeft={true} heading='1. Meet' subhead='virtual, or not!'>

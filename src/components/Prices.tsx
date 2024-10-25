@@ -5,7 +5,8 @@ export default function SlidePricing() {
 	const [selected, setSelected] = useState<'M' | 'A'>('M')
 
 	return (
-		<section className="relative w-full px-4 py-12 overflow-hidden text-black bg-white dark:bg-n-9 dark:text-white lg:px-8 lg:py-24">
+		<section className="relative w-full overflow-hidden bg-white px-4 py-12 text-black dark:bg-n-9 dark:text-white lg:px-8 lg:py-24">
+			<Title />
 			<Heading selected={selected} setSelected={setSelected} />
 			<PriceCards selected={selected} />
 			<BrandingSection />
@@ -25,211 +26,199 @@ interface HeadingProps {
 
 const Heading = ({ selected, setSelected }: HeadingProps) => {
 	return (
-		<div className="relative z-10 mb-12 lg:mb-24">
-			<h3 className="mb-6 text-5xl font-bold text-center text-a dark:text-s">Pricing Comparison</h3>
-			<p className="max-w-lg mx-auto mb-8 text-center text-gray-700 dark:text-gray-300">
-				We offer simple, one-time payments. Here’s how they compare to the average annual cost of traditional platforms.
-			</p>
+	<div className="relative z-10 mb-8 lg:mb-8">
 			<div className="flex items-center justify-center space-x-4">
 				<button
 					onClick={() => setSelected('M')}
-					className={`${selected === 'M' ? SELECTED_STYLES : DESELECTED_STYLES} whitespace-nowrap`}
-				>
+					className={`${selected === 'M' ? SELECTED_STYLES : DESELECTED_STYLES} whitespace-nowrap`}>
 					Selynt
 					{selected === 'M' && <BackgroundShift />}
 				</button>
 				<div className="relative">
 					<button
 						onClick={() => setSelected('A')}
-						className={`${selected === 'A' ? SELECTED_STYLES : DESELECTED_STYLES} whitespace-nowrap`}
-					>
-						The Other Guys
+						className={`${selected === 'A' ? SELECTED_STYLES : DESELECTED_STYLES} whitespace-nowrap`}>
+						The Others
 						{selected === 'A' && <BackgroundShift />}
 					</button>
 					<CTAArrow />
 				</div>
 			</div>
-			<h3 className="w-4/6 pt-12 text-lg prose text-left text-gray-900 dark:text-gray-300">
-				Traditional platforms often have recurring fees, maintenance, and setup costs. Compare your one-time investment with their average annual costs.
-			</h3>
 		</div>
 	)
 }
 
-const BackgroundShift = () => <motion.span layoutId="bg-shift" className="absolute inset-0 bg-indigo-500 rounded-lg -z-10" />
+const BackgroundShift = () => <motion.span layoutId="bg-shift" className="absolute inset-0 -z-10 rounded-xl bg-a" />
 
 const PriceCards = ({ selected }: { selected: 'M' | 'A' }) => (
-	<div className="relative z-10 flex flex-row justify-center w-full max-w-3xl gap-4 mx-auto md:gap-12">
-		{/* Essential Kit */}
-		<div className="flex flex-col justify-between w-full p-6 text-n-900 dark:text-white dark:bg-n-900 shadow-md border-[1px] border-slate-300 rounded-xl bg-white lg:w-1/2 max-w-80">
-			<div>
-				<p className="mb-2 text-2xl font-bold">Essential Kit</p>
-				<div className="mb-12">
-					<AnimatePresence mode="wait">
-						{selected === 'M' ? (
-							<motion.p
-								key="oneTime"
-								initial={{ y: -50, opacity: 0 }}
-								animate={{ y: 0, opacity: 1 }}
-								exit={{ y: 50, opacity: 0 }}
-								transition={{ ease: 'linear', duration: 0.25 }}
-								className="text-6xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-p via-p-2 to-p-dark animate-text">
-								<span>$399</span>
-							</motion.p>
-						) : (
-							<motion.p
-								key="yearly1"
-								initial={{ y: -50, opacity: 0 }}
-								animate={{ y: 0, opacity: 1 }}
-								exit={{ y: 50, opacity: 0 }}
-								transition={{ ease: 'linear', duration: 0.25 }}
-								className="text-6xl font-bold text-red-500">
-								<span>$2,000+</span>
-							</motion.p>
-						)}
-					</AnimatePresence>
+	<>
+		<div className="">
+
+
+
+			<div className="relative z-10 mx-auto flex w-full max-w-3xl flex-row justify-center gap-4 md:gap-12">
+				{/* Essential Kit */}
+				<div className="flex w-full max-w-80 flex-col justify-between rounded-xl border-[1px] border-slate-300 bg-white p-6 text-n-900 shadow-md dark:bg-n-900 dark:text-white lg:w-1/2">
+					<div>
+						<p className="mb-2 text-2xl font-bold">Essential Kit</p>
+						<div className="mb-8 flex h-20 items-center">
+							<AnimatePresence mode="wait">
+								{selected === 'M' ? (
+									<motion.p
+										key="oneTime"
+										initial={{ y: -50, opacity: 0 }}
+										animate={{ y: 0, opacity: 1 }}
+										exit={{ y: 50, opacity: 0 }}
+										transition={{ ease: 'linear', duration: 0.25 }}
+										className="animate-text bg-gradient-to-r from-p via-p-2 to-p-dark bg-clip-text text-6xl font-bold text-transparent">
+										<span>$399</span>
+									</motion.p>
+								) : (
+									<motion.p
+										key="yearly1"
+										initial={{ y: -50, opacity: 0 }}
+										animate={{ y: 0, opacity: 1 }}
+										exit={{ y: 50, opacity: 0 }}
+										transition={{ ease: 'linear', duration: 0.25 }}
+										className="text-6xl font-bold text-red-500">
+										<span>$2,000+</span>
+									</motion.p>
+								)}
+							</AnimatePresence>
+						</div>
+						<ListItems
+							listItems={['Custom Design & Configuration Solutions', 'Deployment, Hosting & All Setup Included']}
+						/>
+					</div>
+					<span className="flex justify-end text-sm italic">
+						Additional anytime maintenance or updates billed individually
+					</span>
+					<motion.button
+						whileHover={{ scale: 1.015 }}
+						whileTap={{ scale: 0.985 }}
+						className="mt-8 w-full rounded-lg bg-p py-4 font-semibold uppercase text-white">
+						Get Started
+					</motion.button>
 				</div>
-			<div className="flex items-center gap-2 mb-2">
-					<CheckMark />
-					<span className="text-base">Custom Design & Configuration Solutions</span>
-				</div>
-				<div className="flex items-center gap-2 mb-8">
-					<CheckMark />
-					<span className="text-base">Deployment, Hosting & All Setup Included</span>
-				</div>
-			<div className="mb-2 flex w-[90%] items-center gap-2 text-left">
-					<span className="text-sm italic">Additional anytime maintenance or updates billed at $50/hr</span>
+
+				{/* Custom Solution */}
+				<div className="flex w-full max-w-80 flex-col justify-between rounded-xl border-[1px] border-slate-300 bg-white p-6 text-n-900 shadow-md dark:bg-n-900 dark:text-white lg:w-1/2">
+					<div>
+						<p className="mb-2 text-2xl font-bold">Custom Solution</p>
+						<div className="mb-8 flex h-20 items-center">
+							<AnimatePresence mode="wait">
+								{selected === 'M' ? (
+									<motion.p
+										key="oneTime"
+										initial={{ y: -50, opacity: 0 }}
+										animate={{ y: 0, opacity: 1 }}
+										exit={{ y: 50, opacity: 0 }}
+										transition={{ ease: 'linear', duration: 0.25 }}
+										className="text-6xl font-bold">
+										<span>$1299</span>
+									</motion.p>
+								) : (
+									<motion.p
+										key="yearly2"
+										initial={{ y: -50, opacity: 0 }}
+										animate={{ y: 0, opacity: 1 }}
+										exit={{ y: 50, opacity: 0 }}
+										transition={{ ease: 'linear', duration: 0.25 }}
+										className="text-lg italic text-yellow-500">
+										<a className="">You don't want to know how much we've seen companies spend...</a>
+									</motion.p>
+								)}
+							</AnimatePresence>
+						</div>
+						<ListItems
+							listItems={[
+								'Color Palette',
+								'All-Around Customization',
+								'In-Depth Requirements Gathering',
+								'Comprehensive Solutions',
+								'Four Maintenance /Update Requests',
+							]}
+						/>
+					</div>
+
+					<motion.button
+						whileHover={{ scale: 1.015 }}
+						whileTap={{ scale: 0.985 }}
+						className="mt-8 w-full rounded-lg bg-p py-4 font-semibold uppercase text-white">
+						Get Started
+					</motion.button>
 				</div>
 			</div>
-      <motion.button
-        whileHover={{ scale: 1.015 }}
-        whileTap={{ scale: 0.985 }}
-        className="w-full py-4 mt-8 font-semibold text-white uppercase rounded-lg bg-p">
-        Get Started
-      </motion.button>
 		</div>
-
-		{/* Custom Solution */}
-		<div className="flex flex-col justify-between w-full p-6 text-n-900 dark:text-white dark:bg-n-900 shadow-md border-[1px] border-slate-300 rounded-xl bg-white lg:w-1/2 max-w-80">
-			<div>
-				<p className="mb-2 text-2xl font-bold">Custom Solution</p>
-				<div className="mb-8">
-					<AnimatePresence mode="wait">
-						{selected === 'M' ? (
-							<motion.p
-								key="oneTime"
-								initial={{ y: -50, opacity: 0 }}
-								animate={{ y: 0, opacity: 1 }}
-								exit={{ y: 50, opacity: 0 }}
-								transition={{ ease: 'linear', duration: 0.25 }}
-								className="text-6xl font-bold">
-								<span>$1,299</span>
-							</motion.p>
-						) : (
-							<motion.p
-								key="yearly2"
-								initial={{ y: -50, opacity: 0 }}
-								animate={{ y: 0, opacity: 1 }}
-								exit={{ y: 50, opacity: 0 }}
-								transition={{ ease: 'linear', duration: 0.25 }}
-								className="italic text-yellow-500 text-md">
-								<span>You don't want to know how much I've seen companies spend...</span>
-							</motion.p>
-						)}
-					</AnimatePresence>
-				</div>
-
-
-				<div className="flex items-center gap-2 mb-2">
-					<CheckMark />
-					<span className="text-base">All-Around Customization</span>
-				</div>
-				<div className="flex items-center gap-2 mb-2">
-					<CheckMark />
-					<span className="text-base">In-Depth Requirements Gathering</span>
-				</div>
-				<div className="flex items-center gap-2 mb-10">
-					<CheckMark />
-					<span className="text-base">Comprehensive Solutions</span>
-				</div>
-				<div className="mb-8 flex w-[90%] items-center gap-2 text-left">
-					<span className="text-sm italic text-a-dark">Four Annual Maintenance & Update Requests At No Additional Cost</span>
-				</div>
-			</div>
-
-      <motion.button
-        whileHover={{ scale: 1.015 }}
-        whileTap={{ scale: 0.985 }}
-        className="w-full py-4 mt-8 font-semibold text-white uppercase rounded-lg bg-p">
-        Get Started
-      </motion.button>
-		</div>
-	</div>
+	</>
 )
 
-
 const BrandingSection = () => (
-	<div className="relative z-10 flex flex-col w-full max-w-6xl gap-8 mx-auto mt-16 lg:flex-row lg:gap-4">
-		{/* Basic Branding */}
-		<div className="flex flex-col justify-between w-full p-6 text-n-900 dark:text-white dark:bg-n-900 shadow-md border-[1px] border-slate-300 rounded-xl bg-white lg:w-1/3">
-			<div>
-				<p className="mb-2 text-2xl font-bold">Basic Branding</p>
-				<div className="mb-8">
-					<p className="text-4xl font-bold">$300</p>
-				</div>
-				<ul className="mb-4 space-y-2 text-lg">
-					<li>Logo Design</li>
-					<li>Color Palette</li>
-				</ul>
-			</div>
-			<motion.button
-				whileHover={{ scale: 1.015 }}
-				whileTap={{ scale: 0.985 }}
-        className="w-full py-4 mt-8 font-semibold text-white uppercase rounded-lg bg-a-dark">
-        Get Started
-      </motion.button>
-		</div>
+	<>
+    <section className="flex flex-col items-start justify-center gap-12 px-24 lg:px-0 antialiased py-12 lg:py-24 lg:subpixel-antialiased md:flex-row w-full mx-auto max-w-5xl">
+					<div className="flex items-center justify-center lg:pb-8 md:justify-start">
+							<h2 className="H2 pl-0 lg:pl-12 xl:pl-24">Branding</h2>
+					</div>
+					<div className="relative z-10 mx-auto flex w-full max-w-md lg:max-w-4xl flex-col gap-4 lg:flex-row lg:gap-8">
+							{/* Basic Branding */}
+							<div className="flex w-full max-w-sm flex-col justify-between rounded-xl border-[1px] border-slate-300 bg-white p-4 text-n-900 shadow-md dark:bg-n-900 dark:text-white">
+									<div>
+											<p className="mb-2 h-16 text-2xl font-bold w-12">Basic Branding</p>
+											<div className="mb-8">
+													<p className="text-4xl font-bold">$300</p>
+											</div>
+											<ListItems listItems={['Custom Logo', 'Personal Color Palette']} />
+									</div>
+									<motion.button
+											whileHover={{ scale: 1.015 }}
+											whileTap={{ scale: 0.985 }}
+											className="mt-8 w-full rounded-lg bg-a-dark py-4 font-semibold uppercase text-white">
+											Get Started
+									</motion.button>
+							</div>
 
-		{/* Intermediate Branding */}
-		<div className="flex flex-col justify-between w-full p-6 text-n-900 dark:text-white dark:bg-n-900 shadow-md border-[1px] border-slate-300 rounded-xl bg-white lg:w-1/3">
-			<div>
-				<p className="mb-2 text-2xl font-bold">Intermediate Branding</p>
-				<div className="mb-8">
-					<p className="text-4xl font-bold">$600</p>
-				</div>
-				<ul className="mb-4 space-y-2 text-lg">
-					<li>Logo Design</li>
-					<li>Color Palette & Brand Guidelines</li>
-				</ul>
-			</div>
-			<motion.button
-				whileHover={{ scale: 1.015 }}
-				whileTap={{ scale: 0.985 }}
-        className="w-full py-4 mt-8 font-semibold text-white uppercase rounded-lg bg-a-dark">
-        Get Started
-      </motion.button>
-		</div>
+							{/* Intermediate Branding */}
+							<div className="flex w-full max-w-sm flex-col justify-between rounded-xl border-[1px] border-slate-300 bg-white p-4 text-n-900 shadow-md dark:bg-n-900 dark:text-white">
+									<div>
+											<p className="mb-2 h-16 text-2xl font-bold">Intermediate Branding</p>
+											<div className="mb-8">
+													<p className="animate-text bg-gradient-to-r from-p via-p-2 to-p-dark bg-clip-text text-6xl font-bold text-transparent">
+															$600
+													</p>
+											</div>
+											<ListItems
+													listItems={['Logo Design', 'Color Palette', 'Brand Guidelines', 'Instructive Implementation']}
+											/>
+									</div>
+									<motion.button
+											whileHover={{ scale: 1.015 }}
+											whileTap={{ scale: 0.985 }}
+											className="mt-8 w-full rounded-lg bg-a-dark py-4 font-semibold uppercase text-white">
+											Get Started
+									</motion.button>
+							</div>
 
-		{/* Comprehensive Branding */}
-		<div className="flex flex-col justify-between w-full p-6 text-n-900 dark:text-white dark:bg-n-900 shadow-md border-[1px] border-slate-300 rounded-xl bg-white lg:w-1/3">
-			<div>
-				<p className="mb-2 text-2xl font-bold">Comprehensive Branding</p>
-				<div className="mb-8">
-					<p className="text-6xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-p via-p-2 to-p-dark animate-text">$1,000</p>
-				</div>
-				<ul className="mb-4 space-y-2 text-lg">
-					<li>Full Branding Suite</li>
-					<li>Detailed Guidelines + Full Implementation</li>
-				</ul>
-			</div>
-			<motion.button
-				whileHover={{ scale: 1.015 }}
-				whileTap={{ scale: 0.985 }}
-        className="w-full py-4 mt-8 font-semibold text-white uppercase rounded-lg bg-a-dark">
-        Get Started
-      </motion.button>
-		</div>
-	</div>
+							{/* Comprehensive Branding */}
+							<div className="flex w-full max-w-sm flex-col justify-between rounded-xl border-[1px] border-slate-300 bg-white p-4 text-n-900 shadow-md dark:bg-n-900 dark:text-white">
+									<div>
+											<p className="mb-2 h-16 text-2xl font-bold">Comprehensive Branding</p>
+											<div className="mb-8">
+													<p className="text-4xl font-bold">$1,000</p>
+											</div>
+											<ListItems
+													listItems={['Full Branding Suite', 'In-Depth Brand Guidelines', 'Comprehensive Implementation']}
+											/>
+									</div>
+									<motion.button
+											whileHover={{ scale: 1.015 }}
+											whileTap={{ scale: 0.985 }}
+											className="mt-8 w-full rounded-lg bg-a-dark py-4 font-semibold uppercase text-white">
+											Get Started
+									</motion.button>
+							</div>
+					</div>
+			</section>
+	</>
 )
 
 const CTAArrow = () => (
@@ -263,13 +252,36 @@ const CTAArrow = () => (
 	</div>
 )
 
-
 const CheckMark = () => (
-	<svg width="16" height="18" viewBox="0 0 18 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-		<path d="M6.35588 11.8345L1.61455 7.17002L0 8.7472L6.35588 15L20 1.57718L18.3968 0L6.35588 11.8345Z" fill="#aee1cf" />
+	<svg
+		width="16"
+		height="18"
+		viewBox="0 0 18 20"
+		fill="none"
+		xmlns="http://www.w3.org/2000/svg"
+		className="mr-2 mt-1 inline-block">
+		<path
+			d="M6.35588 11.8345L1.61455 7.17002L0 8.7472L6.35588 15L20 1.57718L18.3968 0L6.35588 11.8345Z"
+			fill="#aee1cf"
+		/>
 	</svg>
 )
 
+const Title = () => (
+	<><div className="relative z-10 mb-8 lg:mb-8">
+		<h3 className="mb-6 text-center text-5xl font-bold text-a dark:text-s">Pricing</h3>
+	</div><section className="flex justify-center py-8 w-full max-w-2xl mx-auto antialiased lg:subpixel-antialiased flex-row gap-4 md:gap-8 lg:gap-12 items-start">
+			<h2 className="H2 text-center">Websites</h2>
+			<div className=''>
+			<p className="mx-auto mb-4 max-w-lg text-left text-gray-700 dark:text-gray-300">
+				Traditional platforms often have recurring fees, maintenance, and setup costs. Compare your one-time investment
+				with their average annual costs.</p>
+							<p className="mx-auto mb-8 max-w-lg text-left text-gray-700 dark:text-gray-300">
+			We offer simple, one-time payments. Here’s how they compare to the average annual cost of traditional platforms.
+		</p>
+		</div>
+		</section></>
+)
 
 const TopLeftCircle = () => {
 	return (
@@ -277,7 +289,7 @@ const TopLeftCircle = () => {
 			initial={{ rotate: '0deg' }}
 			animate={{ rotate: '360deg' }}
 			transition={{ duration: 100, ease: 'linear', repeat: Infinity }}
-			className="absolute -left-[250px] -top-[200px] z-0 h-[450px] w-[450px] rounded-full border-4 border-dotted border-p"
+			className="absolute -left-[250px] -top-[200px] z-0 h-[450px] w-[450px] rounded-full border-[1px] md:border-2 lg:border-4 border-dotted border-p"
 		/>
 	)
 }
@@ -292,3 +304,18 @@ const BottomRightCircle = () => {
 		/>
 	)
 }
+
+type ListItemProps = {
+	listItems: string[]
+}
+
+const ListItems = ({ listItems }: ListItemProps) => (
+	<ul className="Description-p prose">
+		{listItems.map((item, index) => (
+			<li key={index} className="flex items-center">
+				<CheckMark />
+				{item}
+			</li>
+		))}
+	</ul>
+)
