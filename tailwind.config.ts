@@ -85,11 +85,17 @@ export default {
 				'custom-dark': '0 10px 15px -3px rgba(255, 255, 255, 0.1), 0 4px 6px -2px rgba(255, 255, 255, 0.05)',
 			},
 			animation: {
+				breathe: 'breathe 12s cubic-bezier(0.4, 0, 0.6, 1) infinite',
 				float: 'float 5s ease-in-out infinite',
 				text: 'text 5s ease infinite',
 					'pulse-slow': 'pulse 7s infinite',
 			},
 			keyframes: {
+				breathe: {
+					'0%, 100%': { transform: 'scale(0.5)', opacity: '0.4' },
+					'33%': { transform: 'scale(1)', opacity: '1' },
+					'66%': { transform: 'scale(1)', opacity: '1' },
+				},
 				float: {
 					'0%': { transform: 'translate(-50%, 0)' },
 					'50%': { transform: 'translate(-50%, 30px)' },

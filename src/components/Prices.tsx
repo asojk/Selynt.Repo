@@ -1,32 +1,63 @@
 import { useState } from 'react'
 import { AnimatePresence, motion } from 'framer-motion'
+import { StickyVComp } from './ui/sticky-comp-variant'
+import { useImgPadding } from '@/constants/imgpadding'
 
 export default function SlidePricing() {
-	const [selected, setSelected] = useState<'M' | 'A'>('M')
+  const [selected, setSelected] = useState<'M' | 'A'>('M')
+  useImgPadding()
 
-	return (
-		<section className="relative w-full overflow-hidden bg-white px-4 py-12 text-black dark:bg-n-9 dark:text-white lg:px-8 lg:py-24">
-			<Title />
-			<Heading selected={selected} setSelected={setSelected} />
-			<PriceCards selected={selected} />
-			<BrandingSection />
-			<TopLeftCircle />
-			<BottomRightCircle />
-		</section>
-	)
+  return (
+    <section className="py-12 md:py-24 xl:py-32">
+      <div className="relative px-content-padding">
+
+		<section className="py-12 md:py-24 xl:py-32">
+				<div className="relative px-content-padding">
+					<StickyVComp contentHeight={true}>
+						<div className="mx-auto flex max-w-5xl flex-col items-center justify-center gap-6 text-left">
+							<h2 className="text-pretty text-4xl font-bold text-a dark:text-s lg:text-6xl">Pricing</h2>
+							<p className="mx-auto mb-4 max-w-lg px-4 text-gray-700 dark:text-gray-300 lg:text-xl">
+								Compare your one-time investment with traditional platforms’ average annual costs, which include recurring
+								fees, maintenance, and setup costs.
+							</p>
+						</div>
+					</StickyVComp>
+					<StickyVComp contentHeight={true}>
+						<h2 className="mx-auto text-pretty px-4 pb-4 text-center text-2xl font-bold text-a dark:text-s md:w-2/3  lg:text-3xl">
+							Websites
+						</h2>
+						<div className="pb-4 md:pb-8">
+							<CompareButtons selected={selected} setSelected={setSelected} />
+						</div>
+						<div className="pb-8">
+							<PriceCards selected={selected} />
+						</div>
+					</StickyVComp>
+					<StickyVComp contentHeight={true}>
+						<h2 className="mx-auto text-pretty px-4 pb-12 text-center text-2xl font-bold text-a dark:text-s md:w-2/3  lg:text-3xl">
+							Branding
+						</h2>
+						<BrandingSection />
+
+					</StickyVComp>
+					</div>
+					</section>
+					</div>
+    </section>
+  )
 }
 
 const SELECTED_STYLES = 'bg-p text-white font-medium rounded-lg py-3 w-28 relative'
 const DESELECTED_STYLES = 'font-medium rounded-lg py-3 w-28 hover:bg-slate-100 transition-colors relative'
 
-interface HeadingProps {
+interface CompareButtonsProps {
 	selected: 'M' | 'A'
 	setSelected: React.Dispatch<React.SetStateAction<'M' | 'A'>>
 }
 
-const Heading = ({ selected, setSelected }: HeadingProps) => {
+const CompareButtons = ({ selected, setSelected }: CompareButtonsProps) => {
 	return (
-	<div className="relative z-10 mb-8 lg:mb-8">
+		<div className="relative z-10 mb-4 lg:mb-8">
 			<div className="flex items-center justify-center space-x-4">
 				<button
 					onClick={() => setSelected('M')}
@@ -51,178 +82,174 @@ const Heading = ({ selected, setSelected }: HeadingProps) => {
 const BackgroundShift = () => <motion.span layoutId="bg-shift" className="absolute inset-0 -z-10 rounded-xl bg-a" />
 
 const PriceCards = ({ selected }: { selected: 'M' | 'A' }) => (
-	<>
-		<div className="">
+	<div className="flex flex-col gap-6 md:mx-auto md:flex-row md:justify-center md:gap-4">
+		{/* Essential Kit */}
+		<PriceCard
+			title="Essential Kit"
+			selected={selected}
+			oneTimePrice="$399"
+			yearlyPrice="$2,000+"
+			listItems={['Custom Design & Configuration Solutions', 'Deployment, Hosting & All Setup Included']}
+		/>
+		{/* Custom Solution */}
+		<PriceCard
+			title="Custom Solution"
+			selected={selected}
+			oneTimePrice="$1299"
+			yearlyPrice="It's outrageous.."
+			listItems={[
+				'Color Palette',
+				'All-Around Customization',
+				'In-Depth Requirements Gathering',
+				'Comprehensive Solutions',
+				'Four Maintenance / Update Requests',
+			]}
+		/>
+	</div>
+)
+
+interface PriceCardProps {
+	title: string
+	selected: 'M' | 'A'
+	oneTimePrice: string
+	yearlyPrice: string
+	listItems: string[]
+}
 
 
-
-			<div className="relative z-10 mx-auto flex w-full max-w-3xl flex-row justify-center gap-4 md:gap-12">
-				{/* Essential Kit */}
-				<div className="flex w-full max-w-80 flex-col justify-between rounded-xl border-[1px] border-slate-300 bg-white p-6 text-n-900 shadow-md dark:bg-n-900 dark:text-white lg:w-1/2">
-					<div>
-						<p className="mb-2 text-2xl font-bold">Essential Kit</p>
-						<div className="mb-8 flex h-20 items-center">
-							<AnimatePresence mode="wait">
-								{selected === 'M' ? (
-									<motion.p
-										key="oneTime"
-										initial={{ y: -50, opacity: 0 }}
-										animate={{ y: 0, opacity: 1 }}
-										exit={{ y: 50, opacity: 0 }}
-										transition={{ ease: 'linear', duration: 0.25 }}
-										className="animate-text bg-gradient-to-r from-p via-p-2 to-p-dark bg-clip-text text-6xl font-bold text-transparent">
-										<span>$399</span>
-									</motion.p>
-								) : (
-									<motion.p
-										key="yearly1"
-										initial={{ y: -50, opacity: 0 }}
-										animate={{ y: 0, opacity: 1 }}
-										exit={{ y: 50, opacity: 0 }}
-										transition={{ ease: 'linear', duration: 0.25 }}
-										className="text-6xl font-bold text-red-500">
-										<span>$2,000+</span>
-									</motion.p>
-								)}
-							</AnimatePresence>
-						</div>
-						<ListItems
-							listItems={['Custom Design & Configuration Solutions', 'Deployment, Hosting & All Setup Included']}
-						/>
-					</div>
-					<span className="flex justify-end text-sm italic">
-						Additional anytime maintenance or updates billed individually
-					</span>
-					<motion.button
-						whileHover={{ scale: 1.015 }}
-						whileTap={{ scale: 0.985 }}
-						className="mt-8 w-full rounded-lg bg-p py-4 font-semibold uppercase text-white">
-						Get Started
-					</motion.button>
-				</div>
-
-				{/* Custom Solution */}
-				<div className="flex w-full max-w-80 flex-col justify-between rounded-xl border-[1px] border-slate-300 bg-white p-6 text-n-900 shadow-md dark:bg-n-900 dark:text-white lg:w-1/2">
-					<div>
-						<p className="mb-2 text-2xl font-bold">Custom Solution</p>
-						<div className="mb-8 flex h-20 items-center">
-							<AnimatePresence mode="wait">
-								{selected === 'M' ? (
-									<motion.p
-										key="oneTime"
-										initial={{ y: -50, opacity: 0 }}
-										animate={{ y: 0, opacity: 1 }}
-										exit={{ y: 50, opacity: 0 }}
-										transition={{ ease: 'linear', duration: 0.25 }}
-										className="text-6xl font-bold">
-										<span>$1299</span>
-									</motion.p>
-								) : (
-									<motion.p
-										key="yearly2"
-										initial={{ y: -50, opacity: 0 }}
-										animate={{ y: 0, opacity: 1 }}
-										exit={{ y: 50, opacity: 0 }}
-										transition={{ ease: 'linear', duration: 0.25 }}
-										className="text-lg italic text-yellow-500">
-										<a className="">You don't want to know how much we've seen companies spend...</a>
-									</motion.p>
-								)}
-							</AnimatePresence>
-						</div>
-						<ListItems
-							listItems={[
-								'Color Palette',
-								'All-Around Customization',
-								'In-Depth Requirements Gathering',
-								'Comprehensive Solutions',
-								'Four Maintenance /Update Requests',
-							]}
-						/>
-					</div>
-
-					<motion.button
-						whileHover={{ scale: 1.015 }}
-						whileTap={{ scale: 0.985 }}
-						className="mt-8 w-full rounded-lg bg-p py-4 font-semibold uppercase text-white">
-						Get Started
-					</motion.button>
+	const PriceCard = ({ title, selected, oneTimePrice, yearlyPrice, listItems }: PriceCardProps) => (
+		<div className={`
+			mx-auto flex w-3/4 flex-shrink-0 flex-col justify-between rounded-xl 
+			border-[1px] border-slate-300 dark:border-slate-700
+			bg-white dark:bg-n-900 p-3 
+			text-n-900 dark:text-white shadow-md 
+			md:mx-0 md:w-1/3 md:p-4 lg:grid lg:grid-rows-[auto_1fr_auto] lg:p-6 
+			${selected === 'A' ? 'h-auto' : ''}
+		`}>
+		<div className="bg-card text-card-foreground flex w-80 flex-col justify-between rounded-lg text-left">
+			<div className="flex flex-col space-y-1.5">
+				<p className="mb-2 text-lg font-bold lg:text-2xl">{title}</p>
+				<div className="mb-2 flex items-center lg:mb-12">
+					<AnimatePresence mode="wait">
+						{selected === 'M' ? (
+							<motion.p
+								key="oneTime"
+								initial={{ y: -50, opacity: 0 }}
+								animate={{ y: 0, opacity: 1 }}
+								exit={{ y: 50, opacity: 0 }}
+								transition={{ ease: 'linear', duration: 0.25 }}
+								className="animate-text bg-gradient-to-r from-p via-p-2 to-p-dark bg-clip-text pb-4 text-4xl font-bold text-transparent md:text-6xl lg:pb-8">
+								<span>{oneTimePrice}</span>
+							</motion.p>
+						) : (
+							<motion.p
+								key="yearly"
+								initial={{ y: -50, opacity: 0 }}
+								animate={{ y: 0, opacity: 1 }}
+								exit={{ y: 50, opacity: 0 }}
+								transition={{ ease: 'linear', duration: 0.25 }}
+								className="justify-left flex w-40 items-center text-left text-2xl font-bold text-red-500 md:text-4xl lg:w-52">
+								<span>{yearlyPrice}</span>
+							</motion.p>
+						)}
+					</AnimatePresence>
 				</div>
 			</div>
 		</div>
-	</>
+		<div className="lg:flex lg:items-start">
+			{selected === 'M' ? (
+				<ListItems listItems={listItems} />
+			) : (
+				<div className="hidden" /> // Placeholder to maintain height
+			)}
+		</div>
+		{selected === 'M' ? (
+			<motion.button
+				whileHover={{ scale: 1.015 }}
+				whileTap={{ scale: 0.985 }}
+				className="mt-8 w-2/3 rounded-lg bg-p py-4 font-semibold uppercase text-white">
+				Get Started
+			</motion.button>
+		) : (
+			<div className="hidden" />
+		)}
+	</div>
 )
 
+
 const BrandingSection = () => (
-	<>
-    <section className="flex flex-col items-start justify-center gap-12 px-24 lg:px-0 antialiased py-12 lg:py-24 lg:subpixel-antialiased md:flex-row w-full mx-auto max-w-5xl">
-					<div className="flex items-center justify-center lg:pb-8 md:justify-start">
-							<h2 className="H2 pl-0 lg:pl-12 xl:pl-24">Branding</h2>
-					</div>
-					<div className="relative z-10 mx-auto flex w-full max-w-md lg:max-w-4xl flex-col gap-4 lg:flex-row lg:gap-8">
-							{/* Basic Branding */}
-							<div className="flex w-full max-w-sm flex-col justify-between rounded-xl border-[1px] border-slate-300 bg-white p-4 text-n-900 shadow-md dark:bg-n-900 dark:text-white">
-									<div>
-											<p className="mb-2 h-16 text-2xl font-bold w-12">Basic Branding</p>
-											<div className="mb-8">
-													<p className="text-4xl font-bold">$300</p>
-											</div>
-											<ListItems listItems={['Custom Logo', 'Personal Color Palette']} />
-									</div>
-									<motion.button
-											whileHover={{ scale: 1.015 }}
-											whileTap={{ scale: 0.985 }}
-											className="mt-8 w-full rounded-lg bg-a-dark py-4 font-semibold uppercase text-white">
-											Get Started
-									</motion.button>
-							</div>
+  <div className="flex flex-wrap gap-4 md:justify-center lg:gap-6 lg:px-12 max-w-7xl mx-auto">
+    <BrandingCard title="Basic Branding" price="$300" listItems={['Custom Logo', 'Personal Color Palette']} />
+    <BrandingCard
+      title="Intermediate Branding"
+      price="$600"
+      listItems={['Logo Design', 'Color Palette', 'Brand Guidelines', 'Instructive Implementation']}
+    />
+    <BrandingCard
+      title="Comprehensive Branding"
+      price="$1,000"
+      listItems={['Full Branding Suite', 'In-Depth Brand Guidelines', 'Comprehensive Implementation']}
+    />
+  </div>
+)
 
-							{/* Intermediate Branding */}
-							<div className="flex w-full max-w-sm flex-col justify-between rounded-xl border-[1px] border-slate-300 bg-white p-4 text-n-900 shadow-md dark:bg-n-900 dark:text-white">
-									<div>
-											<p className="mb-2 h-16 text-2xl font-bold">Intermediate Branding</p>
-											<div className="mb-8">
-													<p className="animate-text bg-gradient-to-r from-p via-p-2 to-p-dark bg-clip-text text-6xl font-bold text-transparent">
-															$600
-													</p>
-											</div>
-											<ListItems
-													listItems={['Logo Design', 'Color Palette', 'Brand Guidelines', 'Instructive Implementation']}
-											/>
-									</div>
-									<motion.button
-											whileHover={{ scale: 1.015 }}
-											whileTap={{ scale: 0.985 }}
-											className="mt-8 w-full rounded-lg bg-a-dark py-4 font-semibold uppercase text-white">
-											Get Started
-									</motion.button>
-							</div>
 
-							{/* Comprehensive Branding */}
-							<div className="flex w-full max-w-sm flex-col justify-between rounded-xl border-[1px] border-slate-300 bg-white p-4 text-n-900 shadow-md dark:bg-n-900 dark:text-white">
-									<div>
-											<p className="mb-2 h-16 text-2xl font-bold">Comprehensive Branding</p>
-											<div className="mb-8">
-													<p className="text-4xl font-bold">$1,000</p>
-											</div>
-											<ListItems
-													listItems={['Full Branding Suite', 'In-Depth Brand Guidelines', 'Comprehensive Implementation']}
-											/>
-									</div>
-									<motion.button
-											whileHover={{ scale: 1.015 }}
-											whileTap={{ scale: 0.985 }}
-											className="mt-8 w-full rounded-lg bg-a-dark py-4 font-semibold uppercase text-white">
-											Get Started
-									</motion.button>
-							</div>
+
+interface BrandingCardProps {
+	title: string
+	price: string
+	listItems: string[]
+}
+
+const BrandingCard = ({ title, price, listItems }: BrandingCardProps) => (
+  <div className="w-3/4 md:w-1/3 flex-shrink-0 flex-col justify-between rounded-xl border-[1px] border-slate-300 bg-white p-3 text-n-900 shadow-md dark:bg-n-900 dark:text-white md:p-4 lg:w-1/3 lg:p-6 mx-auto">
+		<div className="bg-card text-card-foreground flex w-80 flex-col justify-between rounded-lg text-left">
+			<div className="flex flex-col space-y-1.5">
+				<p className="mb-2 font-bold lg:text-2xl w-fit">{title}</p>
+				<div className="mb-2 flex items-center lg:mb-12">
+					<h2 className='pb-4 text-4xl font-bold md:text-6xl lg:pb-8'>{price}</h2>
 					</div>
-			</section>
-	</>
+			</div>
+		</div>
+			<ListItems listItems={listItems} />
+		<motion.button
+			whileHover={{ scale: 1.015 }}
+			whileTap={{ scale: 0.985 }}
+			className="mt-8 w-2/3 rounded-lg bg-p py-4 font-semibold uppercase text-white">
+			Get Started
+		</motion.button>
+	</div>
+)
+
+// ListItems component
+const ListItems = ({ listItems }: { listItems: string[] }) => (
+	<ul className="max-w-52 list-inside list-none space-y-2 text-left">
+		{listItems.map((item, index) => (
+			<li key={index} className="flex items-start">
+				<CheckMark />
+				<span>{item}</span>
+			</li>
+		))}
+	</ul>
+)
+
+const CheckMark = () => (
+	<svg
+		width="16"
+		height="18"
+		viewBox="0 0 18 20"
+		fill="none"
+		xmlns="http://www.w3.org/2000/svg"
+		className="mr-2 mt-1 inline-block">
+		<path
+			d="M6.35588 11.8345L1.61455 7.17002L0 8.7472L6.35588 15L20 1.57718L18.3968 0L6.35588 11.8345Z"
+			fill="#aee1cf"
+		/>
+	</svg>
 )
 
 const CTAArrow = () => (
-	<div className="absolute -right-[100px] top-2 sm:top-0">
+	<div className="absolute -right-[75px] top-0 md:-right-[100px] md:top-2">
 		<motion.svg
 			width="95"
 			height="62"
@@ -246,76 +273,10 @@ const CTAArrow = () => (
 				strokeLinecap="round"
 			/>
 		</motion.svg>
-		<span className="-mt-1 ml-8 block w-fit -rotate-2 rounded bg-s px-1.5 py-0.5 text-xs font-light italic text-p shadow">
+		<span className="-mt-1 ml-8 hidden w-fit -rotate-2 rounded bg-s px-1.5 py-0.5 text-xs font-light italic text-p shadow md:block">
 			Compare $$$
 		</span>
 	</div>
 )
 
-const CheckMark = () => (
-	<svg
-		width="16"
-		height="18"
-		viewBox="0 0 18 20"
-		fill="none"
-		xmlns="http://www.w3.org/2000/svg"
-		className="mr-2 mt-1 inline-block">
-		<path
-			d="M6.35588 11.8345L1.61455 7.17002L0 8.7472L6.35588 15L20 1.57718L18.3968 0L6.35588 11.8345Z"
-			fill="#aee1cf"
-		/>
-	</svg>
-)
 
-const Title = () => (
-	<><div className="relative z-10 mb-8 lg:mb-8">
-		<h3 className="mb-6 text-center text-5xl font-bold text-a dark:text-s">Pricing</h3>
-	</div><section className="flex justify-center py-8 w-full max-w-2xl mx-auto antialiased lg:subpixel-antialiased flex-row gap-4 md:gap-8 lg:gap-12 items-start">
-			<h2 className="H2 text-center">Websites</h2>
-			<div className=''>
-			<p className="mx-auto mb-4 max-w-lg text-left text-gray-700 dark:text-gray-300">
-				Traditional platforms often have recurring fees, maintenance, and setup costs. Compare your one-time investment
-				with their average annual costs.</p>
-							<p className="mx-auto mb-8 max-w-lg text-left text-gray-700 dark:text-gray-300">
-			We offer simple, one-time payments. Here’s how they compare to the average annual cost of traditional platforms.
-		</p>
-		</div>
-		</section></>
-)
-
-const TopLeftCircle = () => {
-	return (
-		<motion.div
-			initial={{ rotate: '0deg' }}
-			animate={{ rotate: '360deg' }}
-			transition={{ duration: 100, ease: 'linear', repeat: Infinity }}
-			className="absolute -left-[250px] -top-[200px] z-0 h-[450px] w-[450px] rounded-full border-[1px] md:border-2 lg:border-4 border-dotted border-p"
-		/>
-	)
-}
-
-const BottomRightCircle = () => {
-	return (
-		<motion.div
-			initial={{ rotate: '0deg' }}
-			animate={{ rotate: '-360deg' }}
-			transition={{ duration: 100, ease: 'linear', repeat: Infinity }}
-			className="absolute -bottom-[200px] -right-[250px] z-0 h-[450px] w-[450px] rounded-full border-2 border-dotted border-p"
-		/>
-	)
-}
-
-type ListItemProps = {
-	listItems: string[]
-}
-
-const ListItems = ({ listItems }: ListItemProps) => (
-	<ul className="Description-p prose">
-		{listItems.map((item, index) => (
-			<li key={index} className="flex items-center">
-				<CheckMark />
-				{item}
-			</li>
-		))}
-	</ul>
-)
