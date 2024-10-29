@@ -9,6 +9,7 @@ import { useImgPadding } from '@/constants/imgpadding'
 import { CallTo } from '@/components/ui/CallTo'
 import TimelineE from '@/components/ui/TimeTable'
 import { Tech } from '@/components/Tech'
+import Ribbon from '@/components/ui/Ribbon'
 
 export const Home = () => {
 	useEffect(() => {
@@ -20,12 +21,15 @@ export const Home = () => {
 	return (
 		<div className="antialiased overflow-x-clip bg-n-9 dark:bg-n-6 lg:subpixel-antialiased">
 			<div className="">
+				<Ribbon />
+			</div>
+
 				<HeroParallaxContent />
 				<CallTo />
 				<TimelineE />
 				<MapParallaxContent />
 				<Tech />
-			</div>
+
 		</div>
 	)
 }

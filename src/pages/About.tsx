@@ -8,7 +8,7 @@ export const About = () => {
 	return (
 		<div className="relative px-content-padding">
 			<StickyVComp contentHeight={true}>
-				<section className="relative w-full py-4 antialiased lg:subpixel-antialiased">
+				<section className="relative w-full min-h-screen py-4 antialiased lg:subpixel-antialiased">
 
 					<header className="mb-6 text-center">
 						<h1 className="H2">About Selynt</h1>

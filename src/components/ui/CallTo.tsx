@@ -1,10 +1,10 @@
-import { useImgPadding } from '@/constants/imgpadding'
+
 import { StickyVComp } from '../ui/sticky-comp-variant'
 import { Link } from 'react-router-dom'
 import { Button } from '@/components/common/Button'
 
 export const CallTo = () => {
-	useImgPadding()
+
 	return (
 		<div className="relative">
 			<StickyVComp contentHeight={true}>

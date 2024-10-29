@@ -7,6 +7,9 @@ import NotFound from '@/pages/404'
 import PageTransition from '@/components/ui/page-transition'
 import Pricing from '@/pages/Pricing'
 import ScrollToTop from '@/components/layout/ScrollToTop';
+import { Privacy } from '@/pages/Privacy'
+import { Terms } from '@/pages/Terms'
+
 
 
 const AnimatedRoutes = () => {
@@ -23,6 +26,8 @@ const AnimatedRoutes = () => {
 					<Route path="/contact" element={<Contact />} />
 					<Route path="*" element={<NotFound />} />
 					<Route path="/pricing" element={<Pricing />} />
+					<Route path="/privacy" element={<Privacy />} />
+					<Route path="/terms" element={<Terms />} />
 				</Routes>
 			</PageTransition>
 		</AnimatePresence>

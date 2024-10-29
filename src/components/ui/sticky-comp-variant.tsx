@@ -32,17 +32,20 @@ const StickyVImage: React.FC<StickyVImageProps> = ({ children, contentHeight }) 
 	// Slower, smoother transition
 	const transition = {
 		type: 'spring',
-		stiffness: 100, // Reduced stiffness for slower movement
-		damping: 30,
+		stiffness: 70, // Reduced stiffness for slower movement
+		damping: 20,
 		mass: 1.5, // Added mass for more inertia
-		restDelta: 0.001,
+		restDelta: 0.005,
 	}
 
 	// More gradual scaling
-	const scale = useTransform(scrollYProgress, [0, 0.5, 1], [1, 0.95, 0.85])
+	const scale = useTransform(scrollYProgress, [0, 0.5, 1], [1, 0.98, 0.95])
 
 	// Slower opacity change
-	const opacity = useTransform(scrollYProgress, [0, 0.7, 1], [1, 0.75, 0.5])
+	const opacity = useTransform(scrollYProgress,
+		[0, 0.3, 0.7, 1],
+		[1, 0.98, 0.95, 0.9]
+	)
 
 	// Use the custom hook for padding
 	useImgPadding(contentHeight)
@@ -75,7 +78,7 @@ const StickyVImage: React.FC<StickyVImageProps> = ({ children, contentHeight }) 
 			transition={transition}
 			className="z-0 mx-auto overflow-hidden bg-center bg-cover stickyV rounded-3xl">
 			<motion.div
-				className="absolute bg-white inset-1 rounded-3xl dark:bg-n-9"
+				className="absolute bg-white inset-1 rounded-3xl dark:bg-p-dark"
 				style={{ opacity }}
 				transition={transition}
 			/>
