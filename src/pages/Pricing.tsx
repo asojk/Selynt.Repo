@@ -1,11 +1,11 @@
-import SlidePricing from '@/components/Prices.tsx'
+import SlidePricing from '@/components/Prices'
 
 const Pricing: React.FC = () => {
-	return (
-		<div className="items-center justify-center min-h-screen bg-n-light dark:bg-n-dark">
-			<SlidePricing />
-		</div>
-	)
+  return (
+    <div className="min-h-screen">
+      <SlidePricing />
+    </div>
+  )
 }
 
 export default Pricing

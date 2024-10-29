@@ -2,7 +2,6 @@ import React, { ReactElement, useEffect, useRef, useState } from 'react'
 import { AnimatePresence, motion } from 'framer-motion'
 import { twMerge } from 'tailwind-merge'
 import {
-	IconArrowAutofitRight,
 	IconBrandFramerMotion,
 	IconBrandGithub,
 	IconBrandReact,
@@ -11,6 +10,7 @@ import {
 } from '@tabler/icons-react'
 import { StickyVComp } from './ui/sticky-comp-variant'
 import { Link } from 'react-router-dom'
+import PingButton from './ui/Ping'
 
 export const Tech = () => {
 	return (
@@ -50,17 +50,25 @@ const Copy = () => (
 			<div className="h-2"></div>
 			Please don't hesitate to reach out us with any questions.
 		</p>
+		<motion.div
+					initial={{
+						opacity: 0.7,
+						scale: 0.85,
+					}}
+					animate={{
+						opacity: 1,
+						scale: 1,
+					}}
+					whileHover={{ scale: 1.1 }}
+					transition={{
+						duration: 1,
+						ease: 'easeOut',
+					}}
+				>
 		<Link to="/contact">
-			<div className="relative mt-6 inline-flex items-center justify-center">
-				<span
-					className="absolute -inset-1/2 m-auto h-12 w-48 animate-pulse-slow rounded-full bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-s/50 via-s/30 to-s/10"
-					aria-hidden="true"></span>
-				<a className="group relative z-10 flex items-center text-lg font-semibold uppercase text-p transition-colors hover:text-p-dark">
-					Get in touch{' '}
-					<IconArrowAutofitRight className="ml-2 inline-block text-base transition-transform group-hover:rotate-45" />
-				</a>
-			</div>
+		<PingButton />
 		</Link>
+		</motion.div>
 	</div>
 )
 
