@@ -20,8 +20,19 @@ export default defineConfig({
       svg: { quality: 70 },
     }),
     visualizer({
+      filename: 'dist/stats-flamegraph.html',
+      template: 'flamegraph',
       open: true,
-      filename: 'dist/stats.html',
+      gzipSize: true,
+      emitFile: true,
+    }),
+    visualizer({
+      filename: 'dist/stats-treemap.html',
+      template: 'treemap',
+    }),
+    visualizer({
+      filename: 'dist/stats-sunburst.html',
+      template: 'sunburst',
     }),
     react(),
     Icons({

@@ -6,26 +6,46 @@ import { Button } from '@/components/common/Button'
 export const CallTo = () => {
 
 	return (
-		<div className="relative">
-			<StickyVComp contentHeight={true}>
-				<section className="relative w-full py-4 antialiased lg:subpixel-antialiased lg:py-24">
-					<div className="space-y-4 prose">
-						<h2 className="mb-8 H2">Our Standards</h2>
-						<h3 className='prose text-left H3'>
-							We empower small businesses to thrive in a market dominated by larger corporations.
-						</h3>
-						<p className='prose text-left Description' data-aos="fade-in-left">
-							We specialize in crafting beautiful, streamlined websites and polished brand identities, focusing on clarity, simplicity, and affordability—because we believe that <a className='Description font-bold'>standing out should not mean overspending.</a> We never compromise on the quality of our work, ensuring that every project meets the highest standards of design and functionality.
-						</p>
-					</div>
+<div className="relative">
+	<StickyVComp contentHeight={true}>
+<section className="text-n-9 dark:text-n-3 relative w-full py-4 antialiased lg:subpixel-antialiased">
+
+
+
+    <h2 className="text-3xl lg:text-4xl font-bold text-a-dark dark:text-s pb-12">Why us?</h2>
+		<div className="max-w-2xl mx-auto text-center lg:grid lg:grid-cols-2 lg:gap-12">
+    <div className="text-left space-y-2 lg:space-y-4 pb-8">
+      <h3 className="text-xl lg:text-2xl font-semibold">We Craft:</h3>
+      <ul className="space-y-2 pl-8 list-disc text-lg">
+        <li><span className="font-medium">Websites</span></li>
+        <li><span className="font-medium">&amp; Brand Identities</span></li>
+      </ul>
+    </div>
+
+    <div className="text-left space-y-2 lg:space-y-4 pb-12">
+      <h3 className="text-xl lg:text-2xl font-semibold">We Focus On:</h3>
+      <ul className="space-y-2 pl-8 list-disc text-lg">
+        <li>Clarity</li>
+        <li>Simplicity</li>
+        <li><span className="font-medium">&amp; Affordability</span></li>
+      </ul>
+    </div>
+		</div>
+
+    <p className="text-lg lg:text-xl leading-snug">...and because we believe that</p>
+    <p className="text-2xl lg:text-3xl font-bold text-a-dark dark:text-s leading-snug">standing out should not mean <br /> overspending.</p>
+
 					<div className='pt-6 grid grid-cols-1'>
 					<Link to='/pricing'>
 						<Button text='Compare'/>
 						</Link>
-					<p className='Description-p pt-4'>Our Prices // Traditional Options</p>
+						<p className="mt-3 text-sm lg:text-base">Our Prices // Traditional Options</p>
 						</div>
+
 				</section>
 			</StickyVComp>
 		</div>
 	)
 }
+
+

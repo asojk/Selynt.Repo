@@ -1,8 +1,22 @@
+# Directories
 node_modules
 dist
 build
 
-"scripts": {
-  ...
-  "format": "prettier --write \"src/**/*.{js,jsx,ts,tsx,json,css,scss,md}\""
+# Temporary files
+**/var/**
+/var/folders/**/*
+
+# Other files you might want to ignore
+.DS_Store
+*.log
+
+# If you want to ignore specific file types in certain directories, you can add patterns like:
+# public/*.html
+# **/*.min.js
+
+{
+  "scripts": {
+    "format": "prettier --write \"src/**/*.{js,jsx,ts,tsx,json,css,scss,md}\""
+  }
 }

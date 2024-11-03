@@ -9,6 +9,7 @@ import Pricing from '@/pages/Pricing'
 import ScrollToTop from '@/components/layout/ScrollToTop';
 import { Privacy } from '@/pages/Privacy'
 import { Terms } from '@/pages/Terms'
+import Tst from '@/pages/Tst'
 
 
 
@@ -25,6 +26,7 @@ const AnimatedRoutes = () => {
 					<Route path="/about" element={<About />} />
 					<Route path="/contact" element={<Contact />} />
 					<Route path="*" element={<NotFound />} />
+					<Route path="/tst" element={<Tst />} />
 					<Route path="/pricing" element={<Pricing />} />
 					<Route path="/privacy" element={<Privacy />} />
 					<Route path="/terms" element={<Terms />} />
