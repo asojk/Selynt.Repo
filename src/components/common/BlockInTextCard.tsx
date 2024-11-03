@@ -13,8 +13,8 @@ export const BlockInTextCard = ({ tag, text, examples }: { tag: string; text: Re
 				<Typewrite examples={examples} />
 				<hr className="border-n-9 dark:border-n-5" />
 			</div>
-			<button className="w-full rounded-full border border-n-900 py-2 text-sm font-medium transition-colors hover:bg-n-900 hover:text-n-3 dark:border-n-1 dark:hover:bg-n-1 dark:hover:text-n-7">
-				<a href="mailto:contact@selynt.com">Contact Us</a>
+			<button className="w-full mx-auto max-w-lg rounded-full border border-n-900 py-2 text-sm font-medium transition-colors hover:bg-n-900 hover:text-n-3 dark:border-n-1 dark:hover:bg-n-1 dark:hover:text-n-7">
+				<a href="mailto:contact@selynt.com">Send us an email</a>
 			</button>
 		</div>
 	)

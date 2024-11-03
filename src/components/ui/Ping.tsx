@@ -1,11 +1,11 @@
 import { motion } from 'framer-motion'
 import {
-	IconArrowAutofitRight,
+	IconClick,
 } from '@tabler/icons-react'
 
 const PingButton = () => {
 	return (
-		<div className="grid place-content-center overflow-hidden px-4 py-8">
+		<div className="grid place-content-center px-4 py-12 cursor-default">
 			<Ping />
 		</div>
 	)
@@ -15,7 +15,7 @@ const LOOP_DURATION = 4
 
 const Ping = () => {
 	return (
-		<div className="relative">
+		<div className="relative -z-1">
         <Logo />
 			<Band delay={0} />
 			<Band delay={LOOP_DURATION * 0.25} />
@@ -29,7 +29,7 @@ const Logo = () => {
 	return (
 
 		<motion.text
-			className="relative z-10 text-lg md:text-xl lg:text-2xl text-n-900 decoration-none"
+			className="flex flex-col items-center group relative cursor-pointer z-10 text-md md:text-lg lg:text-xl xl:text-2xl text-white font-semibold decoration-none"
 			initial={{
 				opacity: 0.7,
 				scale: 0.85,
@@ -42,7 +42,7 @@ const Logo = () => {
 				duration: 1,
 				ease: 'easeOut',
 			}}>Get in touch
-      <IconArrowAutofitRight className="inline-block text-xs" />
+			<IconClick className="flex items-center justify-center text-md md:text-lg lg:text-xl xl:text-2xl text-n-1 stroke-1 xl:stroke-[1.5]" />
       </motion.text>
 
 

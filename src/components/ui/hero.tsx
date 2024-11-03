@@ -26,7 +26,7 @@ export const Hero: React.FC = () => {
 			</div>
 
 			{/* Text at bottom */}
-			<div className="mt-auto mb-16 text-center">
+			<div className="mt-auto mb-24 text-center">
 				<h1 className="Hero">
 					Boost Credibility <br className="line-break-small" /> with a{' '}
 					<span className="text-transparent animate-text bg-gradient-to-r from-p via-s to-a-darker bg-clip-text">

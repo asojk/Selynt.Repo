@@ -1,0 +1,26 @@
+# Ignore build output
+dist
+
+# Ignore node_modules
+node_modules
+
+# Ignore all HTML files
+**/*.html
+
+# Ignore all MD files
+**/*.md
+
+# Ignore specific directories
+/history
+./history
+../Selynt/**
+
+# Ignore temporary files
+**/var/**
+/var/folders/**/*.{js,jsx,ts,tsx}
+
+# Ignore any files in .gitignore
+.gitignore
+
+# Ignore any files starting with a dot
+.*

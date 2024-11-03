@@ -15,7 +15,7 @@ import PingButton from './ui/Ping'
 export const Tech = () => {
 	return (
 		<StickyVComp contentHeight={true}>
-			<section className="flex w-full flex-col items-center justify-center gap-12 px-4 py-4 antialiased md:flex-row lg:py-24 lg:subpixel-antialiased">
+			<section className="flex w-full flex-col items-center justify-center gap-12 px-4 py-4 antialiased md:flex-row lg:py-24 lg:subpixel-antialiased cursor-default">
 				<Copy />
 				<LogoRolodex
 					items={[
@@ -43,12 +43,9 @@ export const Tech = () => {
 
 const Copy = () => (
 	<div className="prose max-w-lg text-center md:text-start">
-		<h2 className="H2">We work with the latest technologies</h2>
-		<p className="Description-p mb-6 text-sm">
-			Our team is proficient in the latest web-development and design technologies. We believe that, in leveraging these
-			tools, we can deliver higher-quality work and save time and money for both of us.
-			<div className="h-2"></div>
-			Please don't hesitate to reach out us with any questions.
+		<h2 className="H2">We Leverage the Latest Tech</h2>
+		<p className="Description-p mb-6 text-sm lg:mb-12">
+		In both web development and design, to deliver higher-quality work while saving time and money for both parties involved.
 		</p>
 		<motion.div
 					initial={{
@@ -65,9 +62,11 @@ const Copy = () => (
 						ease: 'easeOut',
 					}}
 				>
+					<div className='cursor-pointer'>
 		<Link to="/contact">
 		<PingButton />
 		</Link>
+		</div>
 		</motion.div>
 	</div>
 )

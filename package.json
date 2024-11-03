@@ -6,10 +6,11 @@
 	"scripts": {
 		"dev": "vite",
 		"build": "tsc && vite build",
-		"lint": "eslint . --config eslint.config.js",
-		"compile-scripts": "tsc -p scripts/tsconfig.scripts.json",
+		"format": "prettier --write \"src/**/*.{js,jsx,ts,tsx,json,css,scss,md}\"",
 		"upload-images": "pnpm run compile-scripts && node --experimental-specifier-resolution=node dist-scripts/uploadImages.js",
 		"check-images": "pnpm run compile-scripts && node --experimental-specifier-resolution=node dist-scripts/checkImageChanges.js",
+		"lint": "eslint . --config eslint.config.js",
+		"compile-scripts": "tsc -p scripts/tsconfig.scripts.json",
 		"preview": "vite preview"
 	},
 	"dependencies": {
@@ -17,6 +18,8 @@
 		"@use-gesture/react": "^10.3.1",
 		"add": "^2.0.6",
 		"aos": "^2.3.4",
+		"canvas-confetti": "^1.9.3",
+		"clsx": "^2.1.1",
 		"framer-motion": "^11.11.9",
 		"pnpm": "^9.12.3",
 		"react": "^18.3.1",
@@ -24,7 +27,6 @@
 		"react-router-dom": "^6.27.0",
 		"react-simple-maps": "^3.0.0",
 		"react-syntax-highlighter": "^15.6.1",
-		"swiper": "^11.1.14",
 		"tailwind-merge": "^2.5.4"
 	},
 	"devDependencies": {
@@ -52,8 +54,10 @@
 		"eslint-plugin-react": "^7.37.2",
 		"eslint-plugin-react-hooks": "^4.6.2",
 		"eslint-plugin-react-refresh": "^0.4.13",
+		"eslint-plugin-tailwindcss": "^3.17.5",
 		"postcss": "^8.4.47",
 		"prettier": "^3.3.3",
+		"prettier-eslint": "^16.3.0",
 		"prettier-plugin-tailwindcss": "^0.6.8",
 		"rollup-plugin-visualizer": "^5.12.0",
 		"tailwindcss": "^3.4.14",
