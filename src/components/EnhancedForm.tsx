@@ -45,7 +45,7 @@ export const EnhancedForm: React.FC = () => {
   const onSubmit = handleSubmit(async (data: FormData) => {
     setSubmitStatus('loading');
     try {
-      const response = await fetch('https://formsubmit.co/ajax/contact@selynt.com', {
+      const response = await fetch('82120871942c24049c274ba8143a4f61', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
