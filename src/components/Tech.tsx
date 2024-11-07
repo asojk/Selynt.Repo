@@ -42,7 +42,7 @@ export const Tech = () => {
 const Copy = () => (
   <div className="mx-auto flex max-w-2xl flex-col items-center text-center md:items-start md:text-left">
     <h2 className="H2">Empowering Your Digital Presence</h2>
-    <p className="text-lg mb-6">We harness cutting-edge technology to deliver:</p>
+    <p className="text-lg mb-6 text-n-9 dark:text-n-1">We harness cutting-edge technology to deliver:</p>
     <div className="grid w-full grid-cols-1 gap-8 text-n-900 dark:text-n-1 md:grid-cols-2">
       <div className="space-y-4">
         <h3 className="text-left text-xl font-semibold">Tailored Solutions</h3>

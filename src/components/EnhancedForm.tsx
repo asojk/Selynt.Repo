@@ -42,19 +42,19 @@ export const EnhancedForm: React.FC = () => {
 		control,
 		formState: { errors },
 		watch,
-	} = useForm<FormData>({
-		resolver: zodResolver(schema),
-		defaultValues: {
-			firstName: '',
-			lastName: '',
-			email: '',
-			preferredDate: '',
-			contactPreference: 'Morning',
-			projectType: 'Website Tier 1',
-			comments: '',
-			okToContact: false,
-		},
-	})
+  } = useForm<FormData>({
+    resolver: zodResolver(schema),
+    defaultValues: {
+      firstName: '',
+      lastName: '',
+      email: '',
+      preferredDate: '',
+      contactPreference: undefined,
+      projectType: undefined,
+      comments: '',
+      okToContact: false,
+    },
+  })
 	const okToContact = watch('okToContact')
 
 	const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
@@ -143,33 +143,32 @@ export const EnhancedForm: React.FC = () => {
   />
 </div>
 
-				<div>
-					<Label htmlFor="projectType" className="text-sm font-medium text-n-8 dark:text-n-3">
-						Project Type
-					</Label>
-					<Controller
-						name="projectType"
-						control={control}
-						render={({ field }) => (
-							<Select
-								{...field}
-								options={[
-									'Website Tier 1',
-									'Website Tier 2',
-									'Branding Tier 1',
-									'Branding Tier 2',
-									'Branding Tier 3',
-									'Combo',
-									'Unsure',
-								]}
-								className={cn(
-									formStyles.select,
-									'mt-1 w-full rounded-md shadow-sm focus:border-a-light focus:ring-a-light'
-								)}
-							/>
-						)}
-					/>
-				</div>
+<div className="mb-4">
+  <Label htmlFor="projectType" className="block text-sm font-medium mb-1 text-n-8 dark:text-n-3">
+    Project Type
+  </Label>
+  <Controller
+    name="projectType"
+    control={control}
+    render={({ field }) => (
+      <Select
+        id="projectType"
+        {...field}
+        className={cn(formStyles.select, "w-full")}
+      >
+        <option value="" >Select a project type</option>
+        <option value="Website Tier 1">Website Tier 1</option>
+        <option value="Website Tier 2">Website Tier 2</option>
+        <option value="Branding Tier 1">Branding Tier 1</option>
+        <option value="Branding Tier 2">Branding Tier 2</option>
+        <option value="Branding Tier 3">Branding Tier 3</option>
+        <option value="Combo">Combo</option>
+        <option value="Unsure">Unsure</option>
+      </Select>
+    )}
+  />
+  {errors.projectType && <p className="mt-1 text-s-dark">{errors.projectType.message}</p>}
+</div>
 
 				<div>
 					<Label htmlFor="comments" className="text-sm font-medium text-n-8 dark:text-n-3">

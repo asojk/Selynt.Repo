@@ -148,25 +148,24 @@ export const EnhancedForm: React.FC = () => {
           Project Type
         </Label>
         <Controller
-          name="projectType"
-          control={control}
-          render={({ field }) => (
-            <Select
-              id="projectType"
-              options={[
-                'Website Tier 1',
-                'Website Tier 2',
-                'Branding Tier 1',
-                'Branding Tier 2',
-                'Branding Tier 3',
-                'Combo',
-                'Unsure'
-              ]}
-              {...field}
-              className={cn(formStyles.select, "w-full")}
-            />
-          )}
-        />
+  name="projectType"
+  control={control}
+  render={({ field }) => (
+    <Select
+      id="projectType"
+      {...field}
+      className={cn(formStyles.select, "w-full")}
+    >
+      <option value="Website Tier 1">Website Tier 1</option>
+      <option value="Website Tier 2">Website Tier 2</option>
+      <option value="Branding Tier 1">Branding Tier 1</option>
+      <option value="Branding Tier 2">Branding Tier 2</option>
+      <option value="Branding Tier 3">Branding Tier 3</option>
+      <option value="Combo">Combo</option>
+      <option value="Unsure">Unsure</option>
+    </Select>
+  )}
+/>
         {errors.projectType && <p className="mt-1 text-s-dark">{errors.projectType.message}</p>}
       </div>
 
