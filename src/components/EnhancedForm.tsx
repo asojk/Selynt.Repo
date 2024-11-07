@@ -1,265 +1,278 @@
-import React, { useState } from 'react';
-import { useForm, Controller } from 'react-hook-form';
-import { zodResolver } from '@hookform/resolvers/zod';
-import * as z from 'zod';
-import { cn } from '@/lib/utils';
-import { formStyles } from '@/lib/formStyles';
-import { DatePicker } from '@/components/ui/date-picker';
-import { Select } from '@/components/ui/select';
-import { TextArea } from '@/components/ui/textarea';
-import { RadioGroup } from '@/components/ui/radio-group';
-import { Checkbox } from '@/components/ui/checkbox';
-import { Label } from '@/components/ui/label';
+import React, { useState } from 'react'
+import { useForm, Controller } from 'react-hook-form'
+import { zodResolver } from '@hookform/resolvers/zod'
+import * as z from 'zod'
+import { cn } from '@/lib/utils'
+import { formStyles } from '@/lib/formStyles'
+import { DatePicker } from '@/components/ui/date-picker'
+import { Select } from '@/components/ui/select'
+import { TextArea } from '@/components/ui/textarea'
+import { RadioGroup } from '@/components/ui/radio-group'
+import { Checkbox } from '@/components/ui/checkbox'
+import { Label } from '@/components/ui/label'
 
 const schema = z.object({
-  firstName: z.string().min(1, 'First name is required'),
-  lastName: z.string().min(1, 'Last name is required'),
-  email: z.string().email('Invalid email address'),
-  company: z.string().optional(),
-  phone: z.string().optional(),
-  preferredDate: z.string().optional(),
-  contactPreference: z.enum(['Morning', 'Afternoon']).optional(),
-  projectType: z.enum(['Website Tier 1', 'Website Tier 2', 'Branding Tier 1', 'Branding Tier 2', 'Branding Tier 3', 'Combo', 'Unsure']).optional(),
-  comments: z.string().optional(),
-  okToContact: z.boolean()
-});
+	firstName: z.string().min(1, 'First name is required'),
+	lastName: z.string().min(1, 'Last name is required'),
+	email: z.string().email('Invalid email address'),
+	company: z.string().optional(),
+	phone: z.string().optional(),
+	preferredDate: z.string().optional(),
+	contactPreference: z.enum(['Morning', 'Afternoon']).optional(),
+	projectType: z
+		.enum([
+			'Website Tier 1',
+			'Website Tier 2',
+			'Branding Tier 1',
+			'Branding Tier 2',
+			'Branding Tier 3',
+			'Combo',
+			'Unsure',
+		])
+		.optional(),
+	comments: z.string().optional(),
+	okToContact: z.boolean(),
+})
 
-type FormData = z.infer<typeof schema>;
+type FormData = z.infer<typeof schema>
 
 export const EnhancedForm: React.FC = () => {
-  const [submitStatus, setSubmitStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
-  const { control, formState: { errors }, watch } = useForm<FormData>({
-    resolver: zodResolver(schema),
-    defaultValues: {
-      firstName: '',
-      lastName: '',
-      email: '',
-      preferredDate: '',
-      contactPreference: 'Morning',
-      projectType: 'Website Tier 1',
-      comments: '',
-      okToContact: false,
-    },
-  });
-  const okToContact = watch('okToContact');
+	const [submitStatus, setSubmitStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle')
+	const {
+		control,
+		formState: { errors },
+		watch,
+	} = useForm<FormData>({
+		resolver: zodResolver(schema),
+		defaultValues: {
+			firstName: '',
+			lastName: '',
+			email: '',
+			preferredDate: '',
+			contactPreference: 'Morning',
+			projectType: 'Website Tier 1',
+			comments: '',
+			okToContact: false,
+		},
+	})
+	const okToContact = watch('okToContact')
 
-  const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
-    setSubmitStatus('loading');
+	const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
+		event.preventDefault()
+		setSubmitStatus('loading')
 
-    const form = event.currentTarget;
-    const formData = new FormData(form);
+		const form = event.currentTarget
+		const formData = new FormData(form)
 
-    try {
-      const response = await fetch(form.action, {
-        method: form.method,
-        body: formData,
-        headers: {
-          'Accept': 'application/json'
-        }
-      });
+		try {
+			const response = await fetch(form.action, {
+				method: form.method,
+				body: formData,
+				headers: {
+					Accept: 'application/json',
+				},
+			})
 
-      if (response.ok) {
-        setSubmitStatus('success');
-        form.reset();
-      } else {
-        setSubmitStatus('error');
-      }
-    } catch (error) {
-      console.error('Submission error:', error);
-      setSubmitStatus('error');
-    }
-  };
+			if (response.ok) {
+				setSubmitStatus('success')
+				form.reset()
+			} else {
+				setSubmitStatus('error')
+			}
+		} catch (error) {
+			console.error('Submission error:', error)
+			setSubmitStatus('error')
+		}
+	}
 
+	return (
+		<form
+			action="https://formsubmit.co/82120871942c24049c274ba8143a4f61"
+			method="POST"
+			onSubmit={handleSubmit}
+			className="mx-auto max-w-xl rounded-lg p-6 shadow-lg bg-n-5 antialiased dark:bg-n-6 lg:subpixel-antialiased ">
+			<input type="hidden" name="_captcha" value="false" />
+			<input type="hidden" name="_subject" value="New form submission" />
+			<input type="hidden" name="_autoresponse" value="Thank you for your submission. We will get back to you soon." />
+			<input type="hidden" name="_next" value="https://www.selynt.com" />
 
-  return (
-    <form
-    action="https://formsubmit.co/82120871942c24049c274ba8143a4f61"
-    method="POST"
-    onSubmit={handleSubmit}
-    className="max-w-xl mx-auto p-4 sm:p-6 bg-n-light dark:bg-g-900 rounded-lg shadow-custom dark:shadow-custom-dark"
-  >
-      <input type="hidden" name="_captcha" value="false" />
-      <input type="hidden" name="_subject" value="New form submission" />
-      <input type="hidden" name="_autoresponse" value="Thank you for your submission. We will get back to you soon." />
-      <input type="hidden" name="_next" value="https://www.selynt.com" />
+			<div className="space-y-6">
+				<div className="grid grid-cols-1 gap-6 md:grid-cols-2">
+					<FormField control={control} name="firstName" label="First Name" error={errors.firstName} />
+					<FormField control={control} name="lastName" label="Last Name" error={errors.lastName} />
+				</div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
-        <div>
-          <Label htmlFor="firstName" className="block text-sm font-medium text-n-800 dark:text-n-200 mb-1">
-            First Name
-          </Label>
-          <Controller
-            name="firstName"
-            control={control}
-            render={({ field }) => (
-              <input
-                {...field}
-                id="firstName"
-                name="firstName"  // Add this line
-                className={cn(formStyles.input, "w-full px-3 py-2 bg-white dark:bg-g-800 border border-g-300 dark:border-g-700 rounded-md shadow-sm focus:ring-a-light focus:border-a-light")}
-              />
-            )}
-          />
-          {errors.firstName && <p className="mt-1 text-s-dark">{errors.firstName.message}</p>}
-        </div>
+				<FormField control={control} name="email" label="Email" type="email" error={errors.email} />
 
-        <div>
-          <Label htmlFor="lastName" className="block text-sm font-medium text-n-800 dark:text-n-200 mb-1">
-            Last Name
-          </Label>
-          <Controller
-            name="lastName"
-            control={control}
-            render={({ field }) => (
-              <input
-                {...field}
-                id="lastName"
-                name='lastName'
-                className={cn(formStyles.input, "w-full px-3 py-2 bg-white dark:bg-g-800 border border-g-300 dark:border-g-700 rounded-md shadow-sm focus:ring-a-light focus:border-a-light")}
-              />
-            )}
-          />
-          {errors.lastName && <p className="mt-1 text-s-dark">{errors.lastName.message}</p>}
-        </div>
-      </div>
+				<div>
+					<Label htmlFor="preferredDate" className="text-sm font-medium text-n-8 dark:text-n-3">
+						Preferred Contact Date (Optional)
+					</Label>
+					<Controller
+						name="preferredDate"
+						control={control}
+						render={({ field }) => (
+							<DatePicker
+								{...field}
+								className={cn(
+									formStyles.input,
+									'mt-1 w-full rounded-md shadow-sm focus:border-a-light focus:ring-a-light'
+								)}
+							/>
+						)}
+					/>
+				</div>
 
-      <div className="mb-4">
-        <Label htmlFor="email" className="block text-sm font-medium text-n-800 dark:text-n-200 mb-1">Email</Label>
-        <Controller
-          name="email"
-          control={control}
-          render={({ field }) => (
-            <input {...field} id="email" name='email' type="email" className={cn(formStyles.input, "w-full px-3 py-2 bg-white dark:bg-g-800 border border-g-300 dark:border-g-700 rounded-md shadow-sm focus:ring-a-light focus:border-a-light")} />
-          )} />
-        {errors.email && <p className="text-red-500 mt-1">{errors.email.message}</p>}
-      </div>
+        <div className="mb-4">
+  <Label className="block text-sm font-medium mb-1 text-n-8 dark:text-n-3">
+    Contact Preference
+  </Label>
+  <Controller
+    name="contactPreference"
+    control={control}
+    render={({ field }) => (
+      <RadioGroup
+        options={['Morning', 'Afternoon']}
+        onValueChange={field.onChange}
+        value={field.value}
+        id='contactPreference'
+        name='contactPreference'
+        className="mt-1"
+      />
+    )}
+  />
+</div>
 
-      <div className="mt-6">
-        <Label htmlFor="preferredDate" className="block text-sm font-medium text-n-800 dark:text-n-200 mb-1">
-          Preferred Contact Date (Optional)
-        </Label>
-        <Controller
-          name="preferredDate"
-          control={control}
-          render={({ field }) => (
-            <DatePicker
-              {...field}
-              id="preferredDate"
-              name='preferredDate'
-              className={cn(formStyles.datePicker, "w-full")}
-            />
-          )}
+				<div>
+					<Label htmlFor="projectType" className="text-sm font-medium text-n-8 dark:text-n-3">
+						Project Type
+					</Label>
+					<Controller
+						name="projectType"
+						control={control}
+						render={({ field }) => (
+							<Select
+								{...field}
+								options={[
+									'Website Tier 1',
+									'Website Tier 2',
+									'Branding Tier 1',
+									'Branding Tier 2',
+									'Branding Tier 3',
+									'Combo',
+									'Unsure',
+								]}
+								className={cn(
+									formStyles.select,
+									'mt-1 w-full rounded-md shadow-sm focus:border-a-light focus:ring-a-light'
+								)}
+							/>
+						)}
+					/>
+				</div>
+
+				<div>
+					<Label htmlFor="comments" className="text-sm font-medium text-n-8 dark:text-n-3">
+						Additional Comments
+					</Label>
+					<Controller
+						name="comments"
+						control={control}
+						render={({ field }) => (
+							<TextArea
+								{...field}
+								placeholder="Any additional information..."
+								className={cn(
+									formStyles.textarea,
+									'mt-1 w-full rounded-md shadow-sm focus:border-a-light focus:ring-a-light'
+								)}
+							/>
+						)}
+					/>
+				</div>
+
+        <div className="flex justify-center items-center">
+  <div className="inline-flex items-center space-x-2">
+    <Controller
+      name="okToContact"
+      control={control}
+      render={({ field }) => (
+        <Checkbox
+          id="okToContact"
+          checked={field.value}
+          onCheckedChange={field.onChange}
         />
-      </div>
-
-      <div className="mb-4">
-        <Label className="block text-sm font-medium text-n-800 dark:text-n-200 mb-1">
-          Contact Preference
-        </Label>
-        <Controller
-          name="contactPreference"
-          control={control}
-          render={({ field }) => (
-            <RadioGroup
-              options={['Morning', 'Afternoon']}
-              onValueChange={field.onChange}
-              value={field.value}
-              id='contactPreference'
-              name='contactPreference'
-              className="flex flex-col space-y-2"
-            />
-          )}
-        />
-      </div>
-
-      <div className="mb-4">
-        <Label htmlFor="projectType" className="block text-sm font-medium text-n-800 dark:text-n-200 mb-1">
-          Project Type
-        </Label>
-        <Controller
-          name="projectType"
-          control={control}
-          render={({ field }) => (
-            <Select
-              id="projectType"
-              options={[
-                'Website Tier 1',
-                'Website Tier 2',
-                'Branding Tier 1',
-                'Branding Tier 2',
-                'Branding Tier 3',
-                'Combo',
-                'Unsure'
-              ]}
-              {...field}
-              className={cn(formStyles.select, "w-full")}
-            />
-          )}
-        />
-        {errors.projectType && <p className="mt-1 text-s-dark">{errors.projectType.message}</p>}
-      </div>
-
-      <div className="mb-4">
-        <Label htmlFor="comments" className="block text-sm font-medium text-n-800 dark:text-n-200 mb-1">
-          Additional Comments
-        </Label>
-        <Controller
-          name="comments"
-          control={control}
-          render={({ field }) => (
-            <TextArea
-              id="comments"
-              {...field}
-              className={cn(formStyles.textarea, "w-full px-3 py-2 bg-white dark:bg-g-800 border border-g-300 dark:border-g-700 rounded-md shadow-sm focus:ring-a-light focus:border-a-light")}
-              placeholder="Any additional information..."
-            />
-          )}
-        />
-      </div>
-
-
-      <div className='grid grid-cols-[auto, 1fr] gap-2 items-center mb-4'>
-        <Controller
-          name="okToContact"
-          control={control}
-          render={({ field }) => (
-            <Checkbox
-              id="okToContact"
-              name='okToContact'
-              checked={field.value}
-              onCheckedChange={field.onChange}
-            />
-          )}
-        />
-        <Label htmlFor="okToContact" className="text-sm text-n-800 dark:text-n-200">
-          I agree to be contacted about my inquiry
-        </Label>
-      </div>
-
-      <button
-        type="submit"
-        name='submit'
-        id='submit'
-        disabled={!okToContact || submitStatus === 'loading'}
-        className={`w-full px-4 py-2 text-white bg-a-light hover:bg-a-dark rounded-md transition-colors ${
-          !okToContact || submitStatus === 'loading' ? 'opacity-50 cursor-not-allowed' : ''
-        }`}
-      >
-        {submitStatus === 'loading' ? 'Submitting...' : 'Submit'}
-      </button>
-
-      {submitStatus === 'success' && (
-  <div className="mt-4 p-4 bg-green-100 border border-green-400 text-green-700 rounded">
-    Thank you for your submission. We will get back to you soon.
+      )}
+    />
+    <Label
+      htmlFor="okToContact"
+      className="text-sm text-n-9 dark:text-n-2 px-2 py-1 rounded-md items-center justify-center"
+    >
+      I consent to contact
+    </Label>
   </div>
-)}
+</div>
 
-{submitStatus === 'error' && (
-  <div className="mt-4 p-4 bg-red-100 border border-red-400 text-red-700 rounded">
-    There was an error submitting the form. Please try again.
-  </div>
-)}
-    </form>
-  );
-};
+				<button
+					type="submit"
+					name="submit"
+					id="submit"
+					disabled={!okToContact || submitStatus === 'loading'}
+					className={cn(
+						'w-full rounded-md bg-a-dark px-4 py-2 text-white transition-colors hover:bg-s-dark font-semibold shadow-neu1/20 dark:bg-s dark:text-n-900 dark:shadow-custom-dark/20',
+     //* mt-8 w-full max-w-48 rounded-lg border-[1px] border-s bg-a-dark py-4 font-semibold uppercase text-white shadow-neu1 dark:border-[1px] dark:border-p dark:bg-s dark:text-n-900 dark:shadow-custom-dark *//
+
+						(!okToContact || submitStatus === 'loading') && 'cursor-not-allowed opacity-50'
+
+
+
+					)}>
+					{submitStatus === 'loading' ? 'Submitting...' : 'Submit'}
+				</button>
+
+				{submitStatus === 'success' && (
+					<div className="mt-4 rounded bg-green-100 p-4 text-green-700">
+						Thank you for your submission. We will get back to you soon.
+					</div>
+				)}
+
+				{submitStatus === 'error' && (
+					<div className="mt-4 rounded bg-red-100 p-4 text-red-700">
+						There was an error submitting the form. Please try again.
+					</div>
+				)}
+			</div>
+		</form>
+	)
+}
+
+const FormField: React.FC<{
+	control: any
+	name: string
+	label: string
+	error?: any
+	type?: string
+}> = ({ control, name, label, error, type = 'text' }) => (
+	<div>
+		<Label htmlFor={name} className="text-sm font-medium text-n-8 dark:text-n-3">
+			{label}
+		</Label>
+		<Controller
+			name={name}
+			control={control}
+			render={({ field }) => (
+				<input
+					{...field}
+					type={type}
+					id={name}
+					className={cn(
+						formStyles.input,
+						'mt-1 w-full rounded-md px-3 py-2 shadow-sm focus:border-a-light focus:ring-a-light',
+						error && 'border-red-500'
+					)}
+				/>
+			)}
+		/>
+		{error && <p className="mt-1 text-sm text-red-500">{error.message}</p>}
+	</div>
+)

@@ -4,37 +4,44 @@ import { StickyVComp } from '@/components/ui/sticky-comp-variant'
 
 export const Contact = () => {
 	return (
-		<div id='contact' className="relative">
+		<div id="contact" className="relative">
 			<StickyVComp contentHeight={true}>
-				<section className='px-4 py-4 antialiased md:flex-row lg:py-12 lg:subpixel-antialiased'>
-				<div className="prose text-center md:text-start">
-				<p className="Description prose text-left mb-12">You can <a className='italic text-a'>call,</a>{' '} <a className='italic text-a'>text,</a>{' '}or email or fill out the form below.</p>
-					<h2 className="H2">Quick Question?</h2>
+				<section className="container mx-auto px-4 py-12 lg:py-24">
+					<div className="prose mx-auto mb-12 max-w-4xl">
+						<h2 className="H2 text-center">Get in Touch</h2>
+						<p className="w-64 md:w-full mx-auto Description mb-6 text-center">
+							You can{' '}
+							<a href="tel:+17634642656" className="italic text-a hover:underline">
+								call
+							</a>
+							,{' '}
+							<a href="sms:+17634643656" className="italic text-a hover:underline">
+								text
+							</a>
+							, or email or fill out the form below.
+						</p>
+					</div>
 
-				</div>
-        <div className="flex flex-col gap-8 w-full max-w-4xl md:w-full md:flex-row md:gap-12 md:pb-12 md:text-start">
-					<div className="content-center justify-center overflow-x-clip lg:subpixel-antialiased py-8">
-						<div className='mx-auto mb-24 w-80 lg:w-96  items-center justify-center text-n-9 dark:text-n-3'>
+					<div className="flex flex-col items-start justify-center gap-12 lg:flex-row">
+						<div className="mx-auto mb-6 w-96 items-center justify-center lg:mb-12 lg:w-[38rem] text-n-900 dark:text-white">
 							<BlockInTextCard
-								tag="/ Support"
-								text={''
-								}
+								tag="/ Quick Question?"
+								text={''}
 								examples={[
 									'How long does a typical website build take?',
-									'Can you assist with rebranding my small business?',
-									'What’s included in your website development fee?',
-									'How are website updates handled without a CMS?',
-									'How does Selynt’s pricing compare to agencies?',
-									'What is the process for designing a custom logo?',
+									'Can you assist with rebranding my small b..',
+									'What’s included in your website developme..',
+									'How are site updates handled without a CM..',
+									'How does Selynt’s pricing compare to agen..',
+									'What is the process like for designing lo..',
 								]}
 							/>
 						</div>
-						<div className="prose text-center md:text-start">
-						<h2 className="H2">Or Ready to Get Started?</h2>
-						<EnhancedForm />
+						<div className="mx-auto w-full max-w-2xl lg:w-1/2">
+							<h3 className="H3 mb-6 px-8 text-left lg:text-center">Or ready to get started?</h3>
+							<EnhancedForm />
+						</div>
 					</div>
-					</div>
-				</div>
 				</section>
 			</StickyVComp>
 		</div>

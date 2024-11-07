@@ -9,20 +9,32 @@ const RadioGroup = React.forwardRef<
 >(({ className, options, ...props }, ref) => {
   return (
     <RadioGroupPrimitive.Root
-      className={cn('grid gap-2', className)}
+      className={cn('flex space-x-4', className)}
       {...props}
       ref={ref}
     >
       {options.map((option) => (
-        <div key={option} className="flex items-center space-x-2">
+        <div key={option} className="flex items-center">
           <RadioGroupPrimitive.Item
             id={option}
             value={option}
-            className={cn(formStyles.radio, "h-4 w-4 rounded-full border border-gray-300 text-primary focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2" )}
+            className={cn(
+              "h-4 w-4 rounded-full border border-gray-300 text-primary focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2",
+              "relative",
+              formStyles.radio
+            )}
           >
-            <RadioGroupPrimitive.Indicator className={cn(formStyles.radio, "relative flex h-full w-full items-center justify-center after:block after:h-2 after:w-2 after:rounded-full after:bg-primary" )} />
+            <RadioGroupPrimitive.Indicator className="absolute inset-0 flex items-center justify-center">
+              <div className="h-2 w-2 rounded-full bg-primary" />
+            </RadioGroupPrimitive.Indicator>
           </RadioGroupPrimitive.Item>
-          <label htmlFor={option} className={cn(formStyles.radio, "text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70", className )}>
+          <label
+            htmlFor={option}
+            className={cn(
+              "ml-2 text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70",
+              formStyles.radio
+            )}
+          >
             {option}
           </label>
         </div>
