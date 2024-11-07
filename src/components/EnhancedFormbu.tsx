@@ -27,7 +27,7 @@ const schema = z.object({
 type FormData = z.infer<typeof schema>;
 
 export const EnhancedForm: React.FC = () => {
-  const [submitStatus, setSubmitStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
+  const [submitStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
   const { control, formState: { errors }, watch } = useForm<FormData>({
     resolver: zodResolver(schema),
     defaultValues: {
@@ -43,40 +43,10 @@ export const EnhancedForm: React.FC = () => {
   });
   const okToContact = watch('okToContact');
 
-  const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
-    setSubmitStatus('loading');
-
-    const form = event.currentTarget;
-    const formData = new FormData(form);
-
-    try {
-      const response = await fetch(form.action, {
-        method: form.method,
-        body: formData,
-        headers: {
-          'Accept': 'application/json'
-        }
-      });
-
-      if (response.ok) {
-        setSubmitStatus('success');
-        form.reset();
-      } else {
-        setSubmitStatus('error');
-      }
-    } catch (error) {
-      console.error('Submission error:', error);
-      setSubmitStatus('error');
-    }
-  };
-
-
   return (
     <form
     action="https://formsubmit.co/82120871942c24049c274ba8143a4f61"
     method="POST"
-    onSubmit={handleSubmit}
     className="max-w-xl mx-auto p-4 sm:p-6 bg-n-light dark:bg-g-900 rounded-lg shadow-custom dark:shadow-custom-dark"
   >
       <input type="hidden" name="_captcha" value="false" />
@@ -250,16 +220,11 @@ export const EnhancedForm: React.FC = () => {
       </button>
 
       {submitStatus === 'success' && (
-  <div className="mt-4 p-4 bg-green-100 border border-green-400 text-green-700 rounded">
-    Thank you for your submission. We will get back to you soon.
-  </div>
-)}
-
-{submitStatus === 'error' && (
-  <div className="mt-4 p-4 bg-red-100 border border-red-400 text-red-700 rounded">
-    There was an error submitting the form. Please try again.
-  </div>
-)}
+        <p className="mt-4 text-green-500">Form submitted successfully!</p>
+      )}
+      {submitStatus === 'error' && (
+        <p className="mt-4 text-red-500">Error submitting form. Please try again.</p>
+      )}
     </form>
   );
 };

@@ -4,7 +4,7 @@ import { useImgPadding } from '@/constants/imgpadding'
 import { Tech } from '@/components/Tech'
 import { Notification } from '@/components/ui/notification'
 import { Lamp } from '@/components/ui/lamp'
-import { Process } from '@/components/ui/process'
+import { Contact } from './Contact'
 
 export const Home = () => {
 	useImgPadding()
@@ -15,7 +15,7 @@ export const Home = () => {
 			<Lamp />
 			<Tech />
 			<MapParallaxContent />
-			<Process />
+			<Contact />
 		</div>
 	)
 }

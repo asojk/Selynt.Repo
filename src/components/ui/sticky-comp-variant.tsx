@@ -71,6 +71,7 @@ const StickyVImage: React.FC<StickyVImageProps> = ({ children, contentHeight }) 
 				paddingRight: paddingX,
 				paddingTop: paddingY,
 				paddingBottom: paddingY,
+				position: 'relative',
 			}}
 			transition={transition}
 			className="stickyV z-0 mx-auto overflow-hidden rounded-3xl bg-cover bg-center">

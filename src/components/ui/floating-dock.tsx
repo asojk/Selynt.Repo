@@ -1,12 +1,10 @@
-/** @format */
-
 import React, { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Link } from 'react-router-dom'
 import { IconEyeClosed, IconMenu4 } from '@tabler/icons-react'
 
 interface DockProps {
-	items: { title: string; icon: React.ReactNode; href: string }[]
+	items: { title: string; icon: React.ReactNode; href: string; scroll?: boolean }[]
 	className?: string
 }
 
@@ -46,14 +44,25 @@ interface IconContainerProps {
 	title: string
 	icon: React.ReactNode
 	href: string
+	scroll?: boolean
 	index: number
 }
 
-const IconContainer: React.FC<IconContainerProps> = ({ title, icon, href, index }) => {
+const IconContainer: React.FC<IconContainerProps> = ({ title, icon, href, scroll, index }) => {
 	const [hovered, setHovered] = useState(false)
 
+	const handleClick = (e: React.MouseEvent) => {
+			if (scroll) {
+					e.preventDefault()
+					window.scrollTo({
+							top: document.documentElement.scrollHeight,
+							behavior: 'smooth'
+					})
+			}
+	}
+
 	return (
-		<Link to={href}>
+			<Link to={href} onClick={handleClick}>
 			<motion.div
 				initial={{ opacity: 0, x: 20 }}
 				animate={{ opacity: 1, x: 0 }}

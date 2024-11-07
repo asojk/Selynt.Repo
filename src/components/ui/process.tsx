@@ -1,11 +1,12 @@
 //import { StickyVComp } from "./sticky-comp-variant";
 import { EnhancedForm } from '../EnhancedForm'
-import { PlaceInput } from './input'
+//import { PlaceInput } from './input'
 
 export const Process = () => {
 	return (
 		<>
-			<div className="mx-auto w-full max-w-5xl items-center justify-center px-4 py-4 lg:py-12">
+			<div className="mx-auto w-full max-w-5xl items-center justify-center px-4 py-12 ">
+				{/*
 				<div className="py-8">
 					<h2 className="H3 pb-2">Quick Question?</h2>
 					<PlaceInput
@@ -27,8 +28,10 @@ export const Process = () => {
 						}}
 					/>
 				</div>
-        <div className='py-8'>
-          <h2 className="H3">Or Ready to Get Started?</h2>
+				*/}
+        <div className='pb-12'>
+          <h2 className="H3">Ready to Get Started?</h2>
+					<div className=''>You can call, text, email, or fill out the form below.</div>
           <EnhancedForm />
         </div>
 			</div>
