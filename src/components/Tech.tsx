@@ -9,13 +9,11 @@ import {
 	IconBrandVite,
 } from '@tabler/icons-react'
 import { StickyVComp } from './ui/sticky-comp-variant'
-import { Link } from 'react-router-dom'
-import PingButton from './ui/Ping'
 
 export const Tech = () => {
 	return (
 		<StickyVComp contentHeight={true}>
-			<section className="flex w-full flex-col items-center justify-center gap-12 px-4 py-4 antialiased md:flex-row lg:py-24 lg:subpixel-antialiased cursor-default">
+			<section className="flex w-full cursor-default flex-col items-center justify-center gap-12 px-4 py-4 antialiased md:flex-row lg:py-12 lg:subpixel-antialiased">
 				<Copy />
 				<LogoRolodex
 					items={[
@@ -42,32 +40,75 @@ export const Tech = () => {
 }
 
 const Copy = () => (
-	<div className="prose max-w-lg text-center md:text-start">
+	<div className="mx-auto flex max-w-2xl flex-col items-center text-center md:items-start md:text-left">
 		<h2 className="H2">We Leverage the Latest Tech</h2>
-		<p className="Description-p mb-6 text-sm lg:mb-12">
-		In both web development and design, to deliver higher-quality work while saving time and money for both parties involved.
-		</p>
-		<motion.div
-					initial={{
-						opacity: 0.7,
-						scale: 0.85,
-					}}
-					animate={{
-						opacity: 1,
-						scale: 1,
-					}}
-					whileHover={{ scale: 1.1 }}
-					transition={{
-						duration: 1,
-						ease: 'easeOut',
-					}}
-				>
-					<div className='cursor-pointer'>
-		<Link to="/contact">
-		<PingButton />
-		</Link>
+		<div className="grid w-full grid-cols-1 gap-8 text-n-900 dark:text-n-1 md:grid-cols-2">
+			<div className="space-y-2">
+				<h3 className="text-left text-xl font-semibold">to craft</h3>
+				<ul className="space-y-2">
+					<li className="flex items-center">
+						<svg
+							className="mr-2 h-5 w-5 text-s"
+							fill="none"
+							stroke="currentColor"
+							viewBox="0 0 24 24"
+							xmlns="http://www.w3.org/2000/svg">
+							<path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path>
+						</svg>
+						<span className="text-lg lg:text-xl">Websites</span>
+					</li>
+					<li className="flex items-center">
+						<svg
+							className="mr-2 h-5 w-5 text-s"
+							fill="none"
+							stroke="currentColor"
+							viewBox="0 0 24 24"
+							xmlns="http://www.w3.org/2000/svg">
+							<path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path>
+						</svg>
+						<span className="text-lg lg:text-xl">Brand Identities</span>
+					</li>
+				</ul>
+			</div>
+			<div className="space-y-2">
+				<h3 className="text-left text-xl font-semibold">& focus on</h3>
+				<ul className="space-y-2">
+					<li className="flex items-center">
+						<svg
+							className="mr-2 h-5 w-5 text-s"
+							fill="none"
+							stroke="currentColor"
+							viewBox="0 0 24 24"
+							xmlns="http://www.w3.org/2000/svg">
+							<path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path>
+						</svg>
+						<span className="text-lg lg:text-xl">Clarity</span>
+					</li>
+					<li className="flex items-center">
+						<svg
+							className="mr-2 h-5 w-5 text-s"
+							fill="none"
+							stroke="currentColor"
+							viewBox="0 0 24 24"
+							xmlns="http://www.w3.org/2000/svg">
+							<path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path>
+						</svg>
+						<span className="text-lg lg:text-xl">Simplicity</span>
+					</li>
+					<li className="flex items-center">
+						<svg
+							className="mr-2 h-5 w-5 text-s"
+							fill="none"
+							stroke="currentColor"
+							viewBox="0 0 24 24"
+							xmlns="http://www.w3.org/2000/svg">
+							<path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path>
+						</svg>
+						<span className="text-lg lg:text-xl">Affordability</span>
+					</li>
+				</ul>
+			</div>
 		</div>
-		</motion.div>
 	</div>
 )
 
@@ -80,7 +121,7 @@ const LogoRolodex = ({ items }: { items: ReactElement[] }) => {
 
 	useEffect(() => {
 		intervalRef.current = setInterval(() => {
-			setIndex(pv => pv + 1)
+			setIndex((pv) => pv + 1)
 		}, DELAY_IN_MS)
 
 		return () => {

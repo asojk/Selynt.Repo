@@ -1,5 +1,4 @@
 {
-  "eslint.nodePath": "node_modules",
   "eslint.trace.server": "verbose",
   "eslint.workingDirectories": [
     {
