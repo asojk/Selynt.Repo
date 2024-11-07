@@ -13,13 +13,14 @@ export const clients: Client[] = [
 		coordinates: [-93.66607, 44.93663],
 		logo: 'deck',
 		url: 'http://www.deckrenew.net',
-		description: '',
+		description:
+			'Selynt was amazing from start to finish. As a small company I didn’t even know exactly what I needed for a website and he walked me through the whole thing. He finished promptly and was especially well priced! Would recommend them to anyone!',
 	},
 	{
 		name: 'Grell',
 		coordinates: [-94.16802, 42.49747],
 		logo: 'grell',
-		url: 'https://www.grell.pro',
+		url: 'https://main.dyiohhh4lioiw.amplifyapp.com',
 		description: '',
 	},
 	{

@@ -32,7 +32,7 @@
     "paths": {
       "@/*": ["./src/*"]
     },
-    "types": ["framer-motion", "@types/react", "@types/react-dom", "@types/node", "unplugin-icons/types/react", "@types/react-simple-maps"],
+    "types": ["framer-motion", "@types/react", "@types/react-dom", "@types/node", "@types/react-simple-maps"],
   },
   "include": ["src"],
   "exclude": ["node_modules", "/var/folders/**", "/var/**"],

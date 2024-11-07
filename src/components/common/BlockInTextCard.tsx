@@ -5,15 +5,15 @@ export const BlockInTextCard = ({ tag, text, examples }: { tag: string; text: Re
 	return (
 		<div className="mx-auto w-4/5 max-w-4xl space-y-6">
 			<div>
-				<p className="mb-1.5 text-sm font-light uppercase">{tag}</p>
+				<p className="mb-1.5 text-sm font-light uppercase text-a-dark dark:text-a">{tag}</p>
 				<hr className="border-n-9 dark:border-n-1" />
 			</div>
 			<p className="max-w-4xl text-xl leading-relaxed text-a-dark dark:text-a">{text}</p>
 			<div>
 				<Typewrite examples={examples} />
-				<hr className="border-n-9 dark:border-n-5" />
+				<hr className="border-n-9 dark:border-n-5 text-n-900 dark:text-n-1" />
 			</div>
-			<button className="w-full mx-auto max-w-lg rounded-full border border-n-900 py-2 text-sm font-medium transition-colors hover:bg-n-900 hover:text-n-3 dark:border-n-1 dark:hover:bg-n-1 dark:hover:text-n-7">
+			<button className="mx-auto w-full max-w-lg rounded-full border border-n-900 py-2 text-sm font-medium transition-colors hover:bg-n-900 hover:text-n-3 dark:border-n-1 dark:hover:bg-n-1 dark:hover:text-n-7">
 				<a href="mailto:contact@selynt.com">Send us an email</a>
 			</button>
 		</div>
@@ -33,7 +33,7 @@ const Typewrite = ({ examples }: { examples: string[] }) => {
 
 	useEffect(() => {
 		const intervalId = setInterval(() => {
-			setExampleIndex(pv => (pv + 1) % examples.length)
+			setExampleIndex((pv) => (pv + 1) % examples.length)
 		}, SWAP_DELAY_IN_MS)
 
 		return () => clearInterval(intervalId)

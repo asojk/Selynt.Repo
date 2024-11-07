@@ -1,12 +1,10 @@
-/** @format */
-
 import React, { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Link } from 'react-router-dom'
 import { IconEyeClosed, IconMenu4 } from '@tabler/icons-react'
 
 interface DockProps {
-	items: { title: string; icon: React.ReactNode; href: string }[]
+	items: { title: string; icon: React.ReactNode; href: string; scroll?: boolean }[]
 	className?: string
 }
 
@@ -19,7 +17,7 @@ const Dock: React.FC<DockProps> = ({ items, className = '' }) => {
 				whileHover={{ scale: 1.05 }}
 				whileTap={{ scale: 0.95 }}
 				onClick={() => setIsOpen(!isOpen)}
-				className="flex h-12 w-12 items-center justify-center rounded-full bg-n-1 text-p shadow-md transition-colors hover:bg-n-2 dark:bg-n-8 dark:text-s-light dark:hover:bg-n-8 fixed bottom-6 right-6 z-[1001] p-3 ransition-colors"
+				className="fixed bottom-6 right-6 z-[1001] flex h-12 w-12 items-center justify-center rounded-full border-[1.5px] border-p bg-n-1 p-3 text-p transition-colors hover:bg-n-2 dark:border-n-6 dark:bg-n-8 dark:text-s-light dark:hover:bg-n-8"
 				animate={{ rotate: isOpen ? 180 : 0 }}>
 				{isOpen ? <IconEyeClosed /> : <IconMenu4 />}
 			</motion.button>
@@ -46,14 +44,25 @@ interface IconContainerProps {
 	title: string
 	icon: React.ReactNode
 	href: string
+	scroll?: boolean
 	index: number
 }
 
-const IconContainer: React.FC<IconContainerProps> = ({ title, icon, href, index }) => {
+const IconContainer: React.FC<IconContainerProps> = ({ title, icon, href, scroll, index }) => {
 	const [hovered, setHovered] = useState(false)
 
+	const handleClick = (e: React.MouseEvent) => {
+			if (scroll) {
+					e.preventDefault()
+					window.scrollTo({
+							top: document.documentElement.scrollHeight,
+							behavior: 'smooth'
+					})
+			}
+	}
+
 	return (
-		<Link to={href}>
+			<Link to={href} onClick={handleClick}>
 			<motion.div
 				initial={{ opacity: 0, x: 20 }}
 				animate={{ opacity: 1, x: 0 }}
@@ -71,8 +80,10 @@ const IconContainer: React.FC<IconContainerProps> = ({ title, icon, href, index 
 				<motion.div
 					whileHover={{ scale: 1.05 }}
 					whileTap={{ scale: 0.95 }}
-					className="relative flex items-center justify-center w-12 h-12 transition-colors rounded-full shadow-md bg-n-1 text-p hover:bg-n-2 dark:bg-n-8 dark:text-s-light dark:hover:bg-n-8">
-					{icon}
+					className="relative flex h-12 w-12 items-center justify-center rounded-full bg-n-1 text-p shadow-md transition-colors hover:bg-n-2 dark:bg-n-8 dark:text-n-1 dark:hover:bg-n-8">
+					{React.cloneElement(icon as React.ReactElement, {
+						className: 'w-6 h-6 sm:w-7 sm:h-7 stroke-[1.5] sm:stroke-2',
+					})}
 				</motion.div>
 				<AnimatePresence>
 					{hovered && (
@@ -80,7 +91,7 @@ const IconContainer: React.FC<IconContainerProps> = ({ title, icon, href, index 
 							initial={{ opacity: 0, x: 10 }}
 							animate={{ opacity: 1, x: 0 }}
 							exit={{ opacity: 0, x: 10 }}
-							className="absolute px-3 py-1 mr-3 text-sm font-medium rounded-md shadow-md right-full bg-n-2 text-p dark:bg-n-8 dark:text-s">
+							className="absolute right-full mr-3 rounded-md bg-n-2 px-3 py-1 text-sm font-medium text-p shadow-md dark:bg-n-8 dark:text-s">
 							{title}
 						</motion.div>
 					)}

@@ -6,10 +6,11 @@ export function IndexDock() {
 
 	return (
 		<Dock
-			items={links.map(link => ({
+			items={links.map((link) => ({
 				title: link.label,
-				icon: <link.icon className="flex w-8 h-8 p-1 rounded-full stroke-[1.45px] lg:h-12 lg:w-12" />,
+				icon: <link.icon className="flex h-8 w-8 rounded-full stroke-[1.25px] p-1 lg:h-12 lg:w-12" />,
 				href: link.href,
+				scroll: link.scroll,
 			}))}
 		/>
 	)

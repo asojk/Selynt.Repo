@@ -1,8 +1,6 @@
 import { defineConfig } from 'vite'
 import { ViteImageOptimizer } from 'vite-plugin-image-optimizer'
-import { visualizer } from 'rollup-plugin-visualizer';
 import path from 'path'
-import Icons from 'unplugin-icons/vite'
 import react from '@vitejs/plugin-react'
 import { fileURLToPath } from 'url'
 
@@ -18,26 +16,6 @@ export default defineConfig({
       png: { quality: 80 },
       webp: { quality: 70, lossless: true },
       svg: { quality: 70 },
-    }),
-    visualizer({
-      filename: 'dist/stats-flamegraph.html',
-      template: 'flamegraph',
-      open: true,
-      gzipSize: true,
-      emitFile: true,
-    }),
-    visualizer({
-      filename: 'dist/stats-treemap.html',
-      template: 'treemap',
-    }),
-    visualizer({
-      filename: 'dist/stats-sunburst.html',
-      template: 'sunburst',
-    }),
-    react(),
-    Icons({
-      compiler: 'jsx',
-      jsx: 'react',
     }),
   ],
   resolve: {

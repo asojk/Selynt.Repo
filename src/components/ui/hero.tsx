@@ -13,7 +13,7 @@ export const Hero: React.FC = () => {
 	const opacity = useTransform(scrollYProgress, [0, 1], [1, 0])
 
 	return (
-		<motion.div ref={targetRef} className="relative flex flex-col items-center h-screen" style={{ y, opacity }}>
+		<motion.div ref={targetRef} className="relative flex h-screen flex-col items-center" style={{ y, opacity }}>
 			{/* Logo at top 1/3 */}
 			<div className="relative z-[1000] mt-[33vh]">
 				<div className="relative max-w-[85vw]">
@@ -26,10 +26,10 @@ export const Hero: React.FC = () => {
 			</div>
 
 			{/* Text at bottom */}
-			<div className="mt-auto mb-24 text-center">
+			<div className="mb-24 mt-auto text-center">
 				<h1 className="Hero">
 					Boost Credibility <br className="line-break-small" /> with a{' '}
-					<span className="text-transparent animate-text bg-gradient-to-r from-p via-s to-a-darker bg-clip-text">
+					<span className="animate-text bg-gradient-to-r from-p via-s-dark to-a-darker bg-clip-text text-transparent dark:from-s dark:via-a dark:to-s-2">
 						Clear Identity
 					</span>
 				</h1>

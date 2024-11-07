@@ -18,7 +18,7 @@ export const ThemeProvider = ({ children }: { children: ReactNode }) => {
 	const [theme, setTheme] = useState<'light' | 'dark'>(initialTheme)
 
 	const toggleTheme = () => {
-		setTheme(prevTheme => (prevTheme === 'light' ? 'dark' : 'light'))
+		setTheme((prevTheme) => (prevTheme === 'light' ? 'dark' : 'light'))
 	}
 
 	// Persist theme to localStorage and update HTML class

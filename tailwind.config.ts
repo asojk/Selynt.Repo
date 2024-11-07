@@ -1,9 +1,6 @@
-/** @format */
-
 import type { Config } from 'tailwindcss'
 import typography from '@tailwindcss/typography'
 import animate from 'tailwindcss-animate'
-import daisyui from 'daisyui'
 
 export default {
 	darkMode: 'class',
@@ -87,8 +84,9 @@ export default {
 			animation: {
 				breathe: 'breathe 12s cubic-bezier(0.4, 0, 0.6, 1) infinite',
 				float: 'float 5s ease-in-out infinite',
-				text: 'text 5s ease infinite',
-					'pulse-slow': 'pulse 7s infinite',
+				text: 'text 8s ease infinite',
+				'pulse-slow': 'pulse 7s infinite',
+				text2: 'text 5s ease infinite',
 			},
 			keyframes: {
 				breathe: {
@@ -111,6 +109,16 @@ export default {
 						'background-position': 'right center',
 					},
 				},
+				text2: {
+					'0%, 100%': {
+						'background-size': '200% 200%',
+						'background-position': 'left top',
+					},
+					'50%': {
+						'background-size': '200% 200%',
+						'background-position': 'right bottom',
+					},
+				},
 			},
 		},
 	},
@@ -120,5 +128,5 @@ export default {
 			transitionOpacity: ['group-hover'],
 		},
 	},
-	plugins: [typography, animate, daisyui],
+	plugins: [typography, animate ],
 } satisfies Config

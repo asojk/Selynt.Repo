@@ -1,22 +1,10 @@
-# Directories
-node_modules
-dist
+# Ignore artifacts:
 build
+coverage
+dist
 
-# Temporary files
-**/var/**
-/var/folders/**/*
+# Ignore all HTML files:
+*.html
 
-# Other files you might want to ignore
-.DS_Store
-*.log
-
-# If you want to ignore specific file types in certain directories, you can add patterns like:
-# public/*.html
-# **/*.min.js
-
-{
-  "scripts": {
-    "format": "prettier --write \"src/**/*.{js,jsx,ts,tsx,json,css,scss,md}\""
-  }
-}
+# Ignore node_modules
+node_modules

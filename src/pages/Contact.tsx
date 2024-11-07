@@ -1,26 +1,49 @@
 import { BlockInTextCard } from '@/components/common/BlockInTextCard'
+import { EnhancedForm } from '@/components/EnhancedForm'
+import { StickyVComp } from '@/components/ui/sticky-comp-variant'
 
 export const Contact = () => {
 	return (
-		<div className="min-h-screen content-center justify-center overflow-x-clip bg-white antialiased dark:bg-n-9 lg:subpixel-antialiased">
-			<div className="flex w-full items-center justify-center px-8 py-24 text-n-9 dark:text-n-3">
-				<BlockInTextCard
-					tag="/ Support"
-					text={
-						<>
-							<strong>Have questions?</strong> Got a project in mind?
-						</>
-					}
-					examples={[
-						'How long does a typical website build take?',
-						'Can you assist with rebranding my small business?',
-						'What’s included in your website development fee?',
-						'How are website updates handled without a CMS?',
-						'How does Selynt’s pricing compare to agencies?',
-						'What is the process for designing a custom logo?',
-					]}
-				/>
-			</div>
+		<div id="contact" className="relative">
+			<StickyVComp contentHeight={true}>
+				<section className="container mx-auto px-4 py-12 lg:py-24">
+					<div className="prose mx-auto mb-12 max-w-4xl">
+						<h2 className="H2 text-center">Get in Touch</h2>
+						<p className="w-64 md:w-full mx-auto Description mb-6 text-center">
+							You can{' '}
+							<a href="tel:+17634642656" className="italic text-a hover:underline">
+								call
+							</a>
+							,{' '}
+							<a href="sms:+17634643656" className="italic text-a hover:underline">
+								text
+							</a>
+							, or email or fill out the form below.
+						</p>
+					</div>
+
+					<div className="flex flex-col items-start justify-center gap-12 lg:flex-row">
+						<div className="mx-auto mb-6 w-96 items-center justify-center lg:mb-12 lg:w-[38rem] text-n-900 dark:text-white">
+							<BlockInTextCard
+								tag="/ Quick Question?"
+								text={''}
+								examples={[
+									'How long does a typical website build take?',
+									'Can you assist with rebranding my small b..',
+									'What’s included in your website developme..',
+									'How are site updates handled without a CM..',
+									'How does Selynt’s pricing compare to agen..',
+									'What is the process like for designing lo..',
+								]}
+							/>
+						</div>
+						<div className="mx-auto w-full max-w-2xl lg:w-1/2">
+							<h3 className="H3 mb-6 px-8 text-left lg:text-center">Or ready to get started?</h3>
+							<EnhancedForm />
+						</div>
+					</div>
+				</section>
+			</StickyVComp>
 		</div>
 	)
 }

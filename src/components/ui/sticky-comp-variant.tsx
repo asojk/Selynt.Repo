@@ -11,7 +11,7 @@ export const StickyVComp = ({ children, contentHeight = false }: StickyVProps) =
 	return (
 		<div className="relative px-content-padding">
 			<StickyVImage contentHeight={contentHeight}>
-				<div className="px-4 py-4 lg:py-8 xl:px-8">{children}</div>
+				<div className="">{children}</div>
 			</StickyVImage>
 		</div>
 	)
@@ -42,10 +42,7 @@ const StickyVImage: React.FC<StickyVImageProps> = ({ children, contentHeight }) 
 	const scale = useTransform(scrollYProgress, [0, 0.5, 1], [1, 0.98, 0.95])
 
 	// Slower opacity change
-	const opacity = useTransform(scrollYProgress,
-		[0, 0.3, 0.7, 1],
-		[1, 0.98, 0.95, 0.9]
-	)
+	const opacity = useTransform(scrollYProgress, [0, 0.3, 0.7, 1], [1, 0.98, 0.95, 0.9])
 
 	// Use the custom hook for padding
 	useImgPadding(contentHeight)
@@ -74,11 +71,12 @@ const StickyVImage: React.FC<StickyVImageProps> = ({ children, contentHeight }) 
 				paddingRight: paddingX,
 				paddingTop: paddingY,
 				paddingBottom: paddingY,
+				position: 'relative',
 			}}
 			transition={transition}
-			className="z-0 mx-auto overflow-hidden bg-center bg-cover stickyV rounded-3xl">
+			className="stickyV z-0 mx-auto overflow-hidden rounded-3xl bg-cover bg-center">
 			<motion.div
-				className="absolute bg-white inset-1 rounded-3xl dark:bg-p-dark"
+				className="absolute inset-1 rounded-3xl bg-white dark:bg-p-dark"
 				style={{ opacity }}
 				transition={transition}
 			/>
