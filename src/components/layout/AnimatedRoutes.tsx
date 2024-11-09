@@ -8,9 +8,25 @@ import Pricing from '@/pages/Pricing'
 import { Privacy } from '@/pages/Privacy'
 import { Terms } from '@/pages/Terms'
 import ScrollToTop from '@/hooks/ScrollToTop'
+import { useEffect } from 'react'
+
 
 const AnimatedRoutes = () => {
 	const location = useLocation()
+
+	useEffect(() => {
+			if (location.hash === '#contact') {
+					setTimeout(() => {
+							const contactSection = document.getElementById('contact')
+							if (contactSection) {
+									contactSection.scrollIntoView({ 
+											behavior: 'smooth',
+											block: 'start'
+									})
+							}
+					}, 100)
+			}
+	}, [location])
 
 	return (
 		<>

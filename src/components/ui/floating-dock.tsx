@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate, useLocation } from 'react-router-dom'
 import { IconEyeClosed, IconMenu4 } from '@tabler/icons-react'
 
 interface DockProps {
@@ -48,15 +48,36 @@ interface IconContainerProps {
 	index: number
 }
 
+
 const IconContainer: React.FC<IconContainerProps> = ({ title, icon, href, scroll, index }) => {
 	const [hovered, setHovered] = useState(false)
+	const navigate = useNavigate()
+	const location = useLocation()
 
 	const handleClick = (e: React.MouseEvent) => {
+			e.preventDefault()
 			if (scroll) {
-					e.preventDefault()
-					window.scrollTo({
-							top: document.documentElement.scrollHeight,
-							behavior: 'smooth'
+					const isHomePage = location.pathname === '/'
+					if (!isHomePage) {
+							navigate('/')
+							// Wait for navigation to complete before scrolling
+							setTimeout(() => {
+									scrollToContact()
+							}, 100)
+					} else {
+							scrollToContact()
+					}
+			} else {
+					navigate(href)
+			}
+	}
+
+	const scrollToContact = () => {
+			const contactSection = document.getElementById('contact')
+			if (contactSection) {
+					contactSection.scrollIntoView({ 
+							behavior: 'smooth',
+							block: 'start'
 					})
 			}
 	}

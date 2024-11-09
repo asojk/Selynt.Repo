@@ -39,17 +39,20 @@ export default {
 					'3': '#3a8266',
 					'4': '#224a3b',
 				},
+				B: {
+          DEFAULT: '#E8E8E8',
+          light: '#F9F9F9',
+					dark: '#BEBEBE',
+					'2': '#B1B1B1',
+          '3': '#828282',
+          '4': '#535353',
+        },
 				a: {
 					DEFAULT: '#33B588', // Alternative color
 					light: '#4ECB9E', // Lighter alternative for buttons or highlights
 					dark: '#208664', // Darker alternative for bolder CTAs
 					darker: '#224a3b',
 				},
-				B: {
-          DEFAULT: '#E8E8E8',
-          light: '#F9F9F9',
-          dark: '#BEBEBE',
-        },
 				n: {
 					light: '#F5F5F5', // Light neutral for backgrounds
 					dark: '#222222',

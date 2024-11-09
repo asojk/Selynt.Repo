@@ -22,7 +22,7 @@ export const Contact = () => {
 						</p>
 					</div>
 
-					<div className="flex flex-col items-start justify-center gap-8 lg:flex-row">
+					<div className="flex flex-col items-start justify-center gap8 lg:flex-row">
 						<div className="mx-auto mb-6 w-96 items-center justify-center lg:pt-8 lg:w-1/3 text-n-900 dark:text-white">
 							<BlockInTextCard
 								tag="/ Quick Question?"
