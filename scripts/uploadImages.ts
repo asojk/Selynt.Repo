@@ -1,5 +1,3 @@
-/** @format */
-
 import { promises as fs } from 'fs'
 import path from 'path'
 import crypto from 'crypto'
@@ -35,6 +33,8 @@ async function uploadImage(filePath: string, fileName: string, existingHash?: st
 
 async function uploadAllImages() {
 	const imageDir = path.join(process.cwd(), 'public', 'images')
+	const faviconDir = path.join(process.cwd(), 'public')
+
 	const mapPath = path.join(process.cwd(), 'src', 'imageUrls.json')
 
 	let existingMap: ImageMap = {}
@@ -45,13 +45,21 @@ async function uploadAllImages() {
 		console.error('An error occurred:', error)
 	}
 
-	const files = await fs.readdir(imageDir)
-	const imageFiles = files.filter(file => /\.(jpg|jpeg|png|webp|svg|gif)$/i.test(file))
+	// Get files from both 'images' and 'public' root directory
+	const imageFiles = (await fs.readdir(imageDir))
+		.filter(file => /\.(jpg|jpeg|png|webp|svg|gif)$/i.test(file))
+		.map(file => path.join(imageDir, file))
+
+	const faviconFiles = (await fs.readdir(faviconDir))
+		.filter(file => /\.(ico|png|svg)$/i.test(file)) // Only .ico, .png, .svg in the 'public' root directory
+		.map(file => path.join(faviconDir, file))
+
+	const allFiles = [...imageFiles, ...faviconFiles]
 
 	const results = await Promise.all(
-		imageFiles.map(async file => {
-			const filePath = path.join(imageDir, file)
-			return uploadImage(filePath, file, existingMap[file]?.hash)
+		allFiles.map(async filePath => {
+			const fileName = path.basename(filePath)
+			return uploadImage(filePath, fileName, existingMap[fileName]?.hash)
 		})
 	)
 

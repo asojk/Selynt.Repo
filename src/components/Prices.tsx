@@ -41,7 +41,7 @@ export default function SlidePricing() {
 						<motion.button
 							whileHover={{ scale: 1.015 }}
 							whileTap={{ scale: 0.985 }}
-							className="w-64 rounded-lg bg-p py-4 font-semibold uppercase text-white dark:bg-a">
+							className="w-64 rounded-lg bg-p py-4 font-semibold uppercase text-white dark:bg-a dark:text-black">
 							Get Started
 						</motion.button>
 					</Link>
