@@ -1,6 +1,6 @@
 //import { StickyVComp } from "./sticky-comp-variant";
 import { EnhancedForm } from '../EnhancedForm'
-//import { PlaceInput } from './input'
+//import { PlaceInput } from './PlaceInput'
 
 export const Process = () => {
 	return (

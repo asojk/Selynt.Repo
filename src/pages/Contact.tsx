@@ -22,8 +22,8 @@ export const Contact = () => {
 						</p>
 					</div>
 
-					<div className="flex flex-col items-start justify-center gap-12 lg:flex-row">
-						<div className="mx-auto mb-6 w-96 items-center justify-center lg:mb-12 lg:w-[38rem] text-n-900 dark:text-white">
+					<div className="flex flex-col items-start justify-center gap-8 lg:flex-row">
+						<div className="mx-auto mb-6 w-96 items-center justify-center lg:pt-8 lg:w-1/3 text-n-900 dark:text-white">
 							<BlockInTextCard
 								tag="/ Quick Question?"
 								text={''}
@@ -37,7 +37,7 @@ export const Contact = () => {
 								]}
 							/>
 						</div>
-						<div className="mx-auto w-full max-w-2xl lg:w-1/2">
+						<div className="mx-auto w-full max-w-2xl lg:w-3/5">
 							<h3 className="H3 mb-6 px-8 text-left lg:text-center">Or ready to get started?</h3>
 							<EnhancedForm />
 						</div>

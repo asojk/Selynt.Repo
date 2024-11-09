@@ -45,6 +45,11 @@ export default {
 					dark: '#208664', // Darker alternative for bolder CTAs
 					darker: '#224a3b',
 				},
+				B: {
+          DEFAULT: '#E8E8E8',
+          light: '#F9F9F9',
+          dark: '#BEBEBE',
+        },
 				n: {
 					light: '#F5F5F5', // Light neutral for backgrounds
 					dark: '#222222',
