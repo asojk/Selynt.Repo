@@ -1,4 +1,3 @@
-// src/ThemeContext.tsx
 import React, { createContext, useState, useContext, ReactNode, Dispatch, SetStateAction } from 'react'
 
 interface ThemeContextProps {
