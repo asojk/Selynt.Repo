@@ -1,38 +1,87 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
 
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no, viewport-fit=cover">
   <title>Selynt - Empowering Small Businesses & Individuals</title>
 
   <!-- Primary Meta Tags -->
   <meta name="description" content="Selynt empowers small businesses & individuals to thrive in a market dominated by larger corporations. Custom web development, branding, and digital solutions.">
   <meta name="keywords" content="web development, branding, small business, digital solutions, custom websites">
+  <!--
+  <meta http-equiv="Content-Security-Policy" content="
+  default-src 'self';
+  connect-src 'self' https://formsubmit.co/82120871942c24049c274ba8143a4f61 https://cdn.jsdelivr.net https://fonts.googleapis.com https://fonts.gstatic.com;
+  script-src 'self' 'unsafe-inline' 'unsafe-eval';
+  style-src 'self' 'unsafe-inline' https://fonts.googleapis.com;
+  font-src 'self' https://fonts.gstatic.com;
+  img-src 'self' data: https://prkm7pjvgapey0vo.public.blob.vercel-storage.com;
+">
+-->
+
   <meta name="author" content="Selynt">
 
-  <!-- Open Graph / Facebook -->
+  <!-- Open Graph -->
+  <meta property="og:image" content="https://prkm7pjvgapey0vo.public.blob.vercel-storage.com/meta-image-1200x628-fCSVzIwSSuo1Zf1eykL0dUTQu1nrME.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="628">
+  <meta property="og:image:alt" content="Selynt meta image">
+
+  <!-- Facebook -->
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://www.selynt.com/">
   <meta property="og:title" content="Selynt - Custom Web Solutions for Small Businesses">
   <meta property="og:description" content="Empower your small business with custom web development and branding solutions from Selynt. Stand out in a competitive market.">
-  <meta property="og:image" content="https://www.selynt.com/og-image.jpg">
+  <meta property="og:image" content="https://prkm7pjvgapey0vo.public.blob.vercel-storage.com/meta-image-1200x628-fCSVzIwSSuo1Zf1eykL0dUTQu1nrME.png">
 
-      <!-- Twitter -->
-      <meta property="twitter:card" content="summary_large_image">
-      <meta property="twitter:url" content="https://www.selynt.com/">
-      <meta property="twitter:title" content="Selynt - Custom Web Solutions for Small Businesses">
-      <meta property="twitter:description" content="Empower your small business with custom web development and branding solutions from Selynt. Stand out in a competitive market.">
+  <!-- Twitter -->
+  <meta property="twitter:card" content="summary_large_image">
+  <meta property="twitter:url" content="https://www.selynt.com/">
+  <meta property="twitter:title" content="Selynt - Custom Web Solutions for Small Businesses">
+  <meta property="twitter:description" content="Empower your small business with custom web development and branding solutions from Selynt. Stand out in a competitive market.">
+  <meta name="twitter:image" content="https://prkm7pjvgapey0vo.public.blob.vercel-storage.com/meta-image-1200x628-fCSVzIwSSuo1Zf1eykL0dUTQu1nrME.png">
 
-<!-- Favicon -->
+  <!-- Theme Color -->
+  <meta name="theme-color" content="#AEE1CF">
+  <meta name="msapplication-TileColor" content="#E8E8E8">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="https://prkm7pjvgapey0vo.public.blob.vercel-storage.com/icon-T60e3EdjY1wIczcdB6vvyiDXkzV6Gt.svg">
+  <link rel="apple-touch-icon" sizes="180x180" href="https://prkm7pjvgapey0vo.public.blob.vercel-storage.com/apple-touch-icon-Ibn0fp8Dhs2uIhTz5RV12YNPz9BwEJ.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="https://prkm7pjvgapey0vo.public.blob.vercel-storage.com/favicon-32x32-JX8WQQXdiW9Ue2p4kc5VbM4Fka8r1g.png">
+
+  <!-- Android Chrome -->
+  <link rel="icon" type="image/png" sizes="192x192" href="https://prkm7pjvgapey0vo.public.blob.vercel-storage.com/android-chrome-192x192-yjoyGFNkphGQreiCiIWkociGaqPNuZ.png">
+  <link rel="icon" type="image/png" sizes="512x512" href="https://prkm7pjvgapey0vo.public.blob.vercel-storage.com/android-chrome-512x512-Z3WQBeyliM1jmQdu6TNGDyxc9s4xTs.png">
+
+  <meta property="og:image" content="https://prkm7pjvgapey0vo.public.blob.vercel-storage.com/android-chrome-512x512-Z3WQBeyliM1jmQdu6TNGDyxc9s4xTs.png">
+  <meta property="og:image:width" content="512">
+  <meta property="og:image:height" content="512">
+
   <link rel="manifest" href="/site.webmanifest">
-  <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" sizes="256x256">
+  <link rel="robots" href="/robots.txt">
 
-      <!-- Theme Color -->
-      <meta name="theme-color" content="#AEE1CF">
-</head>
-<body>
-  <div id="root"></div>
+  <!-- Preload critical assets -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Lato:wght@100;300;400;700;900&display=swap">
   <script type="module" src="/src/main.tsx"></script>
+
+  <style>
+    /* Critical CSS */
+    body {
+      margin: 0;
+      font-family: 'Inter', sans-serif;
+      /* Primary sans-serif font from your Tailwind config */
+    }
+  </style>
+</head>
+
+<body>
+  <noscript>You need to enable JavaScript to run this app.</noscript>
+  <div id="root"></div>
+  <script type="module" src="/src/main.tsx" defer></script>
 </body>
+
 </html>
