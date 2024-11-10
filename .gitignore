@@ -21,6 +21,9 @@ dist-ssr
 
 # misc
 .DS_Store
+/.DS_Store
+*/.DS_Store
+*.DS_Store
 *.pem
 /etc
 /otherframework
