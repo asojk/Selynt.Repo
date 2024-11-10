@@ -1,6 +1,0 @@
-{
-  "routes": [
-    { "src": "/(.*)\\.js$", "headers": { "Content-Type": "application/javascript" } },
-    { "src": "/(.*)\\.css$", "headers": { "Content-Type": "text/css" } }
-  ]
-}
