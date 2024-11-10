@@ -40,8 +40,8 @@ export const Notification: React.FC<NotificationProps> = ({ initialDelay = 1000 
 					animate={{ y: 0, opacity: 1 }}
 					exit={{ y: 50, opacity: 0 }}
 					transition={{ duration: 0.3, ease: 'easeInOut' }}
-					className="fixed bottom-4 left-4 z-50 max-w-sm">
-					<div className="rounded-lg border border-n-5 bg-n-1 p-4 shadow-xl dark:border-n-7 dark:bg-n-8">
+					className="fixed bottom-4 left-1 md:left-4 z-50 max-w-[12rem] md:max-w-sm">
+					<div className="rounded-lg border border-n-8 bg-n-1 p-4 shadow-xl shadow-n-8 dark:border-n-3 dark:bg-n-8">
 						<div className="flex items-start space-x-4">
 							<div className="flex-grow">
 								<p className="text-sm font-semibold text-n-900 dark:text-white">{notificationContent.text}</p>

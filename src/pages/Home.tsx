@@ -7,17 +7,19 @@ import { Lamp } from '@/components/ui/lamp'
 import { Contact } from './Contact'
 
 export const Home = () => {
-	useImgPadding()
-	return (
-		<div className="overflow-x-clip bg-n-9 antialiased dark:bg-n-6 lg:subpixel-antialiased min-h-screen">
-			<Notification initialDelay={1000} displayDuration={10000} />
-			<HeroParallaxContent />
-			<Lamp />
-			<Tech />
-			<MapParallaxContent />
-			<Contact />
-		</div>
-	)
+  useImgPadding()
+  return (
+    <div className="min-h-screen overflow-x-clip bg-n-9 antialiased dark:bg-n-6 lg:subpixel-antialiased">
+      <Notification initialDelay={1000} displayDuration={10000} />
+      <HeroParallaxContent />
+      <Lamp />
+      <Tech />
+      <MapParallaxContent />
+      <div id="contact">
+        <Contact />
+      </div>
+    </div>
+  )
 }
 
 export default Home

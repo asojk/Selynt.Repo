@@ -46,7 +46,13 @@ export const TimeLine = () => {
 	}
 
 	return (
-		<div className="flex flex-col items-center justify-center space-y-8 py-10 lg:space-y-16">
+		<section className="flex flex-col items-center justify-center w-full gap-4 lg:gap-8 antialiased md:flex-row lg:subpixel-antialiased">
+			<div className="prose text-center md:text-start w-[80%] md:w-1/3">
+				<h2 className="H2">Our Process</h2>
+				<h3 className="prose text-left H3">Our process is simple - designed to be efficient and personable.</h3>
+				<p className="prose text-left Description">Working with us should be easy, and if it’s every not, all we ask is that you let us know.</p>
+			</div>
+		<div className="flex flex-col items-center justify-center space-y-8 py-10 lg:space-y-16 w-2/3">
 			<motion.div
 				className="grid w-full max-w-4xl grid-cols-3 gap-4 px-4 md:gap-8"
 				ref={ref}
@@ -103,7 +109,8 @@ export const TimeLine = () => {
 					<p className="text-md text-n-9 dark:text-n-3 lg:text-lg">Iterate</p>
 				</motion.div>
 			</motion.div>
-		</div>
+		</div >
+		</section>
 	)
 }
 

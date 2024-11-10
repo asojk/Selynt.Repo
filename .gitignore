@@ -49,3 +49,5 @@ env_variables.txt
 /.vscode
 .vscode/settings.json
 /public/images
+.DS_Store
+.DS_Store
