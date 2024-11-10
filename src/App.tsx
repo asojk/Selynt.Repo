@@ -1,3 +1,5 @@
+/** @format */
+
 import { BrowserRouter as Router } from 'react-router-dom'
 import { useTheme } from '@/constants/ThemeContext'
 import { DarkModeToggle } from '@/components/common/DarkModeToggle'

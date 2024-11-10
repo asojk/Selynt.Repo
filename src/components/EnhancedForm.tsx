@@ -90,7 +90,7 @@ export const EnhancedForm: React.FC = () => {
 			action="https://formsubmit.co/82120871942c24049c274ba8143a4f61"
 			method="POST"
 			onSubmit={handleSubmit}
-			className="mx-auto max-w-xl rounded-lg p-6 shadow-lg bg-B antialiased dark:bg-B-dark lg:subpixel-antialiased ">
+			className="mx-auto max-w-xl rounded-lg p-6 shadow-lg bg-n-5 antialiased dark:bg-n-6 lg:subpixel-antialiased ">
 			<input type="hidden" name="_captcha" value="false" />
 			<input type="hidden" name="_subject" value="New form submission" />
 			<input type="hidden" name="_autoresponse" value="Thank you for your submission. We will get back to you soon." />
@@ -101,36 +101,11 @@ export const EnhancedForm: React.FC = () => {
 					<FormField control={control} name="firstName" label="First Name" error={errors.firstName} />
 					<FormField control={control} name="lastName" label="Last Name" error={errors.lastName} />
 				</div>
-				<div className="grid grid-cols-1 gap-6 md:grid-cols-2">
-          <FormField control={control} name="email" label="Email" type="email" error={errors.email} />
-          <div className="mb-4">
-  <Label className="block text-sm font-medium mb-1">
-    Contact Preference
-  </Label>
-  <Controller
-    name="contactPreference"
-    control={control}
-              render={({ field }) => (
-      <div className='h-10 px-2 py-3 w-full rounded-md bg-white flex items-center justify-between'>
-      <RadioGroup
-        options={['Morning', 'Afternoon']}
-        onValueChange={field.onChange}
-        value={field.value}
-        id='contactPreference'
-        name='contactPreference'
-        className={cn(
-          formStyles.radio,
-          'w-full focus:border-a-light focus:ring-a-light my-1'
-        )}
-      />
-                </div>
-    )}
-  />
-</div>
-          </div>
+
+				<FormField control={control} name="email" label="Email" type="email" error={errors.email} />
 
 				<div>
-					<Label htmlFor="preferredDate" className="text-sm font-medium">
+					<Label htmlFor="preferredDate" className="text-sm font-medium text-n-8 dark:text-n-3">
 						Preferred Contact Date (Optional)
 					</Label>
 					<Controller
@@ -140,18 +115,36 @@ export const EnhancedForm: React.FC = () => {
 							<DatePicker
 								{...field}
 								className={cn(
-									formStyles.datePicker,
-									'mt-1 w-full rounded-md focus:border-a-light focus:ring-a-light'
+									formStyles.input,
+									'mt-1 w-full rounded-md shadow-sm focus:border-a-light focus:ring-a-light'
 								)}
 							/>
 						)}
 					/>
 				</div>
 
-
+        <div className="mb-4">
+  <Label className="block text-sm font-medium mb-1 text-n-8 dark:text-n-3">
+    Contact Preference
+  </Label>
+  <Controller
+    name="contactPreference"
+    control={control}
+    render={({ field }) => (
+      <RadioGroup
+        options={['Morning', 'Afternoon']}
+        onValueChange={field.onChange}
+        value={field.value}
+        id='contactPreference'
+        name='contactPreference'
+        className="mt-1"
+      />
+    )}
+  />
+</div>
 
 <div className="mb-4">
-  <Label htmlFor="projectType" className="block text-sm font-medium mb-1 ">
+  <Label htmlFor="projectType" className="block text-sm font-medium mb-1 text-n-8 dark:text-n-3">
     Project Type
   </Label>
   <Controller
@@ -178,7 +171,7 @@ export const EnhancedForm: React.FC = () => {
 </div>
 
 				<div>
-					<Label htmlFor="comments" className="text-sm font-medium ">
+					<Label htmlFor="comments" className="text-sm font-medium text-n-8 dark:text-n-3">
 						Additional Comments
 					</Label>
 					<Controller
@@ -212,7 +205,7 @@ export const EnhancedForm: React.FC = () => {
     />
     <Label
       htmlFor="okToContact"
-      className="text-sm text-n-900 px-2 py-1 rounded-md items-center justify-center"
+      className="text-sm text-n-9 dark:text-n-2 px-2 py-1 rounded-md items-center justify-center"
     >
       I consent to contact
     </Label>
@@ -225,7 +218,7 @@ export const EnhancedForm: React.FC = () => {
 					id="submit"
 					disabled={!okToContact || submitStatus === 'loading'}
 					className={cn(
-						'w-full rounded-md bg-a-dark px-4 py-2 text-white transition-colors hover:bg-s-dark font-semibold shadow-neu1/20 dark:bg-s-dark dark:text-n-900 dark:shadow-custom-dark/20',
+						'w-full rounded-md bg-a-dark px-4 py-2 text-white transition-colors hover:bg-s-dark font-semibold shadow-neu1/20 dark:bg-s dark:text-n-900 dark:shadow-custom-dark/20',
      //* mt-8 w-full max-w-48 rounded-lg border-[1px] border-s bg-a-dark py-4 font-semibold uppercase text-white shadow-neu1 dark:border-[1px] dark:border-p dark:bg-s dark:text-n-900 dark:shadow-custom-dark *//
 
 						(!okToContact || submitStatus === 'loading') && 'cursor-not-allowed opacity-50'
@@ -260,7 +253,7 @@ const FormField: React.FC<{
 	type?: string
 }> = ({ control, name, label, error, type = 'text' }) => (
 	<div>
-		<Label htmlFor={name} className="text-sm font-medium ">
+		<Label htmlFor={name} className="text-sm font-medium text-n-8 dark:text-n-3">
 			{label}
 		</Label>
 		<Controller
