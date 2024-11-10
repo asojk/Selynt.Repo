@@ -85,7 +85,7 @@ const LampContent = () => (
 				<motion.button
 					whileHover={{ scale: 1.015 }}
 					whileTap={{ scale: 0.985 }}
-					className="mt-8 w-64 rounded-lg bg-p py-4 font-semibold uppercase text-white dark:bg-a">
+					className="mt-8 w-full max-w-48 rounded-lg border-[1px] border-s bg-a-dark px-4 py-4 text-lg font-semibold uppercase tracking-widest text-white shadow-neu1 dark:shadow-neu2 lg:px-8 lg:py-6">
 					Compare
 				</motion.button>
 			</Link>
