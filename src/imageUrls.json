@@ -114,5 +114,61 @@
   "safari-pinned-tab.svg": {
     "url": "https://prkm7pjvgapey0vo.public.blob.vercel-storage.com/safari-pinned-tab-niDuF7Tg6qDXJIGwEhXkPiWQaCs6cw.svg",
     "hash": "2f8edbd36e9e9f83575fa75676b6d467bbbb3f1d382de7ab96aae3dd3554a2cd"
+  },
+  "public/android-chrome-192x192.png": {
+    "url": "https://prkm7pjvgapey0vo.public.blob.vercel-storage.com/public/android-chrome-192x192-tso2pvovA72v9UazyLqtG7wkKSmJ9m.png",
+    "hash": "c040ef58b9708b1ef79720fe615ca03d8642679ba9a26c05cf95de001cfd6ff6"
+  },
+  "public/android-chrome-512x512.png": {
+    "url": "https://prkm7pjvgapey0vo.public.blob.vercel-storage.com/public/android-chrome-512x512-KWcY1FeitL0yTIjLtImAiMLElMq433.png",
+    "hash": "8e6582db23aaceed9c54162d50394cd6b4eaf02e914d09ba5a9d30e9789bbe59"
+  },
+  "public/apple-touch-icon.png": {
+    "url": "https://prkm7pjvgapey0vo.public.blob.vercel-storage.com/public/apple-touch-icon-6C7O6tXBKTbwn0sBc3FA1AJQOB5Efn.png",
+    "hash": "de24fdd52ae1f515c7f5a2cfe99395efb949c23e87df73448346a46fdd9c2402"
+  },
+  "public/favicon-16x16.png": {
+    "url": "https://prkm7pjvgapey0vo.public.blob.vercel-storage.com/public/favicon-16x16-Lg6GVo7YvQK3v1cgoS023c1pRCz9Rz.png",
+    "hash": "70936718ac1452450d9a4f348a2067608ecbd46de580c4f6c61d98ab6d956d71"
+  },
+  "public/favicon-32x32.png": {
+    "url": "https://prkm7pjvgapey0vo.public.blob.vercel-storage.com/public/favicon-32x32-MIsK7pLUwVILSQYqGNDvNcZxCm34Jg.png",
+    "hash": "87fb59e2525cfa22e179fba7917766a4735f8ef7081d735c30899d168f936ab3"
+  },
+  "public/favicon.ico": {
+    "url": "https://prkm7pjvgapey0vo.public.blob.vercel-storage.com/public/favicon-E3abIYAOyLM3vWxQ5d55lTP8p312rg.ico",
+    "hash": "5272c6dbd42e7c08022f65fc72338b2cfc5dbaaa31e11f6866b9d0c5ae586f91"
+  },
+  "public/icon.png": {
+    "url": "https://prkm7pjvgapey0vo.public.blob.vercel-storage.com/public/icon-k2K3xloHsWmxCbfKqt9HgHmEmrOYqo.png",
+    "hash": "1feb38e7d493e70b7e169e4415cdec6c91923527e44fc67ad8781d1e99fd667b"
+  },
+  "public/logo.dark.svg": {
+    "url": "https://prkm7pjvgapey0vo.public.blob.vercel-storage.com/public/logo.dark-rl2qziMoVqDs1aOvKEiy6hVUt3nu9y.svg",
+    "hash": "9d4aa4a55dc41cd3e0f0e4d75a14d3255160850bc2208dbf0628b3452c575232"
+  },
+  "src/assets/images/Alex.jpg": {
+    "url": "https://prkm7pjvgapey0vo.public.blob.vercel-storage.com/src/assets/images/Alex-SzEU7blXzZfyYfDwscptYyqFiVkAbg.jpg",
+    "hash": "732405fd8a8bed66e342b2e37137f29c8eefdd11cc0784b8ba3882c6afbd240d"
+  },
+  "src/assets/images/ReactCert.jpg": {
+    "url": "https://prkm7pjvgapey0vo.public.blob.vercel-storage.com/src/assets/images/ReactCert-Q2gZzDqhBzQocwjK7yKel57FilzNKK.jpg",
+    "hash": "696626f6ff5f4564a846bf54936b06894dcd0837fca48db9681c9fbf9ce6aea7"
+  },
+  "src/assets/images/ResearchGate_icon_SVG.svg": {
+    "url": "https://prkm7pjvgapey0vo.public.blob.vercel-storage.com/src/assets/images/ResearchGate_icon_SVG-n6JxwxaF1wMOrpGMhkIULcVZEG0Txu.svg",
+    "hash": "046d2abe55934cb6eda1efc69546c625055a83d65eecb6ba31ae6c8c1da7ed8b"
+  },
+  "src/assets/images/UNI-site-logo.png": {
+    "url": "https://prkm7pjvgapey0vo.public.blob.vercel-storage.com/src/assets/images/UNI-site-logo-p9eN8oZwE6yMuHW4WzbnI5s9D5Wso2.png",
+    "hash": "012ac3e15339873a9f120fbcd095f9b5e07c3035aeb4e8aac7c617b1faa2f3b4"
+  },
+  "src/assets/images/umn.webp": {
+    "url": "https://prkm7pjvgapey0vo.public.blob.vercel-storage.com/src/assets/images/umn-BNmo3gXm6WOYlYfHMMGE4vY51DBDH6.webp",
+    "hash": "98eb232a26597eddc39fb70eb9da842b78306521d13be72f7f3d3618a0d3977f"
+  },
+  "src/assets/images/uni.webp": {
+    "url": "https://prkm7pjvgapey0vo.public.blob.vercel-storage.com/src/assets/images/uni-QfCtjbfg33oq4EO8bRsaTRtZ9Ek0ti.webp",
+    "hash": "3dd71bac6ecf7fe232f458446bfd7e5ccbcf24fc3ceface26b5c9e1088f99364"
   }
 }

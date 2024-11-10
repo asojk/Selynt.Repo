@@ -1,4 +1,3 @@
-/** @format */
 import { promises as fs } from 'fs';
 import path from 'path';
 import crypto from 'crypto';
@@ -22,7 +21,12 @@ async function uploadImage(filePath, fileName, existingHash) {
     return { fileName, url, hash: currentHash };
 }
 async function uploadAllImages() {
-    const imageDir = path.join(process.cwd(), 'public', 'images');
+    if (!process.env.BLOB_READ_WRITE_TOKEN) {
+        console.error('BLOB_READ_WRITE_TOKEN is not set in the environment');
+        process.exit(1);
+    }
+    const publicDir = path.join(process.cwd(), 'public');
+    const srcAssetsDir = path.join(process.cwd(), 'src', 'assets');
     const mapPath = path.join(process.cwd(), 'src', 'imageUrls.json');
     let existingMap = {};
     try {
@@ -30,13 +34,36 @@ async function uploadAllImages() {
         existingMap = JSON.parse(mapContent);
     }
     catch (error) {
-        console.error('An error occurred:', error);
+        console.error('An error occurred while reading the existing map:', error);
     }
-    const files = await fs.readdir(imageDir);
-    const imageFiles = files.filter(file => /\.(jpg|jpeg|png|webp|svg|gif)$/i.test(file));
-    const results = await Promise.all(imageFiles.map(async (file) => {
-        const filePath = path.join(imageDir, file);
-        return uploadImage(filePath, file, existingMap[file]?.hash);
+    const allFiles = [];
+    // Function to recursively get all image files from a directory
+    async function getImageFiles(dir) {
+        try {
+            const entries = await fs.readdir(dir, { withFileTypes: true });
+            for (const entry of entries) {
+                const fullPath = path.join(dir, entry.name);
+                if (entry.isDirectory()) {
+                    await getImageFiles(fullPath);
+                }
+                else if (/\.(jpg|jpeg|png|webp|svg|gif|ico|JPG|JPEG|PNG|WEBP|SVG|GIF|ICO)$/i.test(entry.name)) {
+                    allFiles.push(fullPath);
+                }
+            }
+        }
+        catch (error) {
+            console.error(`Error reading directory ${dir}:`, error);
+        }
+    }
+    // Get all image files from public and src/assets directories
+    await getImageFiles(publicDir);
+    await getImageFiles(srcAssetsDir);
+    console.log(`Found ${allFiles.length} image files`);
+    const results = await Promise.all(allFiles.map(async (filePath) => {
+        const fileName = path.relative(process.cwd(), filePath);
+        const result = await uploadImage(filePath, fileName, existingMap[fileName]?.hash);
+        console.log(`Processed: ${fileName} - ${result ? 'Uploaded' : 'Skipped'}`);
+        return result;
     }));
     const newMap = results.reduce((acc, result) => {
         if (result) {

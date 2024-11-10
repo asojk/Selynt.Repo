@@ -8,9 +8,9 @@
 		"build": "tsc && vite build",
 		"upload-images": "pnpm run compile-scripts && node --experimental-specifier-resolution=node dist-scripts/uploadImages.js",
 		"check-images": "pnpm run compile-scripts && node --experimental-specifier-resolution=node dist-scripts/checkImageChanges.js",
+		"compile-scripts": "tsc -p scripts/tsconfig.scripts.json",
 		"lint": "eslint . --config eslint.config.mjs",
 		"format": "prettier --write \"src/**/*.{js,jsx,ts,tsx,json,css,scss,md}\"",
-		"compile-scripts": "tsc -p scripts/tsconfig.scripts.json",
 		"preview": "vite preview"
 	},
 	"dependencies": {
