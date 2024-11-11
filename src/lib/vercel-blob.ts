@@ -1,6 +1,3 @@
-/* eslint-disable no-undef */
-/** @format */
-
 import { put } from '@vercel/blob'
 
 export async function uploadToVercelBlob(file: File) {

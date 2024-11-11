@@ -21,6 +21,9 @@ dist-ssr
 
 # misc
 .DS_Store
+/.DS_Store
+*/.DS_Store
+*.DS_Store
 *.pem
 /etc
 /otherframework
@@ -46,3 +49,6 @@ env_variables.txt
 /.vscode
 .vscode/settings.json
 /public/images
+.DS_Store
+.DS_Store
+.DS_Store

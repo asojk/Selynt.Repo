@@ -32,49 +32,65 @@ async function uploadImage(filePath: string, fileName: string, existingHash?: st
 }
 
 async function uploadAllImages() {
-	const imageDir = path.join(process.cwd(), 'public', 'images')
-	const faviconDir = path.join(process.cwd(), 'public')
-
+  if (!process.env.BLOB_READ_WRITE_TOKEN) {
+    console.error('BLOB_READ_WRITE_TOKEN is not set in the environment');
+    process.exit(1);
+  }
+	const publicDir = path.join(process.cwd(), 'public')
+	const srcAssetsDir = path.join(process.cwd(), 'src', 'assets')
 	const mapPath = path.join(process.cwd(), 'src', 'imageUrls.json')
 
 	let existingMap: ImageMap = {}
 	try {
-		const mapContent = await fs.readFile(mapPath, 'utf-8')
-		existingMap = JSON.parse(mapContent)
+			const mapContent = await fs.readFile(mapPath, 'utf-8')
+			existingMap = JSON.parse(mapContent)
 	} catch (error) {
-		console.error('An error occurred:', error)
+			console.error('An error occurred while reading the existing map:', error)
 	}
 
-	// Get files from both 'images' and 'public' root directory
-	const imageFiles = (await fs.readdir(imageDir))
-		.filter(file => /\.(jpg|jpeg|png|webp|svg|gif)$/i.test(file))
-		.map(file => path.join(imageDir, file))
+	const allFiles: string[] = []
 
-	const faviconFiles = (await fs.readdir(faviconDir))
-		.filter(file => /\.(ico|png|svg)$/i.test(file)) // Only .ico, .png, .svg in the 'public' root directory
-		.map(file => path.join(faviconDir, file))
+async function getImageFiles(dir: string) {
+	try {
+			const entries = await fs.readdir(dir, { withFileTypes: true })
+			for (const entry of entries) {
+					const fullPath = path.join(dir, entry.name)
+					if (entry.isDirectory()) {
+							await getImageFiles(fullPath)
+					} else if (/\.(jpg|jpeg|png|webp|svg|gif|ico|JPG|JPEG|PNG|WEBP|SVG|GIF|ICO)$/i.test(entry.name)) {
+							allFiles.push(fullPath)
+					}
+			}
+	} catch (error) {
+			console.error(`Error reading directory ${dir}:`, error)
+	}
+}
 
-	const allFiles = [...imageFiles, ...faviconFiles]
+ await getImageFiles(publicDir)
+ await getImageFiles(srcAssetsDir)
 
-	const results = await Promise.all(
-		allFiles.map(async filePath => {
-			const fileName = path.basename(filePath)
-			return uploadImage(filePath, fileName, existingMap[fileName]?.hash)
-		})
-	)
+ console.log(`Found ${allFiles.length} image files`)
+
+ const results = await Promise.all(
+		 allFiles.map(async filePath => {
+				 const fileName = path.relative(process.cwd(), filePath)
+				 const result = await uploadImage(filePath, fileName, existingMap[fileName]?.hash)
+				 console.log(`Processed: ${fileName} - ${result ? 'Uploaded' : 'Skipped'}`)
+				 return result
+		 })
+ )
 
 	const newMap = results.reduce((acc, result) => {
 		if (result) {
-			acc[result.fileName] = { url: result.url, hash: result.hash }
+				acc[result.fileName] = { url: result.url, hash: result.hash }
 		}
 		return acc
-	}, {} as ImageMap)
+}, {} as ImageMap)
 
-	const updatedMap = { ...existingMap, ...newMap }
+const updatedMap = { ...existingMap, ...newMap }
 
-	await fs.writeFile(mapPath, JSON.stringify(updatedMap, null, 2))
-
-	console.log('Image upload complete. URL map updated.')
+await fs.writeFile(mapPath, JSON.stringify(updatedMap, null, 2))
+console.log('Image upload complete. URL map updated.')
 }
 
 uploadAllImages().catch(console.error)

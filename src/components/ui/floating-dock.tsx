@@ -82,7 +82,7 @@ const IconContainer: React.FC<IconContainerProps> = ({ title, icon, href, scroll
 					whileTap={{ scale: 0.95 }}
 					className="relative flex h-12 w-12 items-center justify-center rounded-full bg-n-1 text-p shadow-md transition-colors hover:bg-n-2 dark:bg-n-8 dark:text-n-1 dark:hover:bg-n-8">
 					{React.cloneElement(icon as React.ReactElement, {
-						className: 'w-6 h-6 sm:w-7 sm:h-7 stroke-[1.5] sm:stroke-2',
+						className: 'w-6 h-6 sm:w-7 sm:h-7 stroke-[1.5]',
 					})}
 				</motion.div>
 				<AnimatePresence>

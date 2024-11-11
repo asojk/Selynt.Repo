@@ -1,8 +1,10 @@
+/* eslint-disable tailwindcss/no-custom-classname */
 import { motion } from 'framer-motion'
 import useIntersectionObserver from '@/hooks/useIntersectionObserver'
 import { useRef } from 'react'
 
 export const TimeLine = () => {
+	// eslint-disable-next-line no-undef
 	const ref = useRef<HTMLDivElement>(null)
 	const entry = useIntersectionObserver(ref, {
 		threshold: 0.5,
@@ -46,64 +48,73 @@ export const TimeLine = () => {
 	}
 
 	return (
-		<div className="flex flex-col items-center justify-center space-y-8 py-10 lg:space-y-16">
-			<motion.div
-				className="grid w-full max-w-4xl grid-cols-3 gap-4 px-4 md:gap-8"
-				ref={ref}
-				variants={containerVariants}
-				initial="hidden"
-				animate={inView ? 'visible' : 'hidden'}>
-				{/* Step 1 */}
-				<motion.div className="flex flex-col items-center space-y-2 text-center" variants={itemVariants}>
-					<p className="text-5xl font-light text-n-900 dark:text-white">1</p>
-					<p className="text-md text-n-9 dark:text-n-3 lg:text-lg">Meet</p>
+		<section className="flex flex-col items-center justify-center w-full gap-4 antialiased md:flex-row lg:gap-8 lg:subpixel-antialiased">
+			<div className="prose w-[80%] text-center md:w-1/3 md:text-start">
+				<h2 className="H2">Our Process</h2>
+				<h3 className="prose text-left H3">Our process is simple - designed to be efficient and personable.</h3>
+				<p className="prose text-left Description">
+					Working with us should be easy, and if it’s every not, all we ask is that you let us know.
+				</p>
+			</div>
+			<div className="flex flex-col items-center justify-center w-2/3 py-10 space-y-8 lg:space-y-16">
+				<motion.div
+					className="grid w-full max-w-4xl grid-cols-3 gap-4 px-4 md:gap-8"
+					ref={ref}
+					variants={containerVariants}
+					initial="hidden"
+					animate={inView ? 'visible' : 'hidden'}>
+					{/* Step 1 */}
+					<motion.div className="flex flex-col items-center space-y-2 text-center" variants={itemVariants}>
+						<p className="text-5xl font-light text-n-900 dark:text-white">1</p>
+						<p className="text-md text-n-9 dark:text-n-3 lg:text-lg">Meet</p>
+					</motion.div>
+					{/* Arrow 1→2 */}
+					<motion.div className="flex items-center justify-center -mt-12" variants={itemVariants}>
+						<CTAArrow className="rotate-12 scale-x-[-1] transform" />
+					</motion.div>
+					{/* Step 2 */}
+					<motion.div className="flex flex-col items-center space-y-2 text-center" variants={itemVariants}>
+						<p className="text-5xl font-light text-n-900 dark:text-white">2</p>
+						<p className="text-md text-n-9 dark:text-n-3 lg:text-lg">Design</p>
+					</motion.div>
+					{/* Empty Cell */}
+					<div className="hidden"></div>
+					{/* Arrow 2→3 */}
+					<motion.div className="flex items-center justify-center" variants={itemVariants}>
+						<div className="hidden" />
+					</motion.div>
+					{/* Feedback Step */}
+					<motion.div className="flex flex-col items-center space-y-2 text-center" variants={itemVariants}>
+						<p className="font-light text-a dark:text-s-dark">
+							<FeedbackArrow />
+						</p>
+						<p className="text-md text-n-9 dark:text-n-3 lg:text-lg">Feedback</p>
+					</motion.div>
+					{/* Empty Cell */}
+					<div className="hidden"></div>
+					{/* Empty Cell */}
+					<div className="hidden"></div>
+					{/* Down Arrow */}
+					<motion.div className="flex items-center justify-center -mr-12" variants={itemVariants}>
+						<CTAArrow className="-rotate-45 scale-y-[-1] transform" />
+					</motion.div>
+					{/* Step 4 (Deploy) */}
+					<motion.div className="flex flex-col items-center space-y-2 text-center" variants={item2Variants}>
+						<p className="text-5xl font-light text-n-900 dark:text-white">4</p>
+						<p className="text-md text-n-9 dark:text-n-3 lg:text-lg">Deploy</p>
+					</motion.div>
+					{/* Arrow 4←3 */}
+					<motion.div className="flex items-center justify-center -mb-12" variants={item2Variants}>
+						<CTAArrow className="rotate-45 scale-y-[-1] transform" />
+					</motion.div>
+					{/* Step 3 (Iterate) */}
+					<motion.div className="flex flex-col items-center space-y-2 text-center" variants={itemVariants}>
+						<p className="text-5xl font-light text-n-900 dark:text-white">3</p>
+						<p className="text-md text-n-9 dark:text-n-3 lg:text-lg">Iterate</p>
+					</motion.div>
 				</motion.div>
-				{/* Arrow 1→2 */}
-				<motion.div className="-mt-12 flex items-center justify-center" variants={itemVariants}>
-					<CTAArrow className="rotate-12 scale-x-[-1] transform" />
-				</motion.div>
-				{/* Step 2 */}
-				<motion.div className="flex flex-col items-center space-y-2 text-center" variants={itemVariants}>
-					<p className="text-5xl font-light text-n-900 dark:text-white">2</p>
-					<p className="text-md text-n-9 dark:text-n-3 lg:text-lg">Design</p>
-				</motion.div>
-				{/* Empty Cell */}
-				<div className="hidden"></div>
-				{/* Arrow 2→3 */}
-				<motion.div className="flex items-center justify-center" variants={itemVariants}>
-					<div className="hidden" />
-				</motion.div>
-				{/* Feedback Step */}
-				<motion.div className="flex flex-col items-center space-y-2 text-center" variants={itemVariants}>
-					<p className="font-light text-a dark:text-s-dark">
-						<FeedbackArrow />
-					</p>
-					<p className="text-md text-n-9 dark:text-n-3 lg:text-lg">Feedback</p>
-				</motion.div>
-				{/* Empty Cell */}
-				<div className="hidden"></div>
-				{/* Empty Cell */}
-				<div className="hidden"></div>
-				{/* Down Arrow */}
-				<motion.div className="-mr-12 flex items-center justify-center" variants={itemVariants}>
-					<CTAArrow className="-rotate-45 scale-y-[-1] transform" />
-				</motion.div>
-				{/* Step 4 (Deploy) */}
-				<motion.div className="flex flex-col items-center space-y-2 text-center" variants={item2Variants}>
-					<p className="text-5xl font-light text-n-900 dark:text-white">4</p>
-					<p className="text-md text-n-9 dark:text-n-3 lg:text-lg">Deploy</p>
-				</motion.div>
-				{/* Arrow 4←3 */}
-				<motion.div className="-mb-12 flex items-center justify-center" variants={item2Variants}>
-					<CTAArrow className="rotate-45 scale-y-[-1] transform" />
-				</motion.div>
-				{/* Step 3 (Iterate) */}
-				<motion.div className="flex flex-col items-center space-y-2 text-center" variants={itemVariants}>
-					<p className="text-5xl font-light text-n-900 dark:text-white">3</p>
-					<p className="text-md text-n-9 dark:text-n-3 lg:text-lg">Iterate</p>
-				</motion.div>
-			</motion.div>
-		</div>
+			</div>
+		</section>
 	)
 }
 
