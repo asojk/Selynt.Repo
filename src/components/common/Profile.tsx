@@ -17,7 +17,7 @@ export const Profile = () => {
 								<div className="block w-full max-w-sm mx-auto lg:hidden">
 									<div className="relative w-full h-auto p-6 overflow-hidden border rounded-3xl border-s-light dark:border-p">
 										<img
-											src="/src/assets/images/Alex.JPG"
+											src="https://prkm7pjvgapey0vo.public.blob.vercel-storage.com/src/assets/images/Alex-SzEU7blXzZfyYfDwscptYyqFiVkAbg.jpg"
 											alt="Avatar"
 											className="object-cover w-full h-full rounded-3xl"
 										/>
@@ -38,17 +38,17 @@ export const Profile = () => {
 													<div className="flex items-center justify-center">
 														<div className="flex w-full max-w-[250px] items-center justify-between">
 															<img
-																src="src/assets/images/umn.webp"
+																src="https://prkm7pjvgapey0vo.public.blob.vercel-storage.com/src/assets/images/umn-BNmo3gXm6WOYlYfHMMGE4vY51DBDH6.webp"
 																alt="University of Minnesota"
 																className="w-[30%] max-w-[60px] object-contain"
 															/>
 															<img
-																src="src/assets/images/UNI-site-logo.png"
+																src="https://prkm7pjvgapey0vo.public.blob.vercel-storage.com/src/assets/images/uni-QfCtjbfg33oq4EO8bRsaTRtZ9Ek0ti.webp"
 																alt="University of Northern Iowa"
 																className="w-[30%] max-w-[60px] rounded-md bg-violet-800 object-contain dark:bg-transparent"
 															/>
 															<img
-																src="src/assets/images/ResearchGate_icon_SVG.svg"
+																src="https://prkm7pjvgapey0vo.public.blob.vercel-storage.com/src/assets/images/ResearchGate_icon_SVG-n6JxwxaF1wMOrpGMhkIULcVZEG0Txu.svg"
 																alt="ResearchGate"
 																className="w-[30%] max-w-[60px] object-contain"
 															/>
@@ -59,7 +59,7 @@ export const Profile = () => {
 											<GridCard>
 												<h4 className="H3">Certifications</h4>
 												<img
-													src="src/assets/images/ReactCert.jpg"
+													src="https://prkm7pjvgapey0vo.public.blob.vercel-storage.com/src/assets/images/ReactCert-Q2gZzDqhBzQocwjK7yKel57FilzNKK.jpg"
 													alt="React Certification"
 													className="object-contain w-full h-auto border-2 rounded-xl border-B-4"
 												/>
@@ -71,7 +71,7 @@ export const Profile = () => {
 											<div className="hidden w-full lg:col-span-1 lg:block">
 												<div className="relative w-full h-auto overflow-hidden border rounded-3xl border-s-light dark:border-p">
 													<img
-														src="/src/assets/images/Alex.JPG"
+														src="https://prkm7pjvgapey0vo.public.blob.vercel-storage.com/src/assets/images/Alex-SzEU7blXzZfyYfDwscptYyqFiVkAbg.jpg"
 														alt="Avatar"
 														className="object-cover w-full h-full rounded-3xl"
 													/>

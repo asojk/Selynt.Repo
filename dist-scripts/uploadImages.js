@@ -37,7 +37,6 @@ async function uploadAllImages() {
         console.error('An error occurred while reading the existing map:', error);
     }
     const allFiles = [];
-    // Function to recursively get all image files from a directory
     async function getImageFiles(dir) {
         try {
             const entries = await fs.readdir(dir, { withFileTypes: true });
@@ -55,7 +54,6 @@ async function uploadAllImages() {
             console.error(`Error reading directory ${dir}:`, error);
         }
     }
-    // Get all image files from public and src/assets directories
     await getImageFiles(publicDir);
     await getImageFiles(srcAssetsDir);
     console.log(`Found ${allFiles.length} image files`);
