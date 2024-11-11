@@ -1,8 +1,10 @@
+/* eslint-disable tailwindcss/no-custom-classname */
 import { motion } from 'framer-motion'
 import useIntersectionObserver from '@/hooks/useIntersectionObserver'
 import { useRef } from 'react'
 
 export const TimeLine = () => {
+	// eslint-disable-next-line no-undef
 	const ref = useRef<HTMLDivElement>(null)
 	const entry = useIntersectionObserver(ref, {
 		threshold: 0.5,

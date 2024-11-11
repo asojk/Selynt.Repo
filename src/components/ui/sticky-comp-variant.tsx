@@ -74,9 +74,9 @@ const StickyVImage: React.FC<StickyVImageProps> = ({ children, contentHeight }) 
 				position: 'relative',
 			}}
 			transition={transition}
-			className="stickyV z-0 mx-auto overflow-hidden rounded-3xl bg-cover bg-center">
+			className="z-0 mx-auto overflow-hidden bg-center bg-cover rounded-3xl">
 			<motion.div
-				className="absolute inset-1 rounded-3xl bg-white dark:bg-p-dark"
+				className="absolute bg-white inset-1 rounded-3xl dark:bg-p-dark"
 				style={{ opacity }}
 				transition={transition}
 			/>

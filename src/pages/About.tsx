@@ -1,20 +1,19 @@
+/* eslint-disable tailwindcss/no-custom-classname */
+/* eslint-disable prettier/prettier */
 import { StickyVComp } from '@/components/ui/sticky-comp-variant'
-import { Button } from '@/components/common/Button'
-import { Link } from 'react-router-dom'
 import { TimeLine } from '@/components/ui/timeline'
 import { Profile } from '@/components/common/Profile'
 
 export const About = () => {
-	return (
-		<>
-			<div className="relative antialiased bg-B dark:bg-B-dark px-content-padding lg:subpixel-antialiased">
-				<div className="w-full text-center md:text-start">
-					<h1 className="pt-12 pb-12 pH1 px-content-padding md:pt-14 lg:pt-20">About Selynt</h1>
+	return (<>
+			<div className="relative pt-12 pb-12 antialiased bg-B px-content-padding dark:bg-B-dark md:pt-14 lg:pt-20 lg:subpixel-antialiased ">
+				<div className="mb-16 w-[20vw] rounded-3xl px-8 py-2 text-center dark:bg-p-dark md:text-start">
+					<h1 className="py-0 mb-0 pH1 px-content-padding dark:text-white">About Selynt</h1>
 				</div>
 
 				<StickyVComp contentHeight={true}>
 					<div className="grid grid-cols-1 auto-rows-fr md:grid-cols-2">
-						<section className="relative w-full py-8 px-content-padding">
+						<section className="relative w-full py-12 px-content-padding">
 							<div className="prose text-center md:text-start">
 								<h2 className="H2">Our Mission</h2>
 								<p className="prose text-left Description">
@@ -25,7 +24,7 @@ export const About = () => {
 								</p>
 							</div>
 						</section>
-						<section className="relative w-full py-8 px-content-padding">
+						<section className="relative w-full py-12 px-content-padding">
 							<div className="prose text-center md:text-start">
 								<h2 className="H2">Our Vision</h2>
 								<p className="prose text-left Description">
@@ -39,7 +38,7 @@ export const About = () => {
 				</StickyVComp>
 
 				<StickyVComp contentHeight={true}>
-					<div className="py-8 px-content-padding">
+					<div className="py-12 px-content-padding">
 						<TimeLine />
 					</div>
 				</StickyVComp>
@@ -49,7 +48,7 @@ export const About = () => {
 				</StickyVComp>
 
 				<StickyVComp contentHeight={true}>
-					<section className="relative w-full py-8 px-content-padding">
+					<section className="relative w-full py-12 px-content-padding">
 						<h2 className="H2">Why Us?</h2>
 						<ul className="pl-12 prose text-left list-disc prose-ul:li prose-disc Description-p">
 							<li className="prose-li">Marketing without the BS: Amplify what truly matters.</li>
@@ -57,16 +56,6 @@ export const About = () => {
 							<li className="prose-li">Affordability: High-quality services that fit your budget.</li>
 							<li className="prose-li">Personalized Attention: Dedicated focus and expertise.</li>
 						</ul>
-					</section>
-				</StickyVComp>
-
-				<StickyVComp contentHeight={true}>
-					<section className="relative w-full py-8 px-content-padding">
-						<h2 className="text-center H3">Ready to Boost Your Credibility?</h2>
-						<p className="pb-2 prose Description-p">Let’s create a compelling identity for your business.</p>
-						<Link to="/contact">
-							<Button text="Get Started" />
-						</Link>
 					</section>
 				</StickyVComp>
 			</div>

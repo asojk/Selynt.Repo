@@ -3,7 +3,7 @@ import typography from '@tailwindcss/typography'
 import animate from 'tailwindcss-animate'
 
 export default {
-	darkMode: 'class',
+	darkMode: ['class'],
 	content: ['./index.html', './src/**/*.{js,ts,jsx,tsx}'],
 	theme: {
 		extend: {
@@ -22,30 +22,30 @@ export default {
 			},
 			colors: {
 				p: {
-					DEFAULT: '#36454F',
-					light: '#4B5A67',
-					dark: '#243038',
 					'1': '#d0d7dd',
 					'2': '#8e9fad',
 					'3': '#607483',
 					'4': '#43525c',
 					'5': '#1e2529',
+					DEFAULT: '#36454F',
+					light: '#4B5A67',
+					dark: '#243038',
 				},
 				s: {
-					DEFAULT: '#AEE1CF',
-					light: '#D3F4E8',
-					dark: '#7FBFA5',
 					'2': '#5cb593',
 					'3': '#3a8266',
 					'4': '#224a3b',
+					DEFAULT: '#AEE1CF',
+					light: '#D3F4E8',
+					dark: '#7FBFA5',
 				},
 				B: {
-					DEFAULT: '#E8E8E8',
-					light: '#F9F9F9',
-					dark: '#BEBEBE',
 					'2': '#B1B1B1',
 					'3': '#828282',
 					'4': '#535353',
+					DEFAULT: '#E8E8E8',
+					light: '#F9F9F9',
+					dark: '#BEBEBE',
 				},
 				a: {
 					DEFAULT: '#33B588',
@@ -54,8 +54,6 @@ export default {
 					darker: '#224a3b',
 				},
 				n: {
-					light: '#F5F5F5',
-					dark: '#222222',
 					'1': '#fcfcfc',
 					'2': '#f1f1f1',
 					'3': '#dfdfdf',
@@ -66,6 +64,8 @@ export default {
 					'8': '#5c5c5c',
 					'9': '#454545',
 					'900': '#1c1c1c',
+					light: '#F5F5F5',
+					dark: '#222222',
 				},
 				g: {
 					'50': '#fcfcfc',
@@ -98,14 +98,29 @@ export default {
 			},
 			keyframes: {
 				breathe: {
-					'0%, 100%': { transform: 'scale(0.5)', opacity: '0.4' },
-					'33%': { transform: 'scale(1)', opacity: '1' },
-					'66%': { transform: 'scale(1)', opacity: '1' },
+					'0%, 100%': {
+						transform: 'scale(0.5)',
+						opacity: '0.4',
+					},
+					'33%': {
+						transform: 'scale(1)',
+						opacity: '1',
+					},
+					'66%': {
+						transform: 'scale(1)',
+						opacity: '1',
+					},
 				},
 				float: {
-					'0%': { transform: 'translate(-50%, 0)' },
-					'50%': { transform: 'translate(-50%, 30px)' },
-					'100%': { transform: 'translate(-50%, 0)' },
+					'0%': {
+						transform: 'translate(-50%, 0)',
+					},
+					'50%': {
+						transform: 'translate(-50%, 30px)',
+					},
+					'100%': {
+						transform: 'translate(-50%, 0)',
+					},
 				},
 				text: {
 					'0%, 100%': {
@@ -128,6 +143,11 @@ export default {
 					},
 				},
 			},
+			borderRadius: {
+				lg: 'var(--radius)',
+				md: 'calc(var(--radius) - 2px)',
+				sm: 'calc(var(--radius) - 4px)',
+			},
 		},
 	},
 	variants: {
@@ -136,5 +156,5 @@ export default {
 			transitionOpacity: ['group-hover'],
 		},
 	},
-	plugins: [typography, animate],
+	plugins: [typography, animate, require('tailwindcss-animate')],
 } satisfies Config

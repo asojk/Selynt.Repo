@@ -61,7 +61,7 @@ export const Profile = () => {
 												<img
 													src="src/assets/images/ReactCert.jpg"
 													alt="React Certification"
-													className="object-contain w-full h-auto border-2 border-B-4 rounded-xl"
+													className="object-contain w-full h-auto border-2 rounded-xl border-B-4"
 												/>
 											</GridCard>
 										</div>
@@ -97,7 +97,9 @@ export const Profile = () => {
 	)
 }
 
-const GridCard: React.FunctionComponent<any> = ({ children }) => {
+import React from 'react'
+
+const GridCard: React.FC<{ children: React.ReactNode }> = ({ children }) => {
 	return (
 		<div className="inline-flex h-full w-full flex-col items-start justify-start gap-1.5 rounded-xl border border-s-light p-4 dark:border-p">
 			{children}

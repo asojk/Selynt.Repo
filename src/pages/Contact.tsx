@@ -1,31 +1,18 @@
 import { BlockInTextCard } from '@/components/common/BlockInTextCard'
-import { EnhancedForm } from '@/components/EnhancedForm'
+import FormZ from '@/components/ui/formz'
 import { StickyVComp } from '@/components/ui/sticky-comp-variant'
 
 export const Contact = () => {
 	return (
 		<div id="contact" className="relative">
 			<StickyVComp contentHeight={true}>
-				<section className="container mx-auto px-4 py-12 lg:py-24">
-					<div className="prose mx-auto mb-12 max-w-4xl">
-						<h2 className="H2 text-center">Get in Touch</h2>
-						<p className="w-64 md:w-full mx-auto Description mb-6 text-center">
-							You can{' '}
-							<a href="tel:+17634642656" className="italic text-a hover:underline">
-								call
-							</a>
-							,{' '}
-							<a href="sms:+17634643656" className="italic text-a hover:underline">
-								text
-							</a>
-							, or email or fill out the form below.
-						</p>
+				<section className="container py-12">
+					<div className="max-w-4xl mx-auto mb-12 prose">
+						<h2 className="justify-center text-center H2">Get in Touch</h2>
 					</div>
-
-					<div className="flex flex-col items-start justify-center gap8 lg:flex-row">
-						<div className="mx-auto mb-6 w-96 items-center justify-center lg:pt-8 lg:w-1/3 text-n-900 dark:text-white">
+					<div className="flex flex-col items-start justify-center gap-8 px-4 lg:flex-row">
+						<div className="items-center justify-center mx-auto mb-6 w-96 text-n-900 dark:text-white lg:w-1/3 lg:pt-8">
 							<BlockInTextCard
-								tag="/ Quick Question?"
 								text={''}
 								examples={[
 									'How long does a typical website build take?',
@@ -37,9 +24,8 @@ export const Contact = () => {
 								]}
 							/>
 						</div>
-						<div className="mx-auto w-full max-w-2xl lg:w-3/5">
-							<h3 className="H3 mb-6 px-8 text-left lg:text-center">Or ready to get started?</h3>
-							<EnhancedForm />
+						<div className="w-full max-w-2xl mx-auto lg:w-3/5">
+							<FormZ />
 						</div>
 					</div>
 				</section>
