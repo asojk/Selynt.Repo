@@ -73,9 +73,9 @@ export default function ContactForm() {
 	}
 
 	return (
-		<Card className="w-full max-w-2xl mx-auto">
+		<Card className="max-w-md px-content-padding md:max-w-lg lg:max-w-xl">
 			<CardContent>
-				<form onSubmit={handleSubmit(onSubmit)} className="pt-8 space-y-4">
+				<form onSubmit={handleSubmit(onSubmit)} className="space-y-4 pt-8">
 					<div className="grid grid-cols-1 gap-4 md:grid-cols-2">
 						<div className="space-y-2">
 							<Label htmlFor="firstName">First Name</Label>
@@ -138,7 +138,11 @@ export default function ContactForm() {
 									key={type}
 									type="button"
 									variant={watch('projectType', []).includes(type) ? 'default' : 'outline'}
-									className="dark:hover-bg-s flex-shrink-0 flex-grow-0 basis-auto rounded-xl bg-s-2 px-2 py-1.5 text-sm font-semibold text-white transition-colors hover:bg-s-dark active:bg-a dark:bg-s-light dark:text-n-900 lg:px-3 lg:py-2"
+									className={`flex-shrink-0 flex-grow-0 basis-auto rounded-xl px-3 py-2 text-sm font-semibold transition-colors ${
+										watch('projectType', []).includes(type)
+											? 'bg-p-3 text-white hover:bg-p-4 active:bg-p-5 dark:bg-p-3 dark:text-n-1 dark:hover:bg-p-4 dark:active:bg-p-5'
+											: 'bg-white text-p-3 hover:bg-p-1 hover:text-white active:bg-p-2 dark:bg-n-8 dark:text-p-2 dark:hover:bg-p-2 dark:hover:text-n-1 dark:active:bg-p-3'
+									}`}
 									onClick={() => {
 										const currentTypes = watch('projectType', [])
 										const newTypes = currentTypes.includes(type)
@@ -163,7 +167,7 @@ export default function ContactForm() {
 				<Button
 					onClick={handleSubmit(onSubmit)}
 					type="submit"
-					className="w-full px-4 py-2 font-semibold text-white transition-colors rounded-md shadow-neu1/20 dark:shadow-custom-dark/20 bg-a-dark hover:bg-s-dark dark:bg-s dark:text-n-900"
+					className="shadow-neu1/20 dark:shadow-custom-dark/20 w-full rounded-md bg-a-dark px-4 py-2 font-semibold text-white transition-colors hover:bg-s-dark dark:bg-s dark:text-n-900"
 					disabled={isSubmitting}>
 					{isSubmitting ? 'Submitting...' : 'Submit'}
 				</Button>
