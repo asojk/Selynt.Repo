@@ -1,77 +1,58 @@
 /* eslint-disable tailwindcss/no-custom-classname */
-import { ReactNode, useEffect, useState } from 'react'
-import { motion } from 'framer-motion'
+/* eslint-disable no-undef */
+/* eslint-disable tailwindcss/no-custom-classname */
 
-export const BlockInTextCard = ({ text, examples }: { text: ReactNode; examples: string[] }) => {
+import { ReactNode } from 'react'
+
+export const BlockInTextCard = ({ text }: { text: ReactNode }) => {
 	return (
-		<>
-			<div className="w-full max-w-4xl mx-auto space-y-8">
-				<div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3">
-					<p className="col-span-1 text-sm text-left text-n-9 dark:text-n-1 sm:col-span-2 md:col-span-3">
-						You can fill out the form if you're interested in moving forward.
-					</p>
-					<p className="col-span-1 mb-4 text-sm text-left text-n-9 dark:text-n-1 sm:col-span-2 md:col-span-3">
-						Or for quick contact, you can email us below, or use one of these options:
-					</p>
-					<div className="grid items-center justify-around w-full grid-cols-2 gap-12 md:gap-48">
-						<div className="flex justify-center mx-auto">
-							<button className="inline-flex items-center justify-center w-full px-4 py-2 text-sm font-medium text-white transition-colors duration-200 rounded-full dark:hover:bg-B-6 bg-p hover:bg-p-dark dark:bg-B-4 sm:w-auto">
-								<a href="tel:+17634642656" className="flex items-center justify-center">
-									<svg
-										className="w-4 h-4 mr-2"
-										fill="none"
-										stroke="currentColor"
-										viewBox="0 0 24 24"
-										xmlns="http://www.w3.org/2000/svg">
-										<path
-											strokeLinecap="round"
-											strokeLinejoin="round"
-											strokeWidth={2}
-											d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"
-										/>
-									</svg>
-									Call
-								</a>
-							</button>
-						</div>
-
-						<div className="flex justify-center mx-auto">
-							<button className="inline-flex items-center justify-center w-full px-4 py-2 text-sm font-medium text-white transition-colors duration-200 rounded-full dark:hover:bg-B-6 bg-p hover:bg-p-dark dark:bg-B-4 sm:w-auto">
-								<a href="sms:+17634642656" className="flex items-center justify-center">
-									<svg
-										className="w-4 h-4 mr-2"
-										fill="none"
-										stroke="currentColor"
-										viewBox="0 0 24 24"
-										xmlns="http://www.w3.org/2000/svg">
-										<path
-											strokeLinecap="round"
-											strokeLinejoin="round"
-											strokeWidth={2}
-											d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z"
-										/>
-									</svg>
-									Text
-								</a>
-							</button>
-						</div>
-					</div>
-				</div>
-
-				<hr className="border-n-9 dark:border-n-1" />
-
-				<p className="max-w-4xl text-xl leading-relaxed text-a-dark dark:text-a">{text}</p>
-				<div className="flex items-start">
-					<div className="flex-grow ml-3">
-						<p className="mb-2.5 text-sm font-light uppercase">EXAMPLE:</p>
-						<Typewrite examples={examples} />
-					</div>
-				</div>
-				<hr className="border-n-9 text-n-900 dark:border-n-5 dark:text-n-1" />
-				<button className="w-full max-w-lg py-3 mx-auto text-sm font-medium transition-colors border rounded-full border-n-900 hover:bg-n-900 hover:text-n-3 dark:border-n-1 dark:hover:bg-n-1 dark:hover:text-n-7">
-					<a href="mailto:contact@selynt.com" className="flex items-center justify-center">
+		<div className="mx-auto w-full max-w-md space-y-8 lg:max-w-4xl">
+			{/* Contact Buttons */}
+			<div className="flex flex-col items-stretch space-y-4 sm:flex-row sm:justify-around sm:space-x-2 sm:space-y-0 lg:space-x-4">
+				<ContactButton
+					link="tel:+17634642656"
+					text="Call"
+					icon={
 						<svg
-							className="w-5 h-5 mr-2"
+							className="mr-2 h-4 w-4"
+							fill="none"
+							stroke="currentColor"
+							viewBox="0 0 24 24"
+							xmlns="http://www.w3.org/2000/svg">
+							<path
+								strokeLinecap="round"
+								strokeLinejoin="round"
+								strokeWidth={2}
+								d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"
+							/>
+						</svg>
+					}
+				/>
+				<ContactButton
+					link="sms:+17634642656"
+					text="Text"
+					icon={
+						<svg
+							className="mr-2 h-4 w-4"
+							fill="none"
+							stroke="currentColor"
+							viewBox="0 0 24 24"
+							xmlns="http://www.w3.org/2000/svg">
+							<path
+								strokeLinecap="round"
+								strokeLinejoin="round"
+								strokeWidth={2}
+								d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z"
+							/>
+						</svg>
+					}
+				/>
+				<ContactButton
+					link="mailto:contact@selynt.com"
+					text="Email"
+					icon={
+						<svg
+							className="mr-2 h-5 w-5"
 							fill="none"
 							stroke="currentColor"
 							viewBox="0 0 24 24"
@@ -83,14 +64,29 @@ export const BlockInTextCard = ({ text, examples }: { text: ReactNode; examples:
 								d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
 							/>
 						</svg>
-						Send us an email
-					</a>
-				</button>
+					}
+				/>
 			</div>
-		</>
+
+			{/* Divider */}
+			<hr className="max-auto w-full max-w-md border-n-9 dark:border-n-1 lg:max-w-xl" />
+
+			{/* Main Content */}
+			<p className="Description max-w-4xl">{text}</p>
+		</div>
 	)
 }
 
+const ContactButton = ({ link, text, icon }: { link: string; text: string; icon: ReactNode }) => (
+	<a
+		href={link}
+		className="inline-flex w-full items-center justify-center rounded-full bg-p-3 px-4 py-2 text-sm font-medium text-white transition-colors duration-200 hover:bg-p-4 active:bg-p-5 dark:bg-p-3 dark:text-n-1 dark:hover:bg-p-4 dark:active:bg-p-5 sm:w-auto sm:flex-1">
+		{icon}
+		{text}
+	</a>
+)
+
+/* 
 const LETTER_DELAY = 0.025
 const BOX_FADE_DURATION = 0.125
 
@@ -99,7 +95,8 @@ const MAIN_FADE_DURATION = 0.25
 
 const SWAP_DELAY_IN_MS = 5500
 
-const Typewrite = ({ examples }: { examples: string[] }) => {
+
+	const Typewrite = ({ examples }: { examples: string[] }) => {
 	const [exampleIndex, setExampleIndex] = useState(0)
 
 	useEffect(() => {
@@ -163,3 +160,4 @@ const Typewrite = ({ examples }: { examples: string[] }) => {
 		</p>
 	)
 }
+	*/

@@ -1,3 +1,4 @@
+/* eslint-disable tailwindcss/no-custom-classname */
 import { useState } from 'react'
 import { AnimatePresence, motion } from 'framer-motion'
 import { StickyVComp } from './ui/sticky-comp-variant'
@@ -88,19 +89,20 @@ const BackgroundShift = () => <motion.span layoutId="bg-shift" className="absolu
 
 const PriceCards = ({ selected }: { selected: 'M' | 'A' }) => (
 	<div className="flex flex-col gap-6 md:mx-auto md:flex-row md:justify-center md:gap-4">
-		{/* Essential Kit */}
 		<PriceCard
 			title="Essential Kit"
 			selected={selected}
 			oneTimePrice="$399"
 			yearlyPrice="$2,000+"
 			listItems={['Custom Design & Configuration Solutions', 'Deployment, Hosting & All Setup Included']}
+			priceStyle="gradient"
 		/>
 		{/* Custom Solution */}
 		<PriceCard
 			title="Custom Solution"
 			selected={selected}
 			oneTimePrice="$1299"
+			priceStyle="generic"
 			yearlyPrice={
 				<>
 					<IconCurrencyDollarOff size={48} className="text-red-500" />
@@ -125,12 +127,20 @@ interface PriceCardProps {
 	oneTimePrice: string
 	yearlyPrice: string | React.ReactNode
 	listItems: string[]
+	priceStyle?: 'gradient' | 'generic' // Add this line
 }
 
-const PriceCard = ({ title, selected, oneTimePrice, yearlyPrice, listItems }: PriceCardProps) => (
+const PriceCard = ({
+	title,
+	selected,
+	oneTimePrice,
+	yearlyPrice,
+	listItems,
+	priceStyle = 'gradient',
+}: PriceCardProps) => (
 	<div
-		className={`mx-auto flex w-3/4 flex-shrink-0 flex-col justify-between rounded-xl border-[1px] border-slate-300 bg-white p-3 text-n-900 shadow-md dark:border-slate-700 dark:bg-n-900/80 dark:text-white md:mx-0 md:w-1/3 md:p-4 lg:grid lg:grid-rows-[auto_1fr_auto] lg:p-6 ${selected === 'A' ? 'h-auto' : ''} `}>
-		<div className="bg-card text-card-foreground flex w-80 flex-col justify-between rounded-lg text-left">
+		className={`mx-auto flex w-3/4 flex-shrink-0 flex-col justify-between rounded-xl border-[1px] border-slate-300 bg-white p-3 text-n-900 shadow-md dark:border-slate-700 dark:bg-n-900/80 dark:text-white md:mx-0 md:w-1/3 md:p-4 md:px-content-padding lg:grid lg:grid-rows-[auto_1fr_auto] lg:p-6 ${selected === 'A' ? 'h-auto' : ''} `}>
+		<div className="bg-card text-card-foreground flex w-full flex-col justify-between rounded-lg text-left">
 			<div className="flex flex-col space-y-1.5">
 				<p className="mb-2 text-lg font-bold lg:text-2xl">{title}</p>
 				<div className="mb-2 flex items-center lg:mb-12">
@@ -142,7 +152,11 @@ const PriceCard = ({ title, selected, oneTimePrice, yearlyPrice, listItems }: Pr
 								animate={{ y: 0, opacity: 1 }}
 								exit={{ y: 50, opacity: 0 }}
 								transition={{ ease: 'linear', duration: 0.25 }}
-								className="animate-text bg-gradient-to-r from-p via-p-2 to-p-dark bg-clip-text pb-4 text-4xl font-bold text-transparent md:text-6xl lg:pb-8">
+								className={`pb-4 text-4xl font-bold md:text-6xl lg:pb-8 ${
+									priceStyle === 'gradient'
+										? 'animate-text bg-gradient-to-r from-p via-p-2 to-p-dark bg-clip-text text-transparent'
+										: 'text-2xl text-p dark:text-n-5 md:text-4xl'
+								}`}>
 								<span>{oneTimePrice}</span>
 							</motion.p>
 						) : (
@@ -152,7 +166,7 @@ const PriceCard = ({ title, selected, oneTimePrice, yearlyPrice, listItems }: Pr
 								animate={{ y: 0, opacity: 1 }}
 								exit={{ y: 50, opacity: 0 }}
 								transition={{ ease: 'linear', duration: 0.25 }}
-								className="justify-left flex w-40 items-center text-left text-2xl font-bold text-red-500 md:text-4xl lg:w-52">
+								className="justify-left flex w-80 items-center text-left text-2xl font-bold text-red-500 md:text-4xl">
 								{typeof yearlyPrice === 'string' ? <span>{yearlyPrice}</span> : yearlyPrice}
 							</motion.div>
 						)}
@@ -172,16 +186,28 @@ const PriceCard = ({ title, selected, oneTimePrice, yearlyPrice, listItems }: Pr
 
 const BrandingSection = () => (
 	<div className="mx-auto flex flex-wrap justify-center gap-4 lg:flex-nowrap lg:gap-6">
-		<BrandingCard title="Basic Branding" price="$300" listItems={['Custom Logo', 'Personal Color Palette']} />
+		<BrandingCard
+			title="Basic Branding"
+			price="$300"
+			listItems={['Custom Logo', 'Personal Color Palette']}
+			priceStyle="generic"
+		/>
 		<BrandingCard
 			title="Intermediate Branding"
 			price="$600"
 			listItems={['Logo Design', 'Color Palette', 'Brand Guidelines', 'Instructive Implementation']}
+			priceStyle="gradient"
 		/>
 		<BrandingCard
 			title="Comprehensive Branding"
 			price="$1,000"
-			listItems={['Full Branding Suite', 'In-Depth Brand Guidelines', 'Comprehensive Implementation']}
+			listItems={[
+				'Full Branding Suite',
+				'In-Depth Brand Guidelines',
+				'Comprehensive Implementation',
+				'Branded Document Templates',
+			]}
+			priceStyle="generic"
 		/>
 	</div>
 )
@@ -190,15 +216,21 @@ interface BrandingCardProps {
 	title: string
 	price: string
 	listItems: string[]
+	priceStyle?: 'gradient' | 'generic'
 }
 
-const BrandingCard = ({ title, price, listItems }: BrandingCardProps) => (
-	<div className="mx-auto flex w-full flex-col justify-between rounded-xl border-[1px] border-slate-300 bg-white p-3 text-n-900 shadow-md dark:bg-n-900/80 dark:text-white sm:w-3/4 md:w-1/2 lg:w-1/3 lg:p-6">
+const BrandingCard = ({ title, price, listItems, priceStyle = 'gradient' }: BrandingCardProps) => (
+	<div className="mx-auto flex w-3/4 flex-col justify-between rounded-xl border-[1px] border-slate-300 bg-white p-3 text-n-900 shadow-md dark:bg-n-900/80 dark:text-white md:w-[45%] lg:w-[30%]">
 		<div className="bg-card text-card-foreground flex flex-col justify-between rounded-lg text-left">
 			<div className="flex flex-col space-y-1.5">
 				<p className="mb-2 break-words text-xl font-bold lg:text-2xl">{title}</p>
 				<div className="mb-2 flex items-center lg:mb-12">
-					<h2 className="animate-text bg-gradient-to-r from-p via-p-2 to-p-dark bg-clip-text pb-4 text-4xl font-bold text-transparent md:text-6xl lg:pb-8">
+					<h2
+						className={`pb-4 text-4xl font-bold md:text-6xl lg:pb-8 ${
+							priceStyle === 'gradient'
+								? 'animate-text bg-gradient-to-r from-p via-p-2 to-p-dark bg-clip-text text-transparent'
+								: 'text-2xl text-p dark:text-n-5 md:text-4xl'
+						}`}>
 						{price}
 					</h2>
 				</div>
@@ -207,10 +239,8 @@ const BrandingCard = ({ title, price, listItems }: BrandingCardProps) => (
 		<ListItems listItems={listItems} />
 	</div>
 )
-
-// ListItems component
 const ListItems = ({ listItems }: { listItems: string[] }) => (
-	<ul className="max-w-52 list-inside list-none space-y-2 text-left">
+	<ul className="list-inside list-none space-y-2 text-left">
 		{listItems.map((item, index) => (
 			<li key={index} className="flex items-start">
 				<CheckMark />
