@@ -2,8 +2,8 @@ import { BrowserRouter as Router } from 'react-router-dom'
 import { useTheme } from '@/constants/ThemeContext'
 import { DarkModeToggle } from '@/components/common/DarkModeToggle'
 import { Footer } from '@/components/layout/Footer'
-import { IndexDock } from '@/components/layout/Dock'
 import AnimatedRoutes from '@/components/layout/AnimatedRoutes'
+import { NavTop } from './components/NavTop'
 
 const App = () => {
 	const { theme, setTheme } = useTheme()
@@ -15,7 +15,7 @@ const App = () => {
 					<DarkModeToggle mode={theme} setMode={setTheme} />
 				</div>
 				<AnimatedRoutes />
-				<IndexDock />
+				<NavTop />
 				<Footer />
 			</div>
 		</Router>

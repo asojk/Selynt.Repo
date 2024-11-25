@@ -1,3 +1,8 @@
+<<<<<<< Updated upstream
+=======
+/* eslint-disable no-undef */
+import { useState, useRef, useEffect } from 'react'
+>>>>>>> Stashed changes
 import MapChart from '@/components/MapChart'
 import { useImgPadding } from '@/constants/imgpadding'
 import { StickyVComp } from '../ui/sticky-comp-variant'
