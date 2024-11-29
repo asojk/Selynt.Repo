@@ -1,6 +1,6 @@
 import { BrowserRouter as Router } from 'react-router-dom'
 import { useTheme } from '@/constants/ThemeContext'
-import { DarkModeToggle } from '@/components/common/DarkModeToggle'
+import { DarkModeToggle } from '@/components/common/Toggles'
 import { Footer } from '@/components/layout/Footer'
 import AnimatedRoutes from '@/components/layout/AnimatedRoutes'
 import { NavTop } from './components/NavTop'

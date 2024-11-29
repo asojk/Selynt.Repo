@@ -1,5 +1,5 @@
 /* eslint-disable tailwindcss/no-custom-classname */
-import { useState } from 'react'
+import React, { useState } from 'react'
 import { AnimatePresence, motion } from 'framer-motion'
 import { StickyVComp } from './ui/sticky-comp-variant'
 import { useImgPadding } from '@/constants/imgpadding'
@@ -12,7 +12,7 @@ export default function SlidePricing() {
 
 	return (
 		<section className="py-12 xl:py-32">
-			<StickyVComp contentHeight={true}>
+			<StickyVComp heightMode="content">
 				<div className="mx-auto flex max-w-5xl flex-col items-center justify-center gap-6 text-left">
 					<h2 className="text-pretty text-4xl font-bold text-a-dark dark:text-s lg:text-6xl">Pricing</h2>
 					<p className="Description mx-auto mb-4 max-w-lg px-4 text-white lg:text-xl">
@@ -21,7 +21,7 @@ export default function SlidePricing() {
 					</p>
 				</div>
 			</StickyVComp>
-			<StickyVComp contentHeight={true}>
+			<StickyVComp heightMode="content">
 				<h2 className="mx-auto text-pretty px-4 pb-8 text-center text-3xl font-bold text-a-dark dark:text-s md:w-2/3 lg:pb-12 lg:text-4xl">
 					Websites
 				</h2>
@@ -32,7 +32,7 @@ export default function SlidePricing() {
 					<PriceCards selected={selected} />
 				</div>
 			</StickyVComp>
-			<StickyVComp contentHeight={true}>
+			<StickyVComp heightMode="content">
 				<h2 className="mx-auto text-pretty px-4 pb-8 text-center text-3xl font-bold text-a-dark dark:text-s md:w-2/3 lg:pb-12 lg:text-4xl">
 					Branding
 				</h2>

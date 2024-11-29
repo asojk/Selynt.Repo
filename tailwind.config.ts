@@ -94,7 +94,8 @@ export default {
 				float: 'float 5s ease-in-out infinite',
 				text: 'text 8s ease infinite',
 				'pulse-slow': 'pulse 7s infinite',
-				text2: 'text 5s ease infinite',
+				highlight: 'text 10s ease infinite',
+				'delayed-fade-in': 'delayedFadeIn 6s ease-out forwards',
 			},
 			keyframes: {
 				breathe: {
@@ -132,15 +133,20 @@ export default {
 						'background-position': 'right center',
 					},
 				},
-				text2: {
+				highlight: {
 					'0%, 100%': {
-						'background-size': '200% 200%',
+						'background-size': '250% 250%',
 						'background-position': 'left top',
 					},
 					'50%': {
-						'background-size': '200% 200%',
+						'background-size': '250% 250%',
 						'background-position': 'right bottom',
 					},
+				},
+				delayedFadeIn: {
+					'0%': { opacity: '0' },
+					'66.67%': { opacity: '0' }, // 2 seconds of 3-second animation
+					'100%': { opacity: '1' },
 				},
 			},
 			borderRadius: {
@@ -156,5 +162,5 @@ export default {
 			transitionOpacity: ['group-hover'],
 		},
 	},
-	plugins: [typography, animate, require('tailwindcss-animate')],
+	plugins: [typography, animate],
 } satisfies Config

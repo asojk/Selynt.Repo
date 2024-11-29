@@ -1,4 +1,3 @@
-/* eslint-disable no-undef */
 import { useState, useRef, useEffect } from 'react'
 import MapChart from '@/components/MapChart'
 import { useImgPadding } from '@/constants/imgpadding'
@@ -28,7 +27,7 @@ export const MapParallaxContent = () => {
 
 	return (
 		<div className="relative">
-			<StickyVComp contentHeight={true}>
+			<StickyVComp heightMode="content">
 				<section className="flex w-full flex-col items-center justify-center px-4 py-4 antialiased md:flex-row lg:gap-8 lg:py-12 lg:subpixel-antialiased">
 					<div className="prose w-full text-center md:w-1/3 md:text-start lg:w-1/4">
 						<h2 className="H2">Discover</h2>

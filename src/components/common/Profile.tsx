@@ -3,30 +3,30 @@ import HoverDevCards from './HoverDevCards'
 export const Profile = () => {
 	return (
 		<>
-			<section className="relative py-12 mr-0 lg:mr-5 xl:mr-0">
-				<div className="w-full px-4 mx-auto max-w-7xl sm:px-6 lg:px-8">
-					<div className="grid items-start justify-start w-full grid-cols-1 gap-8 lg:grid-cols-3 xl:gap-12">
+			<section className="relative mr-0 py-12 lg:mr-5 xl:mr-0">
+				<div className="mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8">
+					<div className="grid w-full grid-cols-1 items-start justify-start gap-8 lg:grid-cols-3 xl:gap-12">
 						<div className="col-span-full lg:col-span-3">
-							<div className="flex flex-col items-center justify-center w-full gap-4 lg:items-start">
+							<div className="flex w-full flex-col items-center justify-center gap-4 lg:items-start">
 								<div className="flex flex-col items-center justify-center gap-4 text-center lg:items-start lg:text-left">
 									<h6 className="Hero-p">Founder</h6>
 									<h2 className="H2">Alex Sojka</h2>
 								</div>
 
 								{/* Hidden on large screens */}
-								<div className="block w-full max-w-sm mx-auto lg:hidden">
-									<div className="relative w-full h-auto p-6 overflow-hidden border rounded-3xl border-s-light dark:border-p">
+								<div className="mx-auto block w-full max-w-sm lg:hidden">
+									<div className="relative h-auto w-full overflow-hidden rounded-3xl border border-s-light p-6 dark:border-p">
 										<img
-											src="https://prkm7pjvgapey0vo.public.blob.vercel-storage.com/src/assets/images/Alex-SzEU7blXzZfyYfDwscptYyqFiVkAbg.jpg"
+											src="https://prkm7pjvgapey0vo.public.blob.vercel-storage.com/public/Self-mIeJ9HIOeOC6inJI5Ehsig2YpzyOdw.jpeg"
 											alt="Avatar"
-											className="object-cover w-full h-full rounded-3xl"
+											className="h-full w-full rounded-3xl object-cover"
 										/>
 									</div>
 								</div>
 
-								<div className="grid items-start justify-start w-full grid-cols-1 gap-8 lg:grid-cols-3">
+								<div className="grid w-full grid-cols-1 items-start justify-start gap-8 lg:grid-cols-3">
 									<div className="lg:col-span-2">
-										<div className="grid items-stretch justify-start w-full grid-cols-1 gap-8 md:grid-cols-2">
+										<div className="grid w-full grid-cols-1 items-stretch justify-start gap-8 md:grid-cols-2">
 											<GridCard>
 												<p className="Description-p">
 													Alex has over 10 years of experience in the tech and marketing industry, focusing on creating
@@ -61,7 +61,7 @@ export const Profile = () => {
 												<img
 													src="https://prkm7pjvgapey0vo.public.blob.vercel-storage.com/src/assets/images/ReactCert-Q2gZzDqhBzQocwjK7yKel57FilzNKK.jpg"
 													alt="React Certification"
-													className="object-contain w-full h-auto border-2 rounded-xl border-B-4"
+													className="h-auto w-full rounded-xl border-2 border-B-4 object-contain"
 												/>
 											</GridCard>
 										</div>
@@ -69,11 +69,11 @@ export const Profile = () => {
 									<div className="hidden w-full lg:col-span-1 lg:block">
 										<GridCard>
 											<div className="hidden w-full lg:col-span-1 lg:block">
-												<div className="relative w-full h-auto overflow-hidden border rounded-3xl border-s-light dark:border-p">
+												<div className="relative h-auto w-full overflow-hidden rounded-3xl border border-s-light dark:border-p">
 													<img
-														src="https://prkm7pjvgapey0vo.public.blob.vercel-storage.com/src/assets/images/Alex-SzEU7blXzZfyYfDwscptYyqFiVkAbg.jpg"
+														src="https://prkm7pjvgapey0vo.public.blob.vercel-storage.com/public/Self-mIeJ9HIOeOC6inJI5Ehsig2YpzyOdw.jpeg"
 														alt="Avatar"
-														className="object-cover w-full h-full rounded-3xl"
+														className="h-full w-full rounded-3xl object-cover"
 													/>
 												</div>
 											</div>
@@ -82,9 +82,9 @@ export const Profile = () => {
 								</div>
 
 								{/* Full-width box for "125+ Projects" */}
-								<div className="w-full mt-12">
-									<div className="p-6 border rounded-xl border-s-light dark:border-p">
-										<h4 className="mb-4 H3">Hundreds of Creative & Technical Projects</h4>
+								<div className="mt-12 w-full">
+									<div className="rounded-xl border border-s-light p-6 dark:border-p">
+										<h4 className="H3 mb-4">Hundreds of Creative & Technical Projects</h4>
 										<HoverDevCards />
 									</div>
 								</div>

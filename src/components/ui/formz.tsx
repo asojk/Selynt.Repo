@@ -1,8 +1,8 @@
-/* eslint-disable no-undef */
 /* eslint-disable tailwindcss/no-custom-classname */
 
 'use client'
 
+import { motion } from 'framer-motion'
 import { useState } from 'react'
 import { useForm, SubmitHandler } from 'react-hook-form'
 import { Button } from '@/components/ui/button'
@@ -164,13 +164,15 @@ export default function ContactForm() {
 				</form>
 			</CardContent>
 			<CardFooter>
-				<Button
+				<motion.button
 					onClick={handleSubmit(onSubmit)}
 					type="submit"
-					className="shadow-neu1/20 dark:shadow-custom-dark/20 w-full rounded-md bg-a-dark px-4 py-2 font-semibold text-white transition-colors hover:bg-s-dark dark:bg-s dark:text-n-900"
+					whileHover={{ scale: 1.1 }}
+					whileTap={{ scale: 0.95 }}
+					className="mx-auto w-48 items-center justify-center rounded-full bg-a px-6 py-3 text-white shadow-lg hover:bg-a-dark focus:outline-none focus:ring-4 focus:ring-a-light dark:bg-a-dark dark:hover:bg-a-darker"
 					disabled={isSubmitting}>
-					{isSubmitting ? 'Submitting...' : 'Submit'}
-				</Button>
+					{isSubmitting ? 'Submitting...' : 'Submit'}{' '}
+				</motion.button>
 			</CardFooter>
 
 			<Dialog open={isModalOpen} onOpenChange={setIsModalOpen}>

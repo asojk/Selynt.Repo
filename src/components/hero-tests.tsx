@@ -9,26 +9,39 @@ export const HeroTest: React.FC = () => {
 
 	return (
 		<div className="relative">
-			<StickyVComp contentHeight={true}>
-				<div className="flex w-full flex-col items-center justify-center px-4">
-					<h2 className="mx-auto max-w-[70vw] text-center font-sans text-2xl font-bold tracking-tight text-black dark:text-white md:text-4xl lg:text-7xl">
+			<StickyVComp heightMode="content">
+				<div className="flex w-full flex-col items-center justify-center px-6 py-12">
+					{/* Heading */}
+					<h2 className="mx-auto max-w-[80vw] text-center font-sans text-3xl font-extrabold tracking-tight text-black dark:text-white sm:text-4xl md:text-5xl lg:max-w-4xl lg:text-7xl">
 						Websites & Branding
 						<br />
-						Without the BS
+						<span className="text-a dark:text-s">Without the BS</span>
 					</h2>
 
-					<p className="mx-auto max-w-xl py-2 text-center font-sans text-base tracking-tight text-neutral-700 dark:text-neutral-400 md:py-8 md:text-lg lg:text-xl">
-						We respect your privacy & do not employ manipulative tactics. <br className="hidden md:block" /> We won’t
-						even embed a YouTube video here.
+					{/* Subtitle */}
+					<p className="mx-auto max-w-xl py-4 text-center font-sans text-lg tracking-tight text-neutral-700 dark:text-neutral-400 md:py-6 md:text-xl lg:text-2xl">
+						We respect your privacy & do not employ manipulative tactics. <br className="hidden md:block" />
+						We won’t even embed a YouTube video here.
 					</p>
-					<div className="mx-auto items-center justify-center text-balance py-4 text-lg [filter:drop-shadow(0px_1px_3px_rgba(27,_37,_80,_0.14))] md:py-6 md:text-2xl lg:py-12 lg:text-4xl">
+
+					{/* Checkmark Section */}
+					<div className="mx-auto py-6 text-lg md:text-2xl lg:text-3xl">
 						<span className="animate-text bg-gradient-to-r from-p via-s-dark to-a-darker bg-clip-text text-transparent dark:from-s dark:via-a dark:to-s-2">
-							✓ No tracking here ✓ No ads here ✓ No jargon here
+							✓ No tracking here &nbsp; ✓ No ads here &nbsp; ✓ No jargon here
 						</span>
 					</div>
-					<p className="mx-auto max-w-xl py-2 text-center font-sans text-base tracking-tight text-neutral-700 dark:text-neutral-400 md:py-8 md:text-lg lg:text-xl">
-						Our mission is to empower businesses & professionals through honest and transparent design.
+
+					{/* Mission Statement */}
+					<p className="mx-auto max-w-xl py-4 text-center font-sans text-base tracking-tight text-neutral-700 dark:text-neutral-400 md:py-6 md:text-lg lg:text-xl">
+						Our mission is to empower businesses and professionals through honest, transparent design.
 					</p>
+
+					{/* Optional Call-to-Action */}
+					<div className="mt-8">
+						<button className="rounded-full bg-a px-6 py-3 text-white shadow-lg hover:bg-a-dark focus:outline-none focus:ring-4 focus:ring-a-light dark:bg-a-dark dark:hover:bg-a-darker">
+							Learn More
+						</button>
+					</div>
 				</div>
 			</StickyVComp>
 		</div>

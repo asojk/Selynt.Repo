@@ -1,13 +1,9 @@
 /* eslint-disable tailwindcss/no-custom-classname */
-/* eslint-disable no-undef */
-/* eslint-disable tailwindcss/no-custom-classname */
-
 import { ReactNode } from 'react'
 
-export const BlockInTextCard = ({ text }: { text: ReactNode }) => {
+export const AltContact = () => {
 	return (
-		<div className="mx-auto w-full max-w-md space-y-8 lg:max-w-4xl">
-			{/* Contact Buttons */}
+		<div className="mx-auto w-full max-w-md space-y-8 py-8 lg:max-w-4xl">
 			<div className="flex flex-col items-stretch space-y-4 sm:flex-row sm:justify-around sm:space-x-2 sm:space-y-0 lg:space-x-4">
 				<ContactButton
 					link="tel:+17634642656"
@@ -67,12 +63,6 @@ export const BlockInTextCard = ({ text }: { text: ReactNode }) => {
 					}
 				/>
 			</div>
-
-			{/* Divider */}
-			<hr className="max-auto w-full max-w-md border-n-9 dark:border-n-1 lg:max-w-xl" />
-
-			{/* Main Content */}
-			<p className="Description max-w-4xl">{text}</p>
 		</div>
 	)
 }
@@ -85,79 +75,3 @@ const ContactButton = ({ link, text, icon }: { link: string; text: string; icon:
 		{text}
 	</a>
 )
-
-/* 
-const LETTER_DELAY = 0.025
-const BOX_FADE_DURATION = 0.125
-
-const FADE_DELAY = 5
-const MAIN_FADE_DURATION = 0.25
-
-const SWAP_DELAY_IN_MS = 5500
-
-
-	const Typewrite = ({ examples }: { examples: string[] }) => {
-	const [exampleIndex, setExampleIndex] = useState(0)
-
-	useEffect(() => {
-		const intervalId = setInterval(() => {
-			setExampleIndex((pv) => (pv + 1) % examples.length)
-		}, SWAP_DELAY_IN_MS)
-
-		return () => clearInterval(intervalId)
-	}, [examples.length])
-
-	return (
-		<p className="mb-2.5 text-sm font-light uppercase">
-			<span className="inline-block size-2 bg-n-900 dark:bg-n-1" />
-			<span className="ml-3">
-				{examples[exampleIndex].split('').map((l, i) => (
-					<motion.span
-						initial={{
-							opacity: 1,
-						}}
-						animate={{
-							opacity: 0,
-						}}
-						transition={{
-							delay: FADE_DELAY,
-							duration: MAIN_FADE_DURATION,
-							ease: 'easeInOut',
-						}}
-						key={`${exampleIndex}-${i}`}
-						className="relative">
-						<motion.span
-							initial={{
-								opacity: 0,
-							}}
-							animate={{
-								opacity: 1,
-							}}
-							transition={{
-								delay: i * LETTER_DELAY,
-								duration: 0,
-							}}>
-							{l}
-						</motion.span>
-						<motion.span
-							initial={{
-								opacity: 0,
-							}}
-							animate={{
-								opacity: [0, 1, 0],
-							}}
-							transition={{
-								delay: i * LETTER_DELAY,
-								times: [0, 0.1, 1],
-								duration: BOX_FADE_DURATION,
-								ease: 'easeInOut',
-							}}
-							className="absolute bottom-[3px] left-[0px] right-0 top-[3px] bg-n-900 dark:bg-n-1"
-						/>
-					</motion.span>
-				))}
-			</span>
-		</p>
-	)
-}
-	*/
