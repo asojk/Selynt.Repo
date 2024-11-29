@@ -113,7 +113,7 @@ const SocialLink: React.FC<{ label: string; Icon: React.ElementType; href: strin
 			rel="noopener noreferrer"
 			aria-label={label}
 			className="group transition-colors hover:text-s-2">
-			<Icon className="h-6 w-6 stroke-1 transition-transform group-hover:scale-110 lg:h-8 lg:w-8 xl:stroke-[1.5]" />
+			<Icon className="group h-6 w-6 stroke-1 transition-colors hover:text-s-2 group-hover:scale-110 lg:h-8 lg:w-8 xl:stroke-[1.5]" />
 		</motion.a>
 	)
 }

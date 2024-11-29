@@ -6,17 +6,14 @@ export const Contact = () => {
 	return (
 		<div id="contact" className="relative">
 			<StickyVComp heightMode="content">
-				<section className="mx-auto w-full max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
-					<div className="prose mx-auto mb-12 max-w-3xl text-center">
+				<section className="mx-auto w-full max-w-7xl py-4 md:px-4 lg:px-8">
+					<div className="prose mx-auto mb-4 max-w-3xl text-center lg:mb-12">
 						<h2 className="H2">Get in Touch</h2>
 					</div>
-					<div className="mt-12 grid gap-8 lg:grid-cols-2">
-						<div className="space-y-8">
-							<AltContact />
-						</div>
-						<div className="rounded-lg bg-white p-6 shadow-lg dark:bg-n-8">
-							<FormZ />
-						</div>
+					<div className="mt-4 grid gap-4 lg:mt-12 lg:grid-cols-2">
+						<AltContact />
+
+						<FormZ />
 					</div>
 				</section>
 			</StickyVComp>

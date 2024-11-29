@@ -3,7 +3,7 @@ import { ReactNode } from 'react'
 
 export const AltContact = () => {
 	return (
-		<div className="mx-auto w-full max-w-md space-y-8 py-8 lg:max-w-4xl">
+		<div className="mx-auto w-full max-w-md py-2 lg:max-w-4xl">
 			<div className="flex flex-col items-stretch space-y-4 sm:flex-row sm:justify-around sm:space-x-2 sm:space-y-0 lg:space-x-4">
 				<ContactButton
 					link="tel:+17634642656"
@@ -70,7 +70,7 @@ export const AltContact = () => {
 const ContactButton = ({ link, text, icon }: { link: string; text: string; icon: ReactNode }) => (
 	<a
 		href={link}
-		className="inline-flex w-full items-center justify-center rounded-full bg-p-3 px-4 py-2 text-sm font-medium text-white transition-colors duration-200 hover:bg-p-4 active:bg-p-5 dark:bg-p-3 dark:text-n-1 dark:hover:bg-p-4 dark:active:bg-p-5 sm:w-auto sm:flex-1">
+		className="mx-auto inline-flex w-full max-w-[50vw] items-center justify-center rounded-full bg-p-3 px-4 py-2 text-sm font-medium text-white transition-colors duration-200 hover:bg-p-4 active:bg-p-5 dark:bg-p-3 dark:text-n-1 dark:hover:bg-p-4 dark:active:bg-p-5 sm:w-auto sm:flex-1">
 		{icon}
 		{text}
 	</a>

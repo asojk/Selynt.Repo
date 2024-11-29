@@ -1,7 +1,7 @@
 import { Dispatch, SetStateAction, useEffect, useState } from 'react'
 import { motion } from 'framer-motion'
-import FloatingButton from '@/components/ContactButton'
-import Modal from '@/components/Modal'
+//import FloatingButton from '@/components/ContactButton'
+//import Modal from '@/components/Modal'
 import { IconSun, IconMoon } from '@tabler/icons-react'
 
 interface DarkModeToggleProps {
@@ -24,7 +24,7 @@ export const DarkModeToggle: React.FC<DarkModeToggleProps> = ({ mode, setMode })
 	}, [])
 
 	return (
-		<div className="fixed right-2 top-24 z-50 flex flex-col items-end">
+		<div className="fixed bottom-4 left-2 z-50 flex flex-col items-end">
 			<div className="relative flex flex-col items-center">
 				<button
 					className={`${TOGGLE_CLASSES} ${mode === 'light' ? 'text-s' : 'text-p-1'}`}
@@ -48,13 +48,11 @@ export const DarkModeToggle: React.FC<DarkModeToggleProps> = ({ mode, setMode })
 					<div className="h-full w-full rounded-full border-[1px] border-s bg-gradient-to-r from-B-4/70 to-B-2/80 shadow-sm shadow-B-4" />
 				</motion.div>
 			</div>
-			<div className="relative mt-6 flex flex-col items-center">
-				<Contacting isCompact={isCompact} />
-			</div>
 		</div>
 	)
 }
-
+{
+	/*
 const Contacting: React.FC<{ isCompact: boolean }> = ({ isCompact }) => {
 	const [isOpen, setIsOpen] = useState(false)
 	const closeModal = () => setIsOpen(false)
@@ -72,4 +70,6 @@ const Contacting: React.FC<{ isCompact: boolean }> = ({ isCompact }) => {
 			<Modal isOpen={isOpen} onClose={closeModal} />
 		</div>
 	)
+}
+*/
 }

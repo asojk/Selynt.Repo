@@ -1,4 +1,4 @@
-import HoverDevCards from './HoverDevCards'
+//import HoverDevCards from './HoverDevCards'
 
 export const Profile = () => {
 	return (
@@ -81,13 +81,14 @@ export const Profile = () => {
 									</div>
 								</div>
 
-								{/* Full-width box for "125+ Projects" */}
+								{/* 
 								<div className="mt-12 w-full">
 									<div className="rounded-xl border border-s-light p-6 dark:border-p">
 										<h4 className="H3 mb-4">Hundreds of Creative & Technical Projects</h4>
 										<HoverDevCards />
 									</div>
 								</div>
+								*/}
 							</div>
 						</div>
 					</div>

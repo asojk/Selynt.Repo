@@ -110,42 +110,44 @@ const CompareTable = () => (
 			ease: 'easeInOut',
 		}}
 		className="relative z-[999] flex flex-col items-center">
-		<div className="mx-auto max-w-4xl">
+		<div className="mx-auto max-w-full md:max-w-4xl">
 			<motion.div
-				className="p-4"
+				className="p-2 md:p-4"
 				initial={{ opacity: 0, y: 100 }}
 				whileInView={{ opacity: 1, y: 50 }}
 				transition={{ duration: 0.8 }}>
-				<table className="w-full text-left text-p-4 dark:text-n-1">
+				<table className="w-full text-left text-xs text-p-4 dark:text-n-1 md:text-sm">
 					<thead>
 						<tr>
-							<th className="p-4 text-sm uppercase tracking-wide text-p-3 dark:text-n-2">Service</th>
-							<th className="p-4 text-center text-sm uppercase tracking-wide text-p-3 dark:text-n-2">Selynt</th>
-							<th className="p-4 text-center text-sm uppercase tracking-wide text-p-3 dark:text-n-2">
+							<th className="p-2 text-xs uppercase tracking-wide text-p-3 dark:text-n-2 md:p-4 md:text-sm">Service</th>
+							<th className="p-2 text-center text-xs uppercase tracking-wide text-p-3 dark:text-n-2 md:p-4 md:text-sm">
+								Selynt
+							</th>
+							<th className="p-2 text-center text-xs uppercase tracking-wide text-p-3 dark:text-n-2 md:p-4 md:text-sm">
 								Traditional Options
 							</th>
 						</tr>
 					</thead>
 					<tbody className="divide-y divide-B-2 dark:divide-B-3">
 						<tr className="transition duration-200 hover:bg-B-light dark:hover:bg-B-4">
-							<td className="p-4">Basic Website</td>
-							<td className="p-4 text-center">$399 (one-time)</td>
-							<td className="p-4 text-center">$300–$600/year</td>
+							<td className="p-2 md:p-4">Basic Website</td>
+							<td className="p-2 text-center md:p-4">$399 (one-time)</td>
+							<td className="p-2 text-center md:p-4">$300–$600/year</td>
 						</tr>
 						<tr className="transition duration-200 hover:bg-B-light dark:hover:bg-B-4">
-							<td className="p-4">Custom Website</td>
-							<td className="p-4 text-center">$1,299 (one-time)</td>
-							<td className="p-4 text-center">$1,000+/year</td>
+							<td className="p-2 md:p-4">Custom Website</td>
+							<td className="p-2 text-center md:p-4">$1,299 (one-time)</td>
+							<td className="p-2 text-center md:p-4">$1,000+/year</td>
 						</tr>
 						<tr className="transition duration-200 hover:bg-B-light dark:hover:bg-B-4">
-							<td className="p-4">Branding Packages</td>
-							<td className="p-4 text-center">$300–$1,000</td>
-							<td className="p-4 text-center">$3,000+</td>
+							<td className="p-2 md:p-4">Branding Packages</td>
+							<td className="p-2 text-center md:p-4">$300–$1,000</td>
+							<td className="p-2 text-center md:p-4">$3,000+</td>
 						</tr>
 					</tbody>
 				</table>
 				<MotionButton btntxt="View Options" link="/pricing" />
-				<p className="pt-2 text-center text-sm text-n-9 dark:text-n-3 lg:text-base">
+				<p className="pt-2 text-center text-xs text-n-9 dark:text-n-3 md:text-sm lg:text-base">
 					Our Prices // Traditional Options
 				</p>
 			</motion.div>

@@ -3,18 +3,21 @@ import React, { useState } from 'react'
 import { AnimatePresence, motion } from 'framer-motion'
 import { StickyVComp } from './ui/sticky-comp-variant'
 import { useImgPadding } from '@/constants/imgpadding'
-import { Link } from 'react-router-dom'
 import { IconCurrencyDollarOff } from '@tabler/icons-react'
+import Modal from './Modal'
 
 export default function SlidePricing() {
 	const [selected, setSelected] = useState<'M' | 'A'>('M')
+	const [isOpen, setIsOpen] = useState(false)
+	const closeModal = () => setIsOpen(false)
+	const openModal = () => setIsOpen(true)
 	useImgPadding()
 
 	return (
 		<section className="py-12 xl:py-32">
 			<StickyVComp heightMode="content">
 				<div className="mx-auto flex max-w-5xl flex-col items-center justify-center gap-6 text-left">
-					<h2 className="text-pretty text-4xl font-bold text-a-dark dark:text-s lg:text-6xl">Pricing</h2>
+					<h2 className="text-pretty py-8 text-4xl font-bold text-a-dark dark:text-s lg:text-6xl">Pricing</h2>
 					<p className="Description mx-auto mb-4 max-w-lg px-4 text-white lg:text-xl">
 						Compare your one-time investment with traditional platforms’ average annual costs, which include recurring
 						fees, maintenance, and setup costs.
@@ -22,7 +25,7 @@ export default function SlidePricing() {
 				</div>
 			</StickyVComp>
 			<StickyVComp heightMode="content">
-				<h2 className="mx-auto text-pretty px-4 pb-8 text-center text-3xl font-bold text-a-dark dark:text-s md:w-2/3 lg:pb-12 lg:text-4xl">
+				<h2 className="mx-auto text-pretty px-4 py-8 text-center text-3xl font-bold text-a-dark dark:text-s md:w-2/3 lg:pb-12 lg:text-4xl">
 					Websites
 				</h2>
 				<div className="pb-4 md:pb-8">
@@ -33,19 +36,30 @@ export default function SlidePricing() {
 				</div>
 			</StickyVComp>
 			<StickyVComp heightMode="content">
-				<h2 className="mx-auto text-pretty px-4 pb-8 text-center text-3xl font-bold text-a-dark dark:text-s md:w-2/3 lg:pb-12 lg:text-4xl">
+				<h2 className="mx-auto text-pretty px-4 py-8 text-center text-3xl font-bold text-a-dark dark:text-s md:w-2/3 lg:pb-12 lg:text-4xl">
 					Branding
 				</h2>
 				<BrandingSection />
 				<div className="mt-12 flex justify-center">
-					<Link to="/contact">
-						<motion.button
-							whileHover={{ scale: 1.015 }}
-							whileTap={{ scale: 0.985 }}
-							className="w-64 rounded-lg bg-p py-4 font-semibold uppercase text-white dark:bg-a">
-							Get Started
-						</motion.button>
-					</Link>
+					<motion.button
+						initial={{ opacity: 0, y: 8 }}
+						animate={{
+							opacity: 1,
+							y: 0,
+							transition: {
+								delay: 1.125,
+								duration: 0.5,
+								ease: 'easeInOut',
+							},
+						}}
+						exit={{ opacity: 0, y: 8 }}
+						whileHover={{ scale: 1.1 }}
+						whileTap={{ scale: 0.9 }}
+						className="mb-8 rounded-full bg-a-dark px-4 py-2 text-white shadow-lg"
+						onClick={openModal}>
+						<span className="">Let's Get Started</span>
+					</motion.button>
+					<Modal isOpen={isOpen} onClose={closeModal} />
 				</div>
 			</StickyVComp>
 		</section>
@@ -139,7 +153,7 @@ const PriceCard = ({
 	priceStyle = 'gradient',
 }: PriceCardProps) => (
 	<div
-		className={`mx-auto flex w-3/4 flex-shrink-0 flex-col justify-between rounded-xl border-[1px] border-slate-300 bg-white p-3 text-n-900 shadow-md dark:border-slate-700 dark:bg-n-900/80 dark:text-white md:mx-0 md:w-1/3 md:p-4 md:px-content-padding lg:grid lg:grid-rows-[auto_1fr_auto] lg:p-6 ${selected === 'A' ? 'h-auto' : ''} `}>
+		className={`mx-auto flex w-3/4 flex-shrink-0 flex-col justify-between rounded-xl border-[1px] border-p bg-white p-3 text-n-900 shadow-md dark:border-n-5 dark:bg-n-900/80 dark:text-white md:mx-0 md:w-1/3 md:p-4 md:px-content-padding lg:grid lg:grid-rows-[auto_1fr_auto] lg:p-6 ${selected === 'A' ? 'h-auto' : ''} `}>
 		<div className="bg-card text-card-foreground flex w-full flex-col justify-between rounded-lg text-left">
 			<div className="flex flex-col space-y-1.5">
 				<p className="mb-2 text-lg font-bold lg:text-2xl">{title}</p>
@@ -220,7 +234,7 @@ interface BrandingCardProps {
 }
 
 const BrandingCard = ({ title, price, listItems, priceStyle = 'gradient' }: BrandingCardProps) => (
-	<div className="mx-auto flex w-3/4 flex-col justify-between rounded-xl border-[1px] border-slate-300 bg-white p-3 text-n-900 shadow-md dark:bg-n-900/80 dark:text-white md:w-[45%] lg:w-[30%]">
+	<div className="mx-auto flex w-3/4 flex-col justify-between rounded-xl border-[1px] border-p bg-white p-3 text-n-900 shadow-md dark:border-n-5 dark:bg-n-900/80 dark:text-white md:w-[45%] lg:w-[30%]">
 		<div className="bg-card text-card-foreground flex flex-col justify-between rounded-lg text-left">
 			<div className="flex flex-col space-y-1.5">
 				<p className="mb-2 break-words text-xl font-bold lg:text-2xl">{title}</p>

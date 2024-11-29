@@ -1,8 +1,8 @@
 import { IconX } from '@tabler/icons-react'
-import { AnimatePresence, motion } from 'framer-motion'
 import { useEffect, useState } from 'react'
+import { AnimatePresence, motion } from 'framer-motion'
 
-export type NotificationType = {
+type NotificationType = {
 	text: string
 	subText: string
 }
@@ -10,22 +10,23 @@ export type NotificationType = {
 interface NotificationProps {
 	initialDelay?: number
 	displayDuration?: number
+	triggerPoint?: number
 }
 
-export const Notification: React.FC<NotificationProps> = ({ initialDelay = 1000 }) => {
+export const Notification: React.FC<NotificationProps> = ({ triggerPoint = 0.5 }) => {
 	const [show, setShow] = useState(false)
 
 	useEffect(() => {
-		const showTimer = setTimeout(() => setShow(true), initialDelay)
+		const handleScroll = () => {
+			const scrollPosition = window.scrollY / (document.documentElement.scrollHeight - window.innerHeight)
+			if (scrollPosition > triggerPoint && !show) {
+				setShow(true)
+			}
+		}
 
-		return () => clearTimeout(showTimer)
-	}, [initialDelay])
-
-	useEffect(() => {
-		const showTimer = setTimeout(() => setShow(true), initialDelay)
-
-		return () => clearTimeout(showTimer)
-	}, [initialDelay])
+		window.addEventListener('scroll', handleScroll)
+		return () => window.removeEventListener('scroll', handleScroll)
+	}, [triggerPoint, show])
 
 	const notificationContent: NotificationType = {
 		text: 'Pre-Launch Discounts',
@@ -40,12 +41,16 @@ export const Notification: React.FC<NotificationProps> = ({ initialDelay = 1000 
 					animate={{ y: 0, opacity: 1 }}
 					exit={{ y: 50, opacity: 0 }}
 					transition={{ duration: 0.3, ease: 'easeInOut' }}
-					className="fixed bottom-4 left-1 md:left-4 z-50 max-w-[12rem] md:max-w-sm">
+					className="fixed bottom-4 right-1 z-50 max-w-[70vw] md:left-4 md:max-w-[65vw]">
 					<div className="rounded-lg border border-n-8 bg-n-1 p-4 shadow-xl shadow-n-8 dark:border-n-3 dark:bg-n-8">
 						<div className="flex items-start space-x-4">
 							<div className="flex-grow">
-								<p className="text-sm font-semibold text-n-900 dark:text-white">{notificationContent.text}</p>
-								<p className="mt-1 text-xs text-n-900 dark:text-n-2">{notificationContent.subText}</p>
+								<p className="text-xs font-semibold text-n-900 dark:text-white md:text-sm lg:text-lg">
+									{notificationContent.text}
+								</p>
+								<p className="mt-1 text-[0.5rem] text-n-900 dark:text-n-2 md:text-xs lg:text-base">
+									{notificationContent.subText}
+								</p>
 							</div>
 							<button
 								onClick={() => setShow(false)}

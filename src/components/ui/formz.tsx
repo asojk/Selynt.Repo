@@ -169,7 +169,7 @@ export default function ContactForm() {
 					type="submit"
 					whileHover={{ scale: 1.1 }}
 					whileTap={{ scale: 0.95 }}
-					className="mx-auto w-48 items-center justify-center rounded-full bg-a px-6 py-3 text-white shadow-lg hover:bg-a-dark focus:outline-none focus:ring-4 focus:ring-a-light dark:bg-a-dark dark:hover:bg-a-darker"
+					className="mx-auto mb-8 w-48 items-center justify-center rounded-full bg-a px-6 py-3 text-white shadow-lg hover:bg-a-dark focus:outline-none focus:ring-4 focus:ring-a-light dark:bg-a-dark dark:hover:bg-a-darker"
 					disabled={isSubmitting}>
 					{isSubmitting ? 'Submitting...' : 'Submit'}{' '}
 				</motion.button>

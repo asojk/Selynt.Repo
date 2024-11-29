@@ -3,7 +3,8 @@ import { useTheme } from '@/constants/ThemeContext'
 import { DarkModeToggle } from '@/components/common/Toggles'
 import { Footer } from '@/components/layout/Footer'
 import AnimatedRoutes from '@/components/layout/AnimatedRoutes'
-import { NavTop } from './components/NavTop'
+//import { NavTop } from './components/NavTop'
+import { CornerNav } from './components/layout/CornerNav'
 
 const App = () => {
 	const { theme, setTheme } = useTheme()
@@ -15,7 +16,8 @@ const App = () => {
 					<DarkModeToggle mode={theme} setMode={setTheme} />
 				</div>
 				<AnimatedRoutes />
-				<NavTop />
+				<CornerNav />
+
 				<Footer />
 			</div>
 		</Router>
