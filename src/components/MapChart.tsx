@@ -1,9 +1,10 @@
 import React, { useState, useEffect, useCallback, useRef } from 'react'
 import { ZoomableGroup, ComposableMap, Geographies, Geography, Marker } from 'react-simple-maps'
-import { motion } from 'framer-motion'
+import { motion } from 'motion/react'
 import { useGesture } from '@use-gesture/react'
-import { clients } from '@/constants/clients'
-import { ImageKeys } from '@/lib/assets'
+import { clients } from '../constants/clients'
+import { ImageKeys } from '../constants/assets'
+import ErrorBoundary from '@/constants/error-boundary';
 
 const geoUrl = 'https://cdn.jsdelivr.net/npm/us-atlas@3/states-10m.json'
 
@@ -41,8 +42,22 @@ const MapChart: React.FC<MapChartProps> = ({ setActiveClient, setShowPopup }) =>
 	}, [position.zoom])
 
 	const handleMoveEnd = useCallback((position: Position) => {
-		setPosition(position)
-	}, [])
+		const minLat = 24; // Southernmost point of continental US
+		const maxLat = 50; // Northernmost point of continental US
+		const minLong = -125; // Westernmost point of continental US
+		const maxLong = -66; // Easternmost point of continental US
+	
+		const [longitude, latitude] = position.coordinates;
+		const newLongitude = Math.max(minLong, Math.min(maxLong, longitude));
+		const newLatitude = Math.max(minLat, Math.min(maxLat, latitude));
+	
+		const newZoom = Math.max(1, Math.min(4, position.zoom)); // Limit zoom between 1 and 4
+	
+		setPosition({
+			coordinates: [newLongitude, newLatitude],
+			zoom: newZoom
+		});
+	}, []);
 
 	const toggleFullScreen = () => {
 		setIsFullScreen(!isFullScreen)
@@ -90,9 +105,11 @@ const MapChart: React.FC<MapChartProps> = ({ setActiveClient, setShowPopup }) =>
 	}
 
 	return (
+		<ErrorBoundary>
+
 		<div
 			ref={mapContainerRef}
-			className={`relative ${isFullScreen ? 'fixed inset-0 z-50' : 'h-full w-full'} bg-n-light dark:bg-n-dark`}>
+			className={`relative ${isFullScreen ? 'fixed inset-0 z-50' : 'h-full w-full'} bg-n-5 dark:bg-n-dark`}>
 			<ComposableMap projection="geoAlbersUsa" className="h-full w-full">
 				<ZoomableGroup zoom={position.zoom} center={position.coordinates} onMoveEnd={handleMoveEnd}>
 					<Geographies geography={geoUrl}>
@@ -101,9 +118,7 @@ const MapChart: React.FC<MapChartProps> = ({ setActiveClient, setShowPopup }) =>
 								<Geography
 									key={geo.rsmKey}
 									geography={geo}
-									fill="#D6D6DA"
-									stroke="#FFFFFF"
-									className="outline-none transition-colors duration-200 ease-in-out hover:fill-s-light focus:fill-s-light dark:fill-n-6 dark:stroke-n-9 dark:hover:fill-s"
+									className="fill-p-4 stroke-white outline-none transition-colors duration-200 ease-in-out hover:fill-p-2 focus:fill-s-light dark:fill-n-6 dark:stroke-n-8 dark:hover:fill-s"
 								/>
 							))
 						}
@@ -113,7 +128,7 @@ const MapChart: React.FC<MapChartProps> = ({ setActiveClient, setShowPopup }) =>
 							<motion.circle
 								r={calculateMarkerSize(position.zoom)}
 								fill="#33B588"
-								stroke="#fff"
+								stroke="#ccc"
 								strokeWidth={2 / position.zoom}
 								className="cursor-pointer"
 								whileHover={{ scale: 1.5 }}
@@ -152,6 +167,7 @@ const MapChart: React.FC<MapChartProps> = ({ setActiveClient, setShowPopup }) =>
 				</motion.button>
 			</div>
 		</div>
+		</ErrorBoundary>
 	)
 }
 

@@ -1,12 +1,12 @@
-import { Client } from '@/components/MapChart'
+import { Client } from '../components/MapChart'
 
 export const clients: Client[] = [
 	{
-		name: 'Hillary PhD',
+		name: 'Hillary H.',
 		coordinates: [-84.47772, 37.98869],
 		logo: 'hill',
-		url: 'https://clientA.com',
-		description: '',
+		url: 'https://hillaryrhamilton.github.io',
+		description: 'PhD Candidate in Small Group & Organizational Communication',
 	},
 	{
 		name: 'Deck Renew',
@@ -14,7 +14,7 @@ export const clients: Client[] = [
 		logo: 'deck',
 		url: 'http://www.deckrenew.net',
 		description:
-			'Selynt was amazing from start to finish. As a small company I didn’t even know exactly what I needed for a website and he walked me through the whole thing. He finished promptly and was especially well priced! Would recommend them to anyone!',
+			'"Selynt was amazing from start to finish. As a small company I didn’t even know exactly what I needed for a website and he walked me through the whole thing. He finished promptly and was especially well priced! Would recommend them to anyone!"',
 	},
 	{
 		name: 'Grell',
