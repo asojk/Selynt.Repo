@@ -9,22 +9,23 @@ import { Vision } from '../components/Vision'
 const Home = () => {
 	return (
 		<main className="flex flex-col ">
+<div className="flex flex-grow flex-col">
+  <section className="relative flex min-h-[50vh] items-center justify-center mb-24 lg:mb-36">
+    <div className="absolute inset-0">
+      <div className="hidden h-full md:flex">
+        <Lamp />
+      </div>
+      <div className="h-full md:hidden">
+        <LampSmall />
+      </div>
+    </div>
+  </section>
 
-				<div className="flex flex-grow flex-col">
-					<section className="relative flex min-h-[50vh] items-center justify-center ">
-						<div className="absolute inset-0">
-							<div className="hidden h-full md:flex">
-								<Lamp />
-							</div>
-							<div className="h-full md:hidden">
-								<LampSmall />
-							</div>
-						</div>
-					</section>
 
-					<section className="vision-section py-48 ">
-						<Vision />
-					</section>
+
+  <section className="vision-section py-24 lg:py-36">
+    <Vision />
+  </section>
 					<section className="additional-content ">
 						<div className="relative z-[2] w-full">
 							<WaveScrollAnimation />

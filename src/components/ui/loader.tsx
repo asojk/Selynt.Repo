@@ -38,19 +38,19 @@ type LoadingState = {
 }
 
 const LoaderCore = ({ loadingStates, value = 0 }: { loadingStates: LoadingState[]; value?: number }) => {
-	return (
-		<div className="relative mx-auto mt-20 flex max-w-lg md:max-w-xl lg:max-w-2xl flex-col justify-start">
-			{loadingStates.map((loadingState, index) => {
-				const distance = Math.abs(index - value)
-				const opacity = Math.max(1 - distance * 0.2, 0) // Minimum opacity is 0, keep it 0.2 if you're sane.
+  return (
+    <div className="relative mx-auto mt-20 flex max-w-lg md:max-w-xl lg:max-w-2xl flex-col justify-start">
+      {loadingStates.map((loadingState, index) => {
+        const distance = Math.abs(index - value)
+        const opacity = Math.max(1 - distance * 0.2, 0)
 
-				return (
-					<motion.div
-						key={index}
-						className={cn('mb-4 flex gap-2 text-left text-xl')}
-						initial={{ opacity: 0, y: -(value * 40) }}
-						animate={{ opacity: opacity, y: -(value * 40) }}
-						transition={{ duration: 0.5 }}>
+        return (
+          <motion.div
+            key={index}
+            className={cn('mb-4 flex gap-2 text-left text-xl')}
+            initial={{ opacity: 0, y: -(value * 40) }}
+            animate={{ opacity: opacity, y: -(value * 40) }}
+            transition={{ duration: 0.5 }}>
 						<div>
 							{index > value && <CheckIcon className="text-black dark:text-white" />}
 							{index <= value && (
@@ -77,7 +77,7 @@ const LoaderCore = ({ loadingStates, value = 0 }: { loadingStates: LoadingState[
           className="absolute bottom-[-100px] right-[-100px]"
           initial={{ opacity: 0, scale: 0 }}
           animate={{ opacity: 1, scale: 1 }}
-          transition={{ delay: 0.5, duration: 0.5 }}
+          transition={{ delay: 3, duration: 0.4 }}
         >
           <ArrowIcon className="text-black dark:text-white transform rotate-45" />
         </motion.div>
@@ -98,47 +98,58 @@ export const MultiStepLoader = ({
 	loop?: boolean
 }) => {
 	const [currentState, setCurrentState] = useState(0)
+	const [showArrow, setShowArrow] = useState(false)
 
 	useEffect(() => {
-		if (!loading) {
-			setCurrentState(0)
-			return
-		}
-		const timeout = setTimeout(() => {
-			setCurrentState((prevState) =>
-				loop
-					? prevState === loadingStates.length - 1
-						? 0
-						: prevState + 1
-					: Math.min(prevState + 1, loadingStates.length - 1)
-			)
-		}, duration)
-
-		return () => clearTimeout(timeout)
+	if (!loading) {
+		setCurrentState(0)
+		setShowArrow(false)
+		return
+	}
+	const timeout = setTimeout(() => {
+		setCurrentState((prevState) => {
+			const nextState = loop
+				? (prevState + 1) % loadingStates.length
+				: Math.min(prevState + 1, loadingStates.length - 1)
+			if (nextState === loadingStates.length - 1) {
+				setTimeout(() => setShowArrow(true), duration + 1300) // Delay arrow appearance
+			}
+							return nextState
+					})
+			}, duration + 1300) // Add 500ms delay between transitions
+	
+			return () => clearTimeout(timeout)
 	}, [currentState, loading, loop, loadingStates.length, duration])
+
+
 	return (
-		<AnimatePresence mode="wait">
-			{loading && (
-				<motion.div
-					initial={{
-						opacity: 0,
-					}}
-					animate={{
-						opacity: 1,
-					}}
-					exit={{
-						opacity: 0,
-					}}
-					className="fixed inset-0 z-[100] flex items-center justify-center">
-                    <div className="relative h-full md:h-[85vh] lg:h-[65vh] w-full md:w-[85vw] lg:w-[65vw] max-w-4xl rounded-xl backdrop-blur-2xl border-2 border-p">
-                        <div className="absolute inset-0 flex items-center justify-center px-12">
-                            <LoaderCore value={currentState} loadingStates={loadingStates} />
-                        </div>
-                        <div className="absolute inset-0 rounded-xl bg-white bg-gradient-to-t [mask-image:radial-gradient(900px_at_center,transparent_30%,white)] dark:bg-black" />
-                    </div>
-                </motion.div>
-            )}
-		</AnimatePresence>
+	<AnimatePresence initial={false} mode="wait">
+		{loading && (
+			<motion.div
+				initial={{ opacity: 0 }}
+				animate={{ opacity: 1 }}
+				exit={{ opacity: 0 }}
+				transition={{ duration: 0.2 }}
+				className="fixed inset-0 z-[100] flex items-center justify-center">
+<div className="relative h-full md:h-[85vh] lg:h-[65vh] w-full md:w-[85vw] lg:w-[65vw] max-w-4xl rounded-xl backdrop-blur-2xl border-2 border-p overflow-hidden">
+					<div className="absolute inset-0 flex items-center justify-center px-12">
+						<LoaderCore value={currentState} loadingStates={loadingStates} />
+					</div>
+					<div className="absolute inset-0 rounded-xl bg-white bg-gradient-to-t [mask-image:radial-gradient(900px_at_center,transparent_30%,white)] dark:bg-black" />
+					{showArrow && (
+						<motion.div
+  className="absolute bottom-16 right-16"
+  initial={{ opacity: 0, scale: 0, rotate: 45 }}
+  animate={{ opacity: 1, scale: [0, 1.2, 1], rotate: 45 }}
+  transition={{ duration: 0.8, ease: "easeOut" }}
+>
+  <ArrowIcon className="text-p dark:text-a w-12 h-12 md:w-16 md:h-16 lg:w-20 lg:h-20 animate-pulse" />
+</motion.div>
+					)}
+				</div>
+			</motion.div>
+		)}
+	</AnimatePresence>
 	)
 }
 

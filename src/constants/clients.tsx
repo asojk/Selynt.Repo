@@ -30,4 +30,11 @@ export const clients: Client[] = [
 		url: 'https://www.neifb.org',
 		description: '',
 	},
+	{
+		name: 'Coming Soon',
+    coordinates: [-91.66130, 41.96377],
+    logo: 'tilde',
+    url: '',
+    description: '',
+	}
 ]

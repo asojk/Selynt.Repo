@@ -72,7 +72,7 @@ export function ExpandableCards() {
 										height={200}
 										src={active.src}
 										alt={active.title}
-										className='h-40 w-full rounded-tl-lg rounded-tr-lg object-cover object-center lg:h-64 xl:h-80'
+										className='w-full rounded-tl-lg rounded-tr-lg object-contain object-center h-40 lg:h-64 bg-black/20'
 									/>
 								</motion.div>
 							)}
@@ -100,7 +100,7 @@ export function ExpandableCards() {
 					</div>
 				) : null}
 			</AnimatePresence>
-			<ul className='mx-auto w-full max-w-3xl gap-4'>
+			<ul className='mx-auto w-full max-w-3xl gap-4 py-12 md:py-24'>
 				{cards.map((card, _index) => (
 					<motion.div
 						layoutId={`card-${card.title}-${id}`}
@@ -111,14 +111,12 @@ export function ExpandableCards() {
 							<motion.div layoutId={`image-${card.title}-${id}`} className='flex-shrink-0'>
 								{card.src ? (
 									<img
-										width={56}
-										height={56}
 										src={card.src}
 										alt={card.title}
-										className='h-14 w-14 rounded-lg object-cover object-center'
+										className='h-8 py-1 w-12 lg:w-20 rounded-lg object-cover object-center bg-p dark:bg-p-3'
 									/>
 								) : card.icon ? (
-									<div className='flex h-full w-12 items-center justify-center rounded-lg bg-p py-1 dark:bg-p-3 lg:w-20'>
+									<div className='flex h-8 w-12 items-center justify-center rounded-lg bg-p py-1 dark:bg-p-3 lg:w-20'>
 										{React.createElement(card.icon, { className: 'text-xl text-white stroke-[1.5px] lg:stroke-2' })}
 									</div>
 								) : (
@@ -184,7 +182,7 @@ const cards: Card[] = [
 	{
 		description: 'Founder Bio',
 		title: 'Founder',
-		src: 'https://prkm7pjvgapey0vo.public.blob.vercel-storage.com/src/assets/images/Alex-SzEU7blXzZfyYfDwscptYyqFiVkAbg.jpg',
+		src: 'https://prkm7pjvgapey0vo.public.blob.vercel-storage.com/public/Self-mIeJ9HIOeOC6inJI5Ehsig2YpzyOdw.jpeg',
 		ctaText: 'Investigate',
 		ctaLink: '',
 		content: () => <Profile />,

@@ -124,6 +124,7 @@ export default {
 				float: 'float 6s ease-in-out infinite',
 				text: 'text 5s ease infinite',
 				text2: 'text2 5s ease infinite',
+				pulse: 'pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite',
 				'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
 				highlight: 'highlight 2s ease-in-out',
 				'delayed-fade-in': 'delayedFadeIn 1s ease-in-out forwards',
@@ -134,6 +135,11 @@ export default {
 				fifth: 'moveInCircle 20s ease infinite',
 			},
 			keyframes: {
+				pulse: {
+					'0%, 100%': { opacity: '1' },
+					'50%': { opacity: '.5' },
+				},
+			},
 				breathe: {
 					'0%, 100%': { transform: 'scale(1)' },
 					'50%': { transform: 'scale(1.05)' },
@@ -195,6 +201,5 @@ export default {
 				},
 			},
 		},
-	},
 	plugins: [],
 } satisfies Config

@@ -71,8 +71,9 @@ export const AltContact = () => {
 const ContactButton = ({ link, text, icon }: { link: string; text: string; icon: ReactNode }) => (
 	<a
 		href={link}
-		className="inline-flex w-24 items-center justify-center rounded-full bg-p px-4 py-2 text-sm font-medium text-white transition-all duration-200 ease-in-out hover:bg-p-4 hover:text-s my-3">
+		className="inline-flex gap-2 w-24 items-center justify-center rounded-full bg-p px-4 py-2 text-sm font-medium text-white transition-all duration-200 ease-in-out hover:bg-p-4 hover:text-s my-3">
+					{icon}
 		{text}
-		{icon}
+
 	</a>
 )

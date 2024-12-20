@@ -22,7 +22,9 @@ export function Lamp({}) {
 				initial={{ opacity: 0, scale: 0.8 }}
 				animate={{ opacity: 1, scale: 1 }}
 				transition={{ duration: 0.5 }}>
-<motion.div className="grid grid-rows-2 w-full lg:w-[60vw] lg:max-w-[1200px] mx-auto gap-[10vh] lg:gap-[10vh] xl:gap-[25vh]" transition={transition}>
+		<motion.div
+			          className="grid grid-rows-2 w-full mx-auto gap-[20vh] aspect-video lg:gap-[calc(40vh*0.75vw)] xl:gap-[calc(20vh*0.75vh)] max-w-[1400px]" 
+transition={transition}>
 					<div className='row-start-1'>
 					<LampGradient />
 					</div>
@@ -114,11 +116,11 @@ const LampGradient = () => (
 )
 
 const LampText = () => (
-	<div className="text-[8vw] mx-auto xl:text-[4vw] max-w-5xl font-black tracking-tight leading-none">
-		<h1 className="bg-gradient-to-b from-s-2 to-black bg-clip-text p-2 text-transparent dark:from-s dark:to-white">
-			Standing out <br className='lg:hidden'/> shouldn't mean <br className='lg:hidden'/> overspending.
-		</h1>
-	</div>
+  <div className="text-[8vw] mx-auto xl:text-[5vw] max-w-[1200px] font-black tracking-tight leading-none">
+    <h1 className="bg-gradient-to-b from-s-2 to-black bg-clip-text p-2 text-transparent dark:from-s dark:to-white text-balance">
+      Standing out <br className='lg:hidden'/> shouldn't mean <br className=''/> overspending.
+    </h1>
+  </div>
 )
 
 /*

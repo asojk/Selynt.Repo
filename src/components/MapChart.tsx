@@ -101,7 +101,7 @@ const MapChart: React.FC<MapChartProps> = ({ setActiveClient, setShowPopup }) =>
 	}, [setActiveClient, setShowPopup])
 
 	const calculateMarkerSize = (zoom: number) => {
-		return Math.max(20 / zoom, 2) // Adjust marker size based on zoom
+		return Math.max(10 / zoom, 2) // Adjust marker size based on zoom
 	}
 
 	return (
@@ -124,23 +124,23 @@ const MapChart: React.FC<MapChartProps> = ({ setActiveClient, setShowPopup }) =>
 						}
 					</Geographies>
 					{clients.map((client) => (
-						<Marker key={client.name} coordinates={client.coordinates}>
-							<motion.circle
-								r={calculateMarkerSize(position.zoom)}
-								fill="#33B588"
-								stroke="#ccc"
-								strokeWidth={2 / position.zoom}
-								className="cursor-pointer"
-								whileHover={{ scale: 1.5 }}
-								whileTap={{ scale: 0.9 }}
-								onClick={() => {
-									setActiveClient(client)
-									setShowPopup(true)
-								}}
-								transition={{ duration: 0.15 }}
-							/>
-						</Marker>
-					))}
+  <Marker key={client.name} coordinates={client.coordinates}>
+    <motion.circle
+      r={calculateMarkerSize(position.zoom)}
+      fill="#33B588"
+      stroke="#ccc"
+      strokeWidth={1 / position.zoom}
+      className="cursor-pointer"
+      whileHover={{ scale: 1.5 }}
+      whileTap={{ scale: 0.9 }}
+      onClick={() => {
+        setActiveClient(client)
+        setShowPopup(true)
+      }}
+      transition={{ duration: 0.15 }}
+    />
+  </Marker>
+))}
 				</ZoomableGroup>
 			</ComposableMap>
 			<div className="absolute right-4 top-4 flex flex-col space-y-2">

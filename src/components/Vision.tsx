@@ -2,7 +2,8 @@ import { motion } from 'motion/react'
 
 export const Vision = () => {
 	return (
-		<div className="container mx-auto px-4 py-8">
+    <div className="container mx-auto px-4 py-8 my-24 md:my-36 lg:my-[8vw] xl:my-[8vw]">
+
 			<motion.div
 				initial={{ opacity: 0, y: 20 }}
 				whileInView={{ opacity: 1, y: 0 }}
