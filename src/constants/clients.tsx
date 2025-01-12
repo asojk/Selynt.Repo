@@ -5,8 +5,13 @@ export const clients: Client[] = [
 		name: 'Hillary PhD',
 		coordinates: [-84.47772, 37.98869],
 		logo: 'hill',
+<<<<<<< Updated upstream
 		url: 'https://clientA.com',
 		description: '',
+=======
+		url: 'https://hillaryrhamilton.github.io',
+		description: '"Working with Selynt has been an excellent experience! The website Alex Sojka created is clean looking, easy to navigate, and reflects my vision. Alex was responsive throughout the creation process, always accessible through phone or email. Alex welcomed my feedback with enthusiasm. I highly recommend his services to anyone looking for a professional and user-friendly website."',
+>>>>>>> Stashed changes
 	},
 	{
 		name: 'Deck Renew',
@@ -30,4 +35,22 @@ export const clients: Client[] = [
 		url: 'https://www.neifb.org',
 		description: '',
 	},
+<<<<<<< Updated upstream
 ]
+=======
+	{
+		name: 'Coming Soon',
+    coordinates: [-91.66130, 41.96377],
+    logo: 'tilde',
+    url: '',
+    description: '',
+	},
+	{
+		name: 'Coming Soon',
+    coordinates: [-93.4248973, 44.8546129],
+    logo: 'tilde',
+    url: '',
+    description: '',
+	}
+]
+>>>>>>> Stashed changes

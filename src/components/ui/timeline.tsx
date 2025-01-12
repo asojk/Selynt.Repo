@@ -2,6 +2,7 @@
 import { motion } from 'framer-motion'
 import useIntersectionObserver from '@/hooks/useIntersectionObserver'
 import { useRef } from 'react'
+import Tech from '../Tech'
 
 export const TimeLine = () => {
 	// eslint-disable-next-line no-undef
@@ -48,6 +49,7 @@ export const TimeLine = () => {
 	}
 
 	return (
+<<<<<<< Updated upstream
 		<section className="flex flex-col items-center justify-center w-full gap-4 antialiased md:flex-row lg:gap-8 lg:subpixel-antialiased">
 			<div className="prose w-[80%] text-center md:w-1/3 md:text-start">
 				<h2 className="H2">Our Process</h2>
@@ -57,6 +59,10 @@ export const TimeLine = () => {
 				</p>
 			</div>
 			<div className="flex flex-col items-center justify-center w-2/3 py-10 space-y-8 lg:space-y-16">
+=======
+		<><section className="flex w-full items-center justify-center lg:subpixel-antialiased mt-4 mb-16 overflow-hidden">
+			<div className="flex w-3/4 flex-col items-center justify-center space-y-8 lg:space-y-16">
+>>>>>>> Stashed changes
 				<motion.div
 					className="grid w-full max-w-4xl grid-cols-3 gap-4 px-4 md:gap-8"
 					ref={ref}
@@ -114,7 +120,7 @@ export const TimeLine = () => {
 					</motion.div>
 				</motion.div>
 			</div>
-		</section>
+		</section><Tech /></>
 	)
 }
 

@@ -21,7 +21,10 @@ const AnimatedRoutes = () => {
 						<Route path="/" element={<Home />} />
 						<Route path="/about" element={<About />} />
 						<Route path="*" element={<NotFound />} />
+<<<<<<< Updated upstream:src/components/layout/AnimatedRoutes.tsx
 						<Route path="/pricing" element={<Pricing />} />
+=======
+>>>>>>> Stashed changes:src/components/ui/AnimatedRoutes.tsx
 						<Route path="/privacy" element={<Privacy />} />
 						<Route path="/terms" element={<Terms />} />
 					</Routes>

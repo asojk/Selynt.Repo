@@ -2,10 +2,10 @@ import { images } from '@/lib/assets'
 
 export const Terms = () => {
 	return (
-		<div className="min-h-screen">
+		<div className="min-h-screen text-n-9 dark:text-n-3 ">
 			<div className="mx-auto max-w-4xl px-4 py-12 sm:px-6 lg:px-8 lg:py-16">
 				<div className="mb-8 text-center">
-					<img src={images.logo} className="mx-auto mb-4 h-12 w-auto" />
+					<img src={images.logo} alt="Selynt logo" className="mx-auto mb-4 h-12 w-auto" />
 					<h1 className="prose-n-900 text-3xl sm:text-4xl">Selynt LLC Terms of Service</h1>
 					<p className="prose-n-9 mt-2 text-sm">Effective Date: 09/24/2024</p>
 				</div>
@@ -32,7 +32,7 @@ export const Terms = () => {
 					<ul>
 						<li>
 							All content, graphics, design elements, and code are the intellectual property of{' '}
-							<strong>Selynt LLC</strong>
+							<strong> Selynt LLC </strong>
 							and may not be reproduced, distributed, or used without permission.
 						</li>
 					</ul>

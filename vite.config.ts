@@ -7,6 +7,7 @@ import { fileURLToPath } from 'url'
 const __dirname = path.dirname(fileURLToPath(import.meta.url))
 
 export default defineConfig({
+<<<<<<< Updated upstream
 	plugins: [
 		react(),
 		ViteImageOptimizer({
@@ -19,11 +20,16 @@ export default defineConfig({
 			svg: { quality: 70 },
 		}),
 	],
+=======
+	plugins: [react()],
+	assetsInclude: ['**/*.woff2', '**/*.woff'],
+>>>>>>> Stashed changes
 	resolve: {
 		alias: {
 			'@': path.resolve(__dirname, './src'),
 		},
 	},
+<<<<<<< Updated upstream
 	build: {
 		minify: 'terser',
 		terserOptions: {
@@ -43,3 +49,13 @@ export default defineConfig({
 		},
 	},
 })
+=======
+  build: {
+    rollupOptions: {
+      input: {
+        main: path.resolve(__dirname, 'index.html'),
+      },
+    },
+  },
+})
+>>>>>>> Stashed changes

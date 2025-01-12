@@ -26,7 +26,7 @@ interface MapChartProps {
 }
 
 const MapChart: React.FC<MapChartProps> = ({ setActiveClient, setShowPopup }) => {
-	const [position, setPosition] = useState<Position>({ coordinates: [-87, 38], zoom: 2 }) // Adjusted initial zoom
+	const [position, setPosition] = useState<Position>({ coordinates: [-88, 41], zoom: 3 }) // Adjusted initial zoom
 	const [isFullScreen, setIsFullScreen] = useState(false)
 	const mapContainerRef = useRef<HTMLDivElement>(null)
 
@@ -86,8 +86,15 @@ const MapChart: React.FC<MapChartProps> = ({ setActiveClient, setShowPopup }) =>
 	}, [setActiveClient, setShowPopup])
 
 	const calculateMarkerSize = (zoom: number) => {
+<<<<<<< Updated upstream
 		return Math.max(20 / zoom, 2) // Adjust marker size based on zoom
 	}
+=======
+    const baseSize = 10; // Base size of the marker
+    const minSize = 1; // Minimum size of the marker
+    return Math.max(baseSize / (zoom * zoom), minSize);
+}
+>>>>>>> Stashed changes
 
 	return (
 		<div

@@ -8,6 +8,7 @@ export default {
 	theme: {
 		extend: {
 			fontFamily: {
+<<<<<<< Updated upstream
 				serif: ['Lato', 'serif'],
 				sans: ['Inter', 'sans-serif'],
 			},
@@ -19,6 +20,11 @@ export default {
 			},
 			spacing: {
 				'content-padding': 'var(--content-padding)',
+=======
+				'Xd': ['Xd', 'sans-serif'],
+				//display: ['Inter', 'sans-serif'],
+				//body: ['Lato', 'sans-serif'],
+>>>>>>> Stashed changes
 			},
 			colors: {
 				p: {
