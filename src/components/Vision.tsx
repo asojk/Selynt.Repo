@@ -25,7 +25,7 @@ const Copy = () => (
 			</h2>
 		</div>
 
-		<p className="mb-10 text-left text-base text-n-9 dark:text-n-4` md:text-lg lg:text-xl max-w-md">
+		<p className="mb-10 text-left text-base text-n-9 dark:text-n-4 md:text-lg lg:text-xl max-w-md">
 			You are entitled to whichever methods you prefer when working with us, but
 			<span className="font-bold italic text-a"> here you will find:</span>
 		</p>
