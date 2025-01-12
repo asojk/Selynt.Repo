@@ -1,26 +1,30 @@
+import React from 'react'
 import { BrowserRouter as Router } from 'react-router-dom'
-import { useTheme } from '@/constants/ThemeContext'
-import { DarkModeToggle } from '@/components/common/Toggles'
-import { Footer } from '@/components/layout/Footer'
-import AnimatedRoutes from '@/components/layout/AnimatedRoutes'
-//import { NavTop } from './components/NavTop'
-import { CornerNav } from './components/layout/CornerNav'
+import { DarkModeToggle } from './components/ui/toggles'
+import { useTheme } from './constants/theme-context'
+import { Footer } from './components/ui/Footer'
+import AnimatedRoutes from '@/components/ui/AnimatedRoutes'
+//import { BgAnimation } from './components/ui/bg-animation'
 
-const App = () => {
-	const { theme, setTheme } = useTheme()
+const App: React.FC = () => {
+	const { theme } = useTheme()
 
 	return (
-		<Router>
-			<div className={theme === 'dark' ? 'dark' : ''}>
-				<div className="fixed right-6 top-6 z-[999]">
-					<DarkModeToggle mode={theme} setMode={setTheme} />
+		<div className='overflow-hidden'>
+			<div className={`${theme} w-full overflow-hidden bg-white px-4 dark:bg-p-dark`}>
+				<div className="fixed right-6 top-6 z-[999] overflow-x-hidden">
+					<DarkModeToggle />
 				</div>
-				<AnimatedRoutes />
-				<CornerNav />
+		<Router>
 
+				<AnimatedRoutes />
 				<Footer />
-			</div>
+
+
 		</Router>
+		</div>
+		</div>
+
 	)
 }
 

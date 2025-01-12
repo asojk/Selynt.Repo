@@ -1,11 +1,9 @@
-/* eslint-disable tailwindcss/no-custom-classname */
-import { motion } from 'framer-motion'
-import useIntersectionObserver from '@/hooks/useIntersectionObserver'
+import { motion } from 'motion/react'
+import useIntersectionObserver from '../../hooks/useIntersectionObserver'
 import { useRef } from 'react'
 import Tech from '../Tech'
 
 export const TimeLine = () => {
-	// eslint-disable-next-line no-undef
 	const ref = useRef<HTMLDivElement>(null)
 	const entry = useIntersectionObserver(ref, {
 		threshold: 0.5,
@@ -49,22 +47,10 @@ export const TimeLine = () => {
 	}
 
 	return (
-<<<<<<< Updated upstream
-		<section className="flex flex-col items-center justify-center w-full gap-4 antialiased md:flex-row lg:gap-8 lg:subpixel-antialiased">
-			<div className="prose w-[80%] text-center md:w-1/3 md:text-start">
-				<h2 className="H2">Our Process</h2>
-				<h3 className="prose text-left H3">Our process is simple - designed to be efficient and personable.</h3>
-				<p className="prose text-left Description">
-					Working with us should be easy, and if it’s every not, all we ask is that you let us know.
-				</p>
-			</div>
-			<div className="flex flex-col items-center justify-center w-2/3 py-10 space-y-8 lg:space-y-16">
-=======
 		<><section className="flex w-full items-center justify-center lg:subpixel-antialiased mt-4 mb-16 overflow-hidden">
 			<div className="flex w-3/4 flex-col items-center justify-center space-y-8 lg:space-y-16">
->>>>>>> Stashed changes
 				<motion.div
-					className="grid w-full max-w-4xl grid-cols-3 gap-4 px-4 md:gap-8"
+					className="grid w-full max-w-4xl grid-cols-3 gap-4 px-2 md:gap-8"
 					ref={ref}
 					variants={containerVariants}
 					initial="hidden"
@@ -75,7 +61,7 @@ export const TimeLine = () => {
 						<p className="text-md text-n-9 dark:text-n-3 lg:text-lg">Meet</p>
 					</motion.div>
 					{/* Arrow 1→2 */}
-					<motion.div className="flex items-center justify-center -mt-12" variants={itemVariants}>
+					<motion.div className="-mt-12 flex items-center justify-center" variants={itemVariants}>
 						<CTAArrow className="rotate-12 scale-x-[-1] transform" />
 					</motion.div>
 					{/* Step 2 */}
@@ -101,7 +87,7 @@ export const TimeLine = () => {
 					{/* Empty Cell */}
 					<div className="hidden"></div>
 					{/* Down Arrow */}
-					<motion.div className="flex items-center justify-center -mr-12" variants={itemVariants}>
+					<motion.div className="-mr-12 flex items-center justify-center" variants={itemVariants}>
 						<CTAArrow className="-rotate-45 scale-y-[-1] transform" />
 					</motion.div>
 					{/* Step 4 (Deploy) */}
@@ -110,7 +96,7 @@ export const TimeLine = () => {
 						<p className="text-md text-n-9 dark:text-n-3 lg:text-lg">Deploy</p>
 					</motion.div>
 					{/* Arrow 4←3 */}
-					<motion.div className="flex items-center justify-center -mb-12" variants={item2Variants}>
+					<motion.div className="-mb-12 flex items-center justify-center" variants={item2Variants}>
 						<CTAArrow className="rotate-45 scale-y-[-1] transform" />
 					</motion.div>
 					{/* Step 3 (Iterate) */}

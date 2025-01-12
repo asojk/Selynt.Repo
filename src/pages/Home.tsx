@@ -1,27 +1,13 @@
-import { HeroParallaxContent } from '@/components/content/HeroParallaxContent'
-import { MapParallaxContent } from '@/components/content/MapParallaexSection'
-import { useImgPadding } from '@/constants/imgpadding'
-//import { Tech } from '@/components/Tech'
-import { Notification } from '@/components/ui/notification'
-import { Lamp } from '@/components/ui/lamp'
-import { Contact } from './Contact'
-import { This } from '@/components/This'
+import { Lamp } from '../components/LampLg'
+import WaveScrollAnimation from '../components/ui/animated-text'
+import { ExpandableCards } from '../components/ui/expand-cards'
+import { LampSmall } from '../components/LampSm'
+//import { BgAnimation } from '@/components/ui/bg-animation'
+import { WhoStepLoader } from '@/components/who-step-loader'
+import { Vision } from '../components/Vision'
 
 const Home = () => {
-	useImgPadding()
 	return (
-<<<<<<< Updated upstream
-		<div className="min-h-screen overflow-x-clip bg-n-9 antialiased dark:bg-n-6 lg:subpixel-antialiased">
-			<Notification initialDelay={1000} displayDuration={10000} />
-			<HeroParallaxContent />
-			<This />
-			<Lamp />
-			<MapParallaxContent />
-			<div className="block lg:hidden">
-				<Contact />
-			</div>
-		</div>
-=======
 		<main className='flex flex-col'>
 			<div className='flex flex-grow flex-col'>
 				<section className='relative mb-24 flex min-h-[50vh] items-center justify-center lg:mb-36'>
@@ -50,8 +36,28 @@ const Home = () => {
 				</section>
 			</div>
 		</main>
->>>>>>> Stashed changes
 	)
 }
 
 export default Home
+
+{
+	/*
+		<motion.p
+			initial={{ opacity: 0, y: 20 }}
+			whileInView={{ opacity: 1, y: 0 }}
+			transition={{ delay: 2.5, duration: 0.8, ease: 'easeOut' }}
+			className='absolute bottom-24 font-semibold uppercase text-black text-center dark:text-white'>Our Mission is Simple</motion.p>
+				<div className='relative flex items-center justify-center w-full mx-auto z-10 overflow-hidden h-[25vh]'>
+
+      <div className="absolute z-50 inset-0 flex items-center justify-center text-white font-bold px-4 pointer-events-none text-3xl text-center md:text-4xl lg:text-7xl">
+				<WaveScrollAnimation />
+      </div>
+
+				</div>
+				<div className='relative'>
+					<div className='grid-background-z h-[200vh] overflow-hidden'></div>
+					<Vision />
+				</div>
+				*/
+}

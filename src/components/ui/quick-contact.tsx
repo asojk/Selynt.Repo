@@ -1,16 +1,16 @@
-/* eslint-disable tailwindcss/no-custom-classname */
 import { ReactNode } from 'react'
 
 export const AltContact = () => {
 	return (
-		<div className="mx-auto w-full max-w-md py-2 lg:max-w-4xl">
-			<div className="flex flex-col items-stretch space-y-4 sm:flex-row sm:justify-around sm:space-x-2 sm:space-y-0 lg:space-x-4">
+		<div className="mx-auto w-full pb-2">
+
+			<div className="flex flex-row items-center justify-start space-x-4 ">
 				<ContactButton
 					link="tel:+17634642656"
 					text="Call"
 					icon={
 						<svg
-							className="mr-2 h-4 w-4"
+							className="ml-1 h-4 w-4"
 							fill="none"
 							stroke="currentColor"
 							viewBox="0 0 24 24"
@@ -29,7 +29,7 @@ export const AltContact = () => {
 					text="Text"
 					icon={
 						<svg
-							className="mr-2 h-4 w-4"
+							className="ml-1 h-4 w-4"
 							fill="none"
 							stroke="currentColor"
 							viewBox="0 0 24 24"
@@ -48,7 +48,7 @@ export const AltContact = () => {
 					text="Email"
 					icon={
 						<svg
-							className="mr-2 h-5 w-5"
+							className="ml-1 h-4 w-4"
 							fill="none"
 							stroke="currentColor"
 							viewBox="0 0 24 24"
@@ -63,6 +63,7 @@ export const AltContact = () => {
 					}
 				/>
 			</div>
+
 		</div>
 	)
 }
@@ -70,8 +71,9 @@ export const AltContact = () => {
 const ContactButton = ({ link, text, icon }: { link: string; text: string; icon: ReactNode }) => (
 	<a
 		href={link}
-		className="mx-auto inline-flex w-full max-w-[50vw] items-center justify-center rounded-full bg-p-3 px-4 py-2 text-sm font-medium text-white transition-colors duration-200 hover:bg-p-4 active:bg-p-5 dark:bg-p-3 dark:text-n-1 dark:hover:bg-p-4 dark:active:bg-p-5 sm:w-auto sm:flex-1">
-		{icon}
+		className="inline-flex gap-2 w-24 items-center justify-center rounded-full bg-p px-4 py-2 text-sm font-medium text-white transition-all duration-200 ease-in-out hover:bg-p-4 hover:text-s my-3">
+					{icon}
 		{text}
+
 	</a>
 )

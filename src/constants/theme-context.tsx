@@ -1,3 +1,4 @@
+/* eslint-disable react-refresh/only-export-components */
 // src/ThemeContext.tsx
 import React, { createContext, useState, useContext, ReactNode, Dispatch, SetStateAction } from 'react'
 

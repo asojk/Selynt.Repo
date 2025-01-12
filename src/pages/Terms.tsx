@@ -1,4 +1,4 @@
-import { images } from '@/lib/assets'
+import { images } from '@/constants/assets'
 
 export const Terms = () => {
 	return (

@@ -10,6 +10,7 @@ import tailwindPlugin from 'eslint-plugin-tailwindcss'
 
 export default [
 	eslint.configs.recommended,
+	prettierConfig,
 	{
 		files: ['**/*.{js,jsx,ts,tsx,mjs,cjs}'],
 		plugins: {
@@ -44,7 +45,6 @@ export default [
 			'prettier/prettier': 'error',
 			'tailwindcss/classnames-order': 'warn',
 			'tailwindcss/no-custom-classname': 'warn',
-			// Temporarily disable the problematic rule
 			'tailwindcss/no-contradicting-classname': 'off',
 		},
 		settings: {
@@ -53,5 +53,4 @@ export default [
 			},
 		},
 	},
-	prettierConfig,
 ]

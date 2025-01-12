@@ -1,6 +1,4 @@
-/** @format */
-
-import { images } from '@/lib/assets'
+import { images } from '@/constants/assets'
 
 const NotFound: React.FC = () => {
 	return (

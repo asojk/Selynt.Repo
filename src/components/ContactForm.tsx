@@ -1,16 +1,14 @@
-/* eslint-disable tailwindcss/no-custom-classname */
-
-'use client'
-
-import { motion } from 'framer-motion'
+import { motion } from 'motion/react'
 import { useState } from 'react'
+//import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from '../ui/dialog'
 import { useForm, SubmitHandler } from 'react-hook-form'
-import { Button } from '@/components/ui/button'
-import { Card, CardContent, CardFooter } from '@/components/ui/card'
-import { Input } from '@/components/ui/input'
-import { Label } from '@/components/ui/label'
-import { Textarea } from '@/components/ui/textarea'
-import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from '@/components/ui/dialog'
+import { Button } from './ui/button'
+import { Card, CardContent, CardFooter } from './ui/card'
+import { Input } from './ui/input'
+import { Label } from './ui/label'
+import { Textarea } from './ui/textarea'
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from './ui/dialog'
+import { AltContact } from './ui/quick-contact'
 
 type Inputs = {
 	firstName: string
@@ -43,9 +41,13 @@ export default function ContactForm() {
 
 		// Convert data to FormData
 		const formData = new FormData()
-		for (const key in data) {
-			formData.append(key, data[key])
-		}
+		Object.keys(data).forEach((key) => {
+			if (key === 'projectType') {
+				formData.append(key, data[key].join(','))
+			} else {
+				formData.append(key, String(data[key as keyof Inputs]))
+			}
+		})
 
 		// Add hidden fields required by formsubmit.co
 		formData.append('_captcha', 'false')
@@ -73,9 +75,12 @@ export default function ContactForm() {
 	}
 
 	return (
-		<Card className="max-w-md px-content-padding md:max-w-lg lg:max-w-xl">
+		<section className='max-w-md md:max-w-lg lg:max-w-xl mx-auto pb-4'>
+
+			<AltContact />
+		<Card className=" shadow-md shadow-p-dark">
 			<CardContent>
-				<form onSubmit={handleSubmit(onSubmit)} className="space-y-4 pt-8">
+				<form onSubmit={handleSubmit(onSubmit)} className="space-y-4 py-8">
 					<div className="grid grid-cols-1 gap-4 md:grid-cols-2">
 						<div className="space-y-2">
 							<Label htmlFor="firstName">First Name</Label>
@@ -130,19 +135,14 @@ export default function ContactForm() {
 						/>
 						{errors.mobileNumber && <p className="text-sm text-red-500">{errors.mobileNumber.message}</p>}
 					</div>
-					<div className="space-y-2">
-						<Label>Project Type</Label>
-						<div className="flex flex-wrap gap-2">
-							{['Website Tier 1', 'Website Tier 2', 'Branding', 'Combo', 'Unsure'].map((type) => (
+					<div className="space-y-4">
+						<Label htmlFor="projectType">Project Type (select)</Label>
+						<div className="flex flex-wrap justify-center gap-2">
+							{['Website', 'Custom Website', 'Branding', 'Combo', 'Unsure'].map((type) => (
 								<Button
 									key={type}
 									type="button"
-									variant={watch('projectType', []).includes(type) ? 'default' : 'outline'}
-									className={`flex-shrink-0 flex-grow-0 basis-auto rounded-xl px-3 py-2 text-sm font-semibold transition-colors ${
-										watch('projectType', []).includes(type)
-											? 'bg-p-3 text-white hover:bg-p-4 active:bg-p-5 dark:bg-p-3 dark:text-n-1 dark:hover:bg-p-4 dark:active:bg-p-5'
-											: 'bg-white text-p-3 hover:bg-p-1 hover:text-white active:bg-p-2 dark:bg-n-8 dark:text-p-2 dark:hover:bg-p-2 dark:hover:text-n-1 dark:active:bg-p-3'
-									}`}
+									variant={watch('projectType', []).includes(type) ? 'selected' : 'default'}
 									onClick={() => {
 										const currentTypes = watch('projectType', [])
 										const newTypes = currentTypes.includes(type)
@@ -158,7 +158,7 @@ export default function ContactForm() {
 						{errors.projectType && <p className="text-sm text-red-500">{errors.projectType.message}</p>}
 					</div>
 					<div className="space-y-2">
-						<Label htmlFor="message">Message</Label>
+						<Label htmlFor="message">Anything else?</Label>
 						<Textarea id="message" {...register('message')} placeholder="Your message here..." />
 					</div>
 				</form>
@@ -169,7 +169,7 @@ export default function ContactForm() {
 					type="submit"
 					whileHover={{ scale: 1.1 }}
 					whileTap={{ scale: 0.95 }}
-					className="mx-auto mb-8 w-48 items-center justify-center rounded-full bg-a px-6 py-3 text-white shadow-lg hover:bg-a-dark focus:outline-none focus:ring-4 focus:ring-a-light dark:bg-a-dark dark:hover:bg-a-darker"
+					className="mx-auto mb-4 w-48 items-center justify-center rounded-full bg-a-dark px-6 py-3 font-extrabold text-white shadow-lg hover:bg-a-dark focus:outline-none focus:ring-4 focus:ring-a-light dark:bg-a-dark dark:hover:bg-a-darker"
 					disabled={isSubmitting}>
 					{isSubmitting ? 'Submitting...' : 'Submit'}{' '}
 				</motion.button>
@@ -185,5 +185,6 @@ export default function ContactForm() {
 				</DialogContent>
 			</Dialog>
 		</Card>
+		</section>
 	)
 }

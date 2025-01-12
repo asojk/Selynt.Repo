@@ -1,9 +1,5 @@
 import React, { ReactElement, useEffect, useRef, useState } from 'react'
-<<<<<<< Updated upstream
-import { AnimatePresence, motion } from 'framer-motion'
-=======
 import { AnimatePresence, motion } from 'motion/react'
->>>>>>> Stashed changes
 import { twMerge } from 'tailwind-merge'
 import {
 	IconBrandFramerMotion,
@@ -12,19 +8,11 @@ import {
 	IconBrandTypescript,
 	IconBrandVite,
 } from '@tabler/icons-react'
-<<<<<<< Updated upstream
-import { StickyVComp } from './ui/sticky-comp-variant'
-
-export const Tech = () => {
-	return (
-		<StickyVComp heightMode="content">
-=======
 
 
 export const Tech = () => {
 	return (
 
->>>>>>> Stashed changes
 			<section className="flex w-full cursor-default flex-col items-center justify-center gap-12 px-4 py-4 antialiased md:flex-row lg:py-12 lg:subpixel-antialiased">
 				<Copy />
 				<LogoRolodex
@@ -47,11 +35,7 @@ export const Tech = () => {
 					]}
 				/>
 			</section>
-<<<<<<< Updated upstream
-		</StickyVComp>
-=======
 
->>>>>>> Stashed changes
 	)
 }
 
@@ -61,11 +45,7 @@ const Copy = () => (
 		<p className="mb-6 text-lg text-n-9 dark:text-n-1">We harness cutting-edge technology to deliver:</p>
 		<div className="grid w-full grid-cols-1 gap-8 text-n-900 dark:text-n-1 md:grid-cols-2">
 			<div className="space-y-4">
-<<<<<<< Updated upstream
-				<h3 className="text-left text-base font-semibold md:text-xl">Tailored Solutions</h3>
-=======
 				<h3 className="text-left text-xl font-semibold">Tailored Solutions</h3>
->>>>>>> Stashed changes
 				<ul className="space-y-2">
 					<ListItem>Responsive Websites</ListItem>
 					<ListItem>Distinctive Brand Identities</ListItem>
@@ -73,11 +53,7 @@ const Copy = () => (
 				</ul>
 			</div>
 			<div className="space-y-4">
-<<<<<<< Updated upstream
-				<h3 className="text-left text-base font-semibold md:text-xl">Core Principles</h3>
-=======
 				<h3 className="text-left text-xl font-semibold">Core Principles</h3>
->>>>>>> Stashed changes
 				<ul className="space-y-2">
 					<ListItem>Crystal-Clear Communication</ListItem>
 					<ListItem>Intuitive Simplicity</ListItem>
@@ -89,11 +65,7 @@ const Copy = () => (
 )
 
 const ListItem = ({ children }: { children: React.ReactNode }) => (
-<<<<<<< Updated upstream
-	<li className="flex text-left md:items-center">
-=======
 	<li className="flex items-center">
->>>>>>> Stashed changes
 		<svg
 			className="mr-2 h-5 w-5 text-s"
 			fill="none"
@@ -102,11 +74,7 @@ const ListItem = ({ children }: { children: React.ReactNode }) => (
 			xmlns="http://www.w3.org/2000/svg">
 			<path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path>
 		</svg>
-<<<<<<< Updated upstream
-		<span className="text-sm md:text-lg lg:text-xl">{children}</span>
-=======
 		<span className="text-md lg:text-lg">{children}</span>
->>>>>>> Stashed changes
 	</li>
 )
 
@@ -196,7 +164,4 @@ const LogoItem = ({ children, className }: { children: React.ReactNode; classNam
 		</div>
 	)
 }
-<<<<<<< Updated upstream
-=======
 export default Tech
->>>>>>> Stashed changes
