@@ -1,4 +1,3 @@
-'use client'
 import { cn } from '@/lib/utils'
 import { AnimatePresence, motion } from 'motion/react'
 import { useState, useEffect } from 'react'
@@ -38,6 +37,7 @@ type LoadingState = {
 }
 
 const LoaderCore = ({ loadingStates, value = 0 }: { loadingStates: LoadingState[]; value?: number }) => {
+	
   return (
     <div className="relative mx-auto mt-20 flex max-w-lg md:max-w-xl lg:max-w-2xl flex-col justify-start">
       {loadingStates.map((loadingState, index) => {

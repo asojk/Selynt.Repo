@@ -2,8 +2,7 @@ import { useEffect, useState } from 'react'
 import { motion } from 'motion/react'
 import { IconSun, IconMoon } from '@tabler/icons-react'
 import { useTheme } from '../../constants/theme-context'
-import Modal from './modal'
-import FloatingButton from './contact-button'
+
 
 const TOGGLE_CLASSES = 'text-sm font-medium flex items-center gap-2 px-3 py-2 transition-colors relative z-10'
 
@@ -11,8 +10,7 @@ export const DarkModeToggle = () => {
 	const { theme, toggleTheme } = useTheme()
 	const [isCompact, setIsCompact] = useState(false)
 
-	const [isOpen, setIsOpen] = useState(false)
-	const closeModal = () => setIsOpen(false)
+
 
 	useEffect(() => {
 		const handleScroll = () => {
@@ -50,8 +48,7 @@ export const DarkModeToggle = () => {
 					</motion.div>
 				</div>
 			</div>
-			<FloatingButton />
-			<Modal isOpen={isOpen} onClose={closeModal} />
+
 		</>
 	)
 }

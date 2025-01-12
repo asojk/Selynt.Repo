@@ -4,9 +4,17 @@ import path from 'path'
 
 export default defineConfig({
 	plugins: [react()],
+	assetsInclude: ['**/*.woff2', '**/*.woff'],
 	resolve: {
 		alias: {
 			'@': path.resolve(__dirname, './src'),
 		},
 	},
+  build: {
+    rollupOptions: {
+      input: {
+        main: path.resolve(__dirname, 'index.html'),
+      },
+    },
+  },
 })

@@ -2,7 +2,7 @@ import { motion } from 'motion/react'
 
 export const Vision = () => {
 	return (
-    <div className="container mx-auto px-4 py-8 my-24 md:my-36 lg:my-[8vw] xl:my-[8vw]">
+    <div className="container mx-auto px-4 py-8 my-24 md:my-36 lg:my-[8vw] xl:my-[8vw] font-Xd font-light max-w-xl">
 
 			<motion.div
 				initial={{ opacity: 0, y: 20 }}
@@ -17,15 +17,15 @@ export const Vision = () => {
 }
 
 const Copy = () => (
-	<div className="mx-auto flex max-w-2xl flex-col items-start text-left md:px-4 lg:px-0">
-		<div className="pb-8 text-4xl font-black tracking-tight text-black dark:text-white md:text-6xl">
+	<div className="mx-auto flex max-w-2xl flex-col items-start text-left md:px-4 lg:px-0 ">
+		<div className="pb-6 text-4xl font-black tracking-tight text-black dark:text-white md:text-6xl">
 			<h2 className="">
 				Websites & Branding <br className="md:hidden" />
 				<span className="text-a dark:text-s"> Without the BS</span>
 			</h2>
 		</div>
 
-		<p className="mb-4 text-left text-base text-n-9 dark:text-n-1 md:text-lg lg:text-xl">
+		<p className="mb-10 text-left text-base text-n-9 dark:text-n-4 md:text-lg lg:text-xl max-w-md">
 			You are entitled to whichever methods you prefer when working with us, but
 			<span className="font-bold italic text-a"> here you will find:</span>
 		</p>
@@ -45,14 +45,14 @@ const Copy = () => (
 const ListItem = ({ children }: { children: React.ReactNode }) => (
 	<div className="flex items-center justify-start">
 		<svg
-			className="mr-2 h-4 w-4 text-s sm:h-5 sm:w-5"
+			className="mr-2 h-4 w-4 text-brown-2 sm:h-5 sm:w-5"
 			fill="none"
 			stroke="currentColor"
 			viewBox="0 0 24 24"
 			xmlns="http://www.w3.org/2000/svg">
 			<path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path>
 		</svg>
-		<span className="text-lg font-semibold tracking-tight text-n-9 dark:text-n-1 sm:text-xl lg:text-2xl">
+		<span className="text-lg font-normal font-Xd tracking-tight text-n-9 dark:text-n-3 sm:text-xl lg:text-2xl">
 			{children}
 		</span>
 	</div>

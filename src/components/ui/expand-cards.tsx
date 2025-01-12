@@ -9,7 +9,7 @@ import ContactForm from '../ContactForm'
 import { IconChevronRight, IconInfoCircle, IconMailBolt, IconMap, IconTag } from '@tabler/icons-react'
 import React from 'react'
 import { Map } from '../Map'
-import PriceTable from './price-table'
+import PriceTable from '@/components/Pricing'
 import { CloseIcon } from './close-icon'
 
 export function ExpandableCards() {
@@ -72,7 +72,7 @@ export function ExpandableCards() {
 										height={200}
 										src={active.src}
 										alt={active.title}
-										className='w-full rounded-tl-lg rounded-tr-lg object-contain object-center h-40 lg:h-64 bg-black/20'
+										className='h-40 w-full rounded-tl-lg rounded-tr-lg bg-black/20 object-contain object-center lg:h-64'
 									/>
 								</motion.div>
 							)}
@@ -113,7 +113,7 @@ export function ExpandableCards() {
 									<img
 										src={card.src}
 										alt={card.title}
-										className='h-8 py-1 w-12 lg:w-20 rounded-lg object-cover object-center bg-p dark:bg-p-3'
+										className='h-8 w-12 rounded-lg bg-p object-cover object-center py-1 dark:bg-p-3 lg:w-20'
 									/>
 								) : card.icon ? (
 									<div className='flex h-8 w-12 items-center justify-center rounded-lg bg-p py-1 dark:bg-p-3 lg:w-20'>
@@ -147,6 +147,16 @@ export function ExpandableCards() {
 					</motion.div>
 				))}
 			</ul>
+			<motion.button
+				whileHover={{ scale: 1.1 }}
+				whileTap={{ scale: 0.9 }}
+				className='fixed bottom-4 right-4 rounded-2xl bg-a-dark px-3 py-2 text-white shadow-lg'
+				onClick={() => setActive(cards.find((card) => card.title === 'Contact') || null)}>
+				<span className='inline-flex items-center'>
+					<IconMailBolt className='h-5 w-5' />
+					<span className='hidden md:ml-2 md:inline'>Contact</span>
+				</span>
+			</motion.button>
 		</>
 	)
 }
@@ -163,20 +173,31 @@ type Card = {
 
 const cards: Card[] = [
 	{
+		description: 'Services and Pricing',
+		title: 'Pay Once, No Subscriptions!',
+		icon: IconTag,
+		ctaText: 'Explore',
+		ctaLink: '',
+		content: () => <PriceTable />,
+	},
+
+
+	{
+		description: 'As we grow, we hope this will serve as a trusted resource.',
+		title: 'Our Work',
+		icon: IconMap,
+		src: '',
+		ctaText: 'Discover',
+		ctaLink: '',
+		content: () => <Map />,
+	},
+	{
 		description: 'Simple & Easy',
 		title: 'Our Process',
 		icon: IconInfoCircle,
 		ctaText: 'View',
 		ctaLink: '',
 		content: () => <TimeLine />,
-	},
-	{
-		description: 'Overview of Our Services and Pricing',
-		title: 'Our Services',
-		icon: IconTag,
-		ctaText: 'Explore',
-		ctaLink: '',
-		content: () => <PriceTable />,
 	},
 
 	{
@@ -187,15 +208,7 @@ const cards: Card[] = [
 		ctaLink: '',
 		content: () => <Profile />,
 	},
-	{
-		description: 'As we grow, we hope this will serve as a trusted resource.',
-		title: 'Our Work',
-		icon: IconMap,
-		src: '',
-		ctaText: 'Discover',
-		ctaLink: '',
-		content: () => <Map />,
-	},
+
 	{
 		description: 'Questions? Ready to Get Started?',
 		title: 'Contact',

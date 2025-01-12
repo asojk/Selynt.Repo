@@ -1,6 +1,8 @@
 import { useState } from 'react'
 import { MultiStepLoader as Loader } from '@/components/ui/loader'
 import { IconSquareRoundedX } from '@tabler/icons-react'
+import { useKbdOutside } from '@/hooks/use-kbd-or-outside'
+
 
 const loadingStates = [
   { text: 'Are you a solo professional, hobbyist, or small-business owner?', },
@@ -11,9 +13,11 @@ const loadingStates = [
 
 export function WhoStepLoader() {
   const [loading, setLoading] = useState(false)
+  const closeLoader = () => setLoading(false)
+  const ref = useKbdOutside(loading, closeLoader)
 
   return (
-    <div className="flex w-full md:w-[85vw] lg:w-[65vw] py-12 items-center justify-center z-[9]">
+    <div ref={ref} className="flex w-full md:w-[85vw] lg:w-[65vw] py-12 items-center justify-center z-[9]">
       <Loader loadingStates={loadingStates} loading={loading} duration={2000} />
 
       <button
@@ -26,8 +30,8 @@ export function WhoStepLoader() {
       </button>
 
       {loading && (
-        <button className="fixed right-4 top-4 z-[120] text-black dark:text-white" onClick={() => setLoading(false)}>
-          <IconSquareRoundedX className="h-10 w-10" />
+        <button className="fixed right-4 top-4 z-[120] lg:right-24 lg:top-24 text-black dark:text-white" onClick={() => setLoading(false)}>
+          <IconSquareRoundedX size={40} className='lg:scale-125 xl:scale-150' />
         </button>
       )}
     </div>

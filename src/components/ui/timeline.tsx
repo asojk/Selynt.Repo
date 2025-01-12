@@ -1,6 +1,7 @@
 import { motion } from 'motion/react'
 import useIntersectionObserver from '../../hooks/useIntersectionObserver'
 import { useRef } from 'react'
+import Tech from '../Tech'
 
 export const TimeLine = () => {
 	const ref = useRef<HTMLDivElement>(null)
@@ -46,7 +47,7 @@ export const TimeLine = () => {
 	}
 
 	return (
-		<section className="flex w-full items-center justify-center lg:subpixel-antialiased mt-4 mb-16 overflow-hidden">
+		<><section className="flex w-full items-center justify-center lg:subpixel-antialiased mt-4 mb-16 overflow-hidden">
 			<div className="flex w-3/4 flex-col items-center justify-center space-y-8 lg:space-y-16">
 				<motion.div
 					className="grid w-full max-w-4xl grid-cols-3 gap-4 px-2 md:gap-8"
@@ -105,7 +106,7 @@ export const TimeLine = () => {
 					</motion.div>
 				</motion.div>
 			</div>
-		</section>
+		</section><Tech /></>
 	)
 }
 

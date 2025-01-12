@@ -1,77 +1,92 @@
-import React from 'react'
-import { IconCheck, IconX } from '@tabler/icons-react'
+import React, { useState } from 'react'
+import { IconCheck, IconChevronDown, IconX } from '@tabler/icons-react'
 
 interface PlanColumnProps {
-  title: string
-  price: string
-  description: string
-  features: string[]
-  nonFeatures: string[]
-  buttonText: string
-  comparison: string[]
-  savings: string;
+    title: string
+    price: string
+    description: string
+    features: string[]
+    nonFeatures: string[]
+    comparison: string[]
+    savings: string
+    priceStyle?: 'gradient' | 'generic'
 }
 
 const PlanColumn: React.FC<PlanColumnProps> = ({
-  title,
-  price,
-  description,
-  features,
-  nonFeatures,
-  buttonText,
-  comparison,
-  savings
+    title,
+    price,
+    description,
+    features,
+    nonFeatures,
+    comparison,
+    savings,
+    priceStyle = 'gradient',
 }) => {
+  const [isComparisonVisible, setIsComparisonVisible] = useState(false)
+
   return (
-    <div className="w-full p-2">
-      <div className="flex h-full flex-col rounded-lg border border-a bg-white p-6 text-gray-800 shadow-md dark:border-s dark:bg-gray-800 dark:text-white">
-        <div className="mb-6">
-          <h3 className="text-2xl font-bold text-a-dark dark:text-s">{title}</h3>
-          <p className="mt-2 text-3xl font-extrabold text-p">{price}</p>
-          <p className="mt-2 text-sm text-gray-600 dark:text-gray-300">{description}</p>
+    <div className='w-full max-w-sm mx-auto flex flex-col justify-between rounded-xl border-[1px] border-slate-300 bg-white p-4 text-n-900 shadow-md dark:border-slate-700 dark:bg-n-900/80 dark:text-white lg:p-6 h-full'>
+        <div className='bg-card text-card-foreground flex w-full flex-col justify-between rounded-lg text-left h-full'>
+            <div className='flex flex-col space-y-4'>
+                <div className='flex flex-row justify-between items-start lg:flex-col lg:items-start'>
+                    <h3 className='text-xl font-bold lg:text-2xl'>{title}</h3>
+                    <p
+                        className={`text-2xl font-bold sm:text-3xl md:text-4xl lg:text-5xl lg:mt-2 ${
+                            priceStyle === 'gradient'
+                                ? 'animate-text bg-gradient-to-r from-p via-p-2 to-p-dark bg-clip-text text-transparent'
+                                : 'text-p dark:text-n-5'
+                        }`}>
+                        <span className="text-lg align-top">$</span>{price}
+                    </p>
+                </div>
+          <p className='text-sm text-n-7 dark:text-n-4'>{description}</p>
         </div>
-        
-        <div className="flex-grow">
-          <ul className="space-y-2">
+
+        <div className='mt-6 flex-grow'>
+          <ul className='space-y-3'>
             {features.map((feature, index) => (
-              <li key={index} className="flex items-start">
-                <IconCheck className="mr-2 mt-1 h-4 w-4 flex-shrink-0 text-p" />
-                <span className="text-sm">{feature}</span>
+              <li key={index} className='flex items-start text-sm'>
+                <IconCheck className='mr-2 mt-1 h-4 w-4 flex-shrink-0 text-a dark:text-s' />
+                <span>{feature}</span>
               </li>
             ))}
           </ul>
 
           {nonFeatures.length > 0 && (
-            <ul className="mt-4 space-y-2">
+            <ul className='mt-4 space-y-3'>
               {nonFeatures.map((feature, index) => (
-                <li key={index} className="flex items-start text-gray-500">
-                  <IconX className="mr-2 mt-1 h-4 w-4 flex-shrink-0 text-red-2" />
-                  <span className="text-sm">{feature}</span>
+                <li key={index} className='flex items-start text-sm text-n-6'>
+                  <IconX className='mr-2 mt-1 h-4 w-4 flex-shrink-0 text-red' />
+                  <span>{feature}</span>
                 </li>
               ))}
             </ul>
           )}
         </div>
 
-        <div className="mt-6">
-          <button className="w-full rounded bg-p py-2 text-sm font-medium text-white hover:bg-p/90 dark:bg-s dark:text-black dark:hover:bg-s/90">
-            {buttonText}
-          </button>
-
-          {comparison.length > 0 && (
-            <div className="mt-4">
-              <h4 className="text-sm font-semibold text-a-dark dark:text-s">Compared to:</h4>
-              <ul className="mt-2 space-y-1">
+        {comparison.length > 0 && (
+          <div className='mt-4'>
+            <p className='text-sm text-red dark:text-red-light'>{savings}</p>
+            <h4 
+              className='mt-2 text-sm font-semibold text-a-dark dark:text-s cursor-pointer flex items-center'
+              onClick={() => setIsComparisonVisible(!isComparisonVisible)}
+            >
+              Compared to:
+              <IconChevronDown className={`h-4 w-4 inline-block ml-1 text-a-dark dark:text-s transition-transform ${isComparisonVisible ? 'rotate-180' : ''}`} />
+            </h4>
+            {isComparisonVisible && (
+              <ul className='mt-2 space-y-2'>
                 {comparison.map((item, index) => (
-                  <li key={index} className="text-xs text-gray-600 dark:text-gray-400">{item}</li>
+                  <li key={index} className='text-xs text-n-7 dark:text-n-4'>
+                    {item}
+                  </li>
                 ))}
               </ul>
-            </div>
-          )}
-        </div>
-        <div className="mt-4">
-        <p className="text-sm font-bold text-red">{savings}</p>
-      </div>
+            )}
+          </div>
+        )}
+
+
       </div>
     </div>
   )

@@ -19,8 +19,8 @@ const AnimatedRoutes: React.FC = () => {
 					<Routes location={location}>
 						<Route path="/" element={<Home />} />
 						<Route path="*" element={<NotFound />} />
-						<Route path="/pravacy-policy" element={<Privacy />} />
-						<Route path="/terms-and-conditions" element={<Terms />} />
+						<Route path="/privacy" element={<Privacy />} />
+						<Route path="/terms" element={<Terms />} />
 					</Routes>
 				</PageTransition>
 			</AnimatePresence>
