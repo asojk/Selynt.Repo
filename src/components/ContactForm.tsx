@@ -75,10 +75,10 @@ export default function ContactForm() {
 	}
 
 	return (
-		<section className='max-w-md md:max-w-lg lg:max-w-xl mx-auto pb-4'>
+		<section className='max-w-md md:max-w-lg lg:max-w-xl justify-center items-center mx-auto p-4'>
 
 			<AltContact />
-		<Card className=" shadow-md shadow-p-dark">
+		<Card className=" shadow-md shadow-p-dark bg-n-2">
 			<CardContent>
 				<form onSubmit={handleSubmit(onSubmit)} className="space-y-4 py-8">
 					<div className="grid grid-cols-1 gap-4 md:grid-cols-2">

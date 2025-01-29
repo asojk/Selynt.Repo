@@ -11,6 +11,10 @@ export const images = {
 	collaborate: 'https://prkm7pjvgapey0vo.public.blob.vercel-storage.com/Collaborate-1iD7O9U144kE2',
 	quality: 'https://prkm7pjvgapey0vo.public.blob.vercel-storage.com/Quality-t2w36x8p7j6v7.svg',
 	modern: 'https://prkm7pjvgapey0vo.public.blob.vercel-storage.com/Modern-D412399c8690.svg',
+	wh: 'https://prkm7pjvgapey0vo.public.blob.vercel-storage.com/wh-wfBQRoTOk5e2oc16xnJdJjIvYTg0yj.jpg',
+	hek: 'https://prkm7pjvgapey0vo.public.blob.vercel-storage.com/hekate-UA5vTeVHS5RtyPXhA8FkVMAa0x5bee.jpg',
+	apo: 'https://prkm7pjvgapey0vo.public.blob.vercel-storage.com/apo.herb.1-PD1gtLuDFjJMjnMFuuVN5YwDJDZT5f.png',
+	LR: 'https://prkm7pjvgapey0vo.public.blob.vercel-storage.com/d3.c-83QXRugJi8FcIUV5QnCmqwjIiOqXwg.jpg',
 } as const
 
 export type ImageKeys = keyof typeof images

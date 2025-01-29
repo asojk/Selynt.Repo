@@ -18,8 +18,10 @@
 		"baseUrl": ".",
 		"paths": {
 			"@/*": ["./src/*"]
-		}
-	},
-	"include": ["src"],
+		},
+    "types": ["@types/react", "@types/react-dom", "@types/node", "@types/react-simple-maps"],
+  },
+  "include": ["src"],
+  "exclude": ["node_modules", "/var/folders/**", "/var/**"],
 	"references": [{ "path": "./tsconfig.node.json" }]
 }

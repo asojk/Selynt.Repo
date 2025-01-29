@@ -44,7 +44,7 @@ export function LampSmall({ contentHeight = false }) {
 }
 
 const LampContentSmall = () => (
-	<div className="relative z-50 flex w-full  px-4">
+	<div className="text-[8vw] mx-auto xl:text-[5vw] max-w-[1200px] font-black tracking-tight leading-none">
 		<motion.h1
 			initial={{ opacity: 0.5, y: 0 }}
 			whileInView={{ opacity: 1, y: -40 }}
@@ -53,7 +53,7 @@ const LampContentSmall = () => (
 				duration: 0.8,
 				ease: 'easeOut',
 			}}
-			className="relative w-full text-center text-4xl font-black tracking-tight text-a-dark dark:text-white md:text-6xl">
+			className="bg-gradient-to-b from-s-2 to-black bg-clip-text p-2 text-transparent dark:from-s dark:to-white text-center">
 			Standing out <br /> shouldn't mean <br /> overspending.
 		</motion.h1>
 

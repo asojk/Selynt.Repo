@@ -6,10 +6,11 @@ export default {
 	theme: {
 		extend: {
 			fontFamily: {
-				'Xd': ['Xd', 'sans-serif'],
+        sans: ['Xd', 'sans-serif'],
+				serif: ['Xd', 'sans-serif'],
+      },
 				//display: ['Inter', 'sans-serif'],
 				//body: ['Lato', 'sans-serif'],
-			},
 			colors: {
 				red: {
 					DEFAULT: '#c05353',

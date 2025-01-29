@@ -4,10 +4,9 @@ import PlanColumn from '@/components/ui/price-column';
 const PriceTable: React.FC = () => {
   return (
     <div className='mx-auto w-full max-w-7xl'>
-      <h2 className='text-3xl mb-4 font-extrabold text-center text-n-900 dark:text-n-5'>Transparent Pricing, Exceptional Value</h2>
-      <p className='text-base mx-auto text-center text-n-7 dark:text-n-4 mb-12 max-w-[70%]'>
-        At Selynt, we deliver professional, personalized solutions tailored to your needs.
-        <br />Our transparent, <a className='text-a'>  one-time </a>pricing ensures 
+      <h2 className='text-3xl mb-4 font-extrabold text-center text-n-900 dark:text-n-5 px-4 md:px-8'>Transparent Pricing, Exceptional Value</h2>
+      <p className='text-base mx-auto text-left text-n-7 dark:text-n-4 mb-12 px-12 md:px-24'>
+        At Selynt, we deliver professional, personalized solutions tailored to <a className='text-a-dark'>your needs</a>. Our transparent, <a className='text-a-dark'>  one-time </a>pricing ensures 
         no hidden costs or subscription fees.
       </p>
 

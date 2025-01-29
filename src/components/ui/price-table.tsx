@@ -12,7 +12,6 @@ const PriceTable: React.FC = () => {
   description="Custom design, configuration, and deployment with free hosting"
   features={["Custom Design", "Custom Configuration", "Full Deployment", "Free Hosting"]}
   nonFeatures={[]}
-  buttonText="Get Started"
   comparison={[
     "Wix: $204/year",
     "Squarespace: $192/year",
@@ -33,7 +32,6 @@ const PriceTable: React.FC = () => {
     "4 Free Updates",
   ]}
   nonFeatures={[]}
-  buttonText="Upgrade Now"
   comparison={[
     "Agencies: $2,000–$6,000",
     "WordPress: potentially $50–100+/mo",
@@ -48,7 +46,6 @@ const PriceTable: React.FC = () => {
   description="Essential branding elements for your business"
   features={["Logo Design", "Color Palette", "Basic Brand Guidelines"]}
   nonFeatures={[]}
-  buttonText="Start Branding"
   comparison={["Canva/Fiverr: $50–$200", "Freelancers: $500–$1,500"]}
   savings="Save $200+ compared to freelancers for foundational branding!"
 />
@@ -65,7 +62,6 @@ const PriceTable: React.FC = () => {
     "Custom Branded Designs",
   ]}
   nonFeatures={[]}
-  buttonText="Brand Your Business"
   comparison={["Freelancers: $1,000–$3,000"]}
   savings="Save $400–$2,400 compared to professional freelancers!"
 />
