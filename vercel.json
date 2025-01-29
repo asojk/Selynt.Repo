@@ -1,0 +1,14 @@
+{
+  "rewrites": [
+    {
+      "source": "/(.*)",
+      "has": [{ "type": "header", "key": "x-forwarded-for", "value": "52.164.207.97" }],
+      "destination": "/blocked.html"
+    },
+    {
+      "source": "/(.*)",
+      "has": [{ "type": "header", "key": "x-forwarded-for", "value": "40.69.35.49" }],
+      "destination": "/blocked.html"
+    }
+  ]
+}

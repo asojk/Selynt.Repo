@@ -1,19 +1,25 @@
 {
   "name": "Selynt",
   "short_name": "Selynt",
+  "description": "Selynt provides affordable, high-quality branding and website solutions.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "display_override": ["window-controls-overlay"],
+  "theme_color": "#AEE1CF",
+  "background_color": "#E8E8E8",
   "icons": [
     {
       "src": "https://prkm7pjvgapey0vo.public.blob.vercel-storage.com/android-chrome-192x192-yjoyGFNkphGQreiCiIWkociGaqPNuZ.png",
       "sizes": "192x192",
-      "type": "image/png"
+      "type": "image/png",
+      "purpose": "any"
     },
     {
       "src": "https://prkm7pjvgapey0vo.public.blob.vercel-storage.com/android-chrome-512x512-Z3WQBeyliM1jmQdu6TNGDyxc9s4xTs.png",
       "sizes": "512x512",
-      "type": "image/png"
+      "type": "image/png",
+      "purpose": "any"
     }
-  ],
-  "theme_color": "#AEE1CF",
-  "background_color": "#E8E8E8",
-  "display": "standalone"
+  ]
 }
