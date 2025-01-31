@@ -5,12 +5,19 @@ import { LampSmall } from '../components/LampSm'
 //import { BgAnimation } from '@/components/ui/bg-animation'
 import { WhoStepLoader } from '@/components/who-step-loader'
 import { Vision } from '../components/Vision'
+import MapButton from '@/components/MapButton'
+import LiquidSideNav from '@/components/LiquidSideNav'
+
 
 const Home = () => {
+
 	return (
 		<main className='flex flex-col'>
+
 			<div className='flex flex-grow flex-col'>
+
 				<section className='relative mb-24 flex min-h-[50vh] items-center justify-center lg:mb-36'>
+					
 					<div className='absolute inset-0'>
 						<div className='hidden h-full md:flex'>
 							<Lamp />
@@ -18,11 +25,17 @@ const Home = () => {
 						<div className='h-full md:hidden'>
 							<LampSmall />
 						</div>
+
 					</div>
+
 				</section>
 
 				<section className='vision-section py-24 lg:py-36'>
 					<Vision />
+					<section className=''>
+				<LiquidSideNav />
+				<MapButton />
+			</section>
 				</section>
 				<section className='additional-content'>
 					<div className='relative z-[2] w-full'>

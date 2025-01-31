@@ -23,7 +23,7 @@ export const DarkModeToggle = () => {
 
 	return (
 		<>
-			<div className="fixed bottom-4 left-2 z-50 flex flex-col items-end">
+			<div className="fixed bottom-4 left-2 z-40 flex flex-col items-end">
 				<div className="relative flex flex-col items-center">
 					<button
 						className={`${TOGGLE_CLASSES} ${theme === 'light' ? 'text-s-2' : 'text-p-1'}`}

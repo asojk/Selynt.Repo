@@ -2,6 +2,14 @@
 @import 'tailwindcss/components';
 @import 'tailwindcss/utilities';
 
+@font-face {
+  font-family: 'Xd';
+  src: url('https://prkm7pjvgapey0vo.public.blob.vercel-storage.com/Xd-KCnW5jKzFJsohr5zSja1XOdZbTixgi.woff2') format('woff2');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
 .root {
 	--color-p: #36454f;
 	--color-p-light: #4b5a67;
@@ -398,14 +406,14 @@ body {
 }
 
 @keyframes text2 {
-	0%, 100%: {
-		background-size: 200% 200%;
-		background-position: left top;
-	}
-	50%: {
-		background-size: 200% 200%;
-		background-position: right bottom;
-	}
+  0%, 100% {
+    background-size: 200% 200%;
+    background-position: left top;
+  }
+  50% {
+    background-size: 200% 200%;
+    background-position: right bottom;
+  }
 }
 
 .animate-breathe {
@@ -738,4 +746,19 @@ table, th, td {
 	.container {
 		max-width: 1536px;
 	}
+}
+
+
+.custom-scrollbar::-webkit-scrollbar {
+  width: 6px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background-color: rgba(155, 155, 155, 0.5);
+  border-radius: 20px;
+  border: transparent;
 }

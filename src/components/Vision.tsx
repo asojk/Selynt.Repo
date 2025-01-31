@@ -34,7 +34,7 @@ const Copy = () => (
 			<ListItem>No Surprise Fees</ListItem>
 			<ListItem>No Jargon</ListItem>
 		</div>
-		<div className="grid w-full grid-cols-1 gap-4 py-8 text-left text-n-900 dark:text-n-1 md:grid-cols-3 md:place-items-center md:gap-0">
+		<div className="grid w-full grid-cols-1 gap-4 pt-4 md:py-8 text-left text-n-900 dark:text-n-1 md:grid-cols-3 md:place-items-center md:gap-0">
 			<ListItem>No Tracking</ListItem>
 			<ListItem>No Ads</ListItem>
 			<ListItem>No BS</ListItem>
@@ -45,7 +45,7 @@ const Copy = () => (
 const ListItem = ({ children }: { children: React.ReactNode }) => (
 	<div className="flex items-center justify-start">
 		<svg
-			className="mr-2 h-4 w-4 text-brown-2 sm:h-5 sm:w-5"
+			className="mr-2 md:h-4 md:w-4 text-brown-6 dark:text-brown-2 h-5 w-5"
 			fill="none"
 			stroke="currentColor"
 			viewBox="0 0 24 24"
