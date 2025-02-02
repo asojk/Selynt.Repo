@@ -9,7 +9,9 @@ import ContactForm from '../ContactForm'
 import { IconChevronRight, IconInfoCircle, IconMailBolt, IconTag } from '@tabler/icons-react'
 import React from 'react'
 import PriceTable from '@/components/Pricing'
-import { CloseIcon2 } from './close-icon'
+//import { CloseIcon2 } from './close-icon'
+import { CloseButton } from './close-icon'
+
 
 export function ExpandableCards() {
     const [active, setActive] = useState<(typeof cards)[number] | boolean | null>(null)
@@ -46,6 +48,7 @@ export function ExpandableCards() {
 
     return (
         <>
+
             {active && typeof active === 'object' && (
                 <motion.div
                     initial={{ opacity: 0 }}
@@ -88,17 +91,7 @@ export function ExpandableCards() {
                                     </motion.div>
                                 </div>
 
-                                <motion.button
-                                    whileHover={{ scale: 1.05 }}
-                                    whileTap={{ scale: 0.95 }}
-                                    className='fixed bottom-4 right-4 rounded-2xl px-3 py-2 text-white '
-                                    onClick={() => setActive(null)}
-                                >
-                                    <span className='inline-flex items-center'>
-                                        <CloseIcon2 />
-                                        <span className='hidden md:ml-2 md:inline'>Close</span>
-                                    </span>
-                                </motion.button>
+                                <CloseButton onClick={() => setActive(null)} />
                             </div>
                         </motion.div>
                     </div>
@@ -174,7 +167,7 @@ type Card = {
 const cards: Card[] = [
     {
         description: 'Services and Pricing',
-        title: 'Pay Once, Get It All!',
+        title: 'Pay Once, Get It All',
         icon: IconTag,
         ctaText: 'Explore',
         ctaLink: '',

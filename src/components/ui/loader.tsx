@@ -50,22 +50,22 @@ const LoaderCore = ({ loadingStates, value = 0 }: { loadingStates: LoadingState[
             className={cn('mb-4 flex gap-2 text-left text-xl')}
             initial={{ opacity: 0, y: -(value * 40) }}
             animate={{ opacity: opacity, y: -(value * 40) }}
-            transition={{ duration: 0.5 }}>
-						<div>
-							{index > value && <CheckIcon className="text-black dark:text-white" />}
-							{index <= value && (
-								<CheckFilled
-									className={cn(
-										'text-black dark:text-white',
-										value === index && 'text-black opacity-100 dark:text-a'
-									)}
-								/>
-							)}
-						</div>
+            transition={{ duration: index === 0 ? 0.3 : 0.5 }}>
+                        <div>
+                            {index > value && <CheckIcon className="text-black dark:text-white" />}
+                            {index <= value && (
+                                <CheckFilled
+                                    className={cn(
+                                        'text-black dark:text-white',
+                                        value === index && ' opacity-100 text-a-dark'
+                                    )}
+                                />
+                            )}
+                        </div>
 						<span
 							className={cn(
-								'text-black dark:text-white',
-								value === index && 'text-black opacity-100 dark:text-a'
+								'text-n-3',
+								value === index && 'opacity-100 text-a-light dark:text-a'
 							)}>
 							{loadingState.text}
 						</span>
@@ -79,7 +79,7 @@ const LoaderCore = ({ loadingStates, value = 0 }: { loadingStates: LoadingState[
           animate={{ opacity: 1, scale: 1 }}
           transition={{ delay: 3, duration: 0.4 }}
         >
-          <ArrowIcon className="text-black dark:text-white transform rotate-45" />
+          <ArrowIcon className="text-black dark:text-white" />
         </motion.div>
       )}
     </div>
@@ -89,7 +89,7 @@ const LoaderCore = ({ loadingStates, value = 0 }: { loadingStates: LoadingState[
 export const MultiStepLoader = ({
 	loadingStates,
 	loading,
-	duration = 2500,
+	duration = 2000,
 	loop = false,
 }: {
 	loadingStates: LoadingState[]
@@ -99,69 +99,102 @@ export const MultiStepLoader = ({
 }) => {
 	const [currentState, setCurrentState] = useState(0)
 	const [showArrow, setShowArrow] = useState(false)
+	const [dots, setDots] = useState('')
+	const [showDots, setShowDots] = useState(true)
 
 	useEffect(() => {
-	if (!loading) {
-		setCurrentState(0)
-		setShowArrow(false)
-		return
-	}
-	const timeout = setTimeout(() => {
-		setCurrentState((prevState) => {
-			const nextState = loop
-				? (prevState + 1) % loadingStates.length
-				: Math.min(prevState + 1, loadingStates.length - 1)
-			if (nextState === loadingStates.length - 1) {
-				setTimeout(() => setShowArrow(true), duration + 1300) // Delay arrow appearance
+			if (!loading) {
+					setCurrentState(0)
+					setShowArrow(false)
+					setDots('')
+					setShowDots(true)
+					return
 			}
+
+			// Animate dots
+			const dotInterval = setInterval(() => {
+					if (showDots) {
+							setDots(prev => (prev.length < 3 ? prev + '.' : ''))
+					}
+			}, 500)
+
+			const timeout = setTimeout(() => {
+					setCurrentState((prevState) => {
+							const nextState = loop
+									? (prevState + 1) % loadingStates.length
+									: Math.min(prevState + 1, loadingStates.length - 1)
+							if (nextState === loadingStates.length - 1) {
+									// Stop dots animation and show arrow when the last state is reached
+									setTimeout(() => {
+											setShowDots(false)
+											setShowArrow(true)
+									}, duration)
+							}
 							return nextState
 					})
-			}, duration + 1300) // Add 500ms delay between transitions
-	
-			return () => clearTimeout(timeout)
-	}, [currentState, loading, loop, loadingStates.length, duration])
+			}, currentState === 0 ? duration / 4 : duration)
 
+			return () => {
+					clearTimeout(timeout)
+					clearInterval(dotInterval)
+			}
+	}, [currentState, loading, loop, loadingStates.length, duration, showDots])
 
 	return (
-	<AnimatePresence initial={false} mode="wait">
-		{loading && (
-			<motion.div
-				initial={{ opacity: 0 }}
-				animate={{ opacity: 1 }}
-				exit={{ opacity: 0 }}
-				transition={{ duration: 0.2 }}
-				className="fixed inset-0 z-[100] flex items-center justify-center">
-<div className="relative h-full md:h-[85vh] lg:h-[65vh] w-full md:w-[85vw] lg:w-[65vw] max-w-4xl rounded-xl backdrop-blur-2xl border-2 border-p overflow-hidden">
-					<div className="absolute inset-0 flex items-center justify-center px-12">
-						<LoaderCore value={currentState} loadingStates={loadingStates} />
-					</div>
-					<div className="absolute inset-0 rounded-xl bg-white bg-gradient-to-t [mask-image:radial-gradient(900px_at_center,transparent_30%,white)] dark:bg-black" />
-					{showArrow && (
-						<motion.div
-  className="absolute bottom-16 right-16"
-  initial={{ opacity: 0, scale: 0, rotate: 45 }}
-  animate={{ opacity: 1, scale: [0, 1.2, 1], rotate: 45 }}
-  transition={{ duration: 0.8, ease: "easeOut" }}
->
-  <ArrowIcon className="text-p dark:text-a w-12 h-12 md:w-16 md:h-16 lg:w-20 lg:h-20 animate-pulse" />
-</motion.div>
+			<AnimatePresence initial={false} mode="wait">
+					{loading && (
+							<motion.div
+									initial={{ opacity: 0 }}
+									animate={{ opacity: 1 }}
+									exit={{ opacity: 0 }}
+									transition={{ duration: 0.2 }}
+									className="fixed inset-0 z-[100] flex items-center justify-center bg-black/60">
+									<div className="relative h-full md:h-[85vh] lg:h-[65vh] w-full md:w-[85vw] lg:w-[65vw] max-w-4xl rounded-xl backdrop-blur-3xl border-2 border-p overflow-hidden">
+											<AnimatePresence>
+													{showDots && (
+															<motion.div 
+																	className="absolute top-4 left-4 text-2xl font-bold text-a"
+																	initial={{ opacity: 0 }}
+																	animate={{ opacity: 1 }}
+																	exit={{ opacity: 0 }}
+																	transition={{ duration: 0.5 }}
+															>
+																	{dots}
+															</motion.div>
+													)}
+											</AnimatePresence>
+											<div className="absolute inset-0 flex items-center justify-center px-12">
+													<LoaderCore value={currentState} loadingStates={loadingStates} />
+											</div>
+
+											<AnimatePresence>
+													{showArrow && (
+															<motion.div
+																	className="absolute bottom-16 right-1/2"
+																	initial={{ opacity: 0, scale: 0 }}
+																	animate={{ opacity: 1, scale: [0, 1.2, 1]}}
+																	exit={{ opacity: 0, scale: 0 }}
+																	transition={{ duration: 0.8, ease: "easeOut" }}
+															>
+																	<ArrowIcon className="text-a w-12 h-12 md:w-16 md:h-16 lg:w-20 lg:h-20 animate-pulse" />
+															</motion.div>
+													)}
+											</AnimatePresence>
+									</div>
+							</motion.div>
 					)}
-				</div>
-			</motion.div>
-		)}
-	</AnimatePresence>
+			</AnimatePresence>
 	)
 }
 
 
 export const ArrowIcon = ({ className }: { className?: string }) => {
   return (
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      viewBox="0 0 24 24"
-      fill="currentColor"
-      className={cn('h-12 w-12', className)}>
-      <path d="M7.5 3.75a1.5 1.5 0 00-1.5 1.5v13.5a1.5 1.5 0 001.5 1.5h6a1.5 1.5 0 001.5-1.5V15a.75.75 0 011.5 0v3.75a3 3 0 01-3 3h-6a3 3 0 01-3-3V5.25a3 3 0 013-3h6a3 3 0 013 3V9a.75.75 0 01-1.5 0V5.25a1.5 1.5 0 00-1.5-1.5h-6zm10.72 4.72a.75.75 0 011.06 0l3 3a.75.75 0 010 1.06l-3 3a.75.75 0 11-1.06-1.06l1.72-1.72H9a.75.75 0 010-1.5h10.94l-1.72-1.72a.75.75 0 010-1.06z" />
-    </svg>
+
+		<svg height="24" width="24" fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" xmlns="http://www.w3.org/2000/svg"
+		className={cn('h-12 w-12', className)}>
+		<path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
+		<path d="M22 4 12 14.01l-3-3"/>
+	</svg>
   )
 }
