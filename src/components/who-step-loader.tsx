@@ -1,8 +1,7 @@
 import { useState } from 'react'
 import { MultiStepLoader as Loader } from '@/components/ui/loader'
-import { IconSquareRoundedX } from '@tabler/icons-react'
 import { useKbdOutside } from '@/hooks/use-kbd-or-outside'
-
+import { CloseButton } from './ui/close-icon'
 
 const loadingStates = [
   { text: 'Are you a solo professional, hobbyist, or small-business owner?', },
@@ -13,26 +12,42 @@ const loadingStates = [
 
 export function WhoStepLoader() {
   const [loading, setLoading] = useState(false)
+  const [initialLoading, setInitialLoading] = useState(false)
   const closeLoader = () => setLoading(false)
   const ref = useKbdOutside(loading, closeLoader)
 
+  const handleButtonClick = () => {
+    setInitialLoading(true)
+    setTimeout(() => {
+      setInitialLoading(false)
+      setLoading(true)
+    }, 500) // Show initial loading for 500ms
+  }
+
   return (
-    <div ref={ref} className="flex w-full md:w-[85vw] lg:w-[65vw] py-12 items-center justify-center z-[9]">
+    <div ref={ref} className="flex w-full md:w-[85vw] lg:w-[65vw] py-8 items-center justify-center z-[9]">
+      {initialLoading && (
+        <div className="absolute inset-0 flex items-center justify-center bg-black/60 z-[101]">
+          <div className="text-a text-4xl">...</div>
+        </div>
+      )}
+
       <Loader loadingStates={loadingStates} loading={loading} duration={2000} />
 
       <button
-        onClick={() => setLoading(true)}
-        className="mx-auto flex h-12 items-center justify-center rounded-lg bg-red px-8 text-base font-black text-white transition duration-200 hover:bg-red/90 md:text-lg"
+        onClick={handleButtonClick}
+        disabled={initialLoading}
+        className={`mx-auto flex h-12 items-center justify-center rounded-lg px-8 text-base font-black text-white transition duration-200 md:text-lg ${
+          initialLoading ? 'bg-gray-500 cursor-not-allowed' : 'bg-red hover:bg-red/90'
+        }`}
         style={{
           boxShadow: '0px -1px 0px 0px #ffffff40 inset, 0px 1px 0px 0px #ffffff40 inset',
         }}>
-        Is this for you?
+        {initialLoading ? 'Loading...' : 'Is this for you?'}
       </button>
 
       {loading && (
-        <button className="fixed right-4 top-4 z-[120] lg:right-24 lg:top-24 text-black dark:text-white" onClick={() => setLoading(false)}>
-          <IconSquareRoundedX size={40} className='lg:scale-125 xl:scale-150' />
-        </button>
+        <CloseButton onClick={() => setLoading(false)} />
       )}
     </div>
   )

@@ -2,15 +2,21 @@ import { Lamp } from '../components/LampLg'
 import WaveScrollAnimation from '../components/ui/animated-text'
 import { ExpandableCards } from '../components/ui/expand-cards'
 import { LampSmall } from '../components/LampSm'
-//import { BgAnimation } from '@/components/ui/bg-animation'
 import { WhoStepLoader } from '@/components/who-step-loader'
 import { Vision } from '../components/Vision'
+import LiquidSideNav from '@/components/LiquidSideNav'
+import { motion } from 'motion/react'
+
 
 const Home = () => {
+
 	return (
 		<main className='flex flex-col'>
+
 			<div className='flex flex-grow flex-col'>
+
 				<section className='relative mb-24 flex min-h-[50vh] items-center justify-center lg:mb-36'>
+					
 					<div className='absolute inset-0'>
 						<div className='hidden h-full md:flex'>
 							<Lamp />
@@ -18,11 +24,22 @@ const Home = () => {
 						<div className='h-full md:hidden'>
 							<LampSmall />
 						</div>
+
 					</div>
+
 				</section>
 
 				<section className='vision-section py-24 lg:py-36'>
+				<motion.div
+				initial={{ opacity: 0, y: 40 }}
+				whileInView={{ opacity: 1, y: 0 }}
+				transition={{ duration: 0.8, delay: 1.5 }}>
+
+				<LiquidSideNav />
+				</motion.div>
 					<Vision />
+
+
 				</section>
 				<section className='additional-content'>
 					<div className='relative z-[2] w-full'>

@@ -1,5 +1,7 @@
 import { motion } from 'motion/react'
 
+
+
 export const Vision = () => {
 	return (
     <div className="container mx-auto px-4 py-8 my-24 md:my-36 lg:my-[8vw] xl:my-[8vw] font-Xd font-light max-w-xl">
@@ -11,7 +13,9 @@ export const Vision = () => {
 				className="mx-auto max-w-4xl text-center">
 
 				<Copy />
+
 			</motion.div>
+
 		</div>
 	)
 }
