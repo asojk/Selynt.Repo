@@ -1,5 +1,4 @@
 import { motion } from 'motion/react'
-import LiquidSideNav from './LiquidSideNav'
 
 
 
@@ -14,7 +13,7 @@ export const Vision = () => {
 				className="mx-auto max-w-4xl text-center">
 
 				<Copy />
-<div className='mx-0 my-0 w-full max-w-none'>			<LiquidSideNav /></div>
+
 			</motion.div>
 
 		</div>

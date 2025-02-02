@@ -89,7 +89,7 @@ const MapChart: React.FC<MapChartProps> = ({}) => {
     )
 
     const calculateMarkerSize = (zoom: number) => {
-        return Math.max(20 / (zoom * zoom), 8)
+        return Math.max(20 / (zoom * zoom), 4)
     }
 
     const handleScroll = useCallback(
@@ -177,7 +177,7 @@ const MapChart: React.FC<MapChartProps> = ({}) => {
                                         <Geography
                                             key={geo.rsmKey}
                                             geography={geo}
-                                            className='fill-p-4 stroke-white outline-none transition-colors duration-200 ease-in-out hover:fill-p-2 focus:fill-s-light dark:fill-n-6 dark:stroke-n-8 dark:hover:fill-s'
+                                            className='fill-p stroke-n-4 outline-none transition-colors duration-200 ease-in-out hover:fill-p-4 dark:fill-n-9 dark:stroke-n-6 dark:hover:fill-n-8'
                                         />
                                     ))
                                 }
@@ -199,11 +199,11 @@ const MapChart: React.FC<MapChartProps> = ({}) => {
                             ))}
                         </ZoomableGroup>
                     </ComposableMap>
-                    <div className='absolute right-4 top-1/2 flex flex-col space-y-2'>
+                    <div className='absolute right-4 top-1/3 flex flex-col space-y-2'>
                         {/* Zoom Controls */}
                         <motion.button
                             onClick={handleZoomIn}
-                            className='rounded border border-a-light bg-a-dark px-3 py-1 text-n-light shadow hover:bg-p-light focus:outline-none focus:ring-2 focus:ring-s'
+                            className='rounded border border-a-light bg-neutral-300 dark:bg-n-7 px-3 py-1 text-n-9 dark:text-n-light shadow hover:bg-p-2 hover:text-black dark:hover:bg-p-4 focus:outline-none focus:ring-2 focus:ring-s'
                             whileHover={{ scale: 1.05 }}
                             whileTap={{ scale: 0.95 }}
                         >
@@ -211,7 +211,7 @@ const MapChart: React.FC<MapChartProps> = ({}) => {
                         </motion.button>
                         <motion.button
                             onClick={handleZoomOut}
-                            className='rounded border border-a-light bg-a-dark px-3 py-1 text-n-light shadow hover:bg-p-light focus:outline-none focus:ring-2 focus:ring-s'
+                            className='rounded border border-a-light bg-neutral-300 dark:bg-n-7 px-3 py-1 text-n-9 dark:text-n-light shadow hover:bg-p-2 hover:text-black dark:hover:bg-p-4 focus:outline-none focus:ring-2 focus:ring-s'
                             whileHover={{ scale: 1.05 }}
                             whileTap={{ scale: 0.95 }}
                         >
@@ -219,7 +219,7 @@ const MapChart: React.FC<MapChartProps> = ({}) => {
                         </motion.button>
                         <motion.button
                             onClick={toggleFullScreen}
-                            className='rounded border border-a-light bg-a-dark px-3 py-1 text-n-light shadow hover:bg-p-light focus:outline-none focus:ring-2 focus:ring-s'
+                            className='rounded border border-a-light bg-neutral-300 dark:bg-n-7 px-3 py-1 text-n-9 dark:text-n-light shadow hover:bg-p-2 hover:text-black dark:hover:bg-p-4 focus:outline-none focus:ring-2 focus:ring-s'
                             whileHover={{ scale: 1.05 }}
                             whileTap={{ scale: 0.95 }}
                         >
@@ -236,7 +236,7 @@ const MapChart: React.FC<MapChartProps> = ({}) => {
                                 {clients.map((client) => (
                                     <motion.div
                                         key={client.name}
-                                        className='relative mb-4 w-52 cursor-pointer rounded-lg bg-gray-100 p-2 shadow-sm hover:bg-gray-200 dark:bg-b-4 dark:hover:bg-p-dark'
+                                        className='relative mb-4 w-52 cursor-pointer rounded-lg border border-a-light bg-neutral-300 dark:bg-n-7 px-3 py-1 text-n-9 dark:text-n-light shadow hover:bg-p-2 hover:text-black dark:hover:bg-p-4 focus:outline-none focus:ring-2 focus:ring-s'
                                         onClick={() => handleCardClick(client)}
                                         whileHover={{ scale: expandedClient === client.name ? 1 : 1.05 }}
                                         whileTap={{ scale: expandedClient === client.name ? 1 : 0.95 }}
@@ -262,7 +262,7 @@ const MapChart: React.FC<MapChartProps> = ({}) => {
                         {isScrollNeeded && (
                             <button
                                 onClick={scrollCardsRight}
-                                className='absolute right-2 -bottom-8 rounded-full bg-p-3 px-3 py-2 text-white shadow-sm shadow-black/60'>
+                                className='absolute right-2 -bottom-8 rounded border border-a-light bg-neutral-300 dark:bg-n-7 px-3 py-1 text-n-9 dark:text-n-light shadow hover:bg-p-2 hover:text-black dark:hover:bg-p-4 focus:outline-none focus:ring-2 focus:ring-s'>
                                 <IconChevronRight className='h-5 w-5' />
                             </button>
                         )}

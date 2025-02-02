@@ -119,7 +119,7 @@ export function ExpandableCards() {
                                         {React.createElement(card.icon, { className: 'text-xl text-white stroke-[1.5px] lg:stroke-2' })}
                                     </div>
                                 ) : (
-                                    <div className='flex h-8 w-12 items-center justify-center rounded-lg bg-p dark:bg-p-3 md:h-10 md:w-16 lg:h-12 lg:w-20' />
+                                    <div className='flex h-8 w-12 items-center justify-center rounded-lg bg-p dark:bg-p-3  md:h-10 md:w-16 lg:h-12 lg:w-20' />
                                 )}
                             </motion.div>
                             <div className='flex-grow'>
@@ -139,13 +139,13 @@ export function ExpandableCards() {
                         </div>
                         <motion.button
                             layoutId={`button-${card.title}-${id}`}
-                            className='flex items-center gap-2 rounded-2xl bg-p px-3 py-1.5 text-xs text-white hover:bg-p-2 hover:text-black dark:bg-p-3 dark:font-semibold md:px-4 md:py-2 md:text-sm'
+                            className='flex items-center gap-2 rounded-2xl bg-p px-3 py-1.5 text-xs text-white hover:bg-p-2 dark:hover:bg-p-2 hover:text-black dark:bg-p-3 md:px-4 md:py-2 md:text-sm'
                             onClick={() => setActive(card)}
                         >
                             <span className='hidden md:inline'>
                                 {card.ctaText}
                             </span>
-                            <IconChevronRight className='text-n-9 dark:text-s' />
+                            <IconChevronRight className='text-n-1 dark:text-s' />
                         </motion.button>
                     </motion.div>
                 ))}

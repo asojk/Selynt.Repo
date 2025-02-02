@@ -1,27 +1,25 @@
-import { Dispatch, SetStateAction, useState } from "react";
+import { Dispatch, SetStateAction, useState, useRef } from "react";
 import { motion } from "motion/react";
 import { IconMapBolt, IconX } from "@tabler/icons-react";
 import MapChart from "./MapChart";
+import { useKbdOutside } from '@/hooks/use-kbd-or-outside';
 
 const LiquidSideNav = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const navRef = useRef(null);
 
+  useKbdOutside(isOpen, () => setIsOpen(false));
   return (
-
     <div className="h-16 grid place-content-center relative">
       <div className="flex items-center text-white">
-
-
         <motion.button
-          whileHover={{ rotate: "180deg" }}
-          whileTap={{ scale: 0.9 }}
           onClick={() => setIsOpen(true)}
-          className="text-3xl bg-white text-black hover:text-indigo-500 transition-colors p-4 rounded-full"
+          className="text-3xlmx-auto flex h-12 items-center justify-center rounded-lg px-8 text-base font-black text-white transition duration-200 md:text-lg bg-red hover:bg-red/90 p-4"
         >
-					<IconMapBolt />
+          <a className='mr-2'>Our Work</a> <IconMapBolt />
         </motion.button>
       </div>
-      <Nav isOpen={isOpen} setIsOpen={setIsOpen} />
+      <Nav isOpen={isOpen} setIsOpen={setIsOpen} navRef={navRef} />
     </div>
   );
 };
@@ -29,63 +27,32 @@ const LiquidSideNav = () => {
 const Nav = ({
   isOpen,
   setIsOpen,
+  navRef,
 }: {
   isOpen: boolean;
   setIsOpen: Dispatch<SetStateAction<boolean>>;
+  navRef: React.RefObject<HTMLDivElement>;
 }) => {
   return (
     <motion.nav
+      ref={navRef}
       className="fixed top-0 bottom-0 w-screen z-50 bg-p-3"
       animate={isOpen ? "open" : "closed"}
       variants={navVariants}
       initial="closed"
     >
       <motion.button
-        className="text-3xl bg-white text-black hover:text-a-dark border-[2px] border-transparent hover:border-s-1 transition-colors p-4 rounded-full absolute top-8 right-8 z-[55]"
+        className="text-xl bg-white text-black hover:text-a-dark border-[2px] border-transparent hover:border-s-1 transition-colors p-3 rounded-full absolute top-8 right-8 z-[55]"
         whileHover={{ rotate: "180deg" }}
         onClick={() => setIsOpen(false)}
         whileTap={{ scale: 0.9 }}
       >
-				<IconX />
+        <IconX />
       </motion.button>
-			<MapChart setActiveClient={() => {}} setShowPopup={() => {}} />
-								{/*
-      <motion.div
-        variants={linkWrapperVariants}
-        className="flex flex-col gap-4 absolute bottom-8 left-8"
-      >
-
-        <NavLink text="Home" />
-        <NavLink text="Work" />
-        <NavLink text="Careers" />
-        <NavLink text="Contact" />
-      </motion.div>
-			*/}
+      <MapChart setActiveClient={() => {}} setShowPopup={() => {}} />
     </motion.nav>
   );
 };
-{/*
-const NavLink = ({ text }: { text: string }) => {
-  return (
-    <motion.a
-      className="inline-block z-10 text-slate-800 w-fit font-black text-7xl hover:text-indigo-500 transition-colors"
-      variants={navLinkVariants}
-      transition={{
-        type: "spring",
-        damping: 3,
-      }}
-      whileHover={{
-        y: -15,
-        rotate: "-7.5deg",
-      }}
-      rel="nofollow"
-      href="#"
-    >
-      {text}
-    </motion.a>
-  );
-};
-*/}
 
 export default LiquidSideNav;
 
@@ -103,23 +70,3 @@ const navVariants = {
     opacity: 0,
   },
 };
-
-{/*
-const linkWrapperVariants = {
-  open: {
-    transition: {
-      staggerChildren: 0.1,
-    },
-  },
-  closed: {
-    transition: {
-      staggerChildren: 0.1,
-    },
-  },
-};
-
-const navLinkVariants = {
-  open: { x: 0 },
-  closed: { x: 25 },
-};
-*/}

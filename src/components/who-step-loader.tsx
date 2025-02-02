@@ -31,7 +31,7 @@ export function WhoStepLoader() {
           <div className="text-a text-4xl">...</div>
         </div>
       )}
-      
+
       <Loader loadingStates={loadingStates} loading={loading} duration={2000} />
 
       <button

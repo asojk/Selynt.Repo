@@ -5,6 +5,7 @@ import { LampSmall } from '../components/LampSm'
 import { WhoStepLoader } from '@/components/who-step-loader'
 import { Vision } from '../components/Vision'
 import LiquidSideNav from '@/components/LiquidSideNav'
+import { motion } from 'motion/react'
 
 
 const Home = () => {
@@ -29,8 +30,15 @@ const Home = () => {
 				</section>
 
 				<section className='vision-section py-24 lg:py-36'>
+				<motion.div
+				initial={{ opacity: 0, y: 40 }}
+				whileInView={{ opacity: 1, y: 0 }}
+				transition={{ duration: 0.8, delay: 1.5 }}>
+
+				<LiquidSideNav />
+				</motion.div>
 					<Vision />
-					<LiquidSideNav />
+
 
 				</section>
 				<section className='additional-content'>

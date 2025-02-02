@@ -163,7 +163,7 @@ export const MultiStepLoader = ({
 															</motion.div>
 													)}
 											</AnimatePresence>
-											<div className="absolute inset-0 flex items-center justify-center px-12">
+											<div className="absolute inset-0 flex items-center justify-center px-12 bg-black/20 dark:bg-black/10">
 													<LoaderCore value={currentState} loadingStates={loadingStates} />
 											</div>
 
