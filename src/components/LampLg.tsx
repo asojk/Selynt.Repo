@@ -1,40 +1,37 @@
-
 import { motion } from 'motion/react'
 
-export function Lamp({}) {
+export function Lamp() {
+  const transition = {
+    type: 'spring',
+    stiffness: 70,
+    damping: 20,
+    mass: 1.5,
+    restDelta: 0.005,
+  }
 
-
-
-	const transition = {
-		type: 'spring',
-		stiffness: 70,
-		damping: 20,
-		mass: 1.5,
-		restDelta: 0.005,
-	}
-
-
-
-	return (
-		<div className="h-[50vh] w-full items-center justify-center">
-			<motion.div
-				className="relative w-full"
-				initial={{ opacity: 0, scale: 0.8 }}
-				animate={{ opacity: 1, scale: 1 }}
-				transition={{ duration: 0.5 }}>
-		<motion.div
-			          className="grid grid-rows-2 w-full mx-auto gap-[20vh] aspect-video lg:gap-[calc(40vh*0.75vw)] xl:gap-[calc(20vh*0.75vh)] max-w-[1400px]" 
-transition={transition}>
-					<div className='row-start-1'>
-					<LampGradient />
-					</div>
-					<div className='row-start-2'>
-					<LampContent />
-					</div>
-				</motion.div>
-			</motion.div>
-		</div>
-	)
+  return (
+    <div className="relative h-screen w-full overflow-hidden">
+      <motion.div
+        className="absolute inset-0 flex flex-col items-center justify-center"
+        initial={{ opacity: 0, scale: 0.8 }}
+        animate={{ opacity: 1, scale: 1 }}
+        transition={{ duration: 0.5 }}
+      >
+        <motion.div
+          className="relative w-full max-w-7xl mx-auto flex flex-col justify-between"
+          style={{ height: '80vh' }}
+          transition={transition}
+        >
+          <div className="flex-1">
+            <LampGradient />
+          </div>
+          <div className="flex-1 flex items-end">
+            <LampContent />
+          </div>
+        </motion.div>
+      </motion.div>
+    </div>
+  )
 }
 
 const LampContent = () => (

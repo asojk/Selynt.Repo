@@ -17,11 +17,11 @@ export function WhoStepLoader() {
   const ref = useKbdOutside(loading, closeLoader)
 
   const handleButtonClick = () => {
-    setInitialLoading(true)
+    setInitialLoading(false)
     setTimeout(() => {
       setInitialLoading(false)
       setLoading(true)
-    }, 500) // Show initial loading for 500ms
+    }, 300) // Show initial loading for 500ms
   }
 
   return (

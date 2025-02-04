@@ -12,6 +12,7 @@ export const images = {
 	hek: 'https://prkm7pjvgapey0vo.public.blob.vercel-storage.com/hekate-UA5vTeVHS5RtyPXhA8FkVMAa0x5bee.jpg',
 	apo: 'https://prkm7pjvgapey0vo.public.blob.vercel-storage.com/apo.herb.1-PD1gtLuDFjJMjnMFuuVN5YwDJDZT5f.png',
 	LR: 'https://prkm7pjvgapey0vo.public.blob.vercel-storage.com/d3.c-83QXRugJi8FcIUV5QnCmqwjIiOqXwg.jpg',
+	apo2: '@/assets/apo.png',
 } as const
 
 export type ImageKeys = keyof typeof images
