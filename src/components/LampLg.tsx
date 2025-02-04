@@ -3,54 +3,54 @@ import { motion } from 'motion/react'
 export function Lamp() {
   const transition = {
     type: 'spring',
-    stiffness: 70,
-    damping: 20,
-    mass: 1.5,
+    stiffness: 80,
+    damping: 18,
+    mass: 1.2,
     restDelta: 0.005,
   }
 
-  return (
-    <div className="relative h-screen w-full overflow-hidden">
-      <motion.div
-        className="absolute inset-0 flex flex-col items-center justify-center"
-        initial={{ opacity: 0, scale: 0.8 }}
-        animate={{ opacity: 1, scale: 1 }}
-        transition={{ duration: 0.5 }}
-      >
-        <motion.div
-          className="relative w-full max-w-7xl mx-auto flex flex-col justify-between"
-          style={{ height: '80vh' }}
-          transition={transition}
-        >
-          <div className="flex-1">
-            <LampGradient />
-          </div>
-          <div className="flex-1 flex items-end">
-            <LampContent />
-          </div>
-        </motion.div>
-      </motion.div>
-    </div>
-  )
-}
-
-const LampContent = () => (
-  <div className="z-50 w-full">
-    <motion.div
-      initial={{ opacity: 0.5, y: 20 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      transition={{
-        delay: 0.5,
-        duration: 1,
-        ease: 'easeOut',
-      }}
-      className="w-full text-center relative z-50 flex items-start"
-    >
-      <LampText />
-    </motion.div>
-  </div>
-)
-
+	return (
+		<div className="relative h-screen w-full overflow-hidden">
+			<motion.div
+				className="absolute inset-0 flex flex-col items-center justify-center"
+				initial={{ opacity: 0, scale: 0.85 }}
+				animate={{ opacity: 1, scale: 1 }}
+				transition={{ duration: 0.6, ease: 'easeOut' }}
+			>
+				<motion.div
+					className="relative w-full max-w-7xl mx-auto flex flex-col justify-between"
+					style={{ height: '80vh' }}
+					transition={transition}
+				>
+					<div className="flex-1">
+						<LampGradient />
+					</div>
+					<div className="flex-1 flex items-end">
+						<LampContent />
+					</div>
+				</motion.div>
+			</motion.div>
+		</div>
+	)
+	}
+	
+	const LampContent = () => (
+	<div className="z-50 w-full">
+		<motion.div
+			initial={{ opacity: 0, y: 20 }}
+			whileInView={{ opacity: 1, y: -20 }}
+			viewport={{ once: true }}
+			transition={{
+				delay: 1.1,
+				duration: 1.4,
+				ease: 'easeOut',
+			}}
+			className="w-full text-center relative z-50 flex items-start"
+		>
+			<LampText />
+		</motion.div>
+	</div>
+	)
 const LampGradient = () => (
 	<div className="absolute left-0 right-0 top-0 z-0 flex min-h-[50vh] w-full flex-col items-center justify-center  bg-white dark:bg-p-dark">
 		<div className="relative isolate z-0 flex w-full flex-1 scale-y-125 items-center justify-center">
@@ -112,21 +112,13 @@ const LampGradient = () => (
 	</div>
 )
 
-const LampText = () => (
-  <div className="text-[8vw] mx-auto xl:text-[5vw] max-w-[1200px] font-black tracking-tight leading-none">
-    <h1 className="bg-gradient-to-b from-s-2 to-black bg-clip-text p-2 text-transparent dark:from-s dark:to-white text-balance">
-      Standing out <br className='lg:hidden'/> shouldn't mean <br className=''/> overspending.
-    </h1>
-  </div>
-)
 
-/*
-				<Link to="/pricing">
-				<motion.button
-					whileHover={{ scale: 1.015 }}
-					whileTap={{ scale: 0.985 }}
-					className="mt-8 w-64 rounded-lg bg-p py-4 font-semibold uppercase text-white dark:bg-a">
-					Compare
-				</motion.button>
-			</Link>
-	*/
+
+
+const LampText = () => (
+<div className="text-[8vmin] mx-auto xl:text-[5vmin] max-w-xl font-black tracking-tight leading-none">
+	<h1 className="bg-gradient-to-b from-s-2 to-black bg-clip-text p-2 text-transparent dark:from-s dark:to-white text-balance">
+		Standing out <br className="lg:hidden" /> shouldn’t mean <br /> overspending.
+	</h1>
+</div>
+)

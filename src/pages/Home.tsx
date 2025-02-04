@@ -20,51 +20,40 @@ const Home = () => {
 					</div>
 				</section>
 
-
 				<section className='px-12 md:px-0'>
 					<motion.div
-					className='vision-section py-16 mx-auto max-w-lg md:max-w-xl '
+						className='vision-section mx-auto max-w-lg pt-16 md:max-w-xl'
 						initial={{ opacity: 0.5, y: 40 }}
 						whileInView={{ opacity: 1, y: 0 }}
 						transition={{ duration: 0.8, delay: 0.3 }}>
-
-					<Vision />
+						<Vision />
 					</motion.div>
 					<motion.div
-					className='vision-section py-16 mx-auto max-w-lg md:max-w-xl mt-12'
+						className='pb-20 pt-8'
 						initial={{ opacity: 0.5, y: 40 }}
 						whileInView={{ opacity: 1, y: 0 }}
 						transition={{ duration: 0.8, delay: 0.2 }}>
-
-					<WhoStepLoader />
-
+						<WhoStepLoader />
 					</motion.div>
 				</section>
 
+				<motion.div
+					initial={{ opacity: 0.5, y: 40 }}
+					whileInView={{ opacity: 1, y: 0 }}
+					transition={{ duration: 0.8, delay: 0.1 }}>
+					<section className='container mx-auto max-w-xl font-light'>
+						<ClientTestimonials />
+					</section>
+				</motion.div>
 
-
-
-				<section className='container mx-auto font-light max-w-xl'>
+				<section className='flex flex-col items-center justify-center gap-8 px-4 py-16'>
 					<motion.div
 						initial={{ opacity: 0.5, y: 40 }}
 						whileInView={{ opacity: 1, y: 0 }}
 						transition={{ duration: 0.8, delay: 0.1 }}>
-
-					<ClientTestimonials />
+						<ExpandableCards />
 					</motion.div>
 				</section>
-
-
-
-				<section className='flex flex-col items-center justify-center gap-8 px-4 py-16'>
-				<motion.div
-						initial={{ opacity: 0.5, y: 40 }}
-						whileInView={{ opacity: 1, y: 0 }}
-						transition={{ duration: 0.8, delay: .1 }}>
-					<ExpandableCards />
-					</motion.div>
-				</section>
-
 			</div>
 		</main>
 	)
