@@ -56,7 +56,16 @@ export const AnimatedTestimonials = ({
   const swipeHandlers = useSwipeable({
     onSwipedLeft: handleNext,
     onSwipedRight: handlePrev,
+    trackTouch: true,
   })
+
+  const handleTouchStart = (e: React.TouchEvent) => {
+    e.preventDefault()
+  }
+
+  const handleTouchMove = (e: React.TouchEvent) => {
+    e.preventDefault()
+  }
 
   return (
     <><div className="max-w-lg md:max-w-xl mx-auto flex flex-col items-start text-left md:px-4 lg:px-0 pt-20 ">
@@ -66,7 +75,7 @@ export const AnimatedTestimonials = ({
         </h2>
       </div>
     </div>
-      <div className='mx-auto max-w-sm px-4 pb-20 font-sans antialiased md:max-w-4xl md:px-8 lg:px-12' {...swipeHandlers}>
+      <div className='mx-auto max-w-sm px-4 pb-20 font-sans antialiased md:max-w-4xl md:px-8 lg:px-12' {...swipeHandlers} onTouchStart={handleTouchStart} onTouchMove={handleTouchMove}>
 
         <div className='relative grid grid-cols-1 gap-20 md:grid-cols-2'>
           <div>
@@ -123,6 +132,18 @@ export const AnimatedTestimonials = ({
                 ))}
               </AnimatePresence>
             </div>
+            <div className='flex gap-8 pt-12'>
+              <button
+                onClick={handlePrev}
+                className='group/button flex h-7 w-7 items-center justify-center rounded-full bg-p'>
+                <IconArrowLeft className='h-5 w-5 text-white transition-transform duration-300 group-hover/button:rotate-12' />
+              </button>
+              <button
+                onClick={handleNext}
+                className='group/button flex h-7 w-7 items-center justify-center rounded-full bg-p'>
+                <IconArrowRight className='h-5 w-5 text-white transition-transform duration-300 group-hover/button:-rotate-12' />
+              </button>
+            </div>
           </div>
           <div className='flex flex-col justify-between py-4'>
             <motion.div
@@ -170,18 +191,6 @@ export const AnimatedTestimonials = ({
                 ))}
               </motion.p>
             </motion.div>
-            <div className='flex gap-4 pt-12 md:pt-4'>
-              <button
-                onClick={handlePrev}
-                className='group/button flex h-7 w-7 items-center justify-center rounded-full bg-p'>
-                <IconArrowLeft className='h-5 w-5 text-white transition-transform duration-300 group-hover/button:rotate-12' />
-              </button>
-              <button
-                onClick={handleNext}
-                className='group/button flex h-7 w-7 items-center justify-center rounded-full bg-p'>
-                <IconArrowRight className='h-5 w-5 text-white transition-transform duration-300 group-hover/button:-rotate-12' />
-              </button>
-            </div>
           </div>
         </div>
       </div></>
