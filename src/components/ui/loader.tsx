@@ -10,7 +10,7 @@ const CheckIcon = ({ className }: { className?: string }) => {
 			viewBox="0 0 24 24"
 			strokeWidth={1.5}
 			stroke="currentColor"
-			className={cn('h-6 w-6', className)}>
+			className={cn('h-6 w-6 stroke-white opacity-80', className)}>
 			<path d="M9 12.75 11.25 15 15 9.75M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
 		</svg>
 	)
@@ -22,7 +22,7 @@ const CheckFilled = ({ className }: { className?: string }) => {
 			xmlns="http://www.w3.org/2000/svg"
 			viewBox="0 0 24 24"
 			fill="currentColor"
-			className={cn('h-6 w-6', className)}>
+			className={cn('h-6 w-6 stroke-brown opacity-30', className)}>
 			<path
 				fillRule="evenodd"
 				d="M2.25 12c0-5.385 4.365-9.75 9.75-9.75s9.75 4.365 9.75 9.75-4.365 9.75-9.75 9.75S2.25 17.385 2.25 12Zm13.36-1.814a.75.75 0 1 0-1.22-.872l-3.236 4.53L9.53 12.22a.75.75 0 0 0-1.06 1.06l2.25 2.25a.75.75 0 0 0 1.14-.094l3.75-5.25Z"
@@ -39,7 +39,7 @@ type LoadingState = {
 const LoaderCore = ({ loadingStates, value = 0 }: { loadingStates: LoadingState[]; value?: number }) => {
 	
   return (
-    <div className="relative mx-auto mt-20 flex max-w-lg md:max-w-xl lg:max-w-2xl flex-col justify-start">
+    <div className="relative mx-auto flex max-w-lg flex-col justify-start mt-[32vmin]">
       {loadingStates.map((loadingState, index) => {
         const distance = Math.abs(index - value)
         const opacity = Math.max(1 - distance * 0.2, 0)
@@ -47,25 +47,21 @@ const LoaderCore = ({ loadingStates, value = 0 }: { loadingStates: LoadingState[
         return (
           <motion.div
             key={index}
-            className={cn('mb-4 flex gap-2 text-left text-xl')}
+            className={cn('mb-4 flex gap-2 text-left text-lg lg:text-xl')}
             initial={{ opacity: 0, y: -(value * 40) }}
             animate={{ opacity: opacity, y: -(value * 40) }}
-            transition={{ duration: index === 0 ? 0.3 : 0.5 }}>
+            transition={{ duration: 0.5 }}>
                         <div>
-                            {index > value && <CheckIcon className="text-black dark:text-white" />}
+                            {index > value && <CheckIcon />}
                             {index <= value && (
-                                <CheckFilled
-                                    className={cn(
-                                        'text-black dark:text-white',
-                                        value === index && ' opacity-100 text-a-dark'
-                                    )}
-                                />
+                                <CheckFilled />
                             )}
+														
                         </div>
 						<span
 							className={cn(
-								'text-n-3',
-								value === index && 'opacity-100 text-a-light dark:text-a'
+								'text-n-1/50',
+								value === index && 'opacity-100 text-s'
 							)}>
 							{loadingState.text}
 						</span>
@@ -79,7 +75,7 @@ const LoaderCore = ({ loadingStates, value = 0 }: { loadingStates: LoadingState[
           animate={{ opacity: 1, scale: 1 }}
           transition={{ delay: 3, duration: 0.4 }}
         >
-          <ArrowIcon className="text-black dark:text-white" />
+          <ArrowIcon className="" />
         </motion.div>
       )}
     </div>
@@ -89,7 +85,7 @@ const LoaderCore = ({ loadingStates, value = 0 }: { loadingStates: LoadingState[
 export const MultiStepLoader = ({
 	loadingStates,
 	loading,
-	duration = 2000,
+	duration = 4,
 	loop = false,
 }: {
 	loadingStates: LoadingState[]
@@ -116,13 +112,15 @@ export const MultiStepLoader = ({
 					if (showDots) {
 							setDots(prev => (prev.length < 3 ? prev + '.' : ''))
 					}
-			}, 500)
+			}, 300)
 
 			const timeout = setTimeout(() => {
 					setCurrentState((prevState) => {
 							const nextState = loop
-									? (prevState + 1) % loadingStates.length
-									: Math.min(prevState + 1, loadingStates.length - 1)
+							? prevState === loadingStates.length - 1
+							? 0
+							: prevState + 1
+						: Math.min(prevState + 1, loadingStates.length - 1)
 							if (nextState === loadingStates.length - 1) {
 									// Stop dots animation and show arrow when the last state is reached
 									setTimeout(() => {
@@ -132,7 +130,7 @@ export const MultiStepLoader = ({
 							}
 							return nextState
 					})
-			}, currentState === 0 ? duration / 4 : duration)
+			}, currentState === 0 ? duration / 1 : duration)
 
 			return () => {
 					clearTimeout(timeout)
@@ -147,39 +145,40 @@ export const MultiStepLoader = ({
 									initial={{ opacity: 0 }}
 									animate={{ opacity: 1 }}
 									exit={{ opacity: 0 }}
-									transition={{ duration: 0.2 }}
-									className="fixed inset-0 z-[100] flex items-center justify-center bg-black/60">
-									<div className="relative h-full md:h-[85vh] lg:h-[65vh] w-full md:w-[85vw] lg:w-[65vw] max-w-4xl rounded-xl backdrop-blur-3xl border-2 border-p overflow-hidden">
+									className="fixed inset-0 z-[100] flex items-center justify-center backdrop-blur-md bg-black/60">
+										
+									<div className="relative h-full md:h-[85vh] lg:h-[65vh] w-full md:w-[85vw] lg:w-[65vw] max-w-4xl rounded-xl backdrop-blur-sm border-2 px-12 border-p overflow-hidden bg-p">
 											<AnimatePresence>
 													{showDots && (
 															<motion.div 
-																	className="absolute top-4 left-4 text-2xl font-bold text-a"
+																	className="absolute md:bottom-8 md:left-8 top-4 left-1/2 text-3xl font-semibold text-a"
 																	initial={{ opacity: 0 }}
 																	animate={{ opacity: 1 }}
 																	exit={{ opacity: 0 }}
-																	transition={{ duration: 0.5 }}
+																	transition={{ duration: 0.7 }}
 															>
 																	{dots}
-															</motion.div>
+														</motion.div>
 													)}
 											</AnimatePresence>
-											<div className="absolute inset-0 flex items-center justify-center px-12 bg-black/20 dark:bg-black/10">
+											<div className=" h-96 relative">
 													<LoaderCore value={currentState} loadingStates={loadingStates} />
 											</div>
+											<div className="bg-gradient-to-t inset-x-0 z-20 bottom-0 bg-black h-full absolute [mask-image:radial-gradient(900px_at_center,transparent_30%,white)]" />
 
 											<AnimatePresence>
-													{showArrow && (
-															<motion.div
-																	className="absolute bottom-16 right-1/2"
-																	initial={{ opacity: 0, scale: 0 }}
-																	animate={{ opacity: 1, scale: [0, 1.2, 1]}}
-																	exit={{ opacity: 0, scale: 0 }}
-																	transition={{ duration: 0.8, ease: "easeOut" }}
-															>
-																	<ArrowIcon className="text-a w-12 h-12 md:w-16 md:h-16 lg:w-20 lg:h-20 animate-pulse" />
-															</motion.div>
-													)}
-											</AnimatePresence>
+    {showArrow && (
+        <motion.div
+            className="absolute bottom-4 left-0 right-0 flex justify-center items-center w-full mx-auto"
+            initial={{ opacity: 0, scale: 0 }}
+            animate={{ opacity: 1, scale: [1, 2.2, 2] }}
+            exit={{ opacity: 0, scale: 0 }}
+            transition={{ duration: 1.2, ease: "easeOut" }}
+        >
+            <ArrowIcon className="w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24 lg:w-32 lg:h-32 animate-pulse text-a" /> 
+        </motion.div>
+    )}
+</AnimatePresence>
 									</div>
 							</motion.div>
 					)}
@@ -191,8 +190,8 @@ export const MultiStepLoader = ({
 export const ArrowIcon = ({ className }: { className?: string }) => {
   return (
 
-		<svg height="24" width="24" fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" xmlns="http://www.w3.org/2000/svg"
-		className={cn('h-12 w-12', className)}>
+		<svg width="124px" height="124px" fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1" xmlns="http://www.w3.org/2000/svg"
+		className={cn('', className)}>
 		<path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
 		<path d="M22 4 12 14.01l-3-3"/>
 	</svg>

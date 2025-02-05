@@ -6,9 +6,9 @@ import { useOutsideClick } from '../../hooks/use-outside-click'
 import { TimeLine } from './timeline'
 import { Profile } from './Profile'
 import ContactForm from '../ContactForm'
-import { IconChevronRight, IconInfoCircle, IconMailBolt, IconTag } from '@tabler/icons-react'
+import { IconChevronRight, IconInfoCircle, IconMailBolt } from '@tabler/icons-react'
 import React from 'react'
-import PriceTable from '@/components/Pricing'
+//import PriceTable from '@/components/Pricing'
 //import { CloseIcon2 } from './close-icon'
 import { CloseButton } from './close-icon'
 
@@ -106,7 +106,7 @@ export function ExpandableCards() {
                         onClick={() => setActive(card)}
                         className='flex cursor-pointer flex-row items-center justify-between rounded-xl p-3 hover:bg-n-4 dark:hover:bg-n-900 md:p-4'
                     >
-                        <div className='flex w-auto items-center gap-3 md:w-full md:items-start md:gap-4'>
+                        <div className='flex w-auto items-center gap-3 md:w-full md:gap-4'>
                             <motion.div layoutId={`image-${card.title}-${id}`} className='flex-shrink-0'>
                                 {card.src ? (
                                     <img
@@ -131,7 +131,7 @@ export function ExpandableCards() {
                                 </motion.h3>
                                 <motion.p
                                     layoutId={`description-${card.description}-${id}`}
-                                    className='text-left text-xs text-neutral-600 dark:text-neutral-400 md:text-sm'
+                                    className='text-left text-xs text-neutral-600 dark:text-neutral-400 md:text-sm pr-24 lg:pr-36'
                                 >
                                     {card.description}
                                 </motion.p>
@@ -139,10 +139,10 @@ export function ExpandableCards() {
                         </div>
                         <motion.button
                             layoutId={`button-${card.title}-${id}`}
-                            className='flex items-center gap-2 rounded-2xl bg-p px-3 py-1.5 text-xs text-white hover:bg-p-2 dark:hover:bg-p-2 hover:text-black dark:bg-p-3 md:px-4 md:py-2 md:text-sm'
+                            className='flex items-center gap-2 rounded-2xl bg-p px-3 py-2 text-xs text-white hover:bg-p-2 justify-center dark:hover:bg-p-2 hover:text-black dark:bg-p-3 md:text-sm'
                             onClick={() => setActive(card)}
                         >
-                            <span className='hidden md:inline'>
+                            <span className='hidden lg:inline'>
                                 {card.ctaText}
                             </span>
                             <IconChevronRight className='text-n-1 dark:text-s' />
@@ -155,8 +155,8 @@ export function ExpandableCards() {
 }
 
 type Card = {
-    description: string
     title: string
+    description: string
     src?: string
     icon?: React.ComponentType<{ className?: string }>
     ctaText: string
@@ -165,33 +165,26 @@ type Card = {
 }
 
 const cards: Card[] = [
+
     {
-        description: 'Services and Pricing',
-        title: 'Pay Once, Get It All',
-        icon: IconTag,
-        ctaText: 'Explore',
-        ctaLink: '',
-        content: () => <PriceTable />,
-    },
-    {
-        description: 'Simple & Easy',
         title: 'Our Process',
+        description: 'Simple & Easy',
         icon: IconInfoCircle,
         ctaText: 'View',
         ctaLink: '',
         content: () => <TimeLine />,
     },
     {
+        title: 'Our Founder',
         description: 'Founder Bio',
-        title: 'Founder',
         src: 'https://prkm7pjvgapey0vo.public.blob.vercel-storage.com/public/Self-mIeJ9HIOeOC6inJI5Ehsig2YpzyOdw.jpeg',
         ctaText: 'Investigate',
         ctaLink: '',
         content: () => <Profile />,
     },
     {
-        description: 'Questions? Ready to Get Started?',
         title: 'Contact',
+        description: 'Ready to Get Started?',
         icon: IconMailBolt,
         src: '',
         ctaText: 'Begin',
@@ -201,6 +194,15 @@ const cards: Card[] = [
 ]
 
 {/*
+    import { IconChevronRight, IconInfoCircle, IconMailBolt, IconTag } from '@tabler/icons-react'
+        {
+        description: 'Services and Pricing',
+        title: 'Pay Once, Get It All',
+        icon: IconTag,
+        ctaText: 'Explore',
+        ctaLink: '',
+        content: () => <PriceTable />,
+    },
       {
         description: 'As we grow, we hope this will serve as a trusted resource.',
         title: 'Our Work',

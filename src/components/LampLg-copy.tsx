@@ -22,7 +22,7 @@ export function Lamp() {
 					style={{ height: '80vh' }}
 					transition={transition}
 				>
-					<div className="flex-1">
+					<div className="h-[40vh] md:h-[50vh] lg:h-[80vh]">
 						<LampGradient />
 					</div>
 					<div className="flex-1 flex items-end">
@@ -35,7 +35,7 @@ export function Lamp() {
 	}
 	
 	const LampContent = () => (
-	<div className="z-50 w-full">
+	<div className=" w-full">
 		<motion.div
 			initial={{ opacity: 0, y: 20 }}
 			whileInView={{ opacity: 1, y: -20 }}
@@ -53,10 +53,11 @@ export function Lamp() {
 	)
 const LampGradient = () => (
 	<div className="absolute left-0 right-0 top-0 z-0 flex min-h-[50vh] w-full flex-col items-center justify-center  bg-white dark:bg-p-dark">
-		<div className="relative isolate z-0 flex w-full flex-1 scale-y-125 items-center justify-center">
+		<div className="relative isolate z-0 flex w-full h-[40vh] md:h-[50vh] lg:h-[80vh] scale-y-125 items-center justify-center">
 			<motion.div
-				initial={{ opacity: 0, width: '30vw' }}
-				whileInView={{ opacity: 1, width: '60vw' }}
+initial={{ opacity: 0, width: 'clamp(200px, 30vw, 600px)' }}
+whileInView={{ opacity: 1, width: 'clamp(300px, 60vw, 800px)' }}
+viewport={{ once: true, amount: 0.2 }}
 				transition={{
 					delay: 0.65,
 					duration: 0.8,
@@ -70,8 +71,9 @@ const LampGradient = () => (
 				<div className="absolute bottom-0 left-0 z-20 h-[100%] w-40 bg-white [mask-image:linear-gradient(to_right,white,transparent)] dark:bg-p-dark" />
 			</motion.div>
 			<motion.div
-				initial={{ opacity: 0, width: '30vw' }}
-				whileInView={{ opacity: 1, width: '60vw' }}
+initial={{ opacity: 0, width: 'clamp(200px, 30vw, 600px)' }}
+whileInView={{ opacity: 1, width: 'clamp(300px, 60vw, 800px)' }}
+viewport={{ once: true, amount: 0.2 }}
 				transition={{
 					delay: 0.65,
 					duration: 0.8,
@@ -84,22 +86,25 @@ const LampGradient = () => (
 				<div className="absolute bottom-0 right-0 z-20 h-[100%] w-40 bg-white [mask-image:linear-gradient(to_left,white,transparent)] dark:bg-p-dark" />
 				<div className="absolute bottom-0 right-0 z-20 h-40 w-[100%] bg-white [mask-image:linear-gradient(to_top,white,transparent)] dark:bg-p-dark" />
 			</motion.div>
-			<div className="absolute top-1/2 w-full scale-x-150 bg-p-dark blur-2xl"></div>
-			<div className="absolute top-1/2 w-full scale-x-150 bg-white blur-2xl"></div>
-			<div className="absolute top-1/2 z-50 h-48 w-full bg-transparent opacity-10 backdrop-blur-md"></div>
-			<div className="absolute inset-auto z-50 h-36 w-[50vw] rounded-full bg-s-dark opacity-50 blur-3xl lg:w-[70vw]"></div>
+			<div className="absolute top-1/2 w-full scale-x-150 bg-p-dark blur-lg md:blur-xl lg:blur-2xl"></div>
+			<div className="absolute top-1/2 w-full scale-x-150 bg-white blur-lg md:blur-xl lg:blur-2xl"></div>
+			<div className="absolute top-1/2 z-50 h-48 w-full bg-transparent opacity-10 backdrop-blur-sm md:backdrop-blur-md"></div>
+			<div className="absolute inset-auto z-50 h-36 w-[50vw] rounded-full bg-s-dark opacity-50 blur-xl md:blur-2xl lg:blur-3xl lg:w-[70vw]"></div>
 			<motion.div
-				initial={{ width: '12vw' }}
-				whileInView={{ width: '30vw' }}
+
+				initial={{ width: 'clamp(200px, 30vw, 600px)' }}
+whileInView={{ width: 'clamp(300px, 60vw, 800px)' }}
+				viewport={{ once: true, amount: 0.2 }}
 				transition={{
 					delay: 0.65,
 					duration: 0.8,
 					ease: 'easeOut',
 				}}
-				className="absolute inset-auto z-30 h-36 w-64 -translate-y-[6rem] rounded-full bg-s blur-2xl"></motion.div>
+				className="absolute inset-auto z-30 h-36 w-64 -translate-y-[6rem] rounded-full bg-s blur-lg md:blur-xl lg:blur-2xl"></motion.div>
 			<motion.div
-				initial={{ width: '30vw' }}
-				whileInView={{ width: '60vw' }}
+initial={{ width: 'clamp(200px, 30vw, 600px)' }}
+whileInView={{ width: 'clamp(300px, 60vw, 800px)' }}
+viewport={{ once: true, amount: 0.2 }}
 				transition={{
 					delay: 0.65,
 					duration: 0.8,

@@ -1,55 +1,58 @@
 import { Lamp } from '../components/LampLg'
-import WaveScrollAnimation from '../components/ui/animated-text'
+//import WaveScrollAnimation from '../components/ui/animated-text'
 import { ExpandableCards } from '../components/ui/expand-cards'
 import { LampSmall } from '../components/LampSm'
 import { WhoStepLoader } from '@/components/who-step-loader'
 import { Vision } from '../components/Vision'
-import LiquidSideNav from '@/components/LiquidSideNav'
 import { motion } from 'motion/react'
-
+import { ClientTestimonials } from '@/components/AnimatedTestimonials'
 
 const Home = () => {
-
 	return (
 		<main className='flex flex-col'>
-
 			<div className='flex flex-grow flex-col'>
-
-				<section className='relative mb-24 flex min-h-[50vh] items-center justify-center lg:mb-36'>
-					
-					<div className='absolute inset-0'>
-						<div className='hidden h-full md:flex'>
-							<Lamp />
-						</div>
-						<div className='h-full md:hidden'>
-							<LampSmall />
-						</div>
-
+				<section className='relative'>
+					<div className='hidden md:block'>
+						<Lamp />
 					</div>
-
+					<div className='md:hidden'>
+						<LampSmall />
+					</div>
 				</section>
 
-				<section className='vision-section py-24 lg:py-36'>
+				<section className='px-12 md:px-0'>
+					<motion.div
+						className='vision-section mx-auto max-w-lg pt-16 md:max-w-xl'
+						initial={{ opacity: 0.5, y: 40 }}
+						whileInView={{ opacity: 1, y: 0 }}
+						transition={{ duration: 0.8, delay: 0.3 }}>
+						<Vision />
+					</motion.div>
+					<motion.div
+						className='pb-20 pt-8'
+						initial={{ opacity: 0.5, y: 40 }}
+						whileInView={{ opacity: 1, y: 0 }}
+						transition={{ duration: 0.8, delay: 0.2 }}>
+						<WhoStepLoader />
+					</motion.div>
+				</section>
+
 				<motion.div
-				initial={{ opacity: 0, y: 40 }}
-				whileInView={{ opacity: 1, y: 0 }}
-				transition={{ duration: 0.8, delay: 1.5 }}>
-
-				<LiquidSideNav />
+					initial={{ opacity: 0.5, y: 40 }}
+					whileInView={{ opacity: 1, y: 0 }}
+					transition={{ duration: 0.8, delay: 0.1 }}>
+					<section className='container mx-auto max-w-xl font-light'>
+						<ClientTestimonials />
+					</section>
 				</motion.div>
-					<Vision />
 
-
-				</section>
-				<section className='additional-content'>
-					<div className='relative z-[2] w-full'>
-						<WaveScrollAnimation />
-					</div>
-				</section>
-
-				<section className='content-section flex flex-col items-center justify-center gap-8 px-4 py-16'>
-					<WhoStepLoader />
-					<ExpandableCards />
+				<section className='flex flex-col items-center justify-center gap-8 px-4 py-16'>
+					<motion.div
+						initial={{ opacity: 0.5, y: 40 }}
+						whileInView={{ opacity: 1, y: 0 }}
+						transition={{ duration: 0.8, delay: 0.1 }}>
+						<ExpandableCards />
+					</motion.div>
 				</section>
 			</div>
 		</main>

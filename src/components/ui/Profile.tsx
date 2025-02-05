@@ -10,12 +10,42 @@ export const Profile = () => {
                     digital solutions. He is a certified React developer and a published researcher, and has degrees with honors
                     from the University of Minnesota and the University of Northern Iowa.
                 </p>
+                <div className="flex justify-end items-end py-1 ">
+                        <a href='https://umn.edu' target='_blank' rel='noreferrer'>
+                        <div className='w-6 h-6 p-[.15rem] bg-white rounded-full items-center justify-center mx-1' >
+                        <img
+                            src="https://prkm7pjvgapey0vo.public.blob.vercel-storage.com/src/assets/images/umn-BNmo3gXm6WOYlYfHMMGE4vY51DBDH6.webp"
+                            alt="University of Minnesota"
+                            className="pt-1"
+                        />
+                        </div>
+                        </a>
+                        <a href='https://uni.edu' target='_blank' rel='noreferrer'>
+                        <div className='w-6 h-6 p-[.15rem] bg-white rounded-full items-center justify-center mx-1' >
+                        <img
+                            src="https://prkm7pjvgapey0vo.public.blob.vercel-storage.com/src/assets/images/uni-QfCtjbfg33oq4EO8bRsaTRtZ9Ek0ti.webp"
+                            alt="University of Northern Iowa"
+                            className="pt-[.15rem] ' >"
+                        />
+                        </div>
+                        </a>
+                        <a href='https://www.researchgate.net/profile/Alexander-Sojka' target='_blank' rel='noreferrer'>
+                        <div className='w-6 h-6 p-[.15rem] bg-white rounded-full items-center justify-center mx-1' >
+                        <img
+                            src="https://prkm7pjvgapey0vo.public.blob.vercel-storage.com/src/assets/images/ResearchGate_icon_SVG-n6JxwxaF1wMOrpGMhkIULcVZEG0Txu.svg"
+                            alt="ResearchGate"
+                            className=""
+                        />
+                        </div>
+                        </a>
+                        
+                    </div>
 
 
 
 
-                <div className="bg-p-1 dark:bg-n-7 p-3 rounded-xl mt-4 flex flex-col">
-                    <div className="bg-n-1 dark:bg-n-9 p-4 rounded-xl mb-2 ">
+                <div className="bg-n-4 dark:bg-p-dark p-3 rounded-xl mt-4 flex flex-col">
+                    <div className="border-2 border-p-3 dark:border-none dark:bg-p-dark p-4 rounded-xl mb-2 bg-white ">
                         <p className='font-semibold text-n-9 dark:text-white pb-6 underline text-center'>Contact Information</p>
                         <div className='grid grid-cols-1 md:grid-cols-2 gap-2'>
                             <div className='flex flex-col items-center justify-center'>
@@ -38,39 +68,16 @@ export const Profile = () => {
                             </div>
                         </div>
                     </div>
-                    <div className="flex justify-end items-end py-1 space-x-4">
-                        <a href='https://umn.edu' target='_blank' rel='noreferrer'>
-                        <img
-                            src="https://prkm7pjvgapey0vo.public.blob.vercel-storage.com/src/assets/images/umn-BNmo3gXm6WOYlYfHMMGE4vY51DBDH6.webp"
-                            alt="University of Minnesota"
-                            className="w-16 h-16 p-2 pt-8 object-contain items-center"
-                        />
-                        </a>
-                        <a href='https://uni.edu' target='_blank' rel='noreferrer'>
-                        <div className='w-10 h-10 p-2 bg-white rounded-full items-center justify-center' >
-                        <img
-                            src="https://prkm7pjvgapey0vo.public.blob.vercel-storage.com/src/assets/images/uni-QfCtjbfg33oq4EO8bRsaTRtZ9Ek0ti.webp"
-                            alt="University of Northern Iowa"
-                            className="pt-1"
-                        />
-                        </div>
-                        </a>
-                        <a href='https://www.researchgate.net/profile/Alexander-Sojka' target='_blank' rel='noreferrer'>
-                        <img
-                            src="https://prkm7pjvgapey0vo.public.blob.vercel-storage.com/src/assets/images/ResearchGate_icon_SVG-n6JxwxaF1wMOrpGMhkIULcVZEG0Txu.svg"
-                            alt="ResearchGate"
-                            className="w-16 h-16 pt-6 object-contain"
-                        />
-                        </a>
-                        
-                    </div>
+                    
                 </div>
             </div>
-            <div className="p-4">
+            <div className="md:max-w-lg flex mx-auto space-x-4 my-8">
+            <p className='font-semibold text-n-9 dark:text-white pb-6 underline text-left'>Certification</p>
                 <img
                     src="https://prkm7pjvgapey0vo.public.blob.vercel-storage.com/src/assets/images/ReactCert-Q2gZzDqhBzQocwjK7yKel57FilzNKK.jpg"
                     alt="React Certification"
-                    className="w-48 lg:w-64 rounded-xl"
+                    className="w-48 lg:w-64 rounded-md"
+                    style={{ filter: 'sepia(0.5) brightness(0.8)' }}
                 />
             </div>
         </div>
