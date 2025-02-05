@@ -1,7 +1,7 @@
 import { Lamp } from '../components/LampLg'
 //import WaveScrollAnimation from '../components/ui/animated-text'
 import { ExpandableCards } from '../components/ui/expand-cards'
-import { LampSmall } from '../components/LampSm'
+import { MobileLamp } from '../components/LampSm'
 import { WhoStepLoader } from '@/components/who-step-loader'
 import { Vision } from '../components/Vision'
 import { motion } from 'motion/react'
@@ -16,7 +16,7 @@ const Home = () => {
 						<Lamp />
 					</div>
 					<div className='md:hidden'>
-						<LampSmall />
+						<MobileLamp />
 					</div>
 				</section>
 

@@ -6,15 +6,15 @@
       const testimonials = [
 				{
 					quote:
-						'"Working with Selynt was an excellent experience! The website Alex Sojka created is clean, easy to navigate, and truly reflects my vision. Alex was responsive throughout the process, always accessible via phone or email, and welcomed feedback enthusiastically. I highly recommend his services to anyone looking for a professional and user-friendly website."',
+						'"Working with Selynt was an excellent experience! My new site is clean, easy to navigate, and truly reflects my vision. Alex was responsive throughout the process, always accessible via phone or email, and welcomed feedback enthusiastically. I highly recommend his services to anyone looking for a professional and user-friendly website."',
 					name: "Hillary H.",
-					designation: "PhD Candidate in Small Group & Organizational Communication",
+					designation: "PhD Candidate - Small Group & Organizational Communication",
 					src: 'hill' as ImageKeys,
 					url: "https://hillaryrhamilton.github.io"
 				},
 				{
 					name: 'Deck Renew',
-					designation: 'High-Quality Deck Restoration',
+					designation: 'Small Business - High-Quality Deck Restoration',
 					src: 'deck' as ImageKeys,
 					url: 'http://www.deckrenew.net',
 					quote:
@@ -22,7 +22,7 @@
 				},
 				{
 					name: "Hall of Hekate",
-					designation: 'Upcoming Website Launch',
+					designation: 'Family Business - Upcoming Website Launch',
 					src: 'hek' as ImageKeys,
 					url: '',
 					quote: 
@@ -34,15 +34,15 @@
 					src: 'LR' as ImageKeys,
 					url: '',
 					quote: 
-						"We're working with Let's Roar, a conscious brand specializing in jewelry and clothing, to enhance their Shopify store, refine their branding, and support their sister foundation. This project includes optimization, customization, and ongoing consulting.",
+						"Let's Roar is a conscious brand specializing in jewelry and clothing. We're working to enhance their Shopify store, refine their branding, and support their sister foundation. This project includes optimization, customization, and ongoing consulting.",
 				},
 				{
 					name: 'Grell',
 					designation: 'Rebranding & Web Development',
 					src: 'grell' as ImageKeys,
 					url: 'https://main.dyiohhh4lioiw.amplifyapp.com',
-					quote: 
-						"Selynt led the rebranding and website overhaul for Grell, helping them save over 62% annually on website costs. We also implemented a client capture system and optimized their online presence, resulting in a 30% increase in engagement and a 20% boost in web traffic.",
+					quote:
+						"Selynt worked with Grell for a company rebranding, website overhaul, the implementation of a client-capture system and drone videography. Grell saved over 62% on annual website costs.",
 				},
       ];
 
