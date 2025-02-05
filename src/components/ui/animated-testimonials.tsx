@@ -57,6 +57,7 @@ export const AnimatedTestimonials = ({
     onSwipedLeft: handleNext,
     onSwipedRight: handlePrev,
     trackTouch: true,
+    preventScrollOnSwipe: true,
   })
 
   const handleTouchStart = (e: React.TouchEvent) => {
@@ -77,7 +78,7 @@ export const AnimatedTestimonials = ({
     </div>
       <div className='mx-auto max-w-sm px-4 pb-20 font-sans antialiased md:max-w-4xl md:px-8 lg:px-12' {...swipeHandlers} onTouchStart={handleTouchStart} onTouchMove={handleTouchMove}>
 
-        <div className='relative grid grid-cols-1 gap-20 md:grid-cols-2'>
+        <div className='relative grid grid-cols-1 gap-4 md:gap-20 md:grid-cols-2'>
           <div>
             <div className='relative mx-auto h-64 w-64 lg:h-80 lg:w-full'>
               <AnimatePresence>
@@ -145,7 +146,7 @@ export const AnimatedTestimonials = ({
               </button>
             </div>
           </div>
-          <div className='flex flex-col justify-between py-4'>
+          <div className='flex flex-col justify-between py-2 md:py-4'>
             <motion.div
               key={active}
               initial={{
@@ -166,7 +167,7 @@ export const AnimatedTestimonials = ({
               }}>
               <h3 className='text-2xl font-bold text-black dark:text-white'>{testimonials[active].name}</h3>
               <p className='text-sm text-gray-500 dark:text-neutral-500'>{testimonials[active].designation}</p>
-              <motion.p className='mt-8 text-lg text-gray-500 dark:text-neutral-300'>
+              <motion.p className='mt-4 md:mt-8 text-md lg:text-lg text-gray-500 dark:text-neutral-300'>
                 {testimonials[active].quote.split(' ').map((word, index) => (
                   <motion.span
                     key={index}

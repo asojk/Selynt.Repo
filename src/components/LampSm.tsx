@@ -27,7 +27,7 @@ export function LampSmall({ contentHeight = false }) {
 				ref={targetRef}
 				className=""
 				style={{
-					height: contentHeight ? 'auto' : '80vh',
+					height: contentHeight ? 'auto' : '100vh',
 					opacity,
 					scale,
 					y,

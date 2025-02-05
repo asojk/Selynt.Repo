@@ -8,9 +8,9 @@
 					quote:
 						'"Working with Selynt was an excellent experience! The website Alex Sojka created is clean, easy to navigate, and truly reflects my vision. Alex was responsive throughout the process, always accessible via phone or email, and welcomed feedback enthusiastically. I highly recommend his services to anyone looking for a professional and user-friendly website."',
 					name: "Hillary H.",
-					designation: "Owner, Hekate Counseling",
+					designation: "PhD Candidate in Small Group & Organizational Communication",
 					src: 'hill' as ImageKeys,
-					url: "https://hekatecounseling.com"
+					url: "https://hillaryrhamilton.github.io"
 				},
 				{
 					name: 'Deck Renew',
@@ -43,14 +43,6 @@
 					url: 'https://main.dyiohhh4lioiw.amplifyapp.com',
 					quote: 
 						"Selynt led the rebranding and website overhaul for Grell, helping them save over 62% annually on website costs. We also implemented a client capture system and optimized their online presence, resulting in a 30% increase in engagement and a 20% boost in web traffic.",
-				},
-				{
-					name: 'Coming Soon',
-					designation: 'New Projects in the Works',
-					src: 'wh' as ImageKeys,
-					url: '',
-					quote: 
-						"Exciting new projects are underway! Check back soon to see the latest additions to our portfolio.",
 				},
       ];
 

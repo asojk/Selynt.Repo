@@ -121,6 +121,9 @@ export default {
 					900: '#1c1c1c',
 				},
 			},
+			backgroundImage: {
+				'gradient-conic': 'conic-gradient(var(--tw-gradient-stops))',
+			},
 			animation: {
 				breathe: 'breathe 4s ease-in-out infinite',
 				float: 'float 6s ease-in-out infinite',
